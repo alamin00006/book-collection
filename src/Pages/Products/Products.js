@@ -8,7 +8,7 @@ const Products = () => {
     const [myProducts] = useProduct();
     return (
         <div className='container'>
-            <h1 className='mt-5'>গত সপ্তাহের বেষ্ট সেলার বই</h1>
+            <h3 className='mt-5'>গত সপ্তাহের বেষ্ট সেলার বই</h3>
             
        <div className='my-card-main my-card'>
        {
@@ -16,7 +16,7 @@ const Products = () => {
         }
 
        </div>
-
+       
 
         </div>
     );

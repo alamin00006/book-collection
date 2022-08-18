@@ -1,8 +1,7 @@
 import React from 'react';
-import '../Products/Product.css'
 
-const Product = ({product}) => {
-    const{ name, description, picture, quantity, price, suppliyerName, userEmail} = product;
+const Product2 = ({product2}) => {
+    const{ name, description, picture, quantity, price, suppliyerName, userEmail} = product2;
     return (
       <div>
           <div>
@@ -15,9 +14,10 @@ const Product = ({product}) => {
         </div>
         </div>
       </div>
+      
       </div>
       
     );
 };
 
-export default Product;
+export default Product2;
