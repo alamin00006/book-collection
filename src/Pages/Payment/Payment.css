@@ -1,0 +1,10 @@
+.payment-option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.payment-img{
+    width: 100%;
+}
