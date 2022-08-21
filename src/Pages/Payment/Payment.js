@@ -5,7 +5,7 @@ const Payment = () => {
     return (
         <div className='container payment-option'>
            <div>
-            <h3>WE RECIEVE PAYMENT</h3>
+            <span>WE RECIEVE PAYMENT</span>
            </div>
            <div>
            <img className='payment-img' src={payment} alt=''/>
