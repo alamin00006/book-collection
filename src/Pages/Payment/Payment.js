@@ -1,11 +1,11 @@
 import React from 'react';
-import payment from '../../Images/payment2.png'
+import payment from '../../Images/payment.jpg'
 import '../Payment/Payment.css'
 const Payment = () => {
     return (
         <div className='container payment-option'>
            <div>
-            <h3>We Receive Payment</h3>
+            <h3>WE RECIEVE PAYMENT</h3>
            </div>
            <div>
            <img className='payment-img' src={payment} alt=''/>
