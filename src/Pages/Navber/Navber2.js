@@ -7,12 +7,13 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../Images/booklogo.jpg'
 import '../Navber/Navber2.css'
+import { Link } from 'react-router-dom';
 const Navber2 = () => {
     return (
         <div>
           <Navbar bg="light" expand="lg">
       <Container fluid>
-       <img className='logo' src={logo} alt=''/>
+       <Link to='/'><img className='logo' src={logo} alt=''/></Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav

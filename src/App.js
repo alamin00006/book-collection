@@ -1,28 +1,45 @@
 import './App.css';
-import Banner from './Pages/Banner/Banner';
+
 import Footer from './Pages/Footer/Footer';
 import Home from './Pages/Home/Home';
-import Payment from './Pages/Payment/Payment';
-import Products from './Pages/Products/Products';
-import Products2 from './Pages/Products2/Products2';
-import Products3 from './Pages/Products3/Products3';
-import Products4 from './Pages/Products4/Products4';
-import Products5 from './Pages/Products5/Products5';
-import Products6 from './Pages/Products6/Products6';
+import Header from './Pages/Home/Header';
+import IslamicBook from './Pages/BookCollection/IslamicBook';
+import PreOrder from './Pages/BookCollection/PreOrder';
+import General from './Pages/BookCollection/General';
+import Engineering from './Pages/BookCollection/Engineering';
+import EngineeringJob from './Pages/BookCollection/EngineeringJob';
+import AdmissionGuide from './Pages/BookCollection/AdmissionGuide';
+import EducationResearch from './Pages/BookCollection/EducationResearch';
+import English from './Pages/BookCollection/English';
+import ComputerProgramming from './Pages/BookCollection/ComputerProgramming';
+import MarketingSaling from './Pages/BookCollection/ComputerProgramming';
+
+import { Routes, Route } from "react-router-dom";
+import Book from './Pages/BookCollection/Book';
+
 
 function App() {
   return (
     <div>
-      <Home></Home>
-      <Banner></Banner>
-      <Products></Products>
-      <Products2></Products2>
-      <Products3></Products3>
-      <Products4></Products4>
-      <Products5></Products5>
-      <Products6></Products6>
-      <Payment></Payment>
+   <Header></Header>
+      
+      <Routes>
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
+        <Route path='/book' element={<Book></Book>}></Route>
+        <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
+        <Route path='/ComputerProgramming' element={<ComputerProgramming></ComputerProgramming>}></Route>
+        <Route path='/MarketingSaling' element={<MarketingSaling></MarketingSaling>}></Route>
+        <Route path='/English' element={<English></English>}></Route>
+        <Route path='/General' element={<General></General>}></Route>
+        <Route path='/Engineering' element={<Engineering></Engineering>}></Route>
+        <Route path='/EngineeringJob' element={<EngineeringJob></EngineeringJob>}></Route>
+        <Route path='/AdmissionGuide' element={<AdmissionGuide></AdmissionGuide>}></Route>
+        <Route path='/EducationResearch' element={<EducationResearch></EducationResearch>}></Route>
+      </Routes>
+      
       <Footer></Footer>
+
     </div>
   );
 }

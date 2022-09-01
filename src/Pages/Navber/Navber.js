@@ -1,35 +1,31 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import { Link } from 'react-router-dom';
+import '../Navber/Navber.css'
+
 const Navber = () => {
     return (
         <div>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" className='bg-light' variant="dark">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand className='text-black book-collection' as={Link} to="/book">বই</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
-            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">More deets</Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              Dank memes
+            <Nav.Link className='text-black book-collection' as={Link} to="/PreOrder">প্রি-অর্ডার</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/Engineering">ইঞ্জিনিয়ারিং</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/English">ইংলিশ</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to='/islamicBook'>ইসলামি বই</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to='/AdmissionGuide'>এডমিশন গাইড</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/ComputerProgramming">কম্পিউটার প্রোগ্রামিং</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/EngineeringJob">ইঞ্জিনিয়ারিং চাকরি প্রস্তুতি
             </Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/General">সাধারণ জ্ঞান</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/MarketingSaling">মার্কেটিং ও সেলিং</Nav.Link>
+            <Nav.Link className='text-black book-collection' as={Link} to="/EducationResearch">শিক্ষা ও গবেষণা</Nav.Link>
+            
           </Nav>
+        
         </Navbar.Collapse>
       </Container>
     </Navbar>    
