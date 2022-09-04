@@ -16,6 +16,8 @@ import MarketingSaling from './Pages/BookCollection/ComputerProgramming';
 
 import { Routes, Route } from "react-router-dom";
 import Book from './Pages/BookCollection/Book';
+import Login from './Pages/Login/Login';
+import SignUp from './Pages/Login/SingUp';
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
         <Route path='/EngineeringJob' element={<EngineeringJob></EngineeringJob>}></Route>
         <Route path='/AdmissionGuide' element={<AdmissionGuide></AdmissionGuide>}></Route>
         <Route path='/EducationResearch' element={<EducationResearch></EducationResearch>}></Route>
+        <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/singUp' element={<SignUp></SignUp>}></Route>
       </Routes>
       
       <Footer></Footer>

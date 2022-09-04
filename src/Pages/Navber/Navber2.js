@@ -8,7 +8,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../Images/booklogo.jpg'
 import '../Navber/Navber2.css'
 import { Link } from 'react-router-dom';
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from '../../firebase.init';
+import { signOut } from 'firebase/auth';
 const Navber2 = () => {
+  const [user] = useAuthState(auth);
+  const SingOutHandle = ()=>{
+    signOut(auth);
+  }
     return (
         <div>
           <Navbar bg="light" expand="lg">
@@ -45,9 +52,17 @@ const Navber2 = () => {
         <Nav.Link className='ms-5'>
               Track Order
             </Nav.Link>
-        <Nav.Link className='ms-5'>
+
+            {user?.email?<>
+       <p onClick={SingOutHandle} className="mt-3 ms-3 text-black sing-Out">
+       SingOut
+       </p>
+      
+      </>:
+
+        <Nav.Link as={Link} to="/login" className='ms-3'>
               Login
-            </Nav.Link>
+            </Nav.Link>}
       </Container>
     </Navbar>
         </div>
