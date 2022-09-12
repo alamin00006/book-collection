@@ -18,6 +18,12 @@ import { Routes, Route } from "react-router-dom";
 import Book from './Pages/BookCollection/Book';
 import Login from './Pages/Login/Login';
 import SignUp from './Pages/Login/SingUp';
+import ProductDetails from './Pages/Products/ProductDetails';
+import Product2Details from './Pages/Products2/Product2Details';
+import Product3Details from './Pages/Products3/Product3Details';
+import Product4Details from './Pages/Products4/Product4Details';
+import Product5Details from './Pages/Products5/Product5Details';
+import Product6Details from './Pages/Products6/Product6Details';
 
 
 function App() {
@@ -40,6 +46,12 @@ function App() {
         <Route path='/EducationResearch' element={<EducationResearch></EducationResearch>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/singUp' element={<SignUp></SignUp>}></Route>
+        <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
+        <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
+        <Route path='/product3Details/:details3Id' element={<Product3Details></Product3Details>}></Route>
+        <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
+        <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
+        <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
       </Routes>
       
       <Footer></Footer>

@@ -1,7 +1,15 @@
 import React from 'react';
-
+import { Link, useNavigate } from 'react-router-dom';
 const Product4 = ({product4}) => {
-    const{ name, description, picture, quantity, price, suppliyerName, userEmail} = product4;
+    const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product4;
+
+    const navigate = useNavigate()
+
+    const productDetails =() =>{
+    navigate(`product4Details/${_id}`)
+    
+    }
+
     return (
       <div>
           <div>
@@ -10,7 +18,7 @@ const Product4 = ({product4}) => {
         <div class="card-body">
           <h5 class="card-title">জি.মাওলা BPSC MCQ Question Banke</h5>
           <p class="card-text"></p>
-          <a href=".." class="btn details btn-primary">Details</a>
+          <button onClick={productDetails} class="btn bg-dark text-xl font-bold "><Link class="text-light text-decoration-none" to="/productDetails">Details</Link></button>
         </div>
         </div>
       </div>
