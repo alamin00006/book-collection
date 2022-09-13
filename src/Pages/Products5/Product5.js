@@ -17,7 +17,9 @@ const Product5 = ({product5}) => {
         <div class="card-body">
           <h5 class="card-title">জি.মাওলা BPSC MCQ Question Banke</h5>
           <p class="card-text"></p>
-          <button onClick={product5Details} class="btn bg-dark text-xl font-bold "><Link class="text-light text-decoration-none" to="/product5Details">Details</Link></button>
+          <div className=' text-center'>
+         <button onClick={product5Details} class=" details-button text-xl "><Link class=" text-decoration-none button-hover" to="/product5Details">Details</Link></button>
+         </div>
         </div>
         </div>
       </div>

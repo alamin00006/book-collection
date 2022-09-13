@@ -15,7 +15,7 @@ const Products4 = () => {
         }
 
        </div>
-       <button href='..' className='my-button text-center btn btn-primary text-white'>আরও দেখুন</button>
+       <div className='text-center'>  <button href='..' className='my-button btn btn-primary text-white'>আরও দেখুন</button></div>
         </div>
         
     );

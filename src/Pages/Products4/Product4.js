@@ -5,7 +5,7 @@ const Product4 = ({product4}) => {
 
     const navigate = useNavigate()
 
-    const productDetails =() =>{
+    const product4Details =() =>{
     navigate(`product4Details/${_id}`)
     
     }
@@ -18,7 +18,9 @@ const Product4 = ({product4}) => {
         <div class="card-body">
           <h5 class="card-title">জি.মাওলা BPSC MCQ Question Banke</h5>
           <p class="card-text"></p>
-          <button onClick={productDetails} class="btn bg-dark text-xl font-bold "><Link class="text-light text-decoration-none" to="/productDetails">Details</Link></button>
+          <div className=' text-center'>
+         <button onClick={product4Details} class=" details-button text-xl "><Link class=" text-decoration-none button-hover" to="/product4Details">Details</Link></button>
+         </div>
         </div>
         </div>
       </div>

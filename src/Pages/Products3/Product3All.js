@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import useProduct3 from '../../Hooks/UseProduct3';
 import '../Products2/Products2.css'
-import Product3 from './Product3';
+import Product3AllSingle from './Procuct3AllSingle';
 
-const Products3 = () => {
+const Products3All = () => {
     const [myProducts3] = useProduct3();
     return (
         <div className='container'>
@@ -12,16 +11,14 @@ const Products3 = () => {
             
        <div className='my-card-main my-card'>
        {
-            myProducts3.slice(0,5).map(( product3, index )=> <Product3 key={index} product3={product3}></Product3>) 
+            myProducts3.slice(5|'').map(product3All=> <Product3AllSingle key={product3All._id} product3All={product3All}></Product3AllSingle>) 
         }
 
        </div>
-     <div className='text-center'>  <Link to="/nonTeckAll">
-     <button className='my-button btn btn-primary text-white'>আরও দেখুন</button>
-     </Link></div>
-        </div>
+       </div>
+     
         
     );
 };
 
-export default Products3;
+export default Products3All;

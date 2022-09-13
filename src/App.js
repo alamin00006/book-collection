@@ -24,6 +24,8 @@ import Product3Details from './Pages/Products3/Product3Details';
 import Product4Details from './Pages/Products4/Product4Details';
 import Product5Details from './Pages/Products5/Product5Details';
 import Product6Details from './Pages/Products6/Product6Details';
+import Products3All from './Pages/Products3/Product3All';
+import Product3AllDetails from './Pages/Products3/Product3AllDetails';
 
 
 function App() {
@@ -52,6 +54,11 @@ function App() {
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
+        <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
+        
+        {/* allProduct get route */}
+        <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
+
       </Routes>
       
       <Footer></Footer>
