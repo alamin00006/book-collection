@@ -4,7 +4,7 @@ const useProduct2 = () =>{
     const [myProducts2, setProducts2] = useState([]);
 
 useEffect(() =>{
-     fetch('http://localhost:5000/uposohokari')
+     fetch('https://book-collection-zs5k.onrender.com/uposohokari')
     .then(res =>res.json())
     .then(data => setProducts2(data));
 },[])

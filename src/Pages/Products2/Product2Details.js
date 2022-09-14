@@ -13,7 +13,7 @@ const Product2Details = () => {
 
 
  useEffect( () =>{
-     const url = `http://localhost:5000/product2Details/${details2Id}`;
+     const url = `https://book-collection-zs5k.onrender.com/product2Details/${details2Id}`;
      fetch(url,{
        method:"GET",
      })
