@@ -26,6 +26,7 @@ import Product5Details from './Pages/Products5/Product5Details';
 import Product6Details from './Pages/Products6/Product6Details';
 import Products3All from './Pages/Products3/Product3All';
 import Product3AllDetails from './Pages/Products3/Product3AllDetails';
+import Product3Summary from './Pages/Products3/Product3Summary';
 
 
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path='/EducationResearch' element={<EducationResearch></EducationResearch>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/singUp' element={<SignUp></SignUp>}></Route>
+        <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
         <Route path='/product3Details/:details3Id' element={<Product3Details></Product3Details>}></Route>
