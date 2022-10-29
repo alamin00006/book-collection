@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 
 const Product3Specification = () => {
     return (
-        <div>
+        <div className='mt-3'>
               <Table striped bordered hover size="sm">
         <tbody>
         <tr>

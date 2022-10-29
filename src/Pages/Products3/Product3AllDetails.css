@@ -4,7 +4,7 @@ body{
 .details-page{
 margin-top: 20px;
 border-radius: 2px;
-box-shadow: 6px 8px #ebebeb;
+box-shadow: 6px 8px 6px 6px #ebebeb;
 }
 
 .details-side-1{
@@ -244,4 +244,35 @@ box-shadow: 6px 8px #ebebeb;
 }
 .carousel-director button{
   background-color: rgb(155, 155, 155) !important;
+}
+/* Product Summary Section */
+.product-summary-section{
+    border-radius: 2px;
+    box-shadow: 6px 8px 6px 6px #ebebeb;
+   
+}
+.summary{
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.summary.active{
+  background-color: #33c24d;
+  
+  color: white;
+}
+.specification{
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.specification.active{
+  background-color: #33c24d;
+  color: white;
+}
+.author{
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.author.active{
+  background-color: #33c24d;
+  color: white;
 }

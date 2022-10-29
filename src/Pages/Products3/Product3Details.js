@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import { useAuthState } from 'react-firebase-hooks/auth';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // import auth from '../../firebase.init';
 import './Product3AllDetails.css'
@@ -17,11 +17,6 @@ import Product3Related2 from './Product3Related2';
 import Product3Summary from './Product3Summary';
 import Product3Specification from './Product3Specification';
 import Product3Author from './Product3Author';
-const colors = {
-  orange: "#FFBA5A",
-  grey: "#a9a9a9"
-  
-};
 
 const Product3Details = () => {
     // const [user] = useAuthState(auth);
@@ -32,12 +27,15 @@ const Product3Details = () => {
     const [showSummary, setShowSummary]= useState(true);
     const [showSpecification, setShowSpecification]= useState(false);
     const [showAuthor, setShowAuthor]= useState(false);
-    const [isActive, setIsActive]= useState(0);
+    const [isActive1, setIsActive1]= useState(true);
+    const [isActive2, setIsActive2]= useState(false);
+    const [isActive3, setIsActive3]= useState(false);
     const [myProducts] = useProduct();
 
-    const handleMouseOver = value => {
-      setIsActive(value)
-    };
+    let toggleClassCheck1 = isActive1 ?'active':'';
+    let toggleClassCheck2 = isActive2 ?'active':'';
+    let toggleClassCheck3 = isActive3 ?'active':'';
+    
  useEffect( () =>{
      const url = `https://book-collection-zs5k.onrender.com/product3Details/${details3Id}`;
      fetch(url,{
@@ -51,8 +49,8 @@ const Product3Details = () => {
     return (
       <div class="container">
       <div class="details-page">
-        <div class="container-fliud details-side">
-          <div class="row gx-2">
+        <div class="container-fluid details-side">
+          <div class="row ">
             <div class="col-lg-4 details-side-1">
               
               <div class="">
@@ -140,35 +138,46 @@ const Product3Details = () => {
           </div>
         </div>
       </div>
-      <h3>Product Specification & Summary</h3>
+      {/* Product Summary Section */}
+      <div className='bg-white product-summary-section pb-5'>
+      <div className=' mt-3 py-5 px-4'>
+      <h5 className='mb-4'>Product Specification & Summary</h5>
       <div>
-        <button onClick={() =>{
+        <button className={`summary ${toggleClassCheck1}`} onClick={() =>{
           return(
             setShowSummary(true),
-       
             setShowSpecification(false),
-            setShowAuthor(false)
+            setShowAuthor(false),
+            setIsActive1(true),
+            setIsActive2(false),
+            setIsActive3(false)
           )
         }} 
          style={{
           border:'none'
          }} >Summary</button>
-        <button onClick={() =>{
+        <button className={`specification ${toggleClassCheck2}`} onClick={() =>{
           return(
             setShowSummary(false),
             setShowSpecification(true),
-            setShowAuthor(false)
+            setShowAuthor(false),
+            setIsActive1(false),
+            setIsActive2(true),
+            setIsActive3(false)
          
           )
         }}
         style={{
           border:'none'
          }} >Specification</button>
-        <button onClick={() =>{
+        <button className={`author ${toggleClassCheck3}`} onClick={() =>{
           return(
             setShowSummary(false),
             setShowSpecification(false),
-            setShowAuthor(true)
+            setShowAuthor(true),
+            setIsActive1(false),
+            setIsActive2(false),
+            setIsActive3(true)
             
           )
         }} 
@@ -181,15 +190,18 @@ const Product3Details = () => {
         {showSpecification?<Product3Specification></Product3Specification> :null}
         {showAuthor?<Product3Author></Product3Author>:null}
       </div>
-      <hr/>
-      <h3 className='mt-5 mb-3'>Related Products</h3>
+      
+      </div>
+       <hr/>
+      <h3 className='mb-3 px-4'>Related Products</h3>
             
-            <div className='my-card-main my-card'>
+            <div className='my-card-main my-card px-4 mt-4'>
             {
                  myProducts.slice(0,5).map( product => <Product product={product}></Product>) 
              }
              
             </div>
+      </div>
     </div>
       
     );
