@@ -14,15 +14,30 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import useProduct from '../../Hooks/UseProduct';
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
-
+import Product3Summary from './Product3Summary';
+import Product3Specification from './Product3Specification';
+import Product3Author from './Product3Author';
+const colors = {
+  orange: "#FFBA5A",
+  grey: "#a9a9a9"
+  
+};
 
 const Product3Details = () => {
     // const [user] = useAuthState(auth);
     const {details3Id} = useParams()
     const [singleProduct3, setSingleProduct3] = useState({});
     // const [error, setError] = useState('');
-    //  const [reload, ] = useState(true);
+    //  const [reload, ] = useState(true)
+    const [showSummary, setShowSummary]= useState(true);
+    const [showSpecification, setShowSpecification]= useState(false);
+    const [showAuthor, setShowAuthor]= useState(false);
+    const [isActive, setIsActive]= useState(0);
     const [myProducts] = useProduct();
+
+    const handleMouseOver = value => {
+      setIsActive(value)
+    };
  useEffect( () =>{
      const url = `https://book-collection-zs5k.onrender.com/product3Details/${details3Id}`;
      fetch(url,{
@@ -126,9 +141,46 @@ const Product3Details = () => {
         </div>
       </div>
       <h3>Product Specification & Summary</h3>
-      <NavLink className='text-black book-collection fs-5' to="/summary">Summary</NavLink>
-      <NavLink className='text-black book-collection fs-5' to="">Specification</NavLink>
-      <NavLink className='text-black book-collection fs-5' to="">Author</NavLink>
+      <div>
+        <button onClick={() =>{
+          return(
+            setShowSummary(true),
+       
+            setShowSpecification(false),
+            setShowAuthor(false)
+          )
+        }} 
+         style={{
+          border:'none'
+         }} >Summary</button>
+        <button onClick={() =>{
+          return(
+            setShowSummary(false),
+            setShowSpecification(true),
+            setShowAuthor(false)
+         
+          )
+        }}
+        style={{
+          border:'none'
+         }} >Specification</button>
+        <button onClick={() =>{
+          return(
+            setShowSummary(false),
+            setShowSpecification(false),
+            setShowAuthor(true)
+            
+          )
+        }} 
+        style={{
+          border:'none'
+         }}
+         
+          >Author</button>
+        {showSummary?<Product3Summary></Product3Summary>:null}
+        {showSpecification?<Product3Specification></Product3Specification> :null}
+        {showAuthor?<Product3Author></Product3Author>:null}
+      </div>
       <hr/>
       <h3 className='mt-5 mb-3'>Related Products</h3>
             

@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 const Product3AllSingle = ({product3All}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3All;
-   
     const navigate = useNavigate()
 
     const product3AllDetails =() =>{
