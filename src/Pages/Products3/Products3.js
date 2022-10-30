@@ -7,8 +7,8 @@ import Product3 from './Product3';
 const Products3 = () => {
     const [myProducts3] = useProduct3();
     return (
-        <div className='container'>
-            <h3 className='mt-5 text-center mb-5'>নন টেক চাকরি প্রস্তুতি বই</h3>
+        <div className='container card-area bg-white p-4'>
+            <h3 className='mt-0 text-center mb-5'>নন টেক চাকরি প্রস্তুতি বই</h3>
             
        <div className='my-card-main my-card'>
        {

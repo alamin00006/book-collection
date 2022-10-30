@@ -90,9 +90,9 @@ const Product3Details = () => {
                </p>
                </div>
                 <div className='d-flex'>
-                <div>
+                {/* <div>
                 <button class="reading-button btn btn-default" type="button">একটু পড়ে দেখুন</button>
-                </div>
+                </div> */}
                 <div className='d-flex align-items-center add-to-button'>
                   <div>
                   <ShoppingCartIcon className="add-to-icon "/>
