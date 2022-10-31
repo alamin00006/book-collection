@@ -179,6 +179,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   width: 12px;
   margin-right: 3px;
   color: #ff9900;
+  line-height: 0;
   }
 .add-to-button{
   background-color: #ff9900;
@@ -281,6 +282,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   box-shadow: 6px 8px 6px 6px #ebebeb;
   border-radius: 3px;
  
+ 
 }
 .book-inner img{
   width: 130px !important;
@@ -288,13 +290,18 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
 }
 .book-body{
 text-align: center;
+
 }
 .book-body h6{
 font-size: 0.8rem;
 }
 .book-body .writer-name{
 font-size: 0.7rem;
+line-height: 0.5;
 
+}
+.tk-part{
+  line-height: 0;
 }
 .pre-tk{
   color: rgb(174, 174, 174);
@@ -303,6 +310,7 @@ font-size: 0.7rem;
 .now-tk{
   color: #373737;
   font-weight: 600;
+  
 }
 
 .my-button{
@@ -312,16 +320,19 @@ font-size: 0.7rem;
 
 }
 .add-to-btn{
-  background-color:rgb(235, 47, 10);
-  width: 100%;
+  background-color: #ff9900;
+  width: 180px;
   outline: none;
   border: none;
   color: white;
   padding: 5px 10px;
-  border-radius: 5px;
   font-weight: 500;
-  top: -200px;
- 
+  position: absolute;
+  top:150px;
+  margin-left: 9px;
+  visibility: hidden;
+  text-transform: uppercase;
+  
 }
 .add-to-btn a{
   color: white;
@@ -330,29 +341,39 @@ font-size: 0.7rem;
   color: white;
 }
 .details-button{
-  background-color:rgb(248, 178, 0);
+  background-color:rgb(5, 76, 255);
   width: 100%;
   outline: none;
   border: none;
   color: white;
   padding: 5px 10px;
-  border-radius: 5px;
   font-weight: 500;
-  display: none;
+  visibility: hidden;
+  
   
 }
 .single-card{
   cursor: pointer;
-  
-}
-.single-card:hover .add-to-button{
-display: block;
+  position: relative;
+  }
+
+.single-card:hover .add-to-btn{
+visibility: visible;
+/* top: 160px; */
 }
 .single-card:hover .details-button{
-display: block;
+visibility: visible
+}
+.book-inner{
+  padding: 10px;
+  
+}
+.book-body .book-title{
+  width: 150px;
 }
 .book-inner:hover{
-opacity: 0.3;
+box-shadow: 3px 8px 8px 3px  #f5f2f2;
+
 }
 
 .details-button a{
@@ -366,10 +387,35 @@ opacity: 0.3;
   
 }
 .details-button:hover{
-  background-color:rgb(150, 16, 16);
+  background-color:rgb(37, 99, 255);
   width: 100%;
   outline: none;
   color: rgb(255, 255, 255) ;
   
 }
+.add-to-btn:hover{
+  background-color: #ffa41c;
+  outline: none;
+  color: rgb(255, 255, 255) ;
+ }
+
+/* animation */
+@keyframes slide {
+  0% {
+    top: 0px;
+    
+  }
+  50% {
+      top: 100px;
+  }
+  100% {
+      top: 150px;
+  }
+}
+
+.single-card:hover .add-to-btn {
+  animation: slide 0.5s linear;
+}
+
+
 

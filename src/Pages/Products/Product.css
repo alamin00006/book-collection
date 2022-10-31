@@ -1,7 +1,7 @@
 .my-card{
     display: grid;
     grid-template-columns:  repeat(5, 1fr);
-    gap: 80px;
+    gap: 20px;
 }
 
 img{

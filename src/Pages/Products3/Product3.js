@@ -14,10 +14,10 @@ const Product3 = ({product3}) => {
     return (
      
           <div className='single-card'>
-        <div className='d-flex flex-column align-items-center book-inner'>
+        <div className='d-flex flex-column align-items-center book-inner' onClick={product3Details}>
         <img src='https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/f36a3dc025f4_117302.gif' class="" alt="..."/>
         <div class="book-body mt-3">
-          <h6 class="">মোহাম্মদ আলীর বাংলাদেশ বিজয়</h6>
+          <h6 class="book-title">মোহাম্মদ আলীর বাংলাদেশ বিজয় </h6>
           <p class="writer-name">মুহাম্মদ লুৎফুল হক</p>
           <p className='mt-0'>
               <StarIcon className=" star-icon "/>
@@ -26,14 +26,14 @@ const Product3 = ({product3}) => {
               <StarIcon className=" star-icon "/>
               <StarIcon className=" star-icon "/>
           </p>
-          <p><span className='text-decoration-line-through pre-tk'>TK 500</span> <span className='ms-2 now-tk'>TK 560</span></p>
+          <p className="tk-part"><span className='text-decoration-line-through pre-tk'>TK 500</span> <span className='ms-2 now-tk'>TK 560</span></p>
           <div className=' text-center'>
-        
+          <button onClick={product3Details} class=" details-button "><Link class=" text-decoration-none button-hover " to="/product3Details"> View Details</Link></button>
          </div>
         </div>
         </div>
-        <button onClick={product3Details} class=" details-button text-xl "><Link class=" text-decoration-none button-hover" to="/product3Details">Details</Link></button>
-        <button class=" add-to-btn text-xl "><Link class=" text-decoration-none button-hover" to="/product3Details">Add to Cart</Link></button>
+       
+        <button class=" add-to-btn"><Link class=" text-decoration-none " to="">Add to Cart</Link></button>
       </div>
       
      

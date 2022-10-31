@@ -14,9 +14,8 @@ import { StarIcon } from '@heroicons/react/24/solid'
 import useProduct from '../../Hooks/UseProduct';
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
-import Product3Summary from './Product3Summary';
-import Product3Specification from './Product3Specification';
-import Product3Author from './Product3Author';
+import Product3ToggleButton from './Product3ToggleButton';
+
 
 const Product3Details = () => {
     // const [user] = useAuthState(auth);
@@ -24,17 +23,10 @@ const Product3Details = () => {
     const [singleProduct3, setSingleProduct3] = useState({});
     // const [error, setError] = useState('');
     //  const [reload, ] = useState(true)
-    const [showSummary, setShowSummary]= useState(true);
-    const [showSpecification, setShowSpecification]= useState(false);
-    const [showAuthor, setShowAuthor]= useState(false);
-    const [isActive1, setIsActive1]= useState(true);
-    const [isActive2, setIsActive2]= useState(false);
-    const [isActive3, setIsActive3]= useState(false);
+   
     const [myProducts] = useProduct();
 
-    let toggleClassCheck1 = isActive1 ?'active':'';
-    let toggleClassCheck2 = isActive2 ?'active':'';
-    let toggleClassCheck3 = isActive3 ?'active':'';
+  
     
  useEffect( () =>{
      const url = `https://book-collection-zs5k.onrender.com/product3Details/${details3Id}`;
@@ -142,54 +134,7 @@ const Product3Details = () => {
       <div className='bg-white product-summary-section pb-5'>
       <div className=' mt-3 py-5 px-4'>
       <h5 className='mb-4'>Product Specification & Summary</h5>
-      <div>
-        <button className={`summary ${toggleClassCheck1}`} onClick={() =>{
-          return(
-            setShowSummary(true),
-            setShowSpecification(false),
-            setShowAuthor(false),
-            setIsActive1(true),
-            setIsActive2(false),
-            setIsActive3(false)
-          )
-        }} 
-         style={{
-          border:'none'
-         }} >Summary</button>
-        <button className={`specification ${toggleClassCheck2}`} onClick={() =>{
-          return(
-            setShowSummary(false),
-            setShowSpecification(true),
-            setShowAuthor(false),
-            setIsActive1(false),
-            setIsActive2(true),
-            setIsActive3(false)
-         
-          )
-        }}
-        style={{
-          border:'none'
-         }} >Specification</button>
-        <button className={`author ${toggleClassCheck3}`} onClick={() =>{
-          return(
-            setShowSummary(false),
-            setShowSpecification(false),
-            setShowAuthor(true),
-            setIsActive1(false),
-            setIsActive2(false),
-            setIsActive3(true)
-            
-          )
-        }} 
-        style={{
-          border:'none'
-         }}
-         
-          >Author</button>
-        {showSummary?<Product3Summary></Product3Summary>:null}
-        {showSpecification?<Product3Specification></Product3Specification> :null}
-        {showAuthor?<Product3Author></Product3Author>:null}
-      </div>
+     <Product3ToggleButton/>
       
       </div>
        <hr/>
