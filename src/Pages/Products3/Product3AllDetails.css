@@ -189,6 +189,10 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
 .add-to-button:hover{
   background-color: #fea319;
  }
+.add-to-icon1{
+  width: 30px;
+  
+}
 .add-to-icon{
   width: 30px;
   color: #ffffff;

@@ -27,15 +27,24 @@ import Product6Details from './Pages/Products6/Product6Details';
 import Products3All from './Pages/Products3/Product3All';
 import Product3AllDetails from './Pages/Products3/Product3AllDetails';
 import Product3Summary from './Pages/Products3/Product3Summary';
-
+import AddToCart from './Pages/AddToCart/AddToCart';
+import { useState } from 'react';
 
 function App() {
+  const [carts, setCarts] = useState([]);
+
+  const handleAddToCart = (item)=>{
+      const newCart = [...carts, item];
+      setCarts(newCart)
+      console.log(newCart);
+  } 
+ 
   return (
     <div>
-   <Header></Header>
+   <Header carts={carts}></Header>
       
       <Routes>
-        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/' element={<Home handleAddToCart={handleAddToCart}></Home>}></Route>
         <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
         <Route path='/book' element={<Book></Book>}></Route>
         <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
@@ -57,6 +66,7 @@ function App() {
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
+        <Route path='/cart' element={<AddToCart carts={carts}></AddToCart>}></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>

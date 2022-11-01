@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/24/solid'
-const Product3 = ({product3}) => {
+const Product3 = ({product3, handleAddToCart}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3;
 
     const navigate = useNavigate()
@@ -33,7 +33,7 @@ const Product3 = ({product3}) => {
         </div>
         </div>
        
-        <button class=" add-to-btn"><Link class=" text-decoration-none " to="">Add to Cart</Link></button>
+        <button class=" add-to-btn"><Link class=" text-decoration-none "  onClick={() =>handleAddToCart(product3)} to="">Add to Cart</Link></button>
       </div>
       
      
