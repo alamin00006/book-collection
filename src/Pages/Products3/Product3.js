@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/24/solid'
+
 const Product3 = ({product3, handleAddToCart}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3;
 

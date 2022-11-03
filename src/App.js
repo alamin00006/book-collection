@@ -1,5 +1,4 @@
 import './App.css';
-
 import Footer from './Pages/Footer/Footer';
 import Home from './Pages/Home/Home';
 import Header from './Pages/Home/Header';
@@ -13,7 +12,6 @@ import EducationResearch from './Pages/BookCollection/EducationResearch';
 import English from './Pages/BookCollection/English';
 import ComputerProgramming from './Pages/BookCollection/ComputerProgramming';
 import MarketingSaling from './Pages/BookCollection/ComputerProgramming';
-
 import { Routes, Route } from "react-router-dom";
 import Book from './Pages/BookCollection/Book';
 import Login from './Pages/Login/Login';
@@ -61,12 +59,12 @@ function App() {
         <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
-        <Route path='/product3Details/:details3Id' element={<Product3Details></Product3Details>}></Route>
+        <Route path='/product3Details/:details3Id' element={<Product3Details handleAddToCart={handleAddToCart}></Product3Details>}></Route>
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
-        <Route path='/cart' element={<AddToCart carts={carts}></AddToCart>}></Route>
+        <Route path='/cart' element={<AddToCart carts={carts} setCarts={setCarts}></AddToCart>}></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
