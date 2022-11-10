@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
 import './Cart.css'
 import { TrashIcon } from '@heroicons/react/24/outline'
-const Cart = ({cart, carts, setCarts}) => {
+import { PlusSmallIcon } from '@heroicons/react/24/outline'
+import { MinusSmallIcon } from '@heroicons/react/24/outline'
+const Cart = ({cart, carts, setCarts, totalPrice, setTotalPrice}) => {
 
     const [count, setCount] = useState(1);
     const [cartAmount, setCartAmount] = useState(cart.price*count);
-
+   
+    
     const handleCountInc = () =>{
         setCount(count+1);
         setCartAmount(cart.price*count);
+       
+        setTotalPrice(totalPrice+cart.price)
     }
     const handleCountDec = () =>{
        if(count===1){
@@ -37,9 +42,9 @@ const Cart = ({cart, carts, setCarts}) => {
             </div>
             <div className='col-lg-6 d-flex mt-5'>
              <div className='cart-input-part'>
-             <button onClick={handleCountDec}>-</button>
+              <MinusSmallIcon onClick={handleCountDec} className='cart-minus-icon'/>
               <input type="text" value={count} className="cart-input"/>
-              <button onClick={handleCountInc}>+</button>
+              <PlusSmallIcon onClick={handleCountInc} className="cart-plus-icon"/>
              </div>
              <div className='d-flex'>
                 <p>Tk {cartAmount}</p>

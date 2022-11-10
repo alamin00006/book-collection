@@ -30,11 +30,20 @@ import { useState } from 'react';
 
 function App() {
   const [carts, setCarts] = useState([]);
-
+  const cartsPrice = carts.map(cart =>cart.price)
+        console.log(cartsPrice);
+  const [totalPrice, setTotalPrice] = useState(0);
+  
   const handleAddToCart = (item)=>{
+      const myCart = carts.find(cart =>cart._id === item._id);
+      if(myCart){
+        return(
+          alert('already added Add To Cart Page')
+          );
+      }
       const newCart = [...carts, item];
       setCarts(newCart)
-      console.log(newCart);
+      // console.log(newCart);
   } 
  
   return (
@@ -64,7 +73,7 @@ function App() {
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
-        <Route path='/cart' element={<AddToCart carts={carts} setCarts={setCarts}></AddToCart>}></Route>
+        <Route path='/cart' element={<AddToCart totalPrice={totalPrice} setTotalPrice={setTotalPrice} carts={carts} setCarts={setCarts}></AddToCart>}></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
