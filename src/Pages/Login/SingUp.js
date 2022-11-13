@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
+import useToken from '../../Hooks/useToken';
 
 const SignUp = () => {
   
@@ -25,13 +26,24 @@ const SignUp = () => {
         loading,
         hookError,
       ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
+      const [token] = useToken(user)
       const navigate = useNavigate();
+      const location = useLocation();
+        const from = location.state?.from?.pathname || "/";
+    // useEffect(() =>{
+    //     if(user){
+    //         navigate('/')
+            
+    //     }
+    // },[ user, navigate])
+    
     useEffect(() =>{
-        if(user){
-            navigate('/home')
-        }
-    },[user])
 
+        if(!token){
+            navigate(from, { replace: true });
+      }
+     
+    }, [token, from, navigate])
     useEffect(() =>{
         if(hookError){
             toast(hookError.message)

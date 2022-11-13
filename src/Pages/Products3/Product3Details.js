@@ -17,7 +17,7 @@ import Product3Related2 from './Product3Related2';
 import Product3ToggleButton from './Product3ToggleButton';
 
 
-const Product3Details = ({handleAddToCart}) => {
+const Product3Details = ({AddToCarts}) => {
     // const [user] = useAuthState(auth);
     const {details3Id} = useParams()
     const [singleProduct3, setSingleProduct3] = useState({});
@@ -90,7 +90,7 @@ const Product3Details = ({handleAddToCart}) => {
                   <ShoppingCartIcon className="add-to-icon "/>
                   </div>
                   <div>
-                  <button onClick={() =>handleAddToCart(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
+                  <button onClick={() =>AddToCarts(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
                   </div>
                 </div>
                 

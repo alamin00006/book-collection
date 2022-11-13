@@ -1,62 +1,70 @@
 [
-    {
+    { 
+      "_id":1,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 1,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term.\r\n"
     },
-    {
+    { 
+      "_id":2,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 2,
       "sold": 22,
+      "stock":"",
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term.\r\n"
     },
     {
+      "_id":3,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 3,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term..\r\n"
     },
     {
+      "_id":4,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 1,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term..\r\n"
     },
     {
+      "_id":5,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 1,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term..\r\n"
     },
     {
+      "_id":6,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 1,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",
       "description": "computer, device for processing, storing, and displaying information. Computer once meant a person who did computations, but now the term..\r\n"
     },
     {
+      "_id":7,
       "picture": "https://i.ibb.co/KrShps5/book2.jpg",
       "price": 39,
-      "quantity": 29,
+      "quantity": 1,
       "sold": 22,
       "name": "Eve Fry",
       "suppliyerName": "Sally Garrison",

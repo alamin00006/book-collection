@@ -13,10 +13,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 
-const Navber2 = ({carts}) => {
+const Navber2 = ({carts, setCarts}) => {
   const [user] = useAuthState(auth);
   const SingOutHandle = ()=>{
     signOut(auth);
+    localStorage.removeItem('accessToken');
+    window.location.reload(false);
+
+
   }
     return (
         <div>

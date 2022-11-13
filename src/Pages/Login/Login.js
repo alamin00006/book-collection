@@ -6,6 +6,7 @@ import {useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword} 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
+import useToken from '../../Hooks/useToken';
 
 const Login = () => {
    
@@ -15,7 +16,8 @@ const Login = () => {
         loading,
         hookError,
       ] = useSignInWithEmailAndPassword(auth);
-    
+     
+      const [token] = useToken(user)
      const [sendPasswordResetEmail] = useSendPasswordResetEmail(
     auth
   );
@@ -32,11 +34,17 @@ const Login = () => {
         const navigate = useNavigate();
         const location = useLocation();
         const from = location.state?.from?.pathname || "/";
+      // useEffect(() =>{
+      //   if(user){
+      //     navigate(from, { replace: true })
+      // }
+      // },[user])
       useEffect(() =>{
-        if(user){
-          navigate(from, { replace: true })
-      }
-      },[user])
+
+          if(token){
+          navigate(from, { replace: true });
+        }
+      }, [token, from, navigate])
   
           const emailCheck = (e) =>{
           const emailRegex = /\S+@\S+\.\S+/;

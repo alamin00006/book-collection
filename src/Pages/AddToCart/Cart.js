@@ -3,17 +3,20 @@ import './Cart.css'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { PlusSmallIcon } from '@heroicons/react/24/outline'
 import { MinusSmallIcon } from '@heroicons/react/24/outline'
-const Cart = ({cart, carts, setCarts, totalPrice, setTotalPrice}) => {
+import { removeFromDb } from '../../utilitis/cartStorage';
+
+
+const Cart = ({cart, carts, setCarts}) => {
 
     const [count, setCount] = useState(1);
-    const [cartAmount, setCartAmount] = useState(cart.price*count);
+    const [cartAmount, setCartAmount] = useState(cart.price*Number(count));
    
+    
     
     const handleCountInc = () =>{
         setCount(count+1);
-        setCartAmount(cart.price*count);
+        setCartAmount(cart.price*Number(count));
        
-        setTotalPrice(totalPrice+cart.price)
     }
     const handleCountDec = () =>{
        if(count===1){
@@ -26,8 +29,23 @@ const Cart = ({cart, carts, setCarts, totalPrice, setTotalPrice}) => {
     }
 
     const handleDeleteCart = (id)=>{
-     const cartItem = carts.filter(cart =>cart._id !== id);
-     setCarts(cartItem);
+        removeFromDb(id)
+        const url = `http://localhost:5000/carts/${id}`;
+            fetch(url , {
+                method: "DELETE",
+              }).then(res => res.json())
+                .then(data => {
+                    if(data.deletedCount >0 ){
+                       const reaminingData = carts.filter(order => order._id !==id);
+                       setCarts(reaminingData)
+                       
+                      
+                    }
+                })
+
+    //  const cartItem = carts.filter(cart =>cart._id !== id);
+    //  setCarts(cartItem);
+    //  removeFromDb(id)
     }
     return (
         <div className='row p-5 cart-item border'>
