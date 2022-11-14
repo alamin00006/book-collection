@@ -6,26 +6,60 @@ import { MinusSmallIcon } from '@heroicons/react/24/outline'
 import { removeFromDb } from '../../utilitis/cartStorage';
 
 
-const Cart = ({cart, carts, setCarts}) => {
 
-    const [count, setCount] = useState(1);
-    const [cartAmount, setCartAmount] = useState(cart.price*Number(count));
+const Cart = ({cart, carts, setCarts}) => {
+    // const [reload, setReload] = useState(true);
+    let [count, setCount] = useState(cart.quantity);
+
+    // const [cartAmount, setCartAmount] = useState(cart.price*cart.quantity);
    
-    
-    
     const handleCountInc = () =>{
-        setCount(count+1);
-        setCartAmount(cart.price*Number(count));
-       
+    
+        setCount(parseInt(++ count));
+         const quantity = parseInt(count);
+      
+         const price = cart.price*parseInt(count);
+         const totalPrice = price;
+
+        const newQuantity = {quantity, totalPrice };
+        const url = `http://localhost:5000/carts/${cart._id}`;
+              fetch(url, {
+                  method: 'PUT',
+                  headers: {
+                      'content-type': 'application/json'
+                  },
+                  body: JSON.stringify(newQuantity)
+              })
+              .then(res => res.json())
+              .then(data =>{
+              
+              })  
+
     }
     const handleCountDec = () =>{
-       if(count===1){
+       if(count<=1){
         return;
        }
-       else{
-        setCount(count-1);
-        setCartAmount(count*cart.price);
-       }
+       setCount(parseInt(-- count));
+       
+       const quantity = parseInt(count);
+       const price = cart.price*parseInt(count);
+       const totalPrice = price;
+
+      const newQuantity = {quantity, totalPrice };
+       const url = `http://localhost:5000/carts/${cart._id}`;
+             fetch(url, {
+                 method: 'PUT',
+                 headers: {
+                     'content-type': 'application/json'
+                 },
+                 body: JSON.stringify(newQuantity)
+             })
+             .then(res => res.json())
+             .then(data =>{
+              
+             })
+   
     }
 
     const handleDeleteCart = (id)=>{
@@ -36,16 +70,13 @@ const Cart = ({cart, carts, setCarts}) => {
               }).then(res => res.json())
                 .then(data => {
                     if(data.deletedCount >0 ){
-                       const reaminingData = carts.filter(order => order._id !==id);
+                       const reaminingData = carts.filter(cart => cart._id !==id);
                        setCarts(reaminingData)
                        
                       
                     }
                 })
 
-    //  const cartItem = carts.filter(cart =>cart._id !== id);
-    //  setCarts(cartItem);
-    //  removeFromDb(id)
     }
     return (
         <div className='row p-5 cart-item border'>
@@ -60,13 +91,13 @@ const Cart = ({cart, carts, setCarts}) => {
             </div>
             <div className='col-lg-6 d-flex mt-5'>
              <div className='cart-input-part'>
-              <MinusSmallIcon onClick={handleCountDec} className='cart-minus-icon'/>
-              <input type="text" value={count} className="cart-input"/>
-              <PlusSmallIcon onClick={handleCountInc} className="cart-plus-icon"/>
+              <MinusSmallIcon onClick={handleCountDec}  className='cart-minus-icon bg-info text-white border-0'/>
+              <input type="text" value={cart.quantity} className="cart-input"/>
+              <PlusSmallIcon  onClick={handleCountInc}  className="cart-plus-icon bg-info text-white border-0"/>
              </div>
              <div className='d-flex'>
-                <p>Tk {cartAmount}</p>
-                <p onClick={()=>handleDeleteCart(cart._id)}><TrashIcon className='cart-trash-icon ms-5'/></p>
+                <p>Tk {cart.totalPrice}</p>
+                <p onClick={()=>handleDeleteCart(cart._id)}><TrashIcon className='cart-trash-icon ms-5 '/></p>
              </div>
             </div>
         </div>

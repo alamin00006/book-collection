@@ -34,6 +34,7 @@ import auth from './firebase.init';
 import { signOut } from 'firebase/auth';
 import { useQuery } from 'react-query';
 import Loading from './Pages/Loading/Loading';
+import RequireAuth from './Pages/Login/RequireAuth';
 
 
 
@@ -110,6 +111,14 @@ refetch()
 // })
 
 // }, [carts])
+
+
+// const alreadyCart = []
+// for(const product of carts){
+//   alreadyCart.push(product._id);
+//   return alreadyCart;
+// }
+// console.log(...alreadyCart);
   const AddToCarts = (item)=>{
    
    
@@ -120,6 +129,7 @@ refetch()
       customerName:user?.displayName,
       picture:item.picture,
       price : item.price,
+      totalPrice:item.price,
       quantity:item.quantity,
       stock:item.stock,
       suppliyerName:item.suppliyerName,
@@ -131,8 +141,9 @@ refetch()
       // orderQuantity: event.target.orderQuantity.value,
   
   }
-  
-  fetch('http://localhost:5000/carts', {
+
+ 
+  fetch(`http://localhost:5000/carts`, {
   method: 'POST',
   headers:{
     'content-type': 'application/json',
@@ -196,7 +207,9 @@ refetch()
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
-        <Route path='/cart' element={<AddToCart carts={carts} setCarts={setCarts}></AddToCart>}></Route>
+        <Route path='/cart' element={
+          <AddToCart carts={carts} setCarts={setCarts}></AddToCart>
+        }></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>

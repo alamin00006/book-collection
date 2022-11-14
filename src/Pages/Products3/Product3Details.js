@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // import { useAuthState } from 'react-firebase-hooks/auth';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 // import { toast } from 'react-toastify';
 // import auth from '../../firebase.init';
 import './Product3AllDetails.css'
@@ -15,6 +15,8 @@ import useProduct from '../../Hooks/UseProduct';
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
 import Product3ToggleButton from './Product3ToggleButton';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 
 const Product3Details = ({AddToCarts}) => {
@@ -23,7 +25,7 @@ const Product3Details = ({AddToCarts}) => {
     const [singleProduct3, setSingleProduct3] = useState({});
     // const [error, setError] = useState('');
     //  const [reload, ] = useState(true)
-   
+    const [user] = useAuthState(auth);
     const [myProducts] = useProduct();
 
   
@@ -43,9 +45,13 @@ const Product3Details = ({AddToCarts}) => {
       <div class="details-page">
         <div class="container-fluid details-side">
           <div class="row ">
+            
             <div class="col-lg-4 details-side-1">
               
               <div class="">
+              {
+                !user?<h6><span className='text-danger'>Are You Order This Product Please Before</span> <Link to='/login'>Login</Link></h6>:''
+              }
                 <div class="tab-pane active" id="pic-1">
                   <img className='details-pic' src={singleProduct3.picture} alt="" /></div>
                 </div>

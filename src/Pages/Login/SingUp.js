@@ -30,20 +30,20 @@ const SignUp = () => {
       const navigate = useNavigate();
       const location = useLocation();
         const from = location.state?.from?.pathname || "/";
-    // useEffect(() =>{
-    //     if(user){
-    //         navigate('/')
-            
-    //     }
-    // },[ user, navigate])
-    
     useEffect(() =>{
+        if(user){
+            navigate('/')
+            
+        }
+    },[ user, navigate])
+    
+    // useEffect(() =>{
 
-        if(!token){
-            navigate(from, { replace: true });
-      }
+    //     if(!token){
+    //         navigate(from, { replace: true });
+    //   }
      
-    }, [token, from, navigate])
+    // }, [token, from, navigate])
     useEffect(() =>{
         if(hookError){
             toast(hookError.message)

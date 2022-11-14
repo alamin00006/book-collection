@@ -6,18 +6,18 @@ const AddToCart = ({carts, setCarts}) => {
     const navigate = useNavigate()
     let shipping = 50;
     let total = 0;
-    console.log(carts)
+   
    for(const product of carts){
-      total = total+product.price;
+      total = total+product.totalPrice;
    }
    const finalTotal = total+shipping;
     return (
         <div className='container cart-item-page mt-3'>
-            <div className='text-center'>
+            <div className='text-center bg-white'>
                 
             {
                 carts.length === 0? <div>
-                    <h6>Your Cart is Empty</h6>
+                    <h6 className='text-danger'>Your Cart is Empty</h6>
                 <button className='text-center bg-info text-white border-0 px-5 py-2 fs-5 rounded' onClick={() => navigate('/')}>Continue Shipping</button>
                 </div>
                 :''

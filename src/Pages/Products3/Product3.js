@@ -27,14 +27,14 @@ const Product3 = ({product3, AddToCarts}) => {
               <StarIcon className=" star-icon "/>
               <StarIcon className=" star-icon "/>
           </p>
-          <p className="tk-part"><span className='text-decoration-line-through pre-tk'>TK 500</span> <span className='ms-2 now-tk'>TK 560</span></p>
+          <p className="tk-part"><span className='text-decoration-line-through pre-tk'>TK 500</span> <span className='ms-2 now-tk'>TK {product3.price}</span></p>
           <div className=' text-center'>
           <button onClick={product3Details} class=" details-button "><Link class=" text-decoration-none button-hover " to="/product3Details"> View Details</Link></button>
          </div>
         </div>
         </div>
        
-        <button class=" add-to-btn"><Link class=" text-decoration-none "  onClick={() =>AddToCarts(product3)} to="">Add to Cart</Link></button>
+        <button class=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="">Add to Cart</Link></button>
       </div>
       
      
