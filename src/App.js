@@ -26,8 +26,6 @@ import Products3All from './Pages/Products3/Product3All';
 import Product3AllDetails from './Pages/Products3/Product3AllDetails';
 import Product3Summary from './Pages/Products3/Product3Summary';
 import AddToCart from './Pages/AddToCart/AddToCart';
-import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 
@@ -35,6 +33,8 @@ import { signOut } from 'firebase/auth';
 import { useQuery } from 'react-query';
 import Loading from './Pages/Loading/Loading';
 import RequireAuth from './Pages/Login/RequireAuth';
+import { useState } from 'react';
+import Shipping from './Pages/Shipping/Shipping';
 
 
 
@@ -64,64 +64,8 @@ if(isLoading){
 }
 refetch()
 
-
-//   useEffect( () =>{
- 
-//     if(user){
-      
-//         fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
-//             method: "GET",
-//             headers: {
-//               'content-type': 'application/json',
-//                authorization : `Bearer ${localStorage.getItem('accessToken')}`
-//             }
-//         })
-//     .then(res =>{
-//         if(res.status ===401 || res.status === 403){
-//         Navigate('/');
-//         signOut(auth);
-//         localStorage.removeItem('accessToken')
-//         }
-//      return res.json()
-//     })
-//     .then(data => {
-//       setCarts(data)
-//       console.log(data);
-//     })
-//     }
- 
-// }, [carts, user])
-
-
-//   useEffect( () =>{
-        
-//     fetch(`http://localhost:5000/carts`, {
-//         method: "GET",
-//         headers: {
-//             'content-type': 'application/json',
-//             // authorization : `Bearer ${localStorage.getItem('accessToken')}`
-//         }
-//     })
-// .then(res =>{
-//  return res.json()
-// })
-// .then(data => {
-//     setCarts(data)
-    
-// })
-
-// }, [carts])
-
-
-// const alreadyCart = []
-// for(const product of carts){
-//   alreadyCart.push(product._id);
-//   return alreadyCart;
-// }
-// console.log(...alreadyCart);
   const AddToCarts = (item)=>{
-   
-   
+    
     const orderData = {
       orderId : item._id ,
       name: item.name,
@@ -134,12 +78,7 @@ refetch()
       stock:item.stock,
       suppliyerName:item.suppliyerName,
       description:item.description
-      // customerName : user?.displayName,
-      // customer : user?.email,
-      // address: event.target.address.value,
-      // phone: event.target.phone.value,
-      // orderQuantity: event.target.orderQuantity.value,
-  
+    
   }
 
  
@@ -156,28 +95,9 @@ refetch()
    
   )
   .then(data => {
-    // console.log(data.result.insertedId)
-   
-    if(data.success){
-     toast.success('Your Order is Done');
-    
-    }
-    else{
-     toast.error('Allready this item orderd')
-    }
+ 
   })
 
-
-      // const myCart = carts.find(cart =>cart._id === item._id);
-      // if(myCart){
-      //   return(
-      //     alert('already added Add To Cart Page')
-      //     );
-      // }
-      // const newCart = [...carts, item];
-      // setCarts(newCart)
-      
-      // console.log(newCart);
   } 
  
   return (
@@ -208,12 +128,15 @@ refetch()
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
         <Route path='/cart' element={
-          <AddToCart carts={carts} setCarts={setCarts}></AddToCart>
+          <RequireAuth>
+            <AddToCart carts={carts} setCarts={setCarts}></AddToCart>
+          </RequireAuth>
         }></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
-
+         {/* Shipping Routes */}
+         <Route path='/shipping' element={<Shipping carts={carts} setCarts={setCarts}></Shipping>}></Route>
       </Routes>
       
       <Footer></Footer>

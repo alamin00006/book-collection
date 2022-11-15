@@ -6,7 +6,7 @@ const Product3 = ({product3, AddToCarts}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3;
 
     const navigate = useNavigate()
-
+  
     const product3Details =() =>{
     navigate(`product3Details/${_id}`)
     
@@ -34,7 +34,7 @@ const Product3 = ({product3, AddToCarts}) => {
         </div>
         </div>
        
-        <button class=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="">Add to Cart</Link></button>
+        <button class=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="/cart">Add to Cart</Link></button>
       </div>
       
      

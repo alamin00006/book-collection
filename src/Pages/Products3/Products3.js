@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { Link } from 'react-router-dom';
 import useProduct3 from '../../Hooks/UseProduct3';
 import '../Products2/Products2.css'
@@ -7,7 +7,7 @@ import Product3 from './Product3';
 const Products3 = ({AddToCarts}) => {
 
     const [myProducts3] = useProduct3();
-
+    
    
     return (
         <div className='container card-area bg-white p-4'>

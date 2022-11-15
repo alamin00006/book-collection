@@ -91,9 +91,9 @@ const Cart = ({cart, carts, setCarts}) => {
             </div>
             <div className='col-lg-6 d-flex mt-5'>
              <div className='cart-input-part'>
-              <MinusSmallIcon onClick={handleCountDec}  className='cart-minus-icon bg-info text-white border-0'/>
-              <input type="text" value={cart.quantity} className="cart-input"/>
-              <PlusSmallIcon  onClick={handleCountInc}  className="cart-plus-icon bg-info text-white border-0"/>
+              <MinusSmallIcon onClick={handleCountDec}  className='cart-minus-icon border-0 rounded'/>
+              <input type="text" value={cart.quantity} disabled className="cart-input rounded"/>
+              <PlusSmallIcon  onClick={handleCountInc}  className="cart-plus-icon border-0 rounded"/>
              </div>
              <div className='d-flex'>
                 <p>Tk {cart.totalPrice}</p>
