@@ -187,6 +187,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   padding: 0 20px !important;
   border-radius: 3px !important;
 }
+
 .add-to-button:hover{
   background-color: #fea319;
  }
@@ -204,6 +205,14 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   font-weight: 700 !important;
   text-transform: uppercase;
   
+}
+.add-To-Cart a{
+  text-decoration: none;
+  color: white; 
+}
+.add-To-Cart a:hover{
+ 
+  color: white; 
 }
 
 .reading-button{
@@ -341,6 +350,7 @@ line-height: 0.5;
 }
 .add-to-btn a{
   color: white;
+  text-decoration: none;
 }
 .add-to-btn a:hover{
   color: white;

@@ -37,11 +37,10 @@ import { useState } from 'react';
 import Shipping from './Pages/Shipping/Shipping';
 
 
-
 function App() {
   const [user] = useAuthState(auth);
   const [carts, setCarts] = useState([]);
-  
+
   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
     method: "GET",
     headers: {
@@ -81,7 +80,11 @@ refetch()
     
   }
 
- 
+ const alreadyCarts = carts.find(cart =>cart?.orderId === item._id);
+
+  if(alreadyCarts){
+    return;
+  }
   fetch(`http://localhost:5000/carts`, {
   method: 'POST',
   headers:{
@@ -105,7 +108,7 @@ refetch()
    <Header carts={carts} setCarts={setCarts}></Header>
       
       <Routes>
-        <Route path='/' element={<Home AddToCarts={AddToCarts}></Home>}></Route>
+        <Route path='/' element={<Home AddToCarts={AddToCarts} carts={carts}></Home>}></Route>
         <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
         <Route path='/book' element={<Book></Book>}></Route>
         <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
@@ -122,7 +125,7 @@ refetch()
         <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
-        <Route path='/product3Details/:details3Id' element={<Product3Details AddToCarts={AddToCarts}></Product3Details>}></Route>
+        <Route path='/product3Details/:details3Id' element={<Product3Details AddToCarts={AddToCarts} carts={carts}></Product3Details>}></Route>
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>

@@ -4,7 +4,7 @@ import useProduct3 from '../../Hooks/UseProduct3';
 import '../Products2/Products2.css'
 import Product3 from './Product3';
 
-const Products3 = ({AddToCarts}) => {
+const Products3 = ({AddToCarts, carts}) => {
 
     const [myProducts3] = useProduct3();
     
@@ -15,7 +15,7 @@ const Products3 = ({AddToCarts}) => {
             
        <div className='my-card-main my-card'>
        {
-            myProducts3.slice(0,5).map(( product3, index )=> <Product3 key={index} product3={product3} AddToCarts={AddToCarts} ></Product3 >) 
+            myProducts3.slice(0,5).map(( product3, index )=> <Product3 key={index} product3={product3} AddToCarts={AddToCarts} carts={carts}></Product3 >) 
         }
 
        </div>

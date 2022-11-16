@@ -11,6 +11,8 @@ const AddToCart = ({carts, setCarts}) => {
       total = total+product.totalPrice;
    }
    const finalTotal = total+shipping;
+//    const disCountTotal = finalTotal*10/100;
+   
     return (
         <div className='container cart-item-page mt-3'>
             <div className='text-center all-cart'>

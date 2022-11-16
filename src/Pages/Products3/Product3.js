@@ -2,8 +2,10 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/24/solid'
 
-const Product3 = ({product3, AddToCarts}) => {
+const Product3 = ({product3, AddToCarts, carts}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3;
+
+    const alreadyCarts = carts.find(cart =>cart?.orderId === _id);
 
     const navigate = useNavigate()
   
@@ -34,7 +36,10 @@ const Product3 = ({product3, AddToCarts}) => {
         </div>
         </div>
        
-        <button class=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="/cart">Add to Cart</Link></button>
+           {
+            alreadyCarts?<button className="add-to-btn"><Link className='' to='/cart'>View Cart</Link></button>: <button className=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="/cart">Add to Cart</Link></button>
+           }
+        
       </div>
       
      

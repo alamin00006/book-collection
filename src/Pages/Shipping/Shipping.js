@@ -98,7 +98,7 @@ const Shipping = ({carts,setCarts}) => {
                 </div>
                 <div className='text-center checkout-button mt-3'>
                     <button className='btn text-center'>
-                        <Link className='text-white' to='/shipping'>Proceed To Checkout</Link>
+                        <Link className='text-white' to='/shipping'>Place Order</Link>
                     </button>
                 </div>
                </div>

@@ -19,7 +19,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 
-const Product3Details = ({AddToCarts}) => {
+const Product3Details = ({AddToCarts, carts}) => {
     // const [user] = useAuthState(auth);
     const {details3Id} = useParams()
     const [singleProduct3, setSingleProduct3] = useState({});
@@ -28,7 +28,7 @@ const Product3Details = ({AddToCarts}) => {
     const [user] = useAuthState(auth);
     const [myProducts] = useProduct();
 
-  
+    const alreadyCarts = carts.find(cart =>cart?.orderId === details3Id);
     
  useEffect( () =>{
      const url = `https://book-collection-zs5k.onrender.com/product3Details/${details3Id}`;
@@ -96,7 +96,9 @@ const Product3Details = ({AddToCarts}) => {
                   <ShoppingCartIcon className="add-to-icon "/>
                   </div>
                   <div>
-                  <button onClick={() =>AddToCarts(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
+                 {
+                  alreadyCarts?<button class="add-to-cart add-To-Cart btn btn-default" type="button"><Link to="/cart">View Cart</Link></button>:<button onClick={() =>AddToCarts(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
+                 }
                   </div>
                 </div>
                 
