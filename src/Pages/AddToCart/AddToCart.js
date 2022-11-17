@@ -26,7 +26,7 @@ const AddToCart = ({carts, setCarts}) => {
             }
             </div>
           <div className='row cart-page gx-5'>
-          <div className='col-lg-8'>
+          <div className='col-lg-8 col-md-8 col-sm-12'>
             
            {
                 carts?.map(cart => <Cart cart={cart} key={cart._id} carts={carts} setCarts={setCarts} ></Cart>)
@@ -34,7 +34,7 @@ const AddToCart = ({carts, setCarts}) => {
             }
            </div>
            {
-            carts.length !== 0?<div className='col-lg-4 p-5 cart-total-part'>
+            carts.length !== 0?<div className='col-lg-4 col-md-4 col-sm-12 p-5 cart-total-part'>
             <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
             <div className='d-flex justify-content-between'>
                 <p>Sub Total</p>

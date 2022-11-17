@@ -2,7 +2,7 @@
  input {
   width: 100%;
   margin-bottom: 20px;
-  padding: 12px;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 3px;
 }
@@ -19,9 +19,6 @@ label {
 }
 
 
-
-
-
 hr {
   border: 1px solid lightgrey;
 }
@@ -30,6 +27,49 @@ span.price {
   float: right;
   color: grey;
 }
+.radio-button{
+  margin-top: 20px;
+  cursor: pointer;
+}
+.cash-on-delivery img{
+width: 40px;
+height:40px;
+cursor: pointer;
 
+}
+.mobile-payment img{
+margin-bottom: 5px;
+width: 70px;
+height:30px;
+cursor: pointer;
+}
+.bkash-info-input{
+  padding: 3px;
+}
+
+.cash-on{
+
+  border-radius: 3px;
+}
+.cash-on.active{
+
+color: white;
+}
+.bkash{
+  
+  border-radius: 3px;
+}
+.bkash.active{
+
+  color: white;
+}
+.nagad{
+ 
+  border-radius: 3px;
+}
+.nagad.active{
+
+  color: white;
+}
 
 

@@ -3,6 +3,7 @@ import './Cart.css'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { PlusSmallIcon } from '@heroicons/react/24/outline'
 import { MinusSmallIcon } from '@heroicons/react/24/outline'
+import { CheckCircleIcon } from '@heroicons/react/24/outline'
 import { removeFromDb } from '../../utilitis/cartStorage';
 
 
