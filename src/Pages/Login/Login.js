@@ -79,10 +79,11 @@ const Login = () => {
    e.preventDefault();
    
    signInWithEmailAndPassword(userInfo.email, userInfo.password);
-   
+   toast.success('thanks for Login')
  }
  const [Loadinguser, Userloading] = useAuthState(auth);
- if(Userloading){
+
+ if(Userloading||loading){
    return <Loading></Loading> ;  
  }
 

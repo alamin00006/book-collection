@@ -1,35 +1,37 @@
 
 import { Link, useNavigate } from 'react-router-dom';
+import Loading from '../Loading/Loading';
 import Cart from './Cart';
 
-const AddToCart = ({carts, setCarts}) => {
+const AddToCart = ({carts, setCarts, setTotal,total}) => {
     const navigate = useNavigate()
     let shipping = 50;
-    let total = 0;
+    let total1 = 0;
    
    for(const product of carts){
-      total = total+product.totalPrice;
+      total1 = total1+product.totalPrice;
    }
    const finalTotal = total+shipping;
-//    const disCountTotal = finalTotal*10/100;
+   const disCountTotal = finalTotal*10/100;
    
     return (
         <div className='container cart-item-page mt-3'>
             <div className='text-center all-cart'>
                 
             {
-                carts.length === 0? <div>
-                    <h6 className='text-danger'>Your Cart is Empty</h6>
-                <button className='text-center bg-info text-white border-0 px-5 py-2 fs-5 rounded' onClick={() => navigate('/')}>Continue Shipping</button>
-                </div>
-                :''
+                carts.length === 0?<div className='bg-warning p-5'>
+                <h6 className='text-white fs-5 fw-bolder'>Your Cart is Empty</h6>
+            <button className='text-center bg-info text-white border-0 px-5 py-2 fs-5 rounded' onClick={() => navigate('/')}>Continue Shipping</button>
+            </div>:''
+                
             }
+           
             </div>
           <div className='row cart-page gx-5'>
           <div className='col-lg-8 col-md-8 col-sm-12'>
             
            {
-                carts?.map(cart => <Cart cart={cart} key={cart._id} carts={carts} setCarts={setCarts} ></Cart>)
+                carts?.map(cart => <Cart cart={cart} key={cart._id} carts={carts} setCarts={setCarts} setTotal={setTotal} total={total}></Cart>)
                
             }
            </div>

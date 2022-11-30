@@ -35,71 +35,78 @@ import Loading from './Pages/Loading/Loading';
 import RequireAuth from './Pages/Login/RequireAuth';
 import { useState } from 'react';
 import Shipping from './Pages/Shipping/Shipping';
-
+import Order from './Pages/Order/Order';
+import { useDispatch, useSelector } from 'react-redux';
+import { addByIncrement, addToCart } from './Pages/store/reducers/cartSlice';
+import DrawerCart from './Pages/AddToCart/Drawer';
+import ShoppingCart from './Pages/AddToCart/ShoppingCart';
 
 function App() {
   const [user] = useAuthState(auth);
   const [carts, setCarts] = useState([]);
-
-  const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
-    method: "GET",
-    headers: {
-      'authorization': `Bearer ${localStorage.getItem('accessToken')}`
- }
-}).then(res =>{
-  if(res.status ===401 || res.status === 403){
-            Navigate('/');
-            signOut(auth);
-            localStorage.removeItem('accessToken')
-            }
-         return res.json()
-})
-.then(data =>{
-  setCarts(data)
+  const [total, setTotal] = useState(1)
+  const dispatch = useDispatch()
+  // const cart = useSelector((state) => state.cart);
+//   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
+//     method: "GET",
+//     headers: {
+//       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
+//  }
+// }).then(res =>{
+//   if(res.status ===401 || res.status === 403){
+//             Navigate('/');
+//             signOut(auth);
+//             localStorage.removeItem('accessToken')
+//             }
+//          return res.json()
+// })
+// .then(data =>{
+//   setCarts(data)
   
-}))
-if(isLoading){
-  <Loading></Loading>
-}
-refetch()
+// }))
+// if(isLoading){
+//   <Loading></Loading>
+// }
+// refetch()
 
   const AddToCarts = (item)=>{
+    dispatch(addToCart(item));
+    console.log(item);
+//     const orderData = {
+//       orderId : item._id ,
+//       name: item.name,
+//       customer:user?.email,
+//       customerName:user?.displayName,
+//       picture:item.picture,
+//       price : item.price,
+//       totalPrice:item.price,
+//       quantity:item.quantity,
+//       stock:item.stock,
+//       suppliyerName:item.suppliyerName,
+//       description:item.description
     
-    const orderData = {
-      orderId : item._id ,
-      name: item.name,
-      customer:user?.email,
-      customerName:user?.displayName,
-      picture:item.picture,
-      price : item.price,
-      totalPrice:item.price,
-      quantity:item.quantity,
-      stock:item.stock,
-      suppliyerName:item.suppliyerName,
-      description:item.description
-    
-  }
+//   }
 
- const alreadyCarts = carts.find(cart =>cart?.orderId === item._id);
+//  const alreadyCarts = carts.find(cart =>cart?.orderId === item._id);
 
-  if(alreadyCarts){
-    return;
-  }
-  fetch(`http://localhost:5000/carts`, {
-  method: 'POST',
-  headers:{
-    'content-type': 'application/json',
-    authorization : `Bearer ${localStorage.getItem('accessToken')}`
+//   if(alreadyCarts){
+//     return;
+//   }
+//   fetch(`http://localhost:5000/carts`, {
+//   method: 'POST',
+//   headers:{
+//     'content-type': 'application/json',
+//     authorization : `Bearer ${localStorage.getItem('accessToken')}`
   
-  },
-  body: JSON.stringify(orderData)
-  })
-  .then(res => res.json()
+//   },
+//   body: JSON.stringify(orderData)
+//   })
+//   .then(res => res.json()
    
-  )
-  .then(data => {
+//   )
+//   .then(data => {
  
-  })
+//   })
 
   } 
  
@@ -108,7 +115,7 @@ refetch()
    <Header carts={carts} setCarts={setCarts}></Header>
       
       <Routes>
-        <Route path='/' element={<Home AddToCarts={AddToCarts} carts={carts}></Home>}></Route>
+        <Route path='/' element={<Home setTotal={setTotal} total={total} AddToCarts={AddToCarts} carts={carts} ></Home>}></Route>
         <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
         <Route path='/book' element={<Book></Book>}></Route>
         <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
@@ -129,19 +136,21 @@ refetch()
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
+        <Route path='/cart' element={<ShoppingCart></ShoppingCart>}></Route>
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
-        <Route path='/cart' element={
-          <RequireAuth>
-            <AddToCart carts={carts} setCarts={setCarts}></AddToCart>
-          </RequireAuth>
-        }></Route>
+        <Route path='' element={
+        
+          <AddToCart setTotal={setTotal} total={total} carts={carts} setCarts={setCarts}></AddToCart> 
+       
+    }></Route>
         
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
          {/* Shipping Routes */}
          <Route path='/shipping' element={<Shipping carts={carts} setCarts={setCarts}></Shipping>}></Route>
+         <Route path='/order' element={<Order carts={carts} setCarts={setCarts}></Order>}></Route>
       </Routes>
-      
+     
       <Footer></Footer>
 
     </div>

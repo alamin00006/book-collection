@@ -8,18 +8,23 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../Images/booklogo.jpg'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import '../Navber/Navber2.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
 
+import { useSelector } from 'react-redux';
+
 const Navber2 = ({carts, setCarts}) => {
   const [user] = useAuthState(auth);
+  const cart = useSelector((state) => state.cart);
+  const navigate = useNavigate()
   const SingOutHandle = ()=>{
     signOut(auth);
+    navigate('/')
     localStorage.removeItem('accessToken');
     window.location.reload(false);
-
+    
 
   }
     return (
@@ -56,9 +61,10 @@ const Navber2 = ({carts, setCarts}) => {
           </Form>
         </Navbar.Collapse>
         <Nav.Link className='ms-5' as={Link} to="/cart">
-          <ShoppingCartIcon className='add-to-icon1'/>{carts?.length}
+          <ShoppingCartIcon className='add-to-icon1'/>{cart?.cartItems?.length}
             </Nav.Link>
-
+           
+             
             {user?.email?<>
        <p onClick={SingOutHandle} className="mt-3 ms-3 text-black sing-Out">
        SingOut

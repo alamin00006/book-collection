@@ -17,6 +17,7 @@ import Product3Related2 from './Product3Related2';
 import Product3ToggleButton from './Product3ToggleButton';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import RequireAuth from '../Login/RequireAuth';
 
 
 const Product3Details = ({AddToCarts, carts}) => {
@@ -96,9 +97,15 @@ const Product3Details = ({AddToCarts, carts}) => {
                   <ShoppingCartIcon className="add-to-icon "/>
                   </div>
                   <div>
-                 {
+             
+                
+                
+               
+               {
                   alreadyCarts?<button class="add-to-cart add-To-Cart btn btn-default" type="button"><Link to="/cart">View Cart</Link></button>:<button onClick={() =>AddToCarts(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
+                 
                  }
+              
                   </div>
                 </div>
                 

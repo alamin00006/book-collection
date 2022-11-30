@@ -344,7 +344,7 @@ line-height: 0.5;
   position: absolute;
   top:150px;
   margin-left: 9px;
-  visibility: hidden;
+  /* visibility: hidden; */
   text-transform: uppercase;
   
 }
@@ -373,7 +373,7 @@ line-height: 0.5;
   }
 
 .single-card:hover .add-to-btn{
-visibility: visible;
+/* visibility: visible; */
 /* top: 160px; */
 }
 .single-card:hover .details-button{
@@ -415,7 +415,7 @@ box-shadow: 3px 8px 8px 3px  #f5f2f2;
  }
 
 /* animation */
-@keyframes slide {
+/* @keyframes slide {
   0% {
     top: 0px;
     
@@ -426,11 +426,11 @@ box-shadow: 3px 8px 8px 3px  #f5f2f2;
   100% {
       top: 150px;
   }
-}
-
+} */
+/* 
 .single-card:hover .add-to-btn {
   animation: slide 0.5s linear;
-}
+} */
 
 
 

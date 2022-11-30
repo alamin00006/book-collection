@@ -1,12 +1,13 @@
-import React from 'react';
+
 import { Link, useNavigate } from 'react-router-dom';
 import { StarIcon } from '@heroicons/react/24/solid'
 
-const Product3 = ({product3, AddToCarts, carts}) => {
+
+const Product3 = ({product3, AddToCarts, carts, setTotal, total}) => {
     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product3;
 
     const alreadyCarts = carts.find(cart =>cart?.orderId === _id);
-
+   
     const navigate = useNavigate()
   
     const product3Details =() =>{
@@ -16,7 +17,7 @@ const Product3 = ({product3, AddToCarts, carts}) => {
 
     return (
      
-          <div className='single-card'>
+        <div className='single-card'>
         <div className='d-flex flex-column align-items-center book-inner' onClick={product3Details}>
         <img src='https://ds.rokomari.store/rokomari110/ProductNew20190903/130X186/f36a3dc025f4_117302.gif' class="" alt="..."/>
         <div class="book-body mt-3">
@@ -36,9 +37,10 @@ const Product3 = ({product3, AddToCarts, carts}) => {
         </div>
         </div>
        
-           {
-            alreadyCarts?<button className="add-to-btn"><Link className='' to='/cart'>View Cart</Link></button>: <button className=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="/cart">Add to Cart</Link></button>
-           }
+    <button className=" add-to-btn" onClick={() =>AddToCarts(product3)}><Link class=" text-decoration-none " to="">Add to Cart</Link></button>
+           
+        
+  
         
       </div>
       
