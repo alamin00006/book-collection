@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Cart.css'
 import { TrashIcon } from '@heroicons/react/24/outline'
 import { PlusSmallIcon } from '@heroicons/react/24/outline'
@@ -6,11 +6,12 @@ import { MinusSmallIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseCart, getTotals, incrementCart, removeFromCart } from '../store/reducers/cartSlice';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // {cart, carts, setCarts, setTotal, total, data}
 const ShoppingCart = () => {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     // const [reload, setReload] = useState(true);
     // let [count, setCount] = useState(cart.quantity);
     const cart = useSelector((state) => state.cart);
@@ -18,84 +19,19 @@ const ShoppingCart = () => {
     useEffect(() => {
         dispatch(getTotals());
       }, [cart, dispatch]);
-    // const [cartAmount, setCartAmount] = useState(cart.price*cart.quantity);
+
     let shipping = 50;
     const finalCartAmount = shipping + cartTotalAmount;
-    const handleCountInc = () =>{
-        // setTotal(total+1)
-        // setCount(parseInt(++ count));
-        //  const quantity = parseInt(count);
-      
-        //  const price = cart.price*parseInt(count);
-        //  const totalPrice = price;
 
-        // const newQuantity = {quantity, totalPrice };
-        // const url = `http://localhost:5000/carts/${cart._id}`;
-        //       fetch(url, {
-        //           method: 'PUT',
-        //           headers: {
-        //               'content-type': 'application/json'
-        //           },
-        //           body: JSON.stringify(newQuantity)
-        //       })
-        //       .then(res => res.json())
-        //       .then(data =>{
-              
-        //       })  
-
-    }
-    const handleCountDec = () =>{
-        // setTotal(total-1)
-    //    if(count<=1){
-    //     return;
-    //    }
-    //    setCount(parseInt(-- count));
-       
-    //    const quantity = parseInt(count);
-    //    const price = cart.price*parseInt(count);
-    //    const totalPrice = price;
-
-    //   const newQuantity = {quantity, totalPrice };
-    //    const url = `http://localhost:5000/carts/${cart._id}`;
-    //          fetch(url, {
-    //              method: 'PUT',
-    //              headers: {
-    //                  'content-type': 'application/json'
-    //              },
-    //              body: JSON.stringify(newQuantity)
-    //          })
-    //          .then(res => res.json())
-    //          .then(data =>{
-              
-    //          })
-   
-    }
-
-    const handleDeleteCart = (id)=>{
-    
-        // const url = `http://localhost:5000/carts/${id}`;
-        //     fetch(url , {
-        //         method: "DELETE",
-        //       }).then(res => res.json())
-        //         .then(data => {
-        //             if(data.deletedCount >0 ){
-        //                const reaminingData = carts.filter(cart => cart._id !==id);
-        //                setCarts(reaminingData)
-                       
-                      
-        //             }
-        //         })
-  
-    }
     return (
-        
-        <div className='container'>
-           <div className='row'>
+            <div className='container'>
+           {
+            cart?.cartItems?.length !== 0?<div className='row'>
             <div className='col-lg-8'>
             {
                 cart.cartItems.map((data, index) =>
                 <div key={index} className='row p-5 cart-item border'>
-                    <div className=' d-flex'>
+                    <div className='col-lg-6 d-flex'>
                         <div className='cart-image'>
                         <img src={data.image} alt=''/>
                         </div>
@@ -106,14 +42,17 @@ const ShoppingCart = () => {
                     </div>
                     <div className='col-lg-6 d-flex mt-5'>
                      <div className='cart-input-part'>
-                      <MinusSmallIcon onClick={()=>dispatch(decreaseCart(data))} className='cart-minus-icon border-0 rounded'/>
-                      <input type="text" value={data.cartQuantity} disabled className="cart-input rounded"/>
-                      <PlusSmallIcon  onClick={()=>dispatch(incrementCart(data))}  className="cart-plus-icon border-0 rounded"/>
+                      <MinusSmallIcon onClick={()=>dispatch(decreaseCart(data))} className='cart-minus-icon border-0'/>
+                      <input type="text" value={data.cartQuantity} readOnly className="cart-input "/>
+                      <PlusSmallIcon  onClick={()=>{
+                        dispatch(incrementCart(data))
+                       
+                      }}  className="cart-plus-icon border-0"/>
                      </div>
                      <div className='d-flex'>
-                        <p>Tk {data.originalPrice}</p>
+                        <p>Tk {data.singleCartTotal}</p>
                         <p ><TrashIcon onClick={() =>dispatch(removeFromCart(data))} className='cart-trash-icon ms-5 '/></p>
-                        {/* onClick={()=>handleDeleteCart(cart._id)} */}
+                       
                      </div>
                     </div>
                 </div>)
@@ -142,8 +81,21 @@ const ShoppingCart = () => {
                     <Link className='text-white' to='/shipping'>Proceed To Checkout</Link>
                 </button>
             </div>
+            <div className='mt-3'>
+            <form>
+            <label> If You Have a Promo Code</label>
+            <input type='text' className='w-100 rounded' placeholder='Enter Your Promo Code'/>
+            <input type='submit' className='bg-primary text-white mt-1'/>
+            </form>
            </div>
            </div>
+           </div>:<div className='bg-warning p-5 text-center'>
+                <h6 className='text-white fs-5 fw-bolder'>Your Cart is Empty</h6>
+            <button className='text-center bg-info text-white border-0 px-5 py-2 fs-5 rounded' onClick={() => navigate('/')}>Continue Shipping</button>
+            </div>
+            
+           }
+          
         </div>
         
     );

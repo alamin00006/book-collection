@@ -15,7 +15,7 @@ import { signOut } from 'firebase/auth';
 
 import { useSelector } from 'react-redux';
 
-const Navber2 = ({carts, setCarts}) => {
+const Navber2 = () => {
   const [user] = useAuthState(auth);
   const cart = useSelector((state) => state.cart);
   const navigate = useNavigate()
@@ -60,7 +60,7 @@ const Navber2 = ({carts, setCarts}) => {
             <Button variant="outline-success">Search</Button>
           </Form>
         </Navbar.Collapse>
-        <Nav.Link className='ms-5' as={Link} to="/cart">
+        <Nav.Link className='ms-5 text-decoration-none' as={Link} to="/cart">
           <ShoppingCartIcon className='add-to-icon1'/>{cart?.cartItems?.length}
             </Nav.Link>
            

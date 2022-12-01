@@ -6,6 +6,7 @@ const initialState = {
     : [],
   cartTotalQuantity: 0,
   cartTotalAmount: 0,
+
 };
 
 export const CartSlice = createSlice({
@@ -18,8 +19,9 @@ export const CartSlice = createSlice({
       );
       if (product >= 0) {
         state.cartItems[product].cartQuantity += 1;
+        state.cartItems[product].singleCartTotal = action.payload.price * state.cartItems[product].cartQuantity;
       } else {
-        const tempProduct = { ...action.payload, cartQuantity: 1 };
+        const tempProduct = { ...action.payload, cartQuantity: 1, singleCartTotal:action.payload.price };
         state.cartItems.push(tempProduct);
       }
 
@@ -40,12 +42,13 @@ export const CartSlice = createSlice({
       });
     },
     decreaseCart(state, action) {
-      const itemIndex = state.cartItems.findIndex(
+      const product = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
 
-      if (state.cartItems[itemIndex].cartQuantity > 1) {
-        state.cartItems[itemIndex].cartQuantity -= 1;
+      if (state.cartItems[product].cartQuantity > 1) {
+        state.cartItems[product].cartQuantity -= 1;
+        state.cartItems[product].singleCartTotal = action.payload.price * state.cartItems[product].cartQuantity;
       } 
 
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
@@ -55,9 +58,17 @@ export const CartSlice = createSlice({
         (item) => item.id === action.payload.id
       );
       if (product >= 0) {
-        state.cartItems[product].cartQuantity += 1;
+        if( state.cartItems[product].cartQuantity < action.payload.quantity){
+          state.cartItems[product].cartQuantity += 1;
+        }
+        else{
+          return;
+        }
+        
+        state.cartItems[product].singleCartTotal = action.payload.price * state.cartItems[product].cartQuantity;
+        
       } else {
-        const tempProduct = { ...action.payload, cartQuantity: 1 };
+        const tempProduct = { ...action.payload, cartQuantity: 1 , singleCartTotal:action.payload.price };
         state.cartItems.push(tempProduct);
       }
 
@@ -85,7 +96,7 @@ export const CartSlice = createSlice({
 
           cartTotal.total += itemTotal;
           cartTotal.quantity += cartQuantity;
-
+          
           return cartTotal;
         },
         {

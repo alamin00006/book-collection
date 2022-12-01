@@ -10,4 +10,6 @@ useEffect(() =>{
 },[])
 return [myProducts3, setProducts3];
 }
+
 export default useProduct3;
+

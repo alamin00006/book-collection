@@ -1,25 +1,28 @@
 
 
 
+import { StarIcon } from "@heroicons/react/24/outline";
 import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
 import { addToCart, decreaseCart, incrementCart } from "../store/reducers/cartSlice";
+import AddToCart from "./AddToCart";
 
 
 function Cart({ data }) {
-  let [isOpen, setIsOpen] = useState(false);
+  
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
+  const discount = parseFloat(data.price / 100*data.discount).toFixed(2);
+    const discountPrice = data.price - Math.ceil(discount);
+ const navigate = useNavigate()
+   AddToCart(data)
+  const product3Details =() =>{
+    navigate(`/product3Details/${data._id}`)
+    
+    }
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
@@ -27,9 +30,9 @@ function Cart({ data }) {
   return (
     <>
       {" "}
-      <div className="group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center bg-white relative">
+      {/* <div className="group box-border overflow-hidden flex rounded-md shadow-sm pe-0 flex-col items-center bg-white relative">
         <div
-          onClick={openModal}
+    
           className="relative flex justify-center w-full cursor-pointer"
         >
           {data.discount === 0 ? (
@@ -213,8 +216,47 @@ function Cart({ data }) {
             )}
           </div>
         </div>
+      </div> */}
+       <div className='single-card'>
+        <div onClick={product3Details} className='d-flex flex-column align-items-center book-inner'>
+        <img src={data.image}class="" alt="..."/>
+        <div class="book-body mt-3">
+          <h6 class="book-title">{data.children} </h6>
+          <p class="writer-name">{data.children}</p>
+          <p className='mb-4'>
+              <StarIcon className=" star-icon "/>
+              <StarIcon className=" star-icon "/>
+              <StarIcon className=" star-icon "/>
+              <StarIcon className=" star-icon "/>
+              <StarIcon className=" star-icon "/>
+          </p>
+          {data.quantity !== 0 ? "" : 
+            <span className="stock-out">
+              Stock Out
+            </span>
+          }
+          {data.discount <= 20 ? "" : 
+            <span className="discount">
+              {data.discount}%
+            </span>
+          }
+          <p className="tk-part"><span className='text-decoration-line-through pre-tk'>TK {data.price}</span> <span className='ms-2 now-tk'>TK {discountPrice}</span></p>
+          <div className=' text-center'>
+          <button class=" details-button " onClick={product3Details}>View Details</button>
+     
+      
+         </div>
+        </div>
+        </div>
+       
+            {
+              Cart? <button className=" add-to-btn"><Link class=" text-decoration-none " to="/cart">View Cart</Link></button>
+             :<button  disabled={data.quantity === 0 ? true : false} className=" add-to-btn" onClick={() => handleAddToCart(data)}>Add to Cart</button>
+            }
+        
+  
+        
       </div>
-      {/* <Modal data={data} isOpen={isOpen} closeModal={closeModal} /> */}
     </>
   );
 }

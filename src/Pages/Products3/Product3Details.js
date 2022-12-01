@@ -15,24 +15,31 @@ import useProduct from '../../Hooks/UseProduct';
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
 import Product3ToggleButton from './Product3ToggleButton';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import auth from '../../firebase.init';
-import RequireAuth from '../Login/RequireAuth';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart } from '../store/reducers/cartSlice';
 
 
-const Product3Details = ({AddToCarts, carts}) => {
-    // const [user] = useAuthState(auth);
+
+const Product3Details = ({AddToCarts}) => {
+  
     const {details3Id} = useParams()
     const [singleProduct3, setSingleProduct3] = useState({});
-    // const [error, setError] = useState('');
-    //  const [reload, ] = useState(true)
-    const [user] = useAuthState(auth);
+    const discount = parseFloat(singleProduct3.price / 100*singleProduct3.discount).toFixed(2);
+    const discountPrice = singleProduct3.price - Math.ceil(discount);
+    const cart = useSelector((state) => state.cart);
+    const dispatch = useDispatch()
+   
+  const Cart = cart.cartItems.find((cartItem) => cartItem.id === singleProduct3.id);
+ 
+   
+   
+    const handleAddToCart = (product) => {
+      dispatch(addToCart(product));
+    };
     const [myProducts] = useProduct();
-
-    const alreadyCarts = carts.find(cart =>cart?.orderId === details3Id);
     
  useEffect( () =>{
-     const url = `https://book-collection-zs5k.onrender.com/product3Details/${details3Id}`;
+     const url = `http://localhost:5000/product3Details/${details3Id}`;
      fetch(url,{
        method:"GET",
      })
@@ -50,17 +57,16 @@ const Product3Details = ({AddToCarts, carts}) => {
             <div class="col-lg-4 details-side-1">
               
               <div class="">
-              {
-                !user?<h6><span className='text-danger'>Are You Order This Product Please Before</span> <Link to='/login'>Login</Link></h6>:''
-              }
+           
                 <div class="tab-pane active" id="pic-1">
-                  <img className='details-pic' src={singleProduct3.picture} alt="" /></div>
+                  <img className='details-pic'   alt=''
+                    src={singleProduct3?.image} /></div>
                 </div>
           
               
             </div>
             <div class="details col-lg-5 details-side-2">
-              <h3 class="product-title">ইলেকট্রিক্যাল লাইসেন্স ভাইভা গাইড (ক, খ, ও গ শ্রেণীর জন্য)</h3>
+              <h3 class="product-title">{singleProduct3.children}</h3>
               <p>লেখক : <span className='text-primary'>প্রকৌশলী ভবসিন্ধু বিশ্বাস</span></p>
               <div>
               <StarIcon className=" star-icon "/>
@@ -71,10 +77,10 @@ const Product3Details = ({AddToCarts, carts}) => {
               <span>/ 14 Reviews</span>
               </div>
               <p>Publisher : টেকনিক্যাল প্রকাশনী</p>
-              <p className='previous-tk'>TK.350</p>
+              {singleProduct3.discount !== 0? <p className='previous-tk'>TK.{singleProduct3.price}</p>:'' }
               <p>
-                <span className='present-tk text-primary'>TK.240</span>
-                <span className='text-warning save-tk'>You save TK.110 (31%)</span>
+                <span className='present-tk text-primary'>TK.{discountPrice}</span>
+                <span className='text-warning save-tk'>You save TK.{discount} ({singleProduct3.discount}%)</span>
                 </p>
               <p className='book-tag'>Electrical Licence Viva Guide</p>
                <div className='d-flex'>
@@ -83,9 +89,16 @@ const Product3Details = ({AddToCarts, carts}) => {
                 
                 </div>
                <p>
-                <span className='stock-in'>In Stock 
-                </span>
-                <span className='text-danger ms-2'>(only 18 copies left)</span>
+               {singleProduct3.quantity !== 0 ? <span className='stock-in'>In Stock 
+                </span> : (
+            <span className=" stock-in">
+              Stock Out
+            </span>
+          )}
+                
+               {
+                singleProduct3.quantity !== 0? <span className='text-danger available-quantity'>({singleProduct3.quantity} copies Available)</span>:<span className='text-danger available-quantity'>This Product Stock 0 </span>
+               }
                </p>
                </div>
                 <div className='d-flex'>
@@ -97,12 +110,10 @@ const Product3Details = ({AddToCarts, carts}) => {
                   <ShoppingCartIcon className="add-to-icon "/>
                   </div>
                   <div>
-             
-                
-                
-               
+            
+            
                {
-                  alreadyCarts?<button class="add-to-cart add-To-Cart btn btn-default" type="button"><Link to="/cart">View Cart</Link></button>:<button onClick={() =>AddToCarts(singleProduct3)} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
+                  Cart?<button class="add-to-cart add-To-Cart btn btn-default" type="button"><Link to="/cart">View Cart</Link></button>:<button onClick={() =>handleAddToCart(singleProduct3)} disabled={singleProduct3.quantity === 0 ? true : false} class="add-to-cart add-To-Cart btn btn-default text-white" type="button">Add to cart</button>
                  
                  }
               

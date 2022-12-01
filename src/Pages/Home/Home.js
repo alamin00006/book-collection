@@ -8,14 +8,14 @@ import Products3 from '../Products3/Products3';
 import Products4 from '../Products4/Products4';
 import Products5 from '../Products5/Products5';
 import Products6 from '../Products6/Products6';
-const Home = ({AddToCarts, carts, isLoading, setTotal, total}) => {
+const Home = ({AddToCarts}) => {
     return (
         <div className='container'>
          
             <Banner></Banner>
             <Products></Products>
       <Products2></Products2>
-      <Products3 setTotal={setTotal} total={total} AddToCarts={AddToCarts} carts={carts} isLoading={isLoading}></Products3>
+      <Products3  AddToCarts={AddToCarts}></Products3>
       <Products4></Products4>
       <Products5></Products5>
       <Products6></Products6>

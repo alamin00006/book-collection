@@ -70,7 +70,7 @@ function App() {
 // refetch()
 
   const AddToCarts = (item)=>{
-    dispatch(addToCart(item));
+    // dispatch(addToCart(item));
     console.log(item);
 //     const orderData = {
 //       orderId : item._id ,
@@ -112,10 +112,10 @@ function App() {
  
   return (
     <div>
-   <Header carts={carts} setCarts={setCarts}></Header>
+   <Header></Header>
       
       <Routes>
-        <Route path='/' element={<Home setTotal={setTotal} total={total} AddToCarts={AddToCarts} carts={carts} ></Home>}></Route>
+        <Route path='/' element={<Home AddToCarts={AddToCarts} ></Home>}></Route>
         <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
         <Route path='/book' element={<Book></Book>}></Route>
         <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
@@ -132,7 +132,8 @@ function App() {
         <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
-        <Route path='/product3Details/:details3Id' element={<Product3Details AddToCarts={AddToCarts} carts={carts}></Product3Details>}></Route>
+        {/* <Route path='product/:productTitle' element={<Product3Details AddToCarts={AddToCarts} carts={carts}></Product3Details>}></Route> */}
+        <Route path='/product3Details/:details3Id' element={<Product3Details AddToCarts={AddToCarts} ></Product3Details>}></Route>
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
@@ -140,7 +141,7 @@ function App() {
         <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
         <Route path='' element={
         
-          <AddToCart setTotal={setTotal} total={total} carts={carts} setCarts={setCarts}></AddToCart> 
+          <AddToCart></AddToCart> 
        
     }></Route>
         

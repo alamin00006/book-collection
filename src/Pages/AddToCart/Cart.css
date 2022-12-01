@@ -22,8 +22,8 @@ height: 120px;
     height: 28px;
     padding: 5px;
     border: none;
-    background-color: #ff9900;
-    color: white;
+    background-color: #ebebeb;
+    color: rgb(0, 0, 0);
 }
 
 .cart-minus-icon{
@@ -31,18 +31,19 @@ height: 120px;
     height: 28px;
     cursor: pointer;
     padding: 5px;
-    background-color: rgb(241, 241, 241);
+    background-color: #ff9900;
     margin-bottom: 3px;
+    color: white;
     
   }
 .cart-plus-icon{
     width: 30px;
     cursor: pointer;
     padding: 5px;
-    background-color: rgb(241, 241, 241);
+    background-color: #ff9900;
     height: 28px;
     margin-bottom: 3px;
-
+    color: white;
     
   }
 .cart-trash-icon{
@@ -96,4 +97,38 @@ height: 120px;
   }
   .checkout-button a{
    text-decoration: none;
+  }
+  .stock-out{
+    position: absolute;
+    top: 260px;
+    left: 55px;
+    color: rgb(246, 53, 19);
+    /* background-color: rgb(254 226 226); */
+    padding: 2px 5px;
+    margin-top: 5px;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+  .stock-in-out{
+    position: absolute;
+    top: 435px;
+    left: 530px;
+    color: red;
+    background-color: rgb(254 226 226);
+    padding: 2px 5px;
+    margin: 2px;
+    font-weight: 600;
+    border-radius: 5px;
+  }
+  .discount{
+    position: absolute;
+    top: 0;
+    left: 10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 5px;
+  }
+  .available-quantity{
+    margin-left: 10px;
   }
