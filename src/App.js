@@ -148,8 +148,8 @@ function App() {
         {/* allProduct get route */}
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
          {/* Shipping Routes */}
-         <Route path='/shipping' element={<Shipping carts={carts} setCarts={setCarts}></Shipping>}></Route>
-         <Route path='/order' element={<Order carts={carts} setCarts={setCarts}></Order>}></Route>
+         <Route path='/shipping' element={<Shipping></Shipping>}></Route>
+         <Route path='/order' element={<Order></Order>}></Route>
       </Routes>
      
       <Footer></Footer>

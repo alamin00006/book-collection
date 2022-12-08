@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
@@ -7,9 +7,23 @@ import cod from '../../Images/cod.png'
 import bkash from '../../Images/bkash.png'
 import nagad from '../../Images/Nagad-Logo.png'
 import Loading from '../Loading/Loading';
+import { getTotals } from '../store/reducers/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
-const Shipping = ({carts,setCarts}) => {
+const Shipping = () => {
   const [user] = useAuthState(auth);
+  const dispatch = useDispatch()
+
+    const cart = useSelector((state) => state.cart);
+    // const cartsName = cart.cartItems.map(cart =>  cart.children)
+    // console.log(cartsName);
+    const{cartTotalAmount}=useSelector((state) => state.cart)
+   
+    useEffect(() => {
+        dispatch(getTotals());
+      }, [cart, dispatch]);
+    let shipping = 50;
+    const finalCartAmount = shipping + cartTotalAmount;
 
   const [showCashOn, setShowCashOn]= useState(true);
   const [showBkash, setShowBkash]= useState(false);
@@ -23,23 +37,40 @@ const Shipping = ({carts,setCarts}) => {
   let toggleClassCheck2 = isActive2 ?'active':'';
   let toggleClassCheck3 = isActive3 ?'active':'';
 
-  if(!user){
-    return <Loading></Loading>
+
+  const AllOrder = (items)=>{
+    const userEmail = {user:user?.email};
+    
+   if(!user){
+    return;
     }
+    
+    // items.entries([user?.email])
+    const orderData = [items];
+    
+  fetch(`http://localhost:5000/order`, {
+  method: 'POST',
+  headers:{
+    'content-type': 'application/json',
+    
   
+  },
+  body: JSON.stringify(orderData)
+  })
+  .then(res => res.json()
+   
+  )
+  .then(data => {
  
-   
-    let shipping = 50;
-    let total = 0;
-   
-   for(const product of carts){
-      total = total+product.totalPrice;
-   }
-   const finalTotal = total+shipping;
+  })
+
+  } 
+
+
+ 
     return (
         <div className=' container'>
-    {
-        user?  <div class=" row">
+   <div class=" row">
         <div className='col-lg-8 shipping-address p-5 bg-white mt-4'>
           <form>
           
@@ -296,11 +327,11 @@ const Shipping = ({carts,setCarts}) => {
   
   </div>
 </div>
-        <div className="col-lg-4 col-md-4 col-sm-12 p-5 cart-total-part">
-        <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
+<div className='col-lg-4 col-md-4 col-sm-12 p-4 cart-total-part'>
+            <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
             <div className='d-flex justify-content-between'>
                 <p>Sub Total</p>
-                <p>{total}</p>
+                <p>{cartTotalAmount}</p>
             </div>
             <div className='d-flex justify-content-between'>
                 <p>Shipping</p>
@@ -308,20 +339,25 @@ const Shipping = ({carts,setCarts}) => {
             </div>
             <div className='d-flex justify-content-between'>
                 <p>Total</p>
-                <p>{finalTotal}</p>
+                <p>{finalCartAmount}</p>
             </div>
+             
             <div className='d-flex justify-content-between'>
                 <p>Payable Total</p>
-                <p>{finalTotal}</p>
+                <p>{finalCartAmount}</p>
+               
             </div>
             <div className='text-center checkout-button mt-3'>
-                <button className='btn text-center'>
-                    <Link className='text-white' to='/order'>Place Order</Link>
+                <button onClick={() => AllOrder(cart)} className='btn text-center'>
+                    <Link className='text-white' to='/order'>Order</Link>
                 </button>
             </div>
-            </div>
-      </div>:null
-    }
+            <div className='mt-3'>
+           
+           </div>
+           </div>
+      </div>
+   
 
   </div>
   

@@ -1,64 +1,83 @@
 import React, { useState } from 'react';
 import './Cart.css'
-import { TrashIcon } from '@heroicons/react/24/outline'
-import { PlusSmallIcon } from '@heroicons/react/24/outline'
-import { MinusSmallIcon } from '@heroicons/react/24/outline'
 import { useDispatch, useSelector } from 'react-redux';
-import { decreaseCart, getTotals, incrementCart, removeFromCart } from '../store/reducers/cartSlice';
+import {  getTotals } from '../store/reducers/cartSlice';
 import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
+import AllShoppingCart from './AllShoppingCart';
 
 // {cart, carts, setCarts, setTotal, total, data}
 const ShoppingCart = () => {
+    const [user] = useAuthState(auth);
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    // const [reload, setReload] = useState(true);
-    // let [count, setCount] = useState(cart.quantity);
+    // const [promoCode, setPromoCode] = useState('');
+    // const [promoCodeAmount, setPromoCodeAmount] = useState('');
+    // const [promoCodeDiscount, setPromoCodeDiscount] = useState('');
+
     const cart = useSelector((state) => state.cart);
     const{cartTotalAmount}=useSelector((state) => state.cart)
+   
     useEffect(() => {
         dispatch(getTotals());
       }, [cart, dispatch]);
-
     let shipping = 50;
-    const finalCartAmount = shipping + cartTotalAmount;
+    // let ourPromoCode = '1AD55';
+    // let promoDiscount = 10;
 
+//    const handlePromoCode = (e) =>{
+//    e.preventDefault()
+//    const getPromoCode = e.target.promo.value;
+//    setPromoCode(getPromoCode)
+//    const totalCartAmount = shipping + cartTotalAmount;
+//    if(ourPromoCode === promoCode ){
+//     const finalCartAmountWithDiscount = parseInt(totalCartAmount/100*promoDiscount);
+//     setPromoCodeDiscount(finalCartAmountWithDiscount)
+//     const promoCodeFinalAmount = totalCartAmount-finalCartAmountWithDiscount;
+//     setPromoCodeAmount(promoCodeFinalAmount)
+
+//     const promoAmount = {
+//         promoCodeFinalAmount : promoCodeFinalAmount ,
+//         customer:user?.email,
+         
+//   }
+
+//   fetch(`http://localhost:5000/promoCode`, {
+//   method: 'POST',
+//   headers:{
+//     'content-type': 'application/json',
+//     authorization : `Bearer ${localStorage.getItem('accessToken')}`
+  
+//   },
+//   body: JSON.stringify(promoAmount)
+//   })
+//   .then(res => res.json()
+   
+//   )
+//   .then(data => {
+ 
+//   })
+//     }
+//     e.target.reset()
+//    }
+ 
+    
+    const finalCartAmount = shipping + cartTotalAmount;
+    
+    
     return (
             <div className='container'>
            {
             cart?.cartItems?.length !== 0?<div className='row'>
             <div className='col-lg-8'>
             {
-                cart.cartItems.map((data, index) =>
-                <div key={index} className='row p-5 cart-item border'>
-                    <div className='col-lg-6 d-flex'>
-                        <div className='cart-image'>
-                        <img src={data.image} alt=''/>
-                        </div>
-                        <div className='ms-4'>
-                            <p>মোহাম্মদ আলীর বাংলাদেশ বিজয়</p>
-                            <p>মুহাম্মদ লুৎফুল হক</p>
-                        </div>
-                    </div>
-                    <div className='col-lg-6 d-flex mt-5'>
-                     <div className='cart-input-part'>
-                      <MinusSmallIcon onClick={()=>dispatch(decreaseCart(data))} className='cart-minus-icon border-0'/>
-                      <input type="text" value={data.cartQuantity} readOnly className="cart-input "/>
-                      <PlusSmallIcon  onClick={()=>{
-                        dispatch(incrementCart(data))
-                       
-                      }}  className="cart-plus-icon border-0"/>
-                     </div>
-                     <div className='d-flex'>
-                        <p>Tk {data.singleCartTotal}</p>
-                        <p ><TrashIcon onClick={() =>dispatch(removeFromCart(data))} className='cart-trash-icon ms-5 '/></p>
-                       
-                     </div>
-                    </div>
-                </div>)
+                cart.cartItems.map((data, index) => <AllShoppingCart key={index} data = {data}></AllShoppingCart>)
+                
                 }
             </div>
-                <div className='col-lg-4 col-md-4 col-sm-12 p-5 cart-total-part'>
+                <div className='col-lg-4 col-md-4 col-sm-12 p-4 cart-total-part'>
             <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
             <div className='d-flex justify-content-between'>
                 <p>Sub Total</p>
@@ -72,9 +91,16 @@ const ShoppingCart = () => {
                 <p>Total</p>
                 <p>{finalCartAmount}</p>
             </div>
+                {/* {
+                    promoCodeAmount?<div className='d-flex justify-content-between'>
+                    <p>{promoCodeAmount? 'Discount':''}</p>
+                    <p>{promoCodeDiscount?promoCodeDiscount:''}</p>
+                </div>:''
+                } */}
             <div className='d-flex justify-content-between'>
                 <p>Payable Total</p>
                 <p>{finalCartAmount}</p>
+               
             </div>
             <div className='text-center checkout-button mt-3'>
                 <button className='btn text-center'>
@@ -82,11 +108,11 @@ const ShoppingCart = () => {
                 </button>
             </div>
             <div className='mt-3'>
-            <form>
+            {/* <form onSubmit={handlePromoCode}>
             <label> If You Have a Promo Code</label>
-            <input type='text' className='w-100 rounded' placeholder='Enter Your Promo Code'/>
+            <input type='text' name='promo' className='w-100 rounded' placeholder='Enter Your Promo Code'/>
             <input type='submit' className='bg-primary text-white mt-1'/>
-            </form>
+            </form> */}
            </div>
            </div>
            </div>:<div className='bg-warning p-5 text-center'>
