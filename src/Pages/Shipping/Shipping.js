@@ -7,16 +7,16 @@ import cod from '../../Images/cod.png'
 import bkash from '../../Images/bkash.png'
 import nagad from '../../Images/Nagad-Logo.png'
 import Loading from '../Loading/Loading';
-import { getTotals } from '../store/reducers/cartSlice';
+import { allRemoveFromCart, getTotals } from '../store/reducers/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Shipping = () => {
   const [user] = useAuthState(auth);
   const dispatch = useDispatch()
-
-    const cart = useSelector((state) => state.cart);
-    // const cartsName = cart.cartItems.map(cart =>  cart.children)
-    // console.log(cartsName);
+  // const [district, setDistrict] = useState('')
+    let cart = useSelector((state) => state.cart);
+    
     const{cartTotalAmount}=useSelector((state) => state.cart)
    
     useEffect(() => {
@@ -36,159 +36,189 @@ const Shipping = () => {
   let toggleClassCheck1 = isActive1 ?'active':'';
   let toggleClassCheck2 = isActive2 ?'active':'';
   let toggleClassCheck3 = isActive3 ?'active':'';
+  const navigate = useNavigate()
 
+  const AllOrder = (e)=>{
+ 
+  e.preventDefault()
+  if(!user){
+    return toast.success('Please Login');;
+ }
+const name =  e.target?.name?.value;;
+const email =  e.target?.email?.value;
+const phone =  e.target?.phone?.value;
+const country =  e.target?.country?.value;
+const city =  e.target?.city?.value;
+const zip =  e.target?.zip?.value;
+const address =  e.target?.address?.value;
+const district =  e.target?.district?.value;
+const paymentType =  e.target?.payment?.value;
+const bkashNumber =  e.target?.bkashNumber?.value;
+const bkashTrx =  e.target?.bkashTrx?.value;
+const nagadNumber =  e.target?.nagadNumber?.value;
+const nagadTrx =  e.target?.nagadTrx?.value;
 
-  const AllOrder = (items)=>{
-    const userEmail = {user:user?.email};
-    
-   if(!user){
-    return;
-    }
-    
-    // items.entries([user?.email])
-    const orderData = [items];
+  
+if(district==='Select Your District'){
+return toast.success('Please Select Your District');
+}
+ 
+  const orderData = [{
+    items:cart, 
+    user:user?.email,
+    name:name,
+    email:email,
+    phone:phone,
+    country:country,
+    city:city,
+    zip:zip,
+    address:address,
+    district:district,
+    paymentType:paymentType,
+    bkashNumber:bkashNumber,
+    bkashTrx:bkashTrx,
+    nagadNumber:nagadNumber,
+    nagadTrx:nagadTrx
+
+  }];
     
   fetch(`http://localhost:5000/order`, {
   method: 'POST',
   headers:{
     'content-type': 'application/json',
-    
-  
+   
   },
   body: JSON.stringify(orderData)
   })
   .then(res => res.json()
-   
   )
   .then(data => {
- 
+      navigate('/order')
+      localStorage.removeItem('cartItems')
+      window.location.reload(false);
   })
-
   } 
 
-
- 
     return (
         <div className=' container'>
    <div class=" row">
         <div className='col-lg-8 shipping-address p-5 bg-white mt-4'>
-          <form>
+          <form onSubmit={AllOrder}>
           
             <div class="">
               <div >
                 <h3>Shipping Address</h3>
                 <div className='row'>
-                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                 <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                <input type="text" required id="fname" name="firstname" placeholder="Your Name"/>
+                 <div className='col-lg-12 col-md-12 col-sm-12'>
+                 <label for="name"><i class="fa fa-user"></i> Full Name</label>
+                <input type="text" required id="name" name="name" placeholder="Your Name"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
                  <label for="email"><i class="fa fa-envelope"></i>Email</label>
-                <input type="email" required id="email" name="email" placeholder="Phone Number"/>
+                <input type="email" required id="email" name="email" placeholder="Your Email"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                 <label for="email"><i class="fa fa-envelope"></i> Phone No</label>
-                <input type="text" required id="email" name="email" placeholder="Phone Number"/>
+                 <label for="phone"><i class="fa fa-envelope"></i> Phone No</label>
+                <input type="text" required id="phone" name="phone" placeholder="Phone Number"/>
+                 </div>
+                   <div className='col-lg-6 col-md-6 col-sm-12'>
+                 <label for="country"><i class="fa fa-institution"></i> Country</label>
+                <input type="text" required id="country" name="country" disabled value="Bangladesh" placeholder="Bangladesh"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                 <label for="adr"><i class="fa fa-address-card-o"></i> Alternative Phone No</label>
-                <input type="text" required id="adr" name="address" placeholder="Alternative Phone No"/>
+               
+               <label for="district"><span className='mr-3'>District:</span> </label>
+               <select style={{width:"100%", height:'45px'}} name='district' required id='district'>
+                 <option>Select Your District</option>
+                 <option>Barguna</option>
+                 <option>Barishal</option>
+                 <option>Bhola</option>
+                 <option>Jhalokati</option>
+                 <option>Patuakhali</option>
+                 <option>Pirojpur</option>
+                 <option>Bandarban</option>
+                 <option>Brahmanbaria</option>
+                 <option>Chandpur</option>
+                 <option>Chattogram</option>
+                 <option>Cumilla</option>
+                 <option>Cox's Bazar</option>
+                 <option>Khagrachhari</option>
+                 <option>Lakshmipur</option>
+                 <option>Noakhali</option>
+                 <option>Rangamati</option>
+                 <option>Dhaka</option>
+                 <option>Faridpur</option>
+                 <option>Gazipur</option>
+                 <option>Gopalganj</option>
+                 <option>Kishoreganj</option>
+                 <option>Madaripur</option>
+                 <option>Manikganj</option>
+                 <option>Munshiganj</option>
+                 <option>Narayanganj</option>
+                 <option>Narsingdi</option>
+                 <option>Rajbari</option>
+                 <option>Shariatpur</option>
+                 <option>Tangail</option>
+                 <option>Bagerhat</option>
+                 <option>Chuadanga</option>
+                 <option>Jashore</option>
+                 <option>Jhenaidah</option>
+                 <option>Khulna</option>
+                 <option>Kushtia</option>
+                 <option>Magura</option>
+                 <option>Meherpur</option>
+                 <option>Narail</option>
+                 <option>Satkhira</option>
+                 <option>Jamalpur</option>
+                 <option>Mymensingh</option>
+                 <option>Netrokona</option>
+                 <option>Sherpur</option>
+                 <option>Bogura</option>
+                 <option>Joypurhat</option>
+                 <option>Naogaon</option>
+                 <option>Natore</option>
+                 <option>Chapai Nawabganj</option>
+                 <option>Pabna</option>
+                 <option>Rajshahi</option>
+                 <option>Sirajganj</option>
+                 <option>Dinajpur</option>
+                 <option>Gaibandha</option>
+                 <option>Kurigram</option>
+                 <option>Lalmonirhat</option>
+                 <option>Nilphamari</option>
+                 <option>Panchagarh</option>
+                 <option>Rangpur</option>
+                 <option>Thakurgaon</option>
+                 <option>Habiganj</option>
+                 <option>Moulvibazar</option>
+                 <option>Sunamganj</option>
+                 <option>Sylhet</option>
+               </select>
+             </div>
+                
+                 <div className='col-lg-6 col-md-6 col-sm-12'>
+                 <label for="city"><i class="fa fa-institution"></i> City</label>
+                <input type="text" required id="country" name="city" placeholder="City"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                 <label for="city"><i class="fa fa-institution"></i> Country</label>
-                <input type="text" required id="city" name="city" disabled value="Bangladesh" placeholder="Bangladesh"/>
+                 <label for="zip"><i class="fa fa-institution"></i> Post Code / Zip Code</label>
+                <input type="text" required id="zip" name="zip" placeholder="Post Code / Zip Code"/>
                  </div>
-                 <div className='col-lg-6 col-md-6 col-sm-12'>
-                    <label for="state">District</label>
-                    <select>
-                      <option>Select Your District</option>
-                      <option>Barguna</option>
-                      <option>Barishal</option>
-                      <option>Bhola</option>
-                      <option>Jhalokati</option>
-                      <option>Patuakhali</option>
-                      <option>Pirojpur</option>
-                      <option>Bandarban</option>
-                      <option>Brahmanbaria</option>
-                      <option>Chandpur</option>
-                      <option>Chattogram</option>
-                      <option>Cumilla</option>
-                      <option>Cox's Bazar</option>
-                      <option>Khagrachhari</option>
-                      <option>Lakshmipur</option>
-                      <option>Noakhali</option>
-                      <option>Rangamati</option>
-                      <option>Dhaka</option>
-                      <option>Faridpur</option>
-                      <option>Gazipur</option>
-                      <option>Gopalganj</option>
-                      <option>Kishoreganj</option>
-                      <option>Madaripur</option>
-                      <option>Manikganj</option>
-                      <option>Munshiganj</option>
-                      <option>Narayanganj</option>
-                      <option>Narsingdi</option>
-                      <option>Rajbari</option>
-                      <option>Shariatpur</option>
-                      <option>Tangail</option>
-                      <option>Bagerhat</option>
-                      <option>Chuadanga</option>
-                      <option>Jashore</option>
-                      <option>Jhenaidah</option>
-                      <option>Khulna</option>
-                      <option>Kushtia</option>
-                      <option>Magura</option>
-                      <option>Meherpur</option>
-                      <option>Narail</option>
-                      <option>Satkhira</option>
-                      <option>Jamalpur</option>
-                      <option>Mymensingh</option>
-                      <option>Netrokona</option>
-                      <option>Sherpur</option>
-                      <option>Bogura</option>
-                      <option>Joypurhat</option>
-                      <option>Naogaon</option>
-                      <option>Natore</option>
-                      <option>Chapai Nawabganj</option>
-                      <option>Pabna</option>
-                      <option>Rajshahi</option>
-                      <option>Sirajganj</option>
-                      <option>Dinajpur</option>
-                      <option>Gaibandha</option>
-                      <option>Kurigram</option>
-                      <option>Lalmonirhat</option>
-                      <option>Nilphamari</option>
-                      <option>Panchagarh</option>
-                      <option>Rangpur</option>
-                      <option>Thakurgaon</option>
-                      <option>Habiganj</option>
-                      <option>Moulvibazar</option>
-                      <option>Sunamganj</option>
-                      <option>Sylhet</option>
-                    </select>
-                  </div>
-                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                  <label for="zip">Upazila</label>
-                    <input type="text" required id="zip" name="zip" placeholder="Upazila"/>
-                  </div>
-                  <div className='col-lg-6 col-md-6 col-sm-12'>
-                  <label for="zip">Union</label>
-                    <input type="text"  required id="zip" name="zip" placeholder="Union"/>
-                  </div>
                   <div className='col-lg-12 col-md-12 col-sm-12'>
-                   <p><label for="zip">Address</label></p>
-                   <textarea required className='rounded' rows="4" cols="87"></textarea>
+                   <p><label for="address">Address</label></p>
+                   <textarea id='address' required name='address' className='rounded' rows="4" cols="87"></textarea>
                   </div>
                 </div>
                 </div>
      
             </div>
             
-          </form>
+          
           <h3>Payment Method</h3>
           <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12'>
-              <div className={`cash-on ${toggleClassCheck1} cash-on-delivery d-flex align-items-center`} onClick={() =>{
+              <div className='cash-on cash-on-delivery d-flex align-items-center' >
+          <div onClick={() =>{
           return(
             setShowCashOn(true),
             setShowBkash(false),
@@ -197,20 +227,21 @@ const Shipping = () => {
             setIsActive2(false),
             setIsActive3(false)
           )
-        }} >
-          <div className='mb-3'>
-            <input id='cash-on-delivery' style={{height:'25px', width:'25px'}} className='radio-button' type='radio' name='payment' value='Cash on Delivery' 
+        }} className={`mb-3  ${toggleClassCheck1}`}>
+            <input id='cash-on-delivery' style={{height:'25px', width:'25px'}} className='radio-button' defaultChecked type='radio' name='payment' value='Cash on Delivery' 
             
             />
           </div>
-          <div className='ms-3 d-flex align-items-center'>
+        <label for='cash-on-delivery'>
+        <div className='ms-3 d-flex align-items-center'>
           <div>
-            <label for='cash-on-delivery'> <img src={cod} alt=''/></label>
+            <img src={cod} alt=''/>
             </div>
               <div>
               <h6 className='ms-3 text-black'>Cash on Delivery</h6>
               </div>
           </div>
+        </label>
         </div>
           {
           showCashOn? <div>
@@ -219,7 +250,8 @@ const Shipping = () => {
           }
         </div>
       <div className='col-lg-12 col-md-12 col-sm-12'>
-      <div className={`bkash ${toggleClassCheck2} mobile-payment d-flex align-items-center`} onClick={() =>{
+      <div className='bkash mobile-payment d-flex align-items-center' >
+    <div onClick={() =>{
     return(
       setShowCashOn(false),
       setShowBkash(true),
@@ -229,17 +261,16 @@ const Shipping = () => {
       setIsActive3(false)
     
     )
-  }}>
-    <div className='mb-4'>
+  }} className={`mb-4 ${toggleClassCheck2}`}>
       <input id='bkash' style={{height:'25px', width:'25px'}} className='radio-button' type='radio' name='payment' value="bkash"/>
       
     </div>
-    <div className='ms-3'>
+    <label for='bkash' className='ms-3'>
     <div>
-      <label for='bkash'> <img src={bkash} alt=''/></label>
+      <img src={bkash} alt=''/>
     </div>
   
-    </div>
+    </label>
   </div>
       {
       showBkash?<div>
@@ -257,7 +288,7 @@ const Shipping = () => {
               <label>Bkash Number</label>
           </div>
           <div>
-              <input className='ms-3 bkash-info-input' type='text' placeholder='017xxxxxxxxxxx'/>
+              <input className='ms-3 bkash-info-input' name='bkashNumber' required type='text' placeholder='017xxxxxxxxxxx'/>
           </div>
       </div>
       <div className='d-flex align-items-center'>
@@ -265,15 +296,16 @@ const Shipping = () => {
               <label>bKash Tranx ID	</label>
           </div>
           <div>
-              <input className='ms-3 mt-1 bkash-info-input' type='text' placeholder='8N6MM9REN'/>
+              <input className='ms-3 mt-1 bkash-info-input' name='bkashTrx' required type='text' placeholder='8N6MM9REN'/>
           </div>
       </div>
       
       </div>:null
       }
 </div>
-        <div className='col-lg-12 col-md-12 col-sm-12' >
-        <div className={`nagad ${toggleClassCheck3} mobile-payment d-flex align-items-center`} onClick={() =>{
+    <div className='col-lg-12 col-md-12 col-sm-12' >
+        <div className='nagad mobile-payment d-flex align-items-center' >
+      <div onClick={() =>{
       return(
         setShowCashOn(false),
         setShowBkash(false),
@@ -283,16 +315,16 @@ const Shipping = () => {
         setIsActive3(true)
         
       )
-    }} >
-      <div className='mb-4'>
+    }}  className={`mb-4 ${toggleClassCheck3}`}>
+        
         <input id='nagad' style={{height:'25px', width:'25px'}} className='radio-button' type='radio' name='payment' value="nagad"/>
       </div>
-      <div className='ms-3'>
+      <label for='nagad' className='ms-3'>
       <div>
-        <label for='nagad'> <img src={nagad} alt=''/></label>
+       <img src={nagad} alt=''/>
       </div>
     
-      </div>
+      </label>
     </div>
     {
      showNagad? <div>
@@ -310,7 +342,7 @@ const Shipping = () => {
                 <label>Nagad Number</label>
             </div>
             <div>
-                <input className='ms-3 bkash-info-input' type='text' placeholder='017xxxxxxxxxxx'/>
+                <input className='ms-3 bkash-info-input' name='nagadNumber' required type='text' placeholder='017xxxxxxxxxxx'/>
             </div>
         </div>
         <div className='d-flex align-items-center'>
@@ -318,7 +350,7 @@ const Shipping = () => {
                 <label>Nagad Tranx ID	</label>
             </div>
             <div>
-                <input className='ms-3 mt-1 bkash-info-input' type='text' placeholder='8N6MM9REN'/>
+                <input className='ms-3 mt-1 bkash-info-input' name='nagadTrx' required type='text' placeholder='8N6MM9REN'/>
             </div>
         </div>
         
@@ -326,6 +358,12 @@ const Shipping = () => {
   </div>
   
   </div>
+  <div className='text-center checkout-button mt-3'>
+ <input className='bg-info' type="submit" value='Order'/>
+    
+        </div>
+      
+        </form>
 </div>
 <div className='col-lg-4 col-md-4 col-sm-12 p-4 cart-total-part'>
             <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
@@ -347,18 +385,14 @@ const Shipping = () => {
                 <p>{finalCartAmount}</p>
                
             </div>
-            <div className='text-center checkout-button mt-3'>
-                <button onClick={() => AllOrder(cart)} className='btn text-center'>
-                    <Link className='text-white' to='/order'>Order</Link>
-                </button>
-            </div>
+           
             <div className='mt-3'>
            
            </div>
            </div>
       </div>
    
-
+      <ToastContainer />
   </div>
   
 

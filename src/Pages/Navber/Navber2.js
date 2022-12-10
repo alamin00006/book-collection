@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -18,7 +18,9 @@ import { useSelector } from 'react-redux';
 const Navber2 = () => {
   const [user] = useAuthState(auth);
   const cart = useSelector((state) => state.cart);
+
   const navigate = useNavigate()
+
   const SingOutHandle = ()=>{
     signOut(auth);
     navigate('/')

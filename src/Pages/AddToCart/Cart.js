@@ -26,7 +26,7 @@ function Cart({ data }) {
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
-  const Cart = cart.cartItems.find((cartItem) => cartItem.id === data.id);
+  const Cart = cart?.cartItems?.find((cartItem) => cartItem.id === data.id);
   return (
     <>
       {" "}
