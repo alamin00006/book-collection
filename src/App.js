@@ -40,6 +40,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addByIncrement, addToCart } from './Pages/store/reducers/cartSlice';
 import DrawerCart from './Pages/AddToCart/Drawer';
 import ShoppingCart from './Pages/AddToCart/ShoppingCart';
+import Dashboard from './Dashboard/Dahsbard';
+import OrderDetails from './Pages/Order/OrderDetails';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -132,7 +134,7 @@ function App() {
         <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>
-        {/* <Route path='product/:productTitle' element={<Product3Details AddToCarts={AddToCarts} carts={carts}></Product3Details>}></Route> */}
+        
         <Route path='/product3Details/:details3Id' element={<Product3Details AddToCarts={AddToCarts} ></Product3Details>}></Route>
         <Route path='/product4Details/:details4Id' element={<Product4Details></Product4Details>}></Route>
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
@@ -149,7 +151,9 @@ function App() {
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
          {/* Shipping Routes */}
          <Route path='/shipping' element={<Shipping></Shipping>}></Route>
+         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
          <Route path='/order' element={<Order></Order>}></Route>
+         <Route path='/orderDetails/:detailsId' element={<OrderDetails></OrderDetails>}></Route>
       </Routes>
      
       <Footer></Footer>

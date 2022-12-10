@@ -7,18 +7,14 @@ import UserHandle from '../UserHandle/UserHandle';
 import UserOrder from './OrderDetails';
 import Table from 'react-bootstrap/Table';
 import { useQuery } from 'react-query';
+import { useNavigate } from 'react-router-dom';
 const Order = () => {
     const [user] = useAuthState(auth);
-    const cart = useSelector((state) => state.cart);
-    // if(!user){
-    //    return  <Loading></Loading>
-    // }
+    const navigate = useNavigate()
+    // const cart = useSelector((state) => state.cart);
+    const shipping = 50;
     const [myProducts2, setProducts2] = useState([]);
-//     useEffect(() =>{
-//       fetch(`http://localhost:5000/order/${user?.email}`)
-//      .then(res =>res.json())
-//      .then(data => setProducts2(data));
-//  },[user])
+
 const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/order/${user?.email}`, {
     method: "GET",
  
@@ -38,7 +34,10 @@ if(isLoading){
   <Loading></Loading>
 }
 refetch()
+const orderDetails =(_id) =>{
+  navigate(`/orderDetails/${_id}`)
 
+  }
 
  return (
         <div className='container'>
@@ -60,15 +59,15 @@ refetch()
       </thead>
       <tbody>
       {myProducts2.map((data, index) =>{
-        // console.log(data)
+       
         return(
           <tr key={index}>
           <td>{data._id}</td>
           <td>date</td>
           <td>Processing</td>
-          <td>{data?.items?.cartTotalAmount}</td>
+          <td>{data?.items?.cartTotalAmount+shipping}</td>
           <td>Nagad</td>
-          <td>See Details</td>
+          <td onClick={()=>orderDetails(data._id)}>See Details</td>
           {/* <td>{data.user}</td> */}
         </tr>
         )

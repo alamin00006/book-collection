@@ -41,8 +41,11 @@ const Shipping = () => {
   const AllOrder = (e)=>{
  
   e.preventDefault()
+ if(cart?.cartItems?.length===0){
+  return toast.warning('Sorry Your Cart Is Empty');
+ }
   if(!user){
-    return toast.success('Please Login');;
+    return toast.warning('Please Login');;
  }
 const name =  e.target?.name?.value;;
 const email =  e.target?.email?.value;
@@ -60,7 +63,7 @@ const nagadTrx =  e.target?.nagadTrx?.value;
 
   
 if(district==='Select Your District'){
-return toast.success('Please Select Your District');
+return toast.error('Please Select Your District');
 }
  
   const orderData = [{
