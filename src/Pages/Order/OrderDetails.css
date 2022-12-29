@@ -1,0 +1,43 @@
+.thanks{
+    background-color: rgb(209 250 229);;
+}
+.invoice-part{
+    background-color: rgb(238 242 255);
+}
+.invoice-logo{
+    width: 20px;
+    height: 20px;
+}
+.our-address p{
+ line-height: 2px;
+}
+.invoice-to{
+    width: auto;
+    
+    height: auto;
+}
+.invoice-footer{
+    background-color: rgb(238 242 255);
+}
+.invoice-shipping-cost{
+    color: red;
+}
+.total-quantity-amount, .final-total-amount{
+   color: red;
+}
+.invoice-details-address {
+    background-color: rgb(209 250 229);;
+}
+.invoice-details-address p{
+    line-height: 4px;
+}
+.print-invoice button{
+    padding:8px 15px;
+    background-color: rgb(7, 245, 161);
+    color: white;
+    border-radius: 5px;
+}
+.printer-icon{
+    width: 20px;
+    height: 20px;
+}

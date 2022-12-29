@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useSelector } from 'react-redux';
+
 import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
-import UserHandle from '../UserHandle/UserHandle';
-import UserOrder from './OrderDetails';
 import Table from 'react-bootstrap/Table';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
+import './Order.css'
 const Order = () => {
     const [user] = useAuthState(auth);
     const navigate = useNavigate()
@@ -67,7 +66,7 @@ const orderDetails =(_id) =>{
           <td>Processing</td>
           <td>{data?.items?.cartTotalAmount+shipping}</td>
           <td>Nagad</td>
-          <td onClick={()=>orderDetails(data._id)}>See Details</td>
+          <td className='see-details' onClick={()=>orderDetails(data._id)}>See Details</td>
           {/* <td>{data.user}</td> */}
         </tr>
         )
