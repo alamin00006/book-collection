@@ -29,10 +29,10 @@ import AddToCart from './Pages/AddToCart/AddToCart';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from './firebase.init';
 
-import { signOut } from 'firebase/auth';
-import { useQuery } from 'react-query';
-import Loading from './Pages/Loading/Loading';
-import RequireAuth from './Pages/Login/RequireAuth';
+// import { signOut } from 'firebase/auth';
+// import { useQuery } from 'react-query';
+// import Loading from './Pages/Loading/Loading';
+// import RequireAuth from './Pages/Login/RequireAuth';
 import { useState } from 'react';
 import Shipping from './Pages/Shipping/Shipping';
 import Order from './Pages/Order/Order';
@@ -40,7 +40,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addByIncrement, addToCart } from './Pages/store/reducers/cartSlice';
 import DrawerCart from './Pages/AddToCart/Drawer';
 import ShoppingCart from './Pages/AddToCart/ShoppingCart';
-import Dashboard from './Dashboard/Dahsbard';
+import Dashboard from './Dashboard/Dashboard';
+import AddProduct from './Dashboard/Admin/AddProduct/AddProduct';
 import OrderDetails from './Pages/Order/OrderDetails';
 
 function App() {
@@ -48,6 +49,12 @@ function App() {
   const [carts, setCarts] = useState([]);
   const [total, setTotal] = useState(1)
   const dispatch = useDispatch()
+  const [islamicBook, setIslamicBook] = useState('')
+  
+  const handleIslamicBook = (islamic)=>{
+    setIslamicBook(islamic);
+}
+
   // const cart = useSelector((state) => state.cart);
 //   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
 //     method: "GET",
@@ -111,14 +118,14 @@ function App() {
 //   })
 
   } 
- 
+  
   return (
     <div>
-   <Header></Header>
+   <Header handleIslamicBook={handleIslamicBook}></Header>
       
       <Routes>
         <Route path='/' element={<Home AddToCarts={AddToCarts} ></Home>}></Route>
-        <Route path='/islamicBook' element={<IslamicBook></IslamicBook>}></Route>
+        <Route path='/islamicBook' element={<IslamicBook islamicBook={islamicBook}></IslamicBook>}></Route>
         <Route path='/book' element={<Book></Book>}></Route>
         <Route path='/PreOrder' element={<PreOrder></PreOrder>}></Route>
         <Route path='/ComputerProgramming' element={<ComputerProgramming></ComputerProgramming>}></Route>
@@ -154,6 +161,8 @@ function App() {
          <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
          <Route path='/order' element={<Order></Order>}></Route>
          <Route path='/orderDetails/:detailsId' element={<OrderDetails></OrderDetails>}></Route>
+         <Route path='/product-add' element={<AddProduct></AddProduct>}></Route>
+
       </Routes>
      
       <Footer></Footer>

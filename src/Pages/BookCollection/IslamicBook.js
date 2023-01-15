@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const IslamicBook = () => {
+const IslamicBook = ({islamicBook}) => {
+    const [myProducts2, setProducts2] = useState([]);
+   
+    useEffect(() =>{
+         fetch('http://localhost:5000/islamicBook')
+        .then(res =>res.json())
+        .then(data => {
+            const result = data.filter(islamic => {
+                return islamic.category === islamicBook
+            })
+            setProducts2(result)
+        });
+    },[islamicBook])
     return (
         <div className='container'>
-            <h1>Comming Soon</h1>
+            <h1>Comming Soon{myProducts2.length}</h1>
         </div>
     );
 };

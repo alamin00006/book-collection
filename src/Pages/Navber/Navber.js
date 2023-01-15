@@ -3,7 +3,8 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import '../Navber/Navber.css'
 
-const Navber = () => {
+const Navber = ({handleIslamicBook}) => {
+  
     return (
         <div>
         <Navbar collapseOnSelect expand="lg" className='bg-light' variant="dark">
@@ -14,7 +15,7 @@ const Navber = () => {
           <Nav className="me-auto">
             <NavLink className='text-black book-collection' to="/PreOrder">প্রি-অর্ডার</NavLink>
             <NavLink className='text-black book-collection' to="/Engineering">ইঞ্জিনিয়ারিং</NavLink>
-            <NavLink className='text-black book-collection' to='/islamicBook'>ইসলামি বই</NavLink>
+            <NavLink onClick={() =>handleIslamicBook('Islamic Book')} className='text-black book-collection' to='/islamicBook'>ইসলামি বই</NavLink>
             <NavLink className='text-black book-collection' to="/English">ইংলিশ</NavLink>
             <NavLink className='text-black book-collection' to='/AdmissionGuide'>এডমিশন গাইড</NavLink>
             <NavLink className='text-black book-collection' to="/ComputerProgramming">কম্পিউটার প্রোগ্রামিং</NavLink>
