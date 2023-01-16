@@ -1,6 +1,44 @@
-.book-collection{
+/* .book-collection{
     font-size: 14px !important;
     text-decoration: none;
     margin-left: 10px;
     margin-right: 8px;
+} */
+
+
+.subject-link{
+    color: white !important;
+    text-decoration: none;
+    
+    
 }
+.subject-link:hover{
+   text-decoration: none;
+}
+.subject-link2{
+    margin-left: 10px !important;
+}
+.dropdown-menu{
+    margin-top: 19px !important;
+}
+
+.dropdown-menu ul{
+    padding-left: 0 !important;
+    
+}
+.dropdown-menu ul li{
+    list-style: none !important;
+}
+
+
+
+
+
+
+
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}	
