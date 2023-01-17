@@ -21,6 +21,26 @@
 .dropdown-menu{
     margin-top: 19px !important;
 }
+.dropdown-menu .drop-list{
+    position:absolute;
+    top: 0;
+    left: -64px;
+    background-color: white;
+    border: 1px solid black;
+    
+}
+.dropdown-menu .drop-list-3{
+    position:absolute;
+    top: 0;
+    left: -120px;
+    background-color: white;
+    border: 1px solid black;
+    
+}
+.dropdown-menu .drop-list a{
+   font-size: 15px;
+   
+}
 
 .dropdown-menu ul{
     padding-left: 0 !important;
@@ -28,6 +48,17 @@
 }
 .dropdown-menu ul li{
     list-style: none !important;
+   
+}
+.dropdown-menu ul li a{
+    list-style: none !important;
+    width: 208px;
+    white-space: pre-line;
+}
+.dropdown-menu ul li a:hover{
+   text-decoration: none;
+   background-color: white;
+   color: red;
 }
 
 

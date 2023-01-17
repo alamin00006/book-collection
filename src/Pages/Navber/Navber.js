@@ -1,10 +1,11 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import useCategories from '../../Hooks/useCategories';
 import '../Navber/Navber.css'
 
 const Navber = ({handleIslamicBook}) => {
-  
+    const [categories] = useCategories();
     return (
         <div>
         {/* <Navbar collapseOnSelect expand="lg" className='bg-light' variant="dark">
@@ -123,89 +124,115 @@ const Navber = ({handleIslamicBook}) => {
 			<li class="nav-item dropdown">
 			<a class="subject-link subject-link2 dropdown-toggle pb-4" href="..">বিষয়</a>
 		    <div className='dropdown-menu'>
+        <div className='drop-list'>
         <div class="d-flex">
 			    <ul>
-              <li><a class="dropdown-item" href=".."> Submenu item 1</a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
+             {
+                categories?.data?.slice(0,10).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
           </ul>
 			    <ul>
-              <li><a class="dropdown-item" href=".."> আত্ম-উন্নয়ন, মোটিভেশনাল ও মেডিটেশন</a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
+             {
+                categories?.data?.slice(10,20).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
           </ul>
 			    <ul>
-              <li><a class="dropdown-item" href=".."> Submenu item 1</a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
+             {
+                categories?.data?.slice(20,30).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
           </ul>
 			    <ul>
-              <li><a class="dropdown-item" href=".."> Submenu item 1</a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
+             {
+                categories?.data?.slice(30,40).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
           </ul>
 			    <ul>
-              <li><a class="dropdown-item" href=".."> Submenu item 1</a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-              <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
+             {
+                categories?.data?.slice(40,49).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+             <li><a className='dropdown-item' href='...'>আরো দেখুন...</a></li>
           </ul>
+		
+		
+		
+		
 		    </div>
+        </div>
 		  
         </div>
 		  
 		</li>
 			<li class="nav-item dropdown">
 			<a class="subject-link subject-link2 dropdown-toggle pb-4" href="..">প্রকাশনী</a>
-		    <ul class="dropdown-menu">
-			  <li><a class="dropdown-item" href=".."> Submenu item 1</a></li>
-			  <li><a class="dropdown-item" href=".."> Submenu item 2 </a></li>
-			  <li><a class="dropdown-item" href=".."> Submenu item 3 </a></li>
-		    </ul>
+		    <div className='dropdown-menu'>
+        <div className='drop-list-3'>
+        <div class="d-flex">
+			    <ul>
+             {
+                categories?.data?.slice(0,10).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
+          </ul>
+			    <ul>
+             {
+                categories?.data?.slice(10,20).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
+          </ul>
+			    <ul>
+             {
+                categories?.data?.slice(20,30).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
+          </ul>
+			    <ul>
+             {
+                categories?.data?.slice(30,40).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+            
+          </ul>
+			    <ul>
+             {
+                categories?.data?.slice(40,49).map(category => <li><a class="dropdown-item" href=".."> 
+                 {category.name}
+                </a></li>)
+             }
+             <li><a className='dropdown-item' href='...'>আরো দেখুন...</a></li>
+          </ul>
+		
+		
+		
+		
+		    </div>
+        </div>
+		  
+        </div>
+		  
 		</li>
+		
+		
 			<li class="nav-item dropdown">
 			<a class="subject-link subject-link2 dropdown-toggle pb-4" href="..">বইমেলা</a>
 		    <ul class="dropdown-menu">
