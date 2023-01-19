@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom';
 // import auth from '../../firebase.init';
 // import useAdmin from '../../hooks/useAdmin';
 // import Loading from '../Loading/Loading';
-const Dashboard = () => {
+const Dashboard2 = () => {
     // const [user, loading] = useAuthState(auth);
     // const [admin, adminLoading] = useAdmin(user);
     // if(loading|| adminLoading){
@@ -18,13 +18,14 @@ const Dashboard = () => {
       <Outlet></Outlet>
     
   </div>  */}
+  <Outlet></Outlet>
   <div class="drawer-side">
     <label for="my-dashbaord" class="drawer-overlay"></label> 
     <ul class="menu overflow-y-auto  bg-base-100 text-base-content">
-     
       
+   
          <li><Link to='/dashboard'>My Profile</Link></li>
-          <li><Link to='/dashboard/portfolio'>My Portfolio</Link></li>
+          <li><Link to='/dashboard/user-order'>User order</Link></li>
       
        <li><Link to='/dashboard/review'>Add a Review</Link></li>
       <li><Link to='/dashboard/myOrders'>My Orders</Link></li>
@@ -42,4 +43,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Dashboard2;

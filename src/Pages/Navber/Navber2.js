@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 
 const Navber2 = () => {
   const [user] = useAuthState(auth);
+ 
   const cart = useSelector((state) => state.cart);
 
   const navigate = useNavigate()
@@ -68,8 +69,9 @@ const Navber2 = () => {
            
              
             {user?.email?<>
-       <p onClick={SingOutHandle} className="mt-3 ms-3 text-black sing-Out">
-       SingOut
+            
+       <p className="mt-3 ms-3 text-black sing-Out">
+          <Link to="/side-navbar">আমার একাউন্ট</Link>
        </p>
       
       </>:

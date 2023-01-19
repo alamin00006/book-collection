@@ -40,9 +40,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addByIncrement, addToCart } from './Pages/store/reducers/cartSlice';
 import DrawerCart from './Pages/AddToCart/Drawer';
 import ShoppingCart from './Pages/AddToCart/ShoppingCart';
-import Dashboard from './Dashboard/Dashboard';
+import Dashboard from './Dashboard/SideNavbar/Dashboard';
 import AddProduct from './Dashboard/Admin/AddProduct/AddProduct';
 import OrderDetails from './Pages/Order/OrderDetails';
+import SideNavbar from './Dashboard/SideNavbar/SideNavbar';
+import UserOrder from './Dashboard/SideNavbar/UserOrder';
+import ProductPage from './Dashboard/Admin/AddProduct/ProductPage';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -158,10 +161,15 @@ function App() {
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
          {/* Shipping Routes */}
          <Route path='/shipping' element={<Shipping></Shipping>}></Route>
-         <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
+         {/* <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route> */}
          <Route path='/order' element={<Order></Order>}></Route>
          <Route path='/orderDetails/:detailsId' element={<OrderDetails></OrderDetails>}></Route>
-         <Route path='/product-add' element={<AddProduct></AddProduct>}></Route>
+         {/* <Route path='/product-add' element={<AddProduct></AddProduct>}></Route> */}
+         <Route path='/side-navbar' element={<SideNavbar></SideNavbar>}>
+              <Route index element={<Dashboard></Dashboard>}></Route>
+              <Route path='user-order' element={<UserOrder></UserOrder>}></Route>
+              <Route path='product-page' element={<ProductPage></ProductPage>}></Route>
+         </Route>
 
       </Routes>
      

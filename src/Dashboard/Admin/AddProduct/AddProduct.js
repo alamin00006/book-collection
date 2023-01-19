@@ -1,10 +1,11 @@
 
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
 
-const AddProduct = () => {
+const AddProduct = ({show, handleClose}) => {
  const [categories] = useCategories();
 
  const handleNewProduct = async(event) =>{
@@ -63,50 +64,111 @@ const AddProduct = () => {
 };
     return (
         <div className='container'>
-            <h1 className='text-primary mt-5 '>Add New Item</h1>
-            <form onSubmit={handleNewProduct} className='mt-5 py-5 border rounded row'>
+        
+             <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Product</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        
+            <form onSubmit={handleNewProduct} className='mt-5 px-4 py-3 border rounded row'>
                 <div className='col-lg-4'> 
-                  <label>Product Name : </label>
+                  <label>Product Name : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="text" className='' name="productName" required  placeholder='Product Name' id="" />
                 </div>
+               
                 <div className='col-lg-4'> 
-                  <label>Description : </label>
-                  <input  type="text" className='' required name="description" placeholder='Description' id="" />
-                </div>
-                <div className='col-lg-4'> 
-                  <label>Price : </label>
+                  <label>Price : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="number" className='' required name="price" placeholder='Price' id="" />
                 </div>
                 <div className='col-lg-4'> 
-                  <label>Quantity : </label>
+                  <label>Quantity : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="number" className='' required name="quantity" placeholder='Quantity' id="" />
                 </div>
                 <div className='col-lg-4'> 
-                  <label for='status'>Status : </label>
-                  <select style={{width:"100%", height:'45px'}} required name='status'  id='category'>
+                  <label>Discount : </label>
+                  <input  type="number" className='' required name="quantity" placeholder='discount' id="" />
+                </div>
+                <div className='col-lg-4'> 
+                  <label for='status'>Status : <span className='text-danger fw-bold fs-5'>*</span></label>
+                  <select style={{width:"100%", height:'45px'}} required name='status'  id='status'>
                     <option>Select A Status</option>
                     <option>in-stock</option>
                     <option>out-of-stock</option>
+                    <option>Discontinued</option>
                   
                   </select>
                 </div>
                 <div className='col-lg-4'> 
-                  <label for='category'>Category : </label>
+                  <label for='category'>Category : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <select style={{width:"100%", height:'45px'}} required name='categoryName' id='category'>
-                    <option>Select A Category</option>
+                    <option selected disabled>Select A Category</option>
                      {
                       categories?.data?.map(category =><option>{category.name}</option>)
                      }
                   </select>
                 </div>
                 <div className='col-lg-4'> 
-                  <label>Product Picture : </label>
-                  <input multiple type="file" className='' required name="image" placeholder='productPicture' id="" />
+                  <label for='writer'>Writer : <span className='text-danger fw-bold fs-5'>*</span></label>
+                  <select style={{width:"100%", height:'45px'}} required name='writer' id='writer'>
+                    <option selected disabled>Select A Writer</option>
+                     {
+                      categories?.data?.map(category =><option>{category.name}</option>)
+                     }
+                  </select>
                 </div>
-                 
-                 <input className='btn btn-primary' type="submit" value="Add New Item" />
+                <div className='col-lg-8'> 
+                  <label for='publication'>Publications : <span className='text-danger fw-bold fs-5'>*</span></label>
+                  <select style={{width:"100%", height:'45px'}} required name='publication' id='publication'>
+                    <option selected disabled>Select A Publication</option>
+                     {
+                      categories?.data?.map(category =><option>{category.name}</option>)
+                     }
+                  </select>
+                </div>
+                <div className='col-lg-4'> 
+                  <label for='book-fair' className='text-danger'>If the Book of Fair : </label>
+                  <select style={{width:"100%", height:'45px'}} required name='bookFair' id='book-fair'>
+                    <option selected disabled className='book-fair'> If Book Fairs</option>
+                    <option>2023</option>
+                  </select>
+                </div>
+                
+                <div className='col-lg-8'> 
+                  <label>Product Tag : </label>
+                  <input  type="text" className='' required name="quantity" placeholder='Product Tag (Write then press enter to add new tag)' id="" />
+                </div>
+                
+                <div className='col-lg-12'> 
+                <label for="product-details">Product Details : <span className='text-danger fw-bold fs-5'>*</span></label>
+                  <textarea className='rounded' id="product-details" name="productDetails" rows="5" />
+                </div>
+                <div className='col-lg-12'> 
+                 <label for="tags">Writer Details :</label>
+                  <textarea className='rounded' id="tags" name="tags" rows="4" />
+                </div>
+                <div className='col-lg-6'> 
+                  <label>Upload a Book Picture : <span className='text-danger fw-bold fs-5'>*</span></label>
+                  <input multiple type="file" className='product-picture' required name="image" placeholder='productPicture' id="" />
+                </div>
+                <div className='col-lg-6 mt-2'> 
+                  <label> Upload a Pdf (if you have) : </label>
+                  <input multiple type="file" className='product-picture' required name="image" placeholder='productPicture' id="" />
+                </div>
+               
+                <div className='d-flex justify-content-end mt-4'>
+                      <div>
+                          <button className="btn btn-danger fs-5" onClick={handleClose} >Cancel</button>
+                      </div>
+                      <div>
+                          <input className='btn btn-primary fs-5' type="submit" value="Add product" />
+                      </div>
+                </div>
                   </form>
            <ToastContainer/>
+        </Modal.Body>
+        
+      </Modal>
         </div>
     );
 };
