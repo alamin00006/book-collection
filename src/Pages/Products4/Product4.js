@@ -1,33 +1,33 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-const Product4 = ({product4}) => {
-    const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product4;
+// import React from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// const Product4 = ({product4}) => {
+//     const{_id, name, description, picture, quantity, price, suppliyerName, sold} = product4;
 
-    const navigate = useNavigate()
+//     const navigate = useNavigate()
 
-    const product4Details =() =>{
-    navigate(`product4Details/${_id}`)
+//     const product4Details =() =>{
+//     navigate(`product4Details/${_id}`)
     
-    }
+//     }
 
-    return (
-      <div>
-          <div>
-        <div className='d-flex flex-column'>
-        <img src={picture} class="card-img-top" alt="..."/>
-        <div class="card-body">
-          <h5 class="card-title">জি.মাওলা BPSC MCQ Question Banke</h5>
-          <p class="card-text"></p>
-          <div className=' text-center'>
-         <button onClick={product4Details} class=" details-button text-xl "><Link class=" text-decoration-none button-hover" to="/product4Details">Details</Link></button>
-         </div>
-        </div>
-        </div>
-      </div>
+//     return (
+//       <div>
+//           <div>
+//         <div className='d-flex flex-column'>
+//         <img src={picture} class="card-img-top" alt="..."/>
+//         <div class="card-body">
+//           <h5 class="card-title">জি.মাওলা BPSC MCQ Question Banke</h5>
+//           <p class="card-text"></p>
+//           <div className=' text-center'>
+//          <button onClick={product4Details} class=" details-button text-xl "><Link class=" text-decoration-none button-hover" to="/product4Details">Details</Link></button>
+//          </div>
+//         </div>
+//         </div>
+//       </div>
       
-      </div>
+//       </div>
       
-    );
-};
+//     );
+// };
 
-export default Product4;
+// export default Product4;

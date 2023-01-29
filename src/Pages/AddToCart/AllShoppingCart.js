@@ -6,16 +6,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decreaseCart, incrementCart, removeFromCart } from '../store/reducers/cartSlice';
 const AllShoppingCart = ({data}) => {
     const dispatch = useDispatch();
-    
+
     return (
         <div className='row p-5 cart-item border'>
                     <div className='col-lg-6 d-flex'>
                         <div className='cart-image'>
-                        <img src={data.image} alt=''/>
+                        <img src={`http://localhost:5000/${data.image}`} alt=''/>
                         </div>
                         <div className='ms-4'>
-                            <p>মোহাম্মদ আলীর বাংলাদেশ বিজয়</p>
-                            <p>মুহাম্মদ লুৎফুল হক</p>
+                            <p>{data.nameB}</p>
+                            <p>{data.nameB}</p>
                         </div>
                     </div>
                     <div className='col-lg-6 d-flex mt-5'>

@@ -8,9 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart, decreaseCart, incrementCart } from "../store/reducers/cartSlice";
 import AddToCart from "./AddToCart";
+import './Cart.css'
 
 
-function Cart({ data }) {
+const Cart = ({ data }) =>{
   
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
@@ -26,7 +27,8 @@ function Cart({ data }) {
   const handleAddToCart = (product) => {
     dispatch(addToCart(product));
   };
-  const Cart = cart?.cartItems?.find((cartItem) => cartItem.id === data.id);
+  const Cart = cart?.cartItems?.find((cartItem) => cartItem._id === data._id);
+  console.log(Cart)
   return (
     <>
       {" "}
@@ -219,10 +221,10 @@ function Cart({ data }) {
       </div> */}
        <div className='single-card'>
         <div onClick={product3Details} className='d-flex flex-column align-items-center book-inner'>
-        <img src={data.image}class="" alt="..."/>
+        <img src={`http://localhost:5000/${data.image}`}class="" alt="..."/>
         <div class="book-body mt-3">
-          <h6 class="book-title">{data.children} </h6>
-          <p class="writer-name">{data.children}</p>
+          <h6 class="book-title">{data.nameB} </h6>
+          <p class="writer-name">{data.nameB}</p>
           <p className='mb-4'>
               <StarIcon className=" star-icon "/>
               <StarIcon className=" star-icon "/>

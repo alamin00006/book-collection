@@ -20,6 +20,7 @@
 }
 .dropdown-menu{
     margin-top: 19px !important;
+    z-index: 10 !important;
 }
 .dropdown-menu .drop-list{
     position:absolute;

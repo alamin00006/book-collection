@@ -1,14 +1,25 @@
 
 import React, { useState } from 'react';
-import { Button } from 'react-bootstrap';
-import AddProduct from './AddProduct';
+import { Button, Table } from 'react-bootstrap';
+import useProduct3 from '../../../Hooks/UseProduct3';
+import DeleteIcon from '../../../svgIcons/DeleteIcon';
+import DetailsIcon from '../../../svgIcons/DetailsIcon';
+import EditIcon from '../../../svgIcons/EditIcon';
+
+import AddProductModal from './AddProductModal';
+import EditProductModal from './EditProductModal';
+import ProductManage from './ProductManage';
 import './ProductPage.css'
 
 const ProductPage = () => {
     const [show, setShow] = useState(false);
-
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    
+    
+
     return (
         <div>
             <h3 className='mt-4'>Products</h3>
@@ -42,10 +53,12 @@ const ProductPage = () => {
                      </div>
 
                     
-                    <AddProduct show={show} setShow={setShow} handleClose={handleClose}/>
+                    <AddProductModal show={show} setShow={setShow} handleClose={handleClose}/>
+                    
     
                  </div>
              </div>
+              <ProductManage/>
         </div>
     );
 };

@@ -41,11 +41,19 @@ import { addByIncrement, addToCart } from './Pages/store/reducers/cartSlice';
 import DrawerCart from './Pages/AddToCart/Drawer';
 import ShoppingCart from './Pages/AddToCart/ShoppingCart';
 import Dashboard from './Dashboard/SideNavbar/Dashboard';
-import AddProduct from './Dashboard/Admin/AddProduct/AddProduct';
+
 import OrderDetails from './Pages/Order/OrderDetails';
 import SideNavbar from './Dashboard/SideNavbar/SideNavbar';
 import UserOrder from './Dashboard/SideNavbar/UserOrder';
 import ProductPage from './Dashboard/Admin/AddProduct/ProductPage';
+import CategoryAdd from './Dashboard/Admin/Category/CategoryAdd';
+import WriterAdd from './Dashboard/Admin/Writer/WriterAdd';
+import Publication from './Dashboard/Admin/Publication/Publication';
+import BookFair from './Dashboard/Admin/BookFair/BookFair';
+import Coupon from './Dashboard/Admin/Coupon/Coupon';
+import TagsInput from './Dashboard/Admin/AddProduct/TagsInput';
+import Category from './Pages/Categorys/Category';
+import CategoryDetails from './Pages/Categorys/CategoryDetails';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -161,14 +169,21 @@ function App() {
         <Route path='/nonTeckAll' element={<Products3All></Products3All>}></Route>
          {/* Shipping Routes */}
          <Route path='/shipping' element={<Shipping></Shipping>}></Route>
-         {/* <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route> */}
+         <Route path='/category' element={<Category/>}></Route>
          <Route path='/order' element={<Order></Order>}></Route>
-         <Route path='/orderDetails/:detailsId' element={<OrderDetails></OrderDetails>}></Route>
+        
+         <Route path='/order/:orderDetailsId' element={<OrderDetails></OrderDetails>}></Route>
+         <Route path='/category/:categoryDetailsId' element={<CategoryDetails></CategoryDetails>}></Route>
          {/* <Route path='/product-add' element={<AddProduct></AddProduct>}></Route> */}
          <Route path='/side-navbar' element={<SideNavbar></SideNavbar>}>
               <Route index element={<Dashboard></Dashboard>}></Route>
               <Route path='user-order' element={<UserOrder></UserOrder>}></Route>
               <Route path='product-page' element={<ProductPage></ProductPage>}></Route>
+              <Route path='category-add' element={<CategoryAdd></CategoryAdd>}></Route>
+              <Route path='writer-add' element={<WriterAdd></WriterAdd>}></Route>
+              <Route path='publication-add' element={<Publication></Publication>}></Route>
+              <Route path='book-fair-add' element={<BookFair></BookFair>}></Route>
+              <Route path='coupon-add' element={<Coupon></Coupon>}></Route>
          </Route>
 
       </Routes>

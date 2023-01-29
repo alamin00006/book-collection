@@ -66,9 +66,11 @@ import useProduct3 from '../../Hooks/UseProduct3';
 import '../Products2/Products2.css'
 
 import Cart from "../AddToCart/Cart";
+
 const Products3 = ({AddToCarts}) => {
 
     const [myProducts3] = useProduct3();
+    console.log(myProducts3)
   
     return (
         <div className='container card-area bg-white p-4'>
@@ -76,7 +78,7 @@ const Products3 = ({AddToCarts}) => {
             
        <div className='my-card-main my-card'>
        {
-            myProducts3.slice(0,5).map((data, index)=> <Cart key={index} data={data} AddToCarts={AddToCarts}></Cart >) 
+            myProducts3?.data?.slice(0,5).map((data, index)=> <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart >) 
         }
 
        </div>

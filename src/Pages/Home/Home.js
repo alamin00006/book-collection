@@ -13,12 +13,12 @@ const Home = ({AddToCarts}) => {
         <div className='container'>
          
             <Banner></Banner>
-            <Products></Products>
-      <Products2></Products2>
+            {/* <Products></Products>
+      <Products2></Products2> */}
       <Products3  AddToCarts={AddToCarts}></Products3>
-      <Products4></Products4>
+      {/* <Products4></Products4>
       <Products5></Products5>
-      <Products6></Products6>
+      <Products6></Products6> */}
       <Payment></Payment>
         </div>
     );

@@ -1,25 +1,25 @@
-import React from 'react';
-import useProduct from '../../Hooks/UseProduct';
-import Product from './Product';
-import '../Products/Product.css'
+// import React from 'react';
+// import useProduct from '../../Hooks/UseProduct';
+// import Product from './Product';
+// import '../Products/Product.css'
 
-const Products = () => {
+// const Products = () => {
 
-    const [myProducts] = useProduct();
-    return (
-        <div className='container'>
-            <h3 className='mt-5'>গত সপ্তাহের বেষ্ট সেলার বই</h3>
+//     const [myProducts] = useProduct();
+//     return (
+//         <div className='container'>
+//             <h3 className='mt-5'>গত সপ্তাহের বেষ্ট সেলার বই</h3>
             
-       <div className='my-card-main my-card'>
-       {
-            myProducts.slice(0,5).map( product => <Product product={product}></Product>) 
-        }
+//        <div className='my-card-main my-card'>
+//        {
+//             myProducts.slice(0,5).map( product => <Product product={product}></Product>) 
+//         }
 
-       </div>
+//        </div>
        
 
-        </div>
-    );
-};
+//         </div>
+//     );
+// };
 
-export default Products;
+// export default Products;

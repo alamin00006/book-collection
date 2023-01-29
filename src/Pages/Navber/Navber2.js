@@ -71,8 +71,11 @@ const Navber2 = () => {
             {user?.email?<>
             
        <p className="mt-3 ms-3 text-black sing-Out">
-          <Link to="/side-navbar">আমার একাউন্ট</Link>
+          <Link onClick={SingOutHandle} to="">Sign Out</Link>
        </p>
+       {/* <p className="mt-3 ms-3 text-black sing-Out">
+          <Link to="/side-navbar">আমার একাউন্ট</Link>
+       </p> */}
       
       </>:
               

@@ -1,0 +1,6 @@
+.details-icon, .edit-icon, .delete-icon{
+    cursor:pointer
+}
+.edit-icon{
+    background-color: rgb(138, 209, 220) !important;
+}

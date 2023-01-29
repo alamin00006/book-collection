@@ -33,7 +33,7 @@ const AdminAccess = () => {
                     <CategoryIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>ক্যাটাগরি</Link>
+                    <Link to='/side-navbar/category-add' className='text-decoration-none text-black'>ক্যাটাগরি</Link>
                 </div>
             </li>
           <li className='list-unstyled d-flex align-items-center mt-4'>
@@ -41,7 +41,7 @@ const AdminAccess = () => {
                     <WriterIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>লেখক</Link>
+                    <Link to='/side-navbar/writer-add' className='text-decoration-none text-black'>লেখক</Link>
                 </div>
             </li>
           <li className='list-unstyled d-flex align-items-center mt-4'>
@@ -49,7 +49,7 @@ const AdminAccess = () => {
                     <PublicationIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>প্রকাশনী</Link>
+                    <Link to='/side-navbar/publication-add' className='text-decoration-none text-black'>প্রকাশনী</Link>
                 </div>
             </li>
           <li className='list-unstyled d-flex align-items-center mt-4'>
@@ -57,7 +57,7 @@ const AdminAccess = () => {
                     <BookFairIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>বইমেলা</Link>
+                    <Link to='/side-navbar/book-fair-add' className='text-decoration-none text-black'>বইমেলা</Link>
                 </div>
             </li>
             <li className='list-unstyled d-flex align-items-center mt-4'>
@@ -65,7 +65,7 @@ const AdminAccess = () => {
                     <CouponIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>কুপন</Link>
+                    <Link to='/side-navbar/coupon-add' className='text-decoration-none text-black'>কুপন</Link>
                 </div>
         </li>
         </div>

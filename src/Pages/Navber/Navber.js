@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import useCategories from '../../Hooks/useCategories';
 import '../Navber/Navber.css'
 
@@ -50,7 +50,7 @@ const Navber = ({handleIslamicBook}) => {
         <div class="d-flex">
 			    <ul>
              {
-                categories?.data?.slice(0,10).map(category => <li><a class="dropdown-item" href=".."> 
+                categories?.data?.slice(0,7).map(category => <li><a class="dropdown-item" href=".."> 
                  {category.name}
                 </a></li>)
              }
@@ -58,7 +58,7 @@ const Navber = ({handleIslamicBook}) => {
           </ul>
 			    <ul>
              {
-                categories?.data?.slice(10,20).map(category => <li><a class="dropdown-item" href=".."> 
+                categories?.data?.slice(7,14).map(category => <li><a class="dropdown-item" href=".."> 
                  {category.name}
                 </a></li>)
              }
@@ -66,7 +66,7 @@ const Navber = ({handleIslamicBook}) => {
           </ul>
 			    <ul>
              {
-                categories?.data?.slice(20,30).map(category => <li><a class="dropdown-item" href=".."> 
+                categories?.data?.slice(14,21).map(category => <li><a class="dropdown-item" href=".."> 
                  {category.name}
                 </a></li>)
              }
@@ -74,7 +74,7 @@ const Navber = ({handleIslamicBook}) => {
           </ul>
 			    <ul>
              {
-                categories?.data?.slice(30,40).map(category => <li><a class="dropdown-item" href=".."> 
+                categories?.data?.slice(21,27).map(category => <li><a class="dropdown-item" href=".."> 
                  {category.name}
                 </a></li>)
              }
@@ -82,7 +82,7 @@ const Navber = ({handleIslamicBook}) => {
           </ul>
 			    <ul>
              {
-                categories?.data?.slice(40,49).map(category => <li><a class="dropdown-item" href=".."> 
+                categories?.data?.slice(27,33).map(category => <li><a class="dropdown-item" href=".."> 
                  {category.name}
                 </a></li>)
              }
@@ -141,7 +141,7 @@ const Navber = ({handleIslamicBook}) => {
                  {category.name}
                 </a></li>)
              }
-             <li><a className='dropdown-item' href='...'>আরো দেখুন...</a></li>
+             <li><Link className='dropdown-item' to="/category" >আরো দেখুন...</Link></li>
           </ul>
 		
 		
@@ -211,8 +211,13 @@ const Navber = ({handleIslamicBook}) => {
 		
 		
 			<li class="nav-item dropdown">
-			<a class="subject-link subject-link2 pb-4" href="..">বইমেলা 2023</a>
+			<a class="subject-link subject-link2 pb-4 dropdown-toggle" href="..">বইমেলা 2023</a>
+         <ul class="dropdown-menu">
+			  <li><a class="dropdown-item" href=".."> 2023</a></li>
+		
+		    </ul>
 			</li>
+     
 			<li class="nav-item dropdown">
 			<a class="subject-link subject-link2 pb-4" href="..">উপন্যাস</a>
 			</li>

@@ -10,6 +10,7 @@ import Loading from '../Loading/Loading';
 import { allRemoveFromCart, getTotals } from '../store/reducers/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 
 const Shipping = () => {
   const [user] = useAuthState(auth);
@@ -38,16 +39,16 @@ const Shipping = () => {
   let toggleClassCheck3 = isActive3 ?'active':'';
   const navigate = useNavigate()
 
-  const AllOrder = (e)=>{
+  const AllOrder = async(e)=>{
  
   e.preventDefault()
  if(cart?.cartItems?.length===0){
   return toast.warning('Sorry Your Cart Is Empty');
  }
-  if(!user){
-    return toast.warning('Please Login');;
- }
-const name =  e.target?.name?.value;;
+//   if(!user){
+//     return toast.warning('Please Login');;
+//  }
+const name =  e.target?.name?.value;
 const email =  e.target?.email?.value;
 const phone =  e.target?.phone?.value;
 const country =  e.target?.country?.value;
@@ -66,8 +67,8 @@ if(district==='Select Your District'){
 return toast.error('Please Select Your District');
 }
  
-  const orderData = [{
-    items:cart, 
+  const orderData = {
+    orderItems:cart, 
     user:user?.email,
     name:name,
     email:email,
@@ -83,23 +84,64 @@ return toast.error('Please Select Your District');
     nagadNumber:nagadNumber,
     nagadTrx:nagadTrx
 
-  }];
+  };
     
-  fetch(`http://localhost:5000/order`, {
-  method: 'POST',
-  headers:{
-    'content-type': 'application/json',
+
+  // const formData = new FormData();
+  //    formData.append('nameB', productAdd.nameB)
+  //    formData.append('nameE', productAdd.nameE)
+  //    formData.append('price', productAdd.price)
+  //    formData.append('quantity',productAdd.quantity)
+  //    formData.append('discount',productAdd?.discount)
+  //    formData.append('status', productAdd.status)
+  //    formData.append('category', JSON.stringify(productAdd.category))
+  //    formData.append('writer', JSON.stringify(productAdd.writer))
+  //    formData.append('publication', JSON.stringify(productAdd.publication))
+  //    formData.append('bookFair', productAdd.bookFair)
+  //    formData.append('productTags', productAdd.productTags)
+  //    formData.append('descriptionB', productAdd.descriptionB)
+  //    formData.append('descriptionE', productAdd.descriptionE)
+  //    formData.append('writerDetails', productAdd.writerDetails)
+  //    formData.append('image', productAdd.image)
+
+
+
+
+  try{
+    const data = await axios.post('http://localhost:5000/api/v1/order',orderData);
+    
+    if(data.status===400){
+      return toast.error(data.data.error)
+    }
+     navigate('/order')
+     localStorage.removeItem('cartItems')
+     window.location.reload(false);
+     toast.success(data.data.message)
+     
+   }catch(error){
+    console.log(error)
+   }
+     
+  // e.target.reset()
+
+
+
+
+  // fetch(`http://localhost:5000/api/v1/order`, {
+  // method: 'POST',
+  // headers:{
+  //   'content-type': 'application/json',
    
-  },
-  body: JSON.stringify(orderData)
-  })
-  .then(res => res.json()
-  )
-  .then(data => {
-      navigate('/order')
-      localStorage.removeItem('cartItems')
-      window.location.reload(false);
-  })
+  // },
+  // body: JSON.stringify(orderData)
+  // })
+  // .then(res => res.json()
+  // )
+  // .then(data => {
+  //     // navigate('/order')
+  //     localStorage.removeItem('cartItems')
+  //     // window.location.reload(false);
+  // })
   } 
 
     return (

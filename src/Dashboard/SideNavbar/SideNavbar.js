@@ -37,14 +37,6 @@ const SideNavbar = () => {
                          
                             <li className='list-unstyled d-flex align-items-center mt-4'>
                                 <div>
-                                    <ShippingIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>শিপিং এ আছে</Link>
-                                </div>
-                            </li>
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
                                     <ProfileIcon/>
                                 </div>
                                 <div className='ms-2'>

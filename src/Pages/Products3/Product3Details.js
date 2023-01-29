@@ -11,7 +11,6 @@ import { TicketIcon } from '@heroicons/react/24/outline'
 import { CheckCircleIcon } from '@heroicons/react/24/solid'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
-import useProduct from '../../Hooks/UseProduct';
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
 import Product3ToggleButton from './Product3ToggleButton';
@@ -29,22 +28,22 @@ const Product3Details = ({AddToCarts}) => {
     const cart = useSelector((state) => state.cart);
     const dispatch = useDispatch()
    
-  const Cart = cart.cartItems.find((cartItem) => cartItem.id === singleProduct3.id);
+  const Cart = cart.cartItems.find((cartItem) => cartItem._id === singleProduct3._id);
  
    
    
     const handleAddToCart = (product) => {
       dispatch(addToCart(product));
     };
-    const [myProducts] = useProduct();
+
     
  useEffect( () =>{
-     const url = `http://localhost:5000/product3Details/${details3Id}`;
+     const url = `http://localhost:5000/api/v1/product/${details3Id}`;
      fetch(url,{
        method:"GET",
      })
      .then(res =>res.json())
-     .then(data =>setSingleProduct3(data))
+     .then(data =>setSingleProduct3(data?.data))
     
  }, [])
 
@@ -60,14 +59,14 @@ const Product3Details = ({AddToCarts}) => {
            
                 <div class="tab-pane active" id="pic-1">
                   <img className='details-pic'   alt=''
-                    src={singleProduct3?.image} /></div>
+                    src={`http://localhost:5000/${singleProduct3?.image}`} /></div>
                 </div>
           
               
             </div>
             <div class="details col-lg-5 details-side-2">
-              <h3 class="product-title">{singleProduct3.children}</h3>
-              <p>লেখক : <span className='text-primary'>প্রকৌশলী ভবসিন্ধু বিশ্বাস</span></p>
+              <h3 class="product-title">{singleProduct3.nameB}</h3>
+              <p>লেখক : <span className='text-primary'>{singleProduct3.nameB}</span></p>
               <div>
               <StarIcon className=" star-icon "/>
               <StarIcon className=" star-icon "/>
@@ -164,14 +163,14 @@ const Product3Details = ({AddToCarts}) => {
       
       </div>
        <hr/>
-      <h3 className='mb-3 px-4'>Related Products</h3>
+      {/* <h3 className='mb-3 px-4'>Related Products</h3>
             
             <div className='my-card-main my-card px-4 mt-4'>
             {
                  myProducts.slice(0,5).map( product => <Product product={product}></Product>) 
              }
              
-            </div>
+            </div> */}
       </div>
     </div>
       

@@ -14,7 +14,7 @@ const Order = () => {
     const shipping = 50;
     const [myProducts2, setProducts2] = useState([]);
 
-const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/order/${user?.email}`, {
+const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/api/v1/order/${user?.email}`, {
     method: "GET",
  
 }).then(res =>{
@@ -26,7 +26,7 @@ const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://loca
          return res.json()
 })
 .then(data =>{
-  setProducts2(data)
+  setProducts2(data.data)
   
 }))
 if(isLoading){
@@ -34,7 +34,7 @@ if(isLoading){
 }
 refetch()
 const orderDetails =(_id) =>{
-  navigate(`/orderDetails/${_id}`)
+  navigate(`/order/${_id}`)
 
   }
 
@@ -60,7 +60,7 @@ const orderDetails =(_id) =>{
       {myProducts2.map((data, index) =>{
        
         return(
-          <tr key={index}>
+          <tr key={data._id}>
           <td>{data._id}</td>
           <td>date</td>
           <td>Processing</td>

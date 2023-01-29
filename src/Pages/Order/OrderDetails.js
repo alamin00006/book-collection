@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
@@ -11,10 +11,11 @@ import { PrinterIcon } from '@heroicons/react/24/outline'
 
 const OrderDetails = () => {
     const [user] = useAuthState(auth);
-    const [myProducts2, setProducts2] = useState({});
-    const {detailsId} = useParams()
+    const [orderProduct, setOrderProducts] = useState({});
+    const {orderDetailsId} = useParams()
     const shipping = 50;
-const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/orderDetails/${detailsId}`, {
+
+const { isLoading, refetch} = useQuery([], () => fetch(`http://localhost:5000/api/v1/order/orderDetails/${orderDetailsId}`, {
     method: "GET",
  
 }).then(res =>{
@@ -26,21 +27,19 @@ const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://loca
          return res.json()
 })
 .then(data =>{
-  setProducts2(data)
-//   console.log(data.items)
+   console.log(data.data)   
+   setOrderProducts(data.data)
   
 }))
-if(isLoading){
-  <Loading></Loading>
-}
-const total = myProducts2?.items?.cartTotalAmount + shipping;
-refetch()
+
+const total = orderProduct?.orderItems[0]?.cartTotalAmount + shipping;
+// refetch()
   
     return (
         <div className='container'>
             <div className=''>
                   <div className='thanks px-3 py-2 mt-5 rounded'>
-                      <h6>Thank you {myProducts2?.name}, Your order have been received !
+                      <h6>Thank you {orderProduct?.name}, Your order have been received !
                       </h6>
                   </div>
             <div className=''>
@@ -70,7 +69,7 @@ refetch()
                </div>
                    <div>
                         <h6>INVOICR NO.</h6>
-                        <p>#{myProducts2?.phone?.slice(6,11)}</p>
+                        <p>#{orderProduct?.phone?.slice(6,11)}</p>
                    </div>
                  <div className=''>
                     <div className='d-flex align-items-center'>
@@ -79,11 +78,11 @@ refetch()
                     </div>
                      <div className='our-address'>
                      
-                     <h6>{myProducts2.name}</h6>
-                     <p> District : {myProducts2.district}</p>
-                     <p>City : {myProducts2.city}</p>
-                      <p>Zip Code : {myProducts2.zip? myProducts2.zip:'...'}</p>
-                      <p>Phone : {myProducts2.phone}</p>
+                     <h6>{orderProduct.name}</h6>
+                     <p> District : {orderProduct.district}</p>
+                     <p>City : {orderProduct.city}</p>
+                      <p>Zip Code : {orderProduct.zip? orderProduct.zip:'...'}</p>
+                      <p>Phone : {orderProduct.phone}</p>
                                            
                      </div>
                  </div>
@@ -102,11 +101,11 @@ refetch()
                     </thead>
                     <tbody>
                     {   
-                myProducts2?.items?.cartItems?.map((order, index) =>{
+                orderProduct?.orderItems[0]?.cartItems?.map((order, index) =>{
                         return(
                         <tr className='text-center'>
                             <td>{index+1}</td>
-                            <td>{order.children}</td>
+                            <td>{order.nameB}</td>
                             <td className='fw-bolder'> {order.cartQuantity}</td>
                             <td className='fw-bolder'>{order.price}</td>
                             <td className='total-quantity-amount fw-bolder'>{order.singleCartTotal}</td>
@@ -124,11 +123,7 @@ refetch()
                 <div className='d-lg-flex flex-sm-none justify-content-between invoice-footer p-4 text-center'>
                     <div>
                        <h6>PAYMENT METHOD</h6>
-                       <p>COD</p>
-                    </div>
-                    <div>
-                    <h6>DISCOUNT</h6>
-                       <p>00</p>
+                       <p>{orderProduct.paymentType}</p>
                     </div>
                     <div>
                        <h6>SHIPPING COST</h6>
@@ -143,7 +138,7 @@ refetch()
                 <div className='invoice-details-address text-center border py-2 d-none d-lg-block'>
                    
                     <p className='fw-bolder'> Customer Details Address :</p>
-                    <p className=''>{myProducts2.address}</p>
+                    <p className=''>{orderProduct.address}</p>
                    
                 </div>
                 <div className='d-flex justify-content-end print-invoice mt-1'>
