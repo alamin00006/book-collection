@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
-import './AddProductModal.css'
+import editProduct from './Product.module.css'
 
 const EditProductModal = ({show, handleClose, productEdit}) => {
   const [discount, setDiscount] = useState('0')
@@ -56,7 +56,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
       bookFair:e.target.bookFair.value,
       descriptionB:e.target.productDetailsBangla.value,
       writerDetails:e.target.writerDetails.value,
-      // productPdf:e.target.pdfFile.files[0]
+      productPdf:e.target.pdf.files[0]
   
   }
   if(productAdd.bookFair ==='If the Book of Fair'){
@@ -79,11 +79,16 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
     //  formData.append('descriptionE', productAdd.descriptionE)
      formData.append('writerDetails', productAdd.writerDetails)
     //  formData.append('image', productAdd.image)
-    //  formData.append('productPdf', productAdd.productPdf)
+     formData.append('productPdf', productAdd.productPdf)
 
  
        try{
-        const data = await axios.put(`http://localhost:5000/api/v1/product/${productEdit._id}`,productAdd);
+        const data = await axios.put(`http://localhost:5000/api/v1/product/${productEdit._id}`,formData,
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
         
         if(data.status===400){
           return toast.error(data.data.error)
@@ -99,7 +104,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
     return (
         <div className='container bg-warning'>
         
-        <Modal show={show} onHide={handleClose} backdrop="static"
+        <Modal className={editProduct.modal} show={show} onHide={handleClose} backdrop="static"
         keyboard={false}>
           <Modal.Header closeButton>
                 <Modal.Title className=''>Edit Product</Modal.Title>
@@ -108,7 +113,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
           
             <form onSubmit={handleNewProduct}
              className='mt-2 product-form px-4 mx-2 py-3 rounded row'>
-                <div className='col-lg-4'> 
+                 <div className='col-lg-4'> 
                   <label>Product Name in Bangla : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="text" className='' name="productNameBangla" defaultValue={productEdit?.nameB} required placeholder='Product Name in Bangla' />
                 </div>
@@ -120,7 +125,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
                 <div className='col-lg-4'> 
                   <label>Price : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="number" className='' required name="price" placeholder='Price' defaultValue={productEdit?.price} />
-                </div>
+                </div> 
                 <div className='col-lg-4'> 
                   <label>Quantity : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <input  type="number" className='' required name="quantity" placeholder='Quantity' defaultValue={productEdit?.quantity} />
@@ -185,10 +190,10 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
                 </div>
              
 
-                {/* <div className='col-lg-6 mt-2'> 
+                <div className='col-lg-6 mt-2'> 
                   <label> Upload a Pdf (if you have) : </label>
-                  <input multiple type="file" className='product-picture' required name="pdfFile" placeholder='productPicture' id="" />
-                </div> */}
+                  <input multiple type="file" className='product-picture' name="pdf" placeholder='productPicture' id="" />
+                </div>
                
                 <div className='d-flex justify-content-end mt-4'>
                       <div>

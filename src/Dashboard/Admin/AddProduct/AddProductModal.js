@@ -3,11 +3,14 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
-import './AddProductModal.css'
+import addProduct from './Product.module.css'
+
 
 const AddProductModal = ({show, handleClose}) => {
-  const [discount, setDiscount] = useState('0')
   
+  const [discount, setDiscount] = useState('0')
+  const [image, setImage] = useState([])
+  const [productPdf, setProductPdf] = useState([])
  const [categories] = useCategories();
  const [tags, setTags] = useState([])
 
@@ -24,8 +27,12 @@ const AddProductModal = ({show, handleClose}) => {
      setTags(tags.filter((el, i) => i !== index))
  }
  const handleNewProduct = async(e) =>{
-    //  console.log(e.key)
-     e.preventDefault();
+  e.preventDefault();
+    if(tags.length >5){
+      return toast('5 Tags more than not allowed')
+    }
+    //  console.log(productPdf)
+    
 
      if(e.target.status.value ==='Select A Status'){
       return toast.error('Please Select Product Status');
@@ -66,15 +73,14 @@ const AddProductModal = ({show, handleClose}) => {
         publicationName:selectedPublication.name,
         publication_id: selectedPublication._id
       },
+     
       bookFair:e.target.bookFair.value,
       productTags:[tags],
       descriptionB:e.target.productDetailsBangla.value,
       descriptionE:e.target.productDetailsEnglish.value,
       writerDetails:e.target.writerDetails.value,
-      image:e.target.image.files[0],
-      // productPdf:e.target.pdfFile.files[0]
-  
-  }
+     }
+ 
   if(productAdd.bookFair ==='If the Book of Fair'){
      productAdd.bookFair = null;
   }
@@ -94,9 +100,55 @@ const AddProductModal = ({show, handleClose}) => {
      formData.append('descriptionB', productAdd.descriptionB)
      formData.append('descriptionE', productAdd.descriptionE)
      formData.append('writerDetails', productAdd.writerDetails)
-     formData.append('image', productAdd.image)
-    //  formData.append('productPdf', productAdd.productPdf)
+   
+    const isValidFileUploaded=(file)=>{
+      const validExtensions = ['png','jpeg','jpg','PNG','JPG','jpeg','JPEG']
+      const fileExtension = file.type.split('/')[1]
+      return validExtensions.includes(fileExtension)
+    }
+    const isValidPdfFile=(file)=>{
+      const validExtensions = ['pdf','PDF']
+      const fileExtension = file?.type?.split('/')[1]
+      return validExtensions.includes(fileExtension)
+    }
+    
+        if(image?.length >1){
+          return toast.error('please provide one book picture')
+        }
+        const file = image[0];
+        if(file.size>5000000){
+          return toast.error('Product Picture size 5MB more than not allowed')
+         }else{
+          if(isValidFileUploaded(file)){
+            Array.from(image).forEach(item => {
+               formData.append('image', item)
+           })
+           }else{
+             return(toast.error('Product Picture is not valid'))
+             }
+        }
+     
 
+
+    if(productPdf.length >1){
+      return toast.error('please provide one pdf file')
+    }
+  
+    const pdf = productPdf[0];
+  
+       if(pdf.size>5000000){
+        return toast.error('pdf file size 5MB more than not allowed')
+       }else{
+        if(isValidPdfFile(pdf)){
+          Array.from(productPdf)?.forEach(item => {
+            formData.append('pdf', item)
+          })}
+        else{
+          return(toast.error('pdf file is not valid'))
+        }
+       }
+    
+   
  
        try{
         const data = await axios.post('http://localhost:5000/api/v1/product',formData);
@@ -104,10 +156,11 @@ const AddProductModal = ({show, handleClose}) => {
         if(data.status===400){
           return toast.error(data.data.error)
         }
+        
         toast.success(data.data.message)
          
        }catch(error){
-        console.log(error)
+        return(error.message)
        }
          
       e.target.reset()
@@ -117,7 +170,7 @@ const AddProductModal = ({show, handleClose}) => {
     return (
         <div className='container bg-warning'>
         
-        <Modal show={show} onHide={handleClose} backdrop="static"
+        <Modal className={addProduct.modal} show={show} onHide={handleClose} backdrop="static"
         keyboard={false}>
           <Modal.Header closeButton>
                 <Modal.Title className=''>Add Product</Modal.Title>
@@ -204,12 +257,17 @@ const AddProductModal = ({show, handleClose}) => {
                  <label for="writerDetails">Writer Details in Bangla:</label>
                   <textarea className='rounded' id="writerDetails" name="writerDetails" rows="4" />
                 </div>
-                <div className='col-lg-4'> 
+                <div className='col-lg-6'> 
                   <label>Upload a Book Picture : <span className='text-danger fw-bold fs-5'>*</span></label>
-                  <input multiple type="file" className='product-picture' required name="image" placeholder='productPicture' id="" />
+                  <input multiple onChange={(e) =>{setImage(e.target.files)}} type="file" className='product-picture' required name="image" placeholder='productPicture' id="" />
                 </div>
 
-                <div className='col-lg-8 mt-2'> 
+               <div className='col-lg-6 mt-2'> 
+                  <label> Upload a Pdf (if you have) : </label>
+                  <input multiple onChange={(e) =>{setProductPdf(e.target.files)}} required type="file" className='product-picture' name="pdf" placeholder='productPicture' id="" />
+                </div>
+
+                <div className='col-lg-12 mt-2'> 
                   <label>Product Tag : </label>
               
                    { tags.map((tag, index) => (
@@ -218,13 +276,8 @@ const AddProductModal = ({show, handleClose}) => {
                     <span className="close" onClick={() => removeTag(index)}>&times;</span>
                 </div>
             )) }
-            <textarea onKeyDown={handleKeyDown} type="text" name="productTag"  className="tags-input" placeholder="Type Product tags" />
+            <textarea onKeyDown={handleKeyDown} type="text" name="productTag"  className="tags-input" placeholder="Product Tag(Write then press entire to add new tag)" />
                 </div>
-                {/* <div className='col-lg-6 mt-2'> 
-                  <label> Upload a Pdf (if you have) : </label>
-                  <input multiple type="file" className='product-picture' required name="pdfFile" placeholder='productPicture' id="" />
-                </div> */}
-               
                 <div className='d-flex justify-content-end mt-4'>
                       <div>
                           <button className="btn btn-danger fs-5" onClick={handleClose} >Cancel</button>
@@ -234,10 +287,11 @@ const AddProductModal = ({show, handleClose}) => {
                       </div>
                 </div>
                   </form>
-           <ToastContainer/>
+          
         </Modal.Body>
         
       </Modal>
+      <ToastContainer/>
         </div>
     );
 };

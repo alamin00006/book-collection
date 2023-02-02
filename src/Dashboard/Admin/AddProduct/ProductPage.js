@@ -9,7 +9,7 @@ import EditIcon from '../../../svgIcons/EditIcon';
 import AddProductModal from './AddProductModal';
 import EditProductModal from './EditProductModal';
 import ProductManage from './ProductManage';
-import './ProductPage.css'
+
 
 const ProductPage = () => {
     const [show, setShow] = useState(false);
