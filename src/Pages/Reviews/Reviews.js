@@ -14,6 +14,7 @@ const Reviews = ({singleProduct3}) => {
     const stars = Array(5).fill(0)
 
     const [reviews, setReview] = useState([]);
+    // const [filterReviews, setFilterReviews] = useState([]);
 
 const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
     method: "GET",
@@ -27,12 +28,12 @@ const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http:/
          return res.json()
 })
 .then(data =>{
-  // setReview(data.data)
-  console.log(data.data)
+  setReview(data.data)
+  // console.log(data.data)
   
 }))
-
-
+const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProduct3?._id)
+console.log(productReviews)
     const handleClick = value => {
       setCurrentValue(value)
       // console.log(value)
@@ -45,6 +46,8 @@ const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http:/
     const handleMouseLeave = () => {
       setHoverValue(undefined)
     }
+
+
     const handleReviewSubmit = async() =>{
     const reviewData = {
       forProduct:singleProduct3._id,
@@ -71,7 +74,18 @@ const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http:/
 
 
     return (
-        <div style={styles.stars}>
+       <div>
+        {
+          productReviews.map(pReview => <div>
+            <span>
+                {pReview.rating}
+            </span>
+            <span>
+                {pReview.comment}
+            </span>
+          </div>)
+        }
+            <div style={styles.stars}>
               {
                 stars.map((_,index) =>{
                   return(
@@ -100,6 +114,7 @@ const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http:/
         Submit
       </button>
               </div>
+       </div>
     );
 };
 const styles ={
