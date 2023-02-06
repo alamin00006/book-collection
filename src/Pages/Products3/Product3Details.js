@@ -13,6 +13,7 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import { StarIcon } from '@heroicons/react/24/solid'
 import Product from '../Products/Product';
 import Product3Related2 from './Product3Related2';
+import Reviews from '../Reviews/Reviews';
 import Product3ToggleButton from './Product3ToggleButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/reducers/cartSlice';
@@ -171,6 +172,7 @@ const Product3Details = ({AddToCarts}) => {
              }
              
             </div> */}
+            <Reviews singleProduct3={singleProduct3}/>
       </div>
     </div>
       
