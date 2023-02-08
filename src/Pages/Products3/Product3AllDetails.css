@@ -292,6 +292,14 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   background-color: #33c24d;
   color: white;
 }
+.customer-review{
+  padding: 5px 10px;
+  border-radius: 3px;
+}
+.customer-review.active{
+  background-color: #33c24d;
+  color: white;
+}
 /* car design */
 .card-area{
   box-shadow: 6px 8px 6px 6px #ebebeb;

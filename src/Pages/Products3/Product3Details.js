@@ -17,6 +17,7 @@ import Reviews from '../Reviews/Reviews';
 import Product3ToggleButton from './Product3ToggleButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../store/reducers/cartSlice';
+import { useQuery } from 'react-query';
 
 
 
@@ -31,7 +32,24 @@ const Product3Details = ({AddToCarts}) => {
    
   const Cart = cart.cartItems.find((cartItem) => cartItem._id === singleProduct3._id);
  
-   
+  const [reviews, setReview] = useState([]);
+    
+const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
+  method: "GET",
+
+}).then(res =>{
+if(res.status ===401 || res.status === 403){
+          // Navigate('/');
+          // signOut(auth);
+          // localStorage.removeItem('accessToken')
+          }
+       return res.json()
+})
+.then(data =>{
+setReview(data.data)
+// console.log(data.data)
+
+}))
    
     const handleAddToCart = (product) => {
       dispatch(addToCart(product));
@@ -160,7 +178,7 @@ const Product3Details = ({AddToCarts}) => {
       <div className='bg-white product-summary-section pb-5'>
       <div className=' mt-3 py-5 px-4'>
       <h5 className='mb-4'>Product Specification & Summary</h5>
-     <Product3ToggleButton/>
+     <Product3ToggleButton singleProduct3={singleProduct3} reviews={reviews} setReview={setReview}/>
       
       </div>
        <hr/>
@@ -172,7 +190,7 @@ const Product3Details = ({AddToCarts}) => {
              }
              
             </div> */}
-            <Reviews singleProduct3={singleProduct3}/>
+           
       </div>
     </div>
       

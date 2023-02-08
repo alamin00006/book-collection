@@ -4,19 +4,20 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { StarIcon } from '@heroicons/react/24/solid'
 import './Reviews.css'
+
 const colors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9"
     
 };
-const Reviews = ({singleProduct3}) => {
+const Reviews = ({singleProduct3,reviews, setReview}) => {
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
     const [comment, setComment] = useState('');
     const [name, setName] = useState('');
     const stars = Array(5).fill(0)
 
-    const [reviews, setReview] = useState([]);
+    // const [reviews, setReview] = useState([]);
     // const [filterReviews, setFilterReviews] = useState([]);
 
 const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
@@ -78,58 +79,77 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
     refetch()
 
     return (
-       <div>
+       <div className='row'>
+       
+        <div className='col-lg-6 col-md-6 col-sm-12'>
         {
-          productReviews.map(pReview => <div key={pReview._id}>
+          productReviews.map(pReview => <div key={pReview._id} className="mt-4">
             <span>
             {pReview?.rating===5?
-            <>
-                 <StarIcon className='starIcon-5'/>
-                 <StarIcon className='starIcon-5'/>
-                 <StarIcon className='starIcon-5'/>
-                 <StarIcon className='starIcon-5'/>
-                 <StarIcon className='starIcon-5'/>
+            <>   <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+                 <div>
+                    <StarIcon className='starIcon-5'/>
+                    <StarIcon className='starIcon-5'/>
+                    <StarIcon className='starIcon-5'/>
+                    <StarIcon className='starIcon-5'/>
+                    <StarIcon className='starIcon-5'/>
+                 </div>
             </>:''}
             {pReview?.rating===4?
-            <>
-                 <StarIcon className='starIcon-4'/>
-                 <StarIcon className='starIcon-4'/>
-                 <StarIcon className='starIcon-4'/>
-                 <StarIcon className='starIcon-4'/>
-                 <StarIcon className='starIcon-4-count'/>
+            <>   <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+                 <div>
+                  <StarIcon className='starIcon-4'/>
+                  <StarIcon className='starIcon-4'/>
+                  <StarIcon className='starIcon-4'/>
+                  <StarIcon className='starIcon-4'/>
+                  <StarIcon className='starIcon-4-count'/>
+                 </div>
             </>:''}
             {pReview?.rating===3?
-            <>
-                 <StarIcon className='starIcon-3'/>
-                 <StarIcon className='starIcon-3'/>
-                 <StarIcon className='starIcon-3'/>
-                 <StarIcon className='starIcon-3-count'/>
-                 <StarIcon className='starIcon-3-count'/>
+            <>    <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+                   <div>
+                      <StarIcon className='starIcon-3'/>
+                      <StarIcon className='starIcon-3'/>
+                      <StarIcon className='starIcon-3'/>
+                      <StarIcon className='starIcon-3-count'/>
+                      <StarIcon className='starIcon-3-count'/>
+                   </div>
             </>:''}
             {pReview?.rating===2?
-            <>
-                 <StarIcon className='starIcon-2'/>
-                 <StarIcon className='starIcon-2'/>
-                 <StarIcon className='starIcon-2-count'/>
-                 <StarIcon className='starIcon-2-count'/>
-                 <StarIcon className='starIcon-2-count'/>
+            <>  <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+                   <div>
+                      <StarIcon className='starIcon-2'/>
+                      <StarIcon className='starIcon-2'/>
+                      <StarIcon className='starIcon-2-count'/>
+                      <StarIcon className='starIcon-2-count'/>
+                      <StarIcon className='starIcon-2-count'/>
+                   </div>
             </>:''}
             {pReview?.rating===1?
-            <>
-                 <StarIcon className='starIcon-1'/>
-                 <StarIcon className='starIcon-1-count'/>
-                 <StarIcon className='starIcon-1-count'/>
-                 <StarIcon className='starIcon-1-count'/>
-                 <StarIcon className='starIcon-1-count'/>
+            <>    <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+                  <div>
+                      <StarIcon className='starIcon-1'/>
+                      <StarIcon className='starIcon-1-count'/>
+                      <StarIcon className='starIcon-1-count'/>
+                      <StarIcon className='starIcon-1-count'/>
+                      <StarIcon className='starIcon-1-count'/>
+                  </div>
             </>:''}
 
             </span>
-            <span>
-                {pReview.comment}
-            </span>
+             <div>
+                <span>
+                    {pReview.comment}
+                </span>
+             </div>
           </div>)
         }
-            <div style={styles.stars}>
+         
+          <p className="mt-5">রিভিউ লিখুন</p>
+           <div className='d-flex align-items-center'>
+           <div>রেটিং নির্বাচন করুন</div>
+            <div style={styles.stars} className="ms-2">
+               
               {
                 stars.map((_,index) =>{
                   return(
@@ -147,9 +167,12 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
                   )
                 })
               }
+              </div>
+           </div>
     <div>
+       <div className='mt-3'>
        <div>
-           <input type="text" onChange={(e)=>setName(e.target.value)} placeholder="Your Name" required/>
+           <input type="text" onChange={(e)=>setName(e.target.value)} placeholder="Your Name" required style={styles.input}/>
        </div>
          <div>
             <textarea onChange={(e)=>setComment(e.target.value)}
@@ -157,18 +180,21 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
             style={styles.textarea}
           />
          </div>
-         <div>
+         <div className='d-flex justify-content-end'>
             <button onClick={handleReviewSubmit}
             style={styles.button}
           >
             Submit
           </button>
          </div>
-    </div>
-
-     
-              </div>
        </div>
+    </div>
+        </div>
+        <div className='col-lg-6 col-md-6 col-sm-12'>
+             
+        </div>
+</div>
+    
     );
 };
 const styles ={
@@ -177,17 +203,22 @@ const styles ={
       flexDirection: "row",
     },
     textarea: {
-        // border: "1px solid #a9a9a9",
-        // borderRadius: 5,
-        // padding: 10,
-        // margin: "20px 0",
-        // minHeight: 100,
-        // width: 300
+        border: "1px solid #a9a9a9",
+        borderRadius: 5,
+        padding: 10,
+        margin: "5px 0",
+        width: '100%'
+      },
+      input:{
+        width:'100%'
       },
       button: {
         border: "1px solid #a9a9a9",
         borderRadius: 5,
-       
+        backgroundColor:'#000',
+        color:'white',
+        padding:'2px 15px',
+        fontWeight:700
       } 
   } 
 export default Reviews;
