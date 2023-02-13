@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState, useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import auth from '../../firebase.init';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
 import useUser from '../../Hooks/useUser';
 import axios from 'axios';
-
+import './SingUp.css'
 const SignUp = () => {
   const [name, setName] = useState()
   const [userInfo, setUserInfo] = useState({
@@ -94,7 +93,7 @@ const SignUp = () => {
       .post("http://localhost:5000/api/v1/user/signup", {name:name,email:userInfo?.email, password:userInfo?.password })
       .then(() => {
         // console.log("user is registered");
-        // navigate("/login");
+        navigate("/login");
       })
       .catch((error) => {
         console.log(error);
@@ -105,36 +104,43 @@ const SignUp = () => {
  }
 
     return (
-        <div>
+        <div className='bg-white'>
+            <div className='container'>
             
-        <form onSubmit={handleSubmit} className='d-flex justify-content-center login-form'>
-       <div>
-       <h1 className='form-title'>Please Register</h1>
+            <div className='row'>
+                 <div className='col-lg-6 col-md-6 col-sm-12 singup-image'>
+                          <img src='https://boiferry.com/assets/images/register-1.webp' alt=''/>  
+                 </div>
+                 <div className='col-lg-6 col-md-6 col-sm-12 signup-part'>
+                 <form onSubmit={handleSubmit} className='login-form'>
+                    <div>
+                    <h3 className='mb-4'><b className='text-danger'>নাফিউনে </b> আকাউন্ট করুন</h3>
+                          
+                    <label htmlFor="name">পুরো নাম</label>
+                          <input onChange={(e)=>setName(e.target.value)} className='d-block' placeholder='Enter Your Name' type="text" name="name" id="email" />
+                          
+                          <label className='mt-2' htmlFor="email">ইমেইল ঠিকানা</label>
+                          <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
+                        {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
+                          
+                          <label className='mt-2' htmlFor="password">পাসওয়ার্ড</label>
+                          <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />
+                          {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
+                          <label className='mt-2' htmlFor="password">কনফার্ম পাসওয়ার্ড</label>
+                          <input onChange={confirmPasswordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="confirmPassword" id="password" />
+                          <p></p>
+                        <input className='bg-danger text-white border-0 py-2 mt-2 fs-5' type="submit" value="রেজিস্টার" />
+                        <p className='mt-3'>আমাদের সাথে একাউন্ট আছে?<Link className='text-danger' to = "/login"> সাইন ইন
+                        </Link></p>
+                        
+                        <ToastContainer/>
+                    </div>
+            </form>
+                 </div>
+            </div>
             
-       <label htmlFor="name">Full Name</label>
-            <input onChange={(e)=>setName(e.target.value)} className='d-block' placeholder='Enter Your Name' type="text" name="name" id="email" />
-            
-            <label htmlFor="email">Email</label>
-            <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
-           {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
-            
-          
-           
-            <label htmlFor="password">Password</label>
-            <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />
-            {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
-            <label htmlFor="password">Confirm Password</label>
-            <input onChange={confirmPasswordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="confirmPassword" id="password" />
-            <p></p>
-           <input className='bg-warning border-0 py-2 mt-2 fs-5' type="submit" value="Register" />
-           <p>Already have a Account<Link to = "/login">Please Login
-           </Link></p>
-           
-           <ToastContainer/>
-       </div>
-        </form>
-        
-    </div>
+        </div>
+        </div>
     
     );
 };
