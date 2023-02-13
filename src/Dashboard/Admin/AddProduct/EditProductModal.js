@@ -9,9 +9,9 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
   const [discount, setDiscount] = useState('0')
   console.log(productEdit?._id)
  const [categories] = useCategories();
- 
+
  const handleNewProduct = async(e) =>{
-    //  console.log(e.key)
+ 
      e.preventDefault();
 
      if(e.target.status.value ==='Select A Status'){
@@ -56,7 +56,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
       bookFair:e.target.bookFair.value,
       descriptionB:e.target.productDetailsBangla.value,
       writerDetails:e.target.writerDetails.value,
-      productPdf:e.target.pdf.files[0]
+     
   
   }
   if(productAdd.bookFair ==='If the Book of Fair'){
@@ -74,16 +74,11 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
      formData.append('writer', JSON.stringify(productAdd.writer))
      formData.append('publication', JSON.stringify(productAdd.publication))
      formData.append('bookFair', productAdd.bookFair)
-    //  formData.append('productTags', productAdd.productTags)
      formData.append('descriptionB', productAdd.descriptionB)
-    //  formData.append('descriptionE', productAdd.descriptionE)
      formData.append('writerDetails', productAdd.writerDetails)
-    //  formData.append('image', productAdd.image)
-     formData.append('productPdf', productAdd.productPdf)
-
  
        try{
-        const data = await axios.put(`http://localhost:5000/api/v1/product/${productEdit._id}`,formData,
+        const data = await axios.patch(`http://localhost:5000/api/v1/product/${productEdit._id}`,formData,
       {
         headers: {
           'Content-Type': 'application/json'
@@ -189,12 +184,6 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
                   <textarea className='rounded' id="writerDetails" name="writerDetails" rows="4" defaultValue={productEdit?.writerDetails}/>
                 </div>
              
-
-                <div className='col-lg-6 mt-2'> 
-                  <label> Upload a Pdf (if you have) : </label>
-                  <input multiple type="file" className='product-picture' name="pdf" placeholder='productPicture' id="" />
-                </div>
-               
                 <div className='d-flex justify-content-end mt-4'>
                       <div>
                           <button className="btn btn-danger fs-5" onClick={handleClose}>Cancel</button>

@@ -64,7 +64,10 @@ import { Link } from 'react-router-dom';
 import useProduct3 from '../../Hooks/UseProduct3';
 
 import '../Products2/Products2.css'
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from 'swiper';
 import Cart from "../AddToCart/Cart";
 
 const Products3 = ({AddToCarts}) => {
@@ -74,19 +77,21 @@ const Products3 = ({AddToCarts}) => {
   
     return (
         <div className='container card-area bg-white p-4'>
-            <h3 className='mt-0 text-center mb-5'>নন টেক চাকরি প্রস্তুতি বই</h3>
-            
-       <div className='my-card-main my-card'>
-       {
-            myProducts3?.data?.slice(0,5).map((data, index)=> <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart >) 
-        }
+            <div className='d-flex justify-content-between align-items-center mb-4'>
+                <h3 className='mt-0'>এই সপ্তাহের বেস্টসেলার</h3>
+                <div className='text-center'>  <Link className='my-button text-black' to="">
+                আরও দেখুন
+                </Link></div>
+            </div>
+            <div className='my-card-main my-card'>
+            {
+                    myProducts3?.data?.slice(0,5).map((data, index)=> <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart >) 
+                }
 
-       </div>
-     <div className='text-center'>  <Link to="/nonTeckAll">
-     <button className='my-button btn btn-primary text-white'>আরও দেখুন</button>
-     </Link></div>
-        </div>
-        
+            </div> 
+          
+                </div>
+                
     );
 };
 

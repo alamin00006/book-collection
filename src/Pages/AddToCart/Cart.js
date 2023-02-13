@@ -9,7 +9,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { addToCart, decreaseCart, incrementCart } from "../store/reducers/cartSlice";
 import AddToCart from "./AddToCart";
 import './Cart.css'
-
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from 'swiper';
 
 const Cart = ({ data }) =>{
   
@@ -219,6 +222,7 @@ const Cart = ({ data }) =>{
           </div>
         </div>
       </div> */}
+      
        <div className='single-card'>
         <div onClick={product3Details} className='d-flex flex-column align-items-center book-inner'>
         <img src={`http://localhost:5000/${data.image}`}class="" alt="..."/>

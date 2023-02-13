@@ -5,10 +5,11 @@ import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
-import useToken from '../../Hooks/useToken';
+import useUser from '../../Hooks/useUser';
+import axios from 'axios';
 
 const SignUp = () => {
-  
+  const [name, setName] = useState()
   const [userInfo, setUserInfo] = useState({
       email: "",
       password : '',
@@ -20,22 +21,17 @@ const SignUp = () => {
       passWordError: ""
   })
 
-    const [
-        createUserWithEmailAndPassword,
-        user,
-        loading,
-        hookError,
-      ] = useCreateUserWithEmailAndPassword(auth,{sendEmailVerification:true});
-      const [token] = useToken(user)
+ 
+    //   const [token] = useToken(user)
       const navigate = useNavigate();
       const location = useLocation();
         const from = location.state?.from?.pathname || "/";
-    useEffect(() =>{
-        if(user){
-            navigate('/')
+    // useEffect(() =>{
+    //     if(user){
+    //         navigate('/')
             
-        }
-    },[ user, navigate])
+    //     }
+    // },[ user, navigate])
     
     // useEffect(() =>{
 
@@ -44,11 +40,11 @@ const SignUp = () => {
     //   }
      
     // }, [token, from, navigate])
-    useEffect(() =>{
-        if(hookError){
-            toast(hookError.message)
-     }
-    },[hookError])
+    // useEffect(() =>{
+    //     if(hookError){
+    //         toast(hookError.message)
+    //  }
+    // },[hookError])
 
     const emailCheck = (e) =>{
         const emailRegex = /\S+@\S+\.\S+/;
@@ -73,7 +69,7 @@ const SignUp = () => {
             setError({...error, passWordError: 'Invalid Password'})
             setUserInfo({...userInfo, password:''})
            }
-           console.log(userInfo)
+        
      }
 
      const confirmPasswordCheck = (e)=>{
@@ -87,18 +83,23 @@ const SignUp = () => {
             setUserInfo({...userInfo, confirmPass:"" })
            }
      }
-     const [Loadinguser, Userloading] = useAuthState(auth);
-     if(Userloading){
-       return <Loading></Loading> ;  
-     }
+  
  
-        
-    
+
 
  const handleSubmit =(e)=>{
    e.preventDefault();
    
-   createUserWithEmailAndPassword(userInfo.email, userInfo.password);
+   axios
+      .post("http://localhost:5000/api/v1/user/signup", {name:name,email:userInfo?.email, password:userInfo?.password })
+      .then(() => {
+        // console.log("user is registered");
+        // navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error);
+        navigate("/register");
+      });
 
  
  }
@@ -109,9 +110,15 @@ const SignUp = () => {
         <form onSubmit={handleSubmit} className='d-flex justify-content-center login-form'>
        <div>
        <h1 className='form-title'>Please Register</h1>
+            
+       <label htmlFor="name">Full Name</label>
+            <input onChange={(e)=>setName(e.target.value)} className='d-block' placeholder='Enter Your Name' type="text" name="name" id="email" />
+            
             <label htmlFor="email">Email</label>
             <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
            {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
+            
+          
            
             <label htmlFor="password">Password</label>
             <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />

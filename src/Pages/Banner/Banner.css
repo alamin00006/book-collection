@@ -1,3 +1,40 @@
-img{
-    width: 100%;
+.banner-part{
+    padding: 0 !important;
+    height: auto;
+    z-index: 0 !important;
 }
+
+
+/* .banner-part img{
+    width: 100%;
+    height: 100%;
+} */
+.second-banner img{
+width: 100%;
+}
+.slider-content{
+   
+    color: white;
+  }
+ .slider img{
+   width: 100%;
+   height: 100%;
+  
+  }
+  
+  .swiper-pagination-bullet{
+     background-color: rgb(219, 219, 199);
+     width: 10px;
+  }
+  .swiper-pagination-bullet-active{
+      background-color: red;
+  }
+  .swiper-button-prev{
+    display: none;
+  }
+  .swiper-button-next{
+    color: white;
+    margin-right: 40px;
+    font-weight: 400;
+    
+  }

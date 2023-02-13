@@ -337,11 +337,15 @@ line-height: 0.5;
 }
 
 .my-button{
-  text-align: center;
   display:block;
   margin: 20px;
-
+  text-decoration: none;
 }
+.my-button:hover{
+  text-decoration: none;
+  color: red !important;
+}
+
 .add-to-btn{
   background-color: #ff9900;
   width: 180px;
@@ -379,6 +383,7 @@ line-height: 0.5;
 .single-card{
   cursor: pointer;
   position: relative;
+  z-index: 0 !important;
   }
 
 .single-card:hover .add-to-btn{

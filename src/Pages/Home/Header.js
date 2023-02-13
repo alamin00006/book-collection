@@ -5,9 +5,13 @@ import './Header.css'
 
 const Header = ({handleIslamicBook}) => {
     return (
-        <div className='container navbar-section'>
-               <Navber2></Navber2>
-            <Navber handleIslamicBook={handleIslamicBook}></Navber>
+        <div className=''>
+               <div className='first-navbar navbar-section'>
+                    <Navber2></Navber2>
+               </div>
+             <div className='second-navbar'>
+                  <Navber handleIslamicBook={handleIslamicBook}></Navber>
+             </div>
         </div>
     );
 };

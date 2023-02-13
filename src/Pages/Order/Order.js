@@ -1,14 +1,13 @@
 import React, {useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-
-import auth from '../../firebase.init';
 import Loading from '../Loading/Loading';
 import Table from 'react-bootstrap/Table';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './Order.css'
+import useUser from '../../Hooks/useUser';
 const Order = () => {
-    const [user] = useAuthState(auth);
+  const [user] = useUser()
+  // console.log(user?.email)
     const navigate = useNavigate()
     // const cart = useSelector((state) => state.cart);
     const shipping = 50;
@@ -26,7 +25,7 @@ const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://loca
          return res.json()
 })
 .then(data =>{
-  setProducts2(data.data)
+  console.log(data.data)
   
 }))
 if(isLoading){

@@ -6,21 +6,14 @@ import {useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword} 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
-import useToken from '../../Hooks/useToken';
+import useUser from '../../Hooks/useUser';
+import axios from 'axios';
 
 const Login = () => {
-   
-    const [
-        signInWithEmailAndPassword,
-         user,
-        loading,
-        hookError,
-      ] = useSignInWithEmailAndPassword(auth);
-     
-      const [token] = useToken(user)
-     const [sendPasswordResetEmail] = useSendPasswordResetEmail(
-    auth
-  );
+        
+const [user] = useUser()
+// console.log(user)
+
       const [userInfo, setUserInfo] = useState({
         email: "",
         password : ''
@@ -39,12 +32,12 @@ const Login = () => {
       //     navigate(from, { replace: true })
       // }
       // },[user])
-      useEffect(() =>{
+      // useEffect(() =>{
 
-          if(token){
-          navigate(from, { replace: true });
-        }
-      }, [token, from, navigate])
+      //     if(token){
+      //     navigate(from, { replace: true });
+      //   }
+      // }, [token, from, navigate])
   
           const emailCheck = (e) =>{
           const emailRegex = /\S+@\S+\.\S+/;
@@ -70,22 +63,28 @@ const Login = () => {
              }
        }
         
- useEffect(() =>{
-    if(hookError){
-        toast(hookError.message)
-       }
- },[hookError])
+
  const handleSubmit =(e)=>{
    e.preventDefault();
-   
-   signInWithEmailAndPassword(userInfo.email, userInfo.password);
-   toast.success('thanks for Login')
- }
- const [Loadinguser, Userloading] = useAuthState(auth);
 
- if(Userloading||loading){
-   return <Loading></Loading> ;  
+   axios
+      .post("http://localhost:5000/api/v1/user/login", {email:userInfo?.email, password:userInfo?.password })
+      .then((data) => {
+        // console.log(data.data?.data?.token);
+        localStorage.setItem('token', data.data?.data?.token)
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+        // navigate("/register");
+      });
+
  }
+
+
+//  if(Userloading||loading){
+//    return <Loading></Loading> ;  
+//  }
 
 
     return (
@@ -116,14 +115,9 @@ const Login = () => {
         
             </div>
             <div>
-            <button className='btn btn-danger reset-button'
-        onClick={async () => {
-          await sendPasswordResetEmail(userInfo.email);
-          toast('Sent email');
-        }}
-      >
-        Forget Password
-      </button>
+          <button className='btn btn-danger reset-button'>
+            Forget Password
+          </button>
       <ToastContainer/>
             </div>
         </div>

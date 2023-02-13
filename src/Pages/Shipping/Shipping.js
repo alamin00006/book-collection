@@ -11,9 +11,11 @@ import { allRemoveFromCart, getTotals } from '../store/reducers/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
+import useUser from '../../Hooks/useUser';
 
 const Shipping = () => {
-  const [user] = useAuthState(auth);
+
+  const [user,refetch] = useUser()
   const dispatch = useDispatch()
   // const [district, setDistrict] = useState('')
     let cart = useSelector((state) => state.cart);

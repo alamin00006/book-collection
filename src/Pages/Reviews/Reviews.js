@@ -20,7 +20,7 @@ const Reviews = ({singleProduct3,reviews, setReview}) => {
     // const [reviews, setReview] = useState([]);
     // const [filterReviews, setFilterReviews] = useState([]);
 
-const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
+const { isLoading, refetch} = useQuery([singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
     method: "GET",
  
 }).then(res =>{

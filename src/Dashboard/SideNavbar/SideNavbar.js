@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import DashboardIcon from '../../svgIcons/DashboardIcon';
 import LoveIcon from '../../svgIcons/LoveIcon';
 import OrderIcon from '../../svgIcons/OrderIcon';
@@ -10,6 +10,17 @@ import SingOutIcon from '../../svgIcons/SingOutIcon';
 import AdminAccess from './AdminAccess';
 
 const SideNavbar = () => {
+
+  const navigate = useNavigate()
+
+    const SingOutHandle = ()=>{
+  
+        navigate('/')
+        localStorage.removeItem('token');
+        window.location.reload(false);
+        
+    
+      }
     return (
         <div className='container'>
           <div className='row bg-white'>
@@ -64,7 +75,7 @@ const SideNavbar = () => {
                                     <SingOutIcon/>
                                 </div>
                                 <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>লগ আউট</Link>
+                                   <Link onClick={SingOutHandle} to='' className='text-decoration-none text-black'>লগ আউট</Link>
                                 </div>
                             </li>
                         
