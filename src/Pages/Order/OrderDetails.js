@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
-import auth from '../../firebase.init';
+import { useNavigate, useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import './OrderDetails.css'
 import invoiceLogo from '../../Images/invoicelogo.png'
@@ -10,31 +8,34 @@ import { Table } from 'react-bootstrap';
 import { PrinterIcon } from '@heroicons/react/24/outline'
 
 const OrderDetails = () => {
-    const [user] = useAuthState(auth);
+const navigate = useNavigate()
     const [orderProduct, setOrderProducts] = useState({});
     const {orderDetailsId} = useParams()
     const shipping = 50;
 
-const { isLoading, refetch} = useQuery([], () => fetch(`http://localhost:5000/api/v1/order/orderDetails/${orderDetailsId}`, {
+const { isLoading, refetch} = useQuery(['orderProduct', orderDetailsId], () => fetch(`http://localhost:5000/api/v1/order/orderDetails/${orderDetailsId}`, {
     method: "GET",
  
 }).then(res =>{
+
   if(res.status ===401 || res.status === 403){
-            // Navigate('/');
-            // signOut(auth);
-            // localStorage.removeItem('accessToken')
+            navigate('/')
+            localStorage.removeItem('token')
             }
          return res.json()
 })
 .then(data =>{
-   console.log(data.data)   
+
    setOrderProducts(data.data)
   
 }))
 
-const total = orderProduct?.orderItems[0]?.cartTotalAmount + shipping;
-// refetch()
-  
+// if(isLoading){
+//     refetch()
+// }
+const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
+
+
     return (
         <div className='container'>
             <div className=''>
@@ -101,7 +102,7 @@ const total = orderProduct?.orderItems[0]?.cartTotalAmount + shipping;
                     </thead>
                     <tbody>
                     {   
-                orderProduct?.orderItems[0]?.cartItems?.map((order, index) =>{
+                orderProduct?.orderItems?.[0]?.cartItems?.map((order, index) =>{
                         return(
                         <tr className='text-center'>
                             <td>{index+1}</td>
@@ -142,7 +143,7 @@ const total = orderProduct?.orderItems[0]?.cartTotalAmount + shipping;
                    
                 </div>
                 <div className='d-flex justify-content-end print-invoice mt-1'>
-                    <button className='fw-bolder'>Print Invoice
+                    <button disabled className='fw-bolder'>Print Invoice
                         <PrinterIcon className='printer-icon ms-2'/>
                     </button>
                 </div>

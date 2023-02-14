@@ -16,6 +16,7 @@ const ProductManage = () => {
 
 
     const [myProducts3] = useProduct3()
+    // console.log(myProducts3)
     return (
         <div>
             <Table striped bordered responsive hover className='mt-5'>
@@ -34,11 +35,7 @@ const ProductManage = () => {
           {
              myProducts3?.data?.map((product, index) => <ProductTable product={product} index={index} setEditProduct={setEditProduct} handleShow={handleShow} setDeleteProduct={setDeleteProduct} productDelete={productDelete}></ProductTable>)
           } 
-               
-                
-        
-       
-      
+          
       </tbody>
     </Table>
     <EditProductModal productEdit={productEdit} show={show} setShow={setShow} handleClose={handleClose}/>

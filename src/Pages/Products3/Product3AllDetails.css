@@ -185,13 +185,13 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   line-height: 0;
   }
 .add-to-button{
-  background-color: #ff9900;
+  background-color: #065644;
   padding: 0 20px !important;
   border-radius: 3px !important;
 }
 
 .add-to-button:hover{
-  background-color: #fea319;
+  background-color: #065610;
  }
 .add-to-icon1{
   width: 30px;
@@ -272,7 +272,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   border-radius: 3px;
 }
 .summary.active{
-  background-color: #33c24d;
+  background-color: #065644;
   
   color: white;
 }
@@ -281,7 +281,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   border-radius: 3px;
 }
 .specification.active{
-  background-color: #33c24d;
+  background-color: #065644;
   color: white;
 }
 .author{
@@ -289,7 +289,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   border-radius: 3px;
 }
 .author.active{
-  background-color: #33c24d;
+  background-color: #065644;
   color: white;
 }
 .customer-review{
@@ -297,7 +297,7 @@ box-shadow: 6px 8px 6px 6px #ebebeb;
   border-radius: 3px;
 }
 .customer-review.active{
-  background-color: #33c24d;
+  background-color: #065644;
   color: white;
 }
 /* car design */

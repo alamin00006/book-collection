@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Login.css'
-import auth from '../../firebase.init'
-import {useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading/Loading';
 import useUser from '../../Hooks/useUser';
 import axios from 'axios';
+import useAllUser from '../../Hooks/useAllUser';
 
 const Login = () => {
         
 const [user] = useUser()
-// console.log(user)
+const [allUser] = useAllUser()
+console.log(allUser)
 
       const [userInfo, setUserInfo] = useState({
         email: "",
@@ -64,21 +64,19 @@ const [user] = useUser()
        }
         
 
- const handleSubmit =(e)=>{
+ const handleSubmit =async(e)=>{
    e.preventDefault();
 
-   axios
-      .post("http://localhost:5000/api/v1/user/login", {email:userInfo?.email, password:userInfo?.password })
-      .then((data) => {
-        // console.log(data.data?.data?.token);
-        localStorage.setItem('token', data.data?.data?.token)
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        // navigate("/register");
-      });
-
+  try{
+   
+   const data = await axios.post('http://localhost:5000/api/v1/user/login',{email:userInfo?.email, password:userInfo?.password });
+    localStorage.setItem('token', data.data?.data?.token)
+    navigate("/");
+  
+         
+   }catch(error){
+    return toast.error(error.response.data.message)
+   }
  }
 
 
@@ -89,40 +87,7 @@ const [user] = useUser()
 
     return (
        
-      //       <div>
-            
-      //       <div>
-      //       <h1 className='form-title text-center'>Please Login</h1>
-      //       <form onSubmit={handleSubmit} className='d-flex justify-content-center login-form'>
-      //       <div>
-            
-      //       <label htmlFor="email">Email</label>
-      //       <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
-      //      {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
-           
-      //       <label htmlFor="password">Password</label>
-      //       <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />
-      //       {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
-      //            <p></p>
-      //      <input className='bg-warning border-0 py-2 mt-2 fs-5' type="submit" value="Login" />
-      //      <p>No Account<Link to = "/singUp">Please Register
-      //      </Link></p>
-           
-      //      <ToastContainer/>
-      //       </div>
-          
-      //   </form>
-        
-      //       </div>
-      //       <div>
-      //     <button className='btn btn-danger reset-button'>
-      //       Forget Password
-      //     </button>
-      // <ToastContainer/>
-      //       </div>
-      //   </div>
-        
-      <div className='bg-white'>
+           <div className='bg-white'>
             <div className='container'>
             
             <div className='row'>
@@ -135,11 +100,11 @@ const [user] = useUser()
                     <h3 className='mb-4'><b className='text-danger'>নাফিউনে </b> সাইনইন করুন</h3>
                        
                           <label className='mt-2' htmlFor="email">ইমেইল ঠিকানা</label>
-                          <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
+                          <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" required />
                           {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
                           
                           <label className='mt-2' htmlFor="password">পাসওয়ার্ড</label>
-                          <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />
+                          <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" required/>
                           {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
                           <div className='d-flex justify-content-end'>
                           <Link to="" className='text-danger forgot-password py-1'>
@@ -150,13 +115,14 @@ const [user] = useUser()
                         <p className='mt-3'>আমাদের সাথে একাউন্ট নেই?<Link className='text-danger' to = "/singUp"> একাউন্ট করুন
                         </Link></p>
                         
-                        <ToastContainer/>
+                        
                     </div>
             </form>
                  </div>
             </div>
             
         </div>
+        <ToastContainer/>
         </div>
     );
 };

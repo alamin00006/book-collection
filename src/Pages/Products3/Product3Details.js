@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-// import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useParams } from 'react-router-dom';
-// import { toast } from 'react-toastify';
-// import auth from '../../firebase.init';
 import './Product3AllDetails.css'
 import { BanknotesIcon } from '@heroicons/react/24/outline'
 import { ArrowPathIcon } from '@heroicons/react/24/outline'
@@ -39,7 +36,7 @@ const { isLoading, refetch} = useQuery(['',singleProduct3 ], () => fetch(`http:/
 
 }).then(res =>{
 if(res.status ===401 || res.status === 403){
-          // Navigate('/');
+          // navigate('/');
           // signOut(auth);
           // localStorage.removeItem('accessToken')
           }
@@ -50,7 +47,9 @@ setReview(data.data)
 // console.log(data.data)
 
 }))
-   
+const approvedReviews = reviews.filter(pReview => pReview.status==="Approved");
+
+ 
     const handleAddToCart = (product) => {
       dispatch(addToCart(product));
     };
@@ -178,7 +177,7 @@ setReview(data.data)
       <div className='bg-white product-summary-section pb-5'>
       <div className=' mt-3 py-5 px-4'>
       <h5 className='mb-4'>Product Specification & Summary</h5>
-     <Product3ToggleButton singleProduct3={singleProduct3} reviews={reviews} setReview={setReview}/>
+     <Product3ToggleButton singleProduct3={singleProduct3} approvedReviews={approvedReviews} setReview={setReview}/>
       
       </div>
        <hr/>

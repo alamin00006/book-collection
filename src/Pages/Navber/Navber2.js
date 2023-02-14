@@ -4,14 +4,11 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import logo from '../../Images/booklogo.jpg'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import '../Navber/Navber2.css'
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from '../../firebase.init';
-import { signOut } from 'firebase/auth';
+
 
 import { useSelector } from 'react-redux';
 import useUser from '../../Hooks/useUser';

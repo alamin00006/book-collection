@@ -170,7 +170,7 @@ function App() {
          {/* Shipping Routes */}
          <Route path='/shipping' element={<Shipping></Shipping>}></Route>
          <Route path='/category' element={<Category/>}></Route>
-         <Route path='/order' element={<Order></Order>}></Route>
+         {/* <Route path='/order' element={<Order></Order>}></Route> */}
         
          <Route path='/order/:orderDetailsId' element={<OrderDetails></OrderDetails>}></Route>
          <Route path='/category/:categoryDetailsId' element={<CategoryDetails></CategoryDetails>}></Route>
@@ -184,6 +184,7 @@ function App() {
               <Route path='publication-add' element={<Publication></Publication>}></Route>
               <Route path='book-fair-add' element={<BookFair></BookFair>}></Route>
               <Route path='coupon-add' element={<Coupon></Coupon>}></Route>
+              <Route path='order' element={<Order></Order>}></Route>
          </Route>
 
       </Routes>

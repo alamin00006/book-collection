@@ -42,7 +42,7 @@ const SideNavbar = () => {
                                     <OrderIcon/>
                                 </div>
                                 <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>অর্ডার</Link>
+                                   <Link to='/side-navbar/order' className='text-decoration-none text-black'>অর্ডার</Link>
                                 </div>
                             </li>
                          

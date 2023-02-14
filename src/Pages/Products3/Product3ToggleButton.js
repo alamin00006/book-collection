@@ -3,7 +3,7 @@ import Product3Summary from './Product3Summary';
 import Product3Specification from './Product3Specification';
 import Product3Author from './Product3Author';
 import Reviews from '../Reviews/Reviews';
-const Product3ToggleButton = ({singleProduct3,setReview,reviews}) => {
+const Product3ToggleButton = ({singleProduct3,setReview,approvedReviews}) => {
   // const [reviews, setReview] = useState([]);
     const [showSummary, setShowSummary]= useState(true);
     const [showSpecification, setShowSpecification]= useState(false);
@@ -18,7 +18,7 @@ const Product3ToggleButton = ({singleProduct3,setReview,reviews}) => {
     let toggleClassCheck2 = isActive2 ?'active':'';
     let toggleClassCheck3 = isActive3 ?'active':'';
     let toggleClassCheck4 = isActive4 ?'active':'';
-    const productReviews = reviews?.filter(pReview =>pReview?.forProduct===singleProduct3?._id)
+    const productReviews = approvedReviews?.filter(pReview =>pReview?.forProduct===singleProduct3?._id)
     return (
         <div>
         <button className={`summary ${toggleClassCheck1}`} onClick={() =>{
@@ -91,7 +91,7 @@ const Product3ToggleButton = ({singleProduct3,setReview,reviews}) => {
         {showSummary?<Product3Summary></Product3Summary>:null}
         {showSpecification?<Product3Specification></Product3Specification> :null}
         {showAuthor?<Product3Author></Product3Author>:null}
-        {showReview?<Reviews singleProduct3={singleProduct3} setReview={setReview} reviews={reviews}></Reviews> :null}
+        {showReview?<Reviews singleProduct3={singleProduct3} setReview={setReview} approvedReviews={approvedReviews}></Reviews> :null}
       </div>
     );
 };

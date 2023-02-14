@@ -4,22 +4,22 @@ import axios from 'axios';
 import { useQuery } from 'react-query';
 import { StarIcon } from '@heroicons/react/24/solid'
 import './Reviews.css'
-
+import { toast,ToastContainer } from 'react-toastify';
+import reviewPerson from '../../Images/person-review.png'
+import useUser from '../../Hooks/useUser';
 const colors = {
     orange: "#FFBA5A",
     grey: "#a9a9a9"
     
 };
-const Reviews = ({singleProduct3,reviews, setReview}) => {
+const Reviews = ({singleProduct3,approvedReviews, setReview}) => {
     const [currentValue, setCurrentValue] = useState(0);
     const [hoverValue, setHoverValue] = useState(undefined);
-    const [comment, setComment] = useState('');
-    const [name, setName] = useState('');
     const stars = Array(5).fill(0)
-
+    const [user] = useUser()
     // const [reviews, setReview] = useState([]);
     // const [filterReviews, setFilterReviews] = useState([]);
-
+// console.log(user?.email)
 const { isLoading, refetch} = useQuery([singleProduct3 ], () => fetch(`http://localhost:5000/api/v1/review`, {
     method: "GET",
  
@@ -36,8 +36,9 @@ const { isLoading, refetch} = useQuery([singleProduct3 ], () => fetch(`http://lo
   // console.log(data.data)
   
 }))
-const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProduct3?._id)
+const productReviews = approvedReviews.filter(pReview =>pReview.forProduct===singleProduct3?._id)
 // console.log(productReviews)
+
     const handleClick = value => {
       setCurrentValue(value)
       // console.log(value)
@@ -51,15 +52,19 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
       setHoverValue(undefined)
     }
 
-
-    const handleReviewSubmit = async() =>{
+    const handleReviewSubmit = async(e) =>{
+      e.preventDefault()
     const reviewData = {
       forProduct:singleProduct3._id,
       rating:currentValue||hoverValue,
-      comment:comment,
-      name:name
+      comment:e.target.comment?.value,
+      name:e.target.name?.value
     }
-    console.log(reviewData)
+    
+    if(reviewData.rating===undefined){
+      return toast.error('please Give a Rating Number')
+    }
+
       try{
         const data = await axios.post('http://localhost:5000/api/v1/review',reviewData);
         
@@ -67,13 +72,13 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
           // return toast.error(data.data.error)
         }
         
-        // toast.success(data.data.message)
+        toast.success(data.data.message)
          
        }catch(error){
         // return(error.message)
        }
-         
-      // e.target.reset()
+     
+      e.target.reset()
     }
 
     refetch()
@@ -82,21 +87,41 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
        <div className='row'>
        
         <div className='col-lg-6 col-md-6 col-sm-12'>
+          <h5 className='mt-4'>ক্রেতার পর্যালোচনা</h5>
         {
           productReviews.map(pReview => <div key={pReview._id} className="mt-4">
             <span>
             {pReview?.rating===5?
-            <>   <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
-                 <div>
-                    <StarIcon className='starIcon-5'/>
-                    <StarIcon className='starIcon-5'/>
-                    <StarIcon className='starIcon-5'/>
-                    <StarIcon className='starIcon-5'/>
-                    <StarIcon className='starIcon-5'/>
-                 </div>
+            <>  
+           <div className='d-flex justify-content-between'>
+              <div className='d-flex review-img'>
+                      <div>
+                        <img src={reviewPerson} alt=""/>
+                    </div>
+                    <div className='ms-3'>
+                        {pReview?.name}
+                    </div>
+                </div>
+                    <div>
+                        <StarIcon className='starIcon-5'/>
+                        <StarIcon className='starIcon-5'/>
+                        <StarIcon className='starIcon-5'/>
+                        <StarIcon className='starIcon-5'/>
+                        <StarIcon className='starIcon-5'/>
+                    </div>
+           </div>
             </>:''}
             {pReview?.rating===4?
-            <>   <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
+            <>   
+            <div className='d-flex justify-content-between'>
+            <div className='d-flex review-img'>
+                    <div>
+                      <img src={reviewPerson} alt=""/>
+                  </div>
+                  <div className='ms-3'>
+                      {pReview?.name}
+                  </div>
+              </div> 
                  <div>
                   <StarIcon className='starIcon-4'/>
                   <StarIcon className='starIcon-4'/>
@@ -104,50 +129,85 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
                   <StarIcon className='starIcon-4'/>
                   <StarIcon className='starIcon-4-count'/>
                  </div>
+            </div>
             </>:''}
             {pReview?.rating===3?
-            <>    <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
-                   <div>
-                      <StarIcon className='starIcon-3'/>
-                      <StarIcon className='starIcon-3'/>
-                      <StarIcon className='starIcon-3'/>
-                      <StarIcon className='starIcon-3-count'/>
-                      <StarIcon className='starIcon-3-count'/>
-                   </div>
+            <>    
+               <div className='d-flex justify-content-between'>
+                  <div className='d-flex review-img'>
+                        <div>
+                          <img src={reviewPerson} alt=""/>
+                      </div>
+                      <div className='ms-3'>
+                          {pReview?.name}
+                      </div>
+                  </div> 
+                      <div>
+                          <StarIcon className='starIcon-3'/>
+                          <StarIcon className='starIcon-3'/>
+                          <StarIcon className='starIcon-3'/>
+                          <StarIcon className='starIcon-3-count'/>
+                          <StarIcon className='starIcon-3-count'/>
+                      </div>
+               </div>
             </>:''}
             {pReview?.rating===2?
-            <>  <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
-                   <div>
-                      <StarIcon className='starIcon-2'/>
-                      <StarIcon className='starIcon-2'/>
-                      <StarIcon className='starIcon-2-count'/>
-                      <StarIcon className='starIcon-2-count'/>
-                      <StarIcon className='starIcon-2-count'/>
-                   </div>
+            <>  
+              <div className='d-flex justify-content-between'>
+                  <div className='d-flex review-img'>
+                            <div>
+                              <img src={reviewPerson} alt=""/>
+                          </div>
+                          <div className='ms-3'>
+                              {pReview?.name}
+                          </div>
+                      </div> 
+                      <div>
+                          <StarIcon className='starIcon-2'/>
+                          <StarIcon className='starIcon-2'/>
+                          <StarIcon className='starIcon-2-count'/>
+                          <StarIcon className='starIcon-2-count'/>
+                          <StarIcon className='starIcon-2-count'/>
+                      </div>
+              </div>
             </>:''}
             {pReview?.rating===1?
-            <>    <span>পর্যালোচনা লিখেছেন {pReview?.name}</span> 
-                  <div>
-                      <StarIcon className='starIcon-1'/>
-                      <StarIcon className='starIcon-1-count'/>
-                      <StarIcon className='starIcon-1-count'/>
-                      <StarIcon className='starIcon-1-count'/>
-                      <StarIcon className='starIcon-1-count'/>
-                  </div>
+            <>    
+            <div className='d-flex justify-content-center'>
+                <div className='d-flex review-img'>
+                                <div>
+                                  <img src={reviewPerson} alt=""/>
+                              </div>
+                              <div className='ms-3'>
+                                  {pReview?.name}
+                              </div>
+                          </div> 
+                      <div>
+                          <StarIcon className='starIcon-1'/>
+                          <StarIcon className='starIcon-1-count'/>
+                          <StarIcon className='starIcon-1-count'/>
+                          <StarIcon className='starIcon-1-count'/>
+                          <StarIcon className='starIcon-1-count'/>
+                      </div>
+            </div>
             </>:''}
 
             </span>
-             <div>
-                <span>
-                    {pReview.comment}
-                </span>
+             <div className='review-comment'>
+              
+                    <p>
+                       {pReview.comment}
+                    </p>
+               
              </div>
           </div>)
         }
-         
-          <p className="mt-5">রিভিউ লিখুন</p>
+       {
+        user?.email?<>
+            <hr className="mt-5"/>
+          <p>রিভিউ লিখুন</p>
            <div className='d-flex align-items-center'>
-           <div>রেটিং নির্বাচন করুন</div>
+           <div><span className='text-danger fw-bolder'>রেটিং নির্বাচন করুন</span></div>
             <div style={styles.stars} className="ms-2">
                
               {
@@ -171,28 +231,35 @@ const productReviews = reviews.filter(pReview =>pReview.forProduct===singleProdu
            </div>
     <div>
        <div className='mt-3'>
-       <div>
-           <input type="text" onChange={(e)=>setName(e.target.value)} placeholder="Your Name" required style={styles.input}/>
+            <form onSubmit={handleReviewSubmit}>
+            <div>
+           <input type="text" name="name" placeholder="Your Name" required style={styles.input}/>
        </div>
          <div>
-            <textarea onChange={(e)=>setComment(e.target.value)}
+            <textarea name='comment'
             placeholder="What's your experience?"
             style={styles.textarea}
-          />
+          required/>
          </div>
          <div className='d-flex justify-content-end'>
-            <button onClick={handleReviewSubmit}
-            style={styles.button}
-          >
-            Submit
-          </button>
+              <div>
+              <input type="submit"
+                  style={styles.button}
+                value="Submit"/>
+              </div>
+           
          </div>
+            </form>
        </div>
     </div>
+        </>:''
+       }
         </div>
         <div className='col-lg-6 col-md-6 col-sm-12'>
              
         </div>
+        <ToastContainer className="toast-position"
+        position="top-center"/>
 </div>
     
     );

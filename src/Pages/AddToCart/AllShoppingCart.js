@@ -1,14 +1,14 @@
 import React from 'react';
 import { TrashIcon } from '@heroicons/react/24/outline'
-import { PlusSmallIcon } from '@heroicons/react/24/outline'
-import { MinusSmallIcon } from '@heroicons/react/24/outline'
+import { PlusSmallIcon } from '@heroicons/react/24/solid'
+import { MinusSmallIcon } from '@heroicons/react/24/solid'
 import { useDispatch, useSelector } from 'react-redux';
 import { decreaseCart, incrementCart, removeFromCart } from '../store/reducers/cartSlice';
 const AllShoppingCart = ({data}) => {
     const dispatch = useDispatch();
 
     return (
-        <div className='row p-5 cart-item border'>
+        <div className='row p-5 cart-item'>
                     <div className='col-lg-6 d-flex'>
                         <div className='cart-image'>
                         <img src={`http://localhost:5000/${data.image}`} alt=''/>

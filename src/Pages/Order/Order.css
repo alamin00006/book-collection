@@ -1,6 +1,6 @@
 .see-details{
     cursor: pointer;
-    background-color: #ff9900 !important;
+    background-color: red !important;
     color: white !important;
     border: 1px solid white;
     padding: 10px;

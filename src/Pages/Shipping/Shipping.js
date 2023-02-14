@@ -47,9 +47,9 @@ const Shipping = () => {
  if(cart?.cartItems?.length===0){
   return toast.warning('Sorry Your Cart Is Empty');
  }
-//   if(!user){
-//     return toast.warning('Please Login');;
-//  }
+  if(!user?.email){
+    return toast.warning('Please Login');;
+ }
 const name =  e.target?.name?.value;
 const email =  e.target?.email?.value;
 const phone =  e.target?.phone?.value;
@@ -64,7 +64,6 @@ const bkashTrx =  e.target?.bkashTrx?.value;
 const nagadNumber =  e.target?.nagadNumber?.value;
 const nagadTrx =  e.target?.nagadTrx?.value;
 
-  
 if(district==='Select Your District'){
 return toast.error('Please Select Your District');
 }
@@ -84,41 +83,21 @@ return toast.error('Please Select Your District');
     bkashNumber:bkashNumber,
     bkashTrx:bkashTrx,
     nagadNumber:nagadNumber,
-    nagadTrx:nagadTrx
-
+    nagadTrx:nagadTrx,
+  
   };
-    
-
-  // const formData = new FormData();
-  //    formData.append('nameB', productAdd.nameB)
-  //    formData.append('nameE', productAdd.nameE)
-  //    formData.append('price', productAdd.price)
-  //    formData.append('quantity',productAdd.quantity)
-  //    formData.append('discount',productAdd?.discount)
-  //    formData.append('status', productAdd.status)
-  //    formData.append('category', JSON.stringify(productAdd.category))
-  //    formData.append('writer', JSON.stringify(productAdd.writer))
-  //    formData.append('publication', JSON.stringify(productAdd.publication))
-  //    formData.append('bookFair', productAdd.bookFair)
-  //    formData.append('productTags', productAdd.productTags)
-  //    formData.append('descriptionB', productAdd.descriptionB)
-  //    formData.append('descriptionE', productAdd.descriptionE)
-  //    formData.append('writerDetails', productAdd.writerDetails)
-  //    formData.append('image', productAdd.image)
-
-
-
-
+  
   try{
     const data = await axios.post('http://localhost:5000/api/v1/order',orderData);
     
     if(data.status===400){
       return toast.error(data.data.error)
     }
-     navigate('/order')
+    //  toast.success(data.data.message)
+     navigate('/side-navbar/order')
      localStorage.removeItem('cartItems')
      window.location.reload(false);
-     toast.success(data.data.message)
+     
      
    }catch(error){
     console.log(error)
@@ -147,22 +126,23 @@ return toast.error('Please Select Your District');
   } 
 
     return (
-        <div className=' container'>
+      <div className='bg-white'>
+         <div className='container'>
    <div class=" row">
-        <div className='col-lg-8 shipping-address p-5 bg-white mt-4'>
+        <div className='col-lg-8 shipping-address p-5 bg-white'>
           <form onSubmit={AllOrder}>
           
-            <div class="">
+            <div className="">
               <div >
                 <h3>Shipping Address</h3>
                 <div className='row'>
                  <div className='col-lg-12 col-md-12 col-sm-12'>
                  <label for="name"><i class="fa fa-user"></i> Full Name</label>
-                <input type="text" required id="name" name="name" placeholder="Your Name"/>
+                <input type="text" required id="name" defaultValue={user?.name} name="name" placeholder="Your Name"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
                  <label for="email"><i class="fa fa-envelope"></i>Email</label>
-                <input type="email" required id="email" name="email" placeholder="Your Email"/>
+                <input type="email" required id="email" defaultValue={user?.email} name="email" placeholder="Your Email"/>
                  </div>
                  <div className='col-lg-6 col-md-6 col-sm-12'>
                  <label for="phone"><i class="fa fa-envelope"></i> Phone No</label>
@@ -405,15 +385,15 @@ return toast.error('Please Select Your District');
   </div>
   
   </div>
-  <div className='text-center checkout-button mt-3'>
- <input className='bg-info' type="submit" value='Order'/>
+  <div className='text-center checkout-button mt-3 rounded'>
+ <input className='order-button text-white fw-bold fs-5' type="submit" value='Order'/>
     
         </div>
       
         </form>
 </div>
-<div className='col-lg-4 col-md-4 col-sm-12 p-4 cart-total-part'>
-            <h6 className='mb-4 fs-5 checkout-title'>Checkout Summary</h6>
+<div className='col-lg-4 col-md-12 col-sm-12 px-4 cart-total-part'>
+            <h6 className='mb-4 fs-5 checkout-title text-danger fw-bolder'>চেক-আউট সামারি</h6>
             <div className='d-flex justify-content-between'>
                 <p>Sub Total</p>
                 <p>{cartTotalAmount}</p>
@@ -441,10 +421,7 @@ return toast.error('Please Select Your District');
    
       <ToastContainer />
   </div>
-  
-
-
-
+      </div>
     );
 };
 

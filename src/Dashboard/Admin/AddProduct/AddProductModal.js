@@ -276,14 +276,14 @@ const AddProductModal = ({show, handleClose}) => {
                     <span className="close" onClick={() => removeTag(index)}>&times;</span>
                 </div>
             )) }
-            <textarea onKeyDown={handleKeyDown} type="text" name="productTag"  className="tags-input" placeholder="Product Tag(Write then press entire to add new tag)" />
+            <textarea onKeyDown={handleKeyDown} type="text" name="productTag"  className="tags-input ps-2" placeholder="Product Tag(Write then press entire to add new tag)" />
                 </div>
                 <div className='d-flex justify-content-end mt-4'>
                       <div>
-                          <button className="btn btn-danger fs-5" onClick={handleClose} >Cancel</button>
+                          <button className="btn btn-dark fs-5" onClick={handleClose} >Cancel</button>
                       </div>
                       <div>
-                          <input className='btn btn-primary fs-5' type="submit" value="Add product" />
+                          <input className='btn btn-danger fs-5' type="submit" value="Add product" />
                       </div>
                 </div>
                   </form>

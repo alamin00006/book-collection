@@ -96,8 +96,9 @@ const SignUp = () => {
         navigate("/login");
       })
       .catch((error) => {
-        console.log(error);
-        navigate("/register");
+        console.log(error)
+        return toast.error(error.response.data.message)
+        
       });
 
  
@@ -117,29 +118,30 @@ const SignUp = () => {
                     <h3 className='mb-4'><b className='text-danger'>নাফিউনে </b> আকাউন্ট করুন</h3>
                           
                     <label htmlFor="name">পুরো নাম</label>
-                          <input onChange={(e)=>setName(e.target.value)} className='d-block' placeholder='Enter Your Name' type="text" name="name" id="email" />
+                          <input onChange={(e)=>setName(e.target.value)} className='d-block' placeholder='Enter Your Name' type="text" name="name" id="email" required/>
                           
                           <label className='mt-2' htmlFor="email">ইমেইল ঠিকানা</label>
-                          <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" />
+                          <input onChange={emailCheck} className='d-block' placeholder='Enter Your Email' type="email" name="email" id="email" required/>
                         {error?.emailError && <p className='text-danger'>{error.emailError}</p>}
                           
                           <label className='mt-2' htmlFor="password">পাসওয়ার্ড</label>
-                          <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" />
+                          <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" required/>
                           {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
                           <label className='mt-2' htmlFor="password">কনফার্ম পাসওয়ার্ড</label>
-                          <input onChange={confirmPasswordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="confirmPassword" id="password" />
+                          <input onChange={confirmPasswordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="confirmPassword" id="password" required/>
                           <p></p>
                         <input className='bg-danger text-white border-0 py-2 mt-2 fs-5' type="submit" value="রেজিস্টার" />
                         <p className='mt-3'>আমাদের সাথে একাউন্ট আছে?<Link className='text-danger' to = "/login"> সাইন ইন
                         </Link></p>
                         
-                        <ToastContainer/>
+                       
                     </div>
             </form>
                  </div>
             </div>
             
         </div>
+         <ToastContainer/>
         </div>
     
     );

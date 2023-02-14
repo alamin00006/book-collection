@@ -185,15 +185,13 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
                 </div>
              
                 <div className='d-flex justify-content-end mt-4'>
+                      
                       <div>
-                          <button className="btn btn-danger fs-5" onClick={handleClose}>Cancel</button>
-                      </div>
-                      <div>
-                          <input type="submit" className='btn btn-primary fs-5' value="Update Product" />
+                          <input type="submit" className='btn btn-danger fs-5' value="আপডেট করুন" />
                       </div>
                 </div>
                   </form>
-          
+                      
         </Modal.Body>
         
       </Modal>
