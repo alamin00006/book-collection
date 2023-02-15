@@ -1,27 +1,17 @@
-
-
 import { useQuery } from "react-query";
 // import useUser from "./useUser";
 
-const useProduct3 = () =>{
+const useAllOrder = () =>{
     // const [allOrder, setAllOrder] = useState([]);
-    const {data: myProducts3, isLoading, refetch} = useQuery('myProducts3', () => fetch('http://localhost:5000/api/v1/product', {
+    const {data: allOrder, isLoading, refetch} = useQuery('allOrder', () => fetch('http://localhost:5000/api/v1/order', {
         method: "GET",
     }).then(res =>res.json()))
   
-return [myProducts3, refetch,isLoading];
+return [allOrder, refetch,isLoading];
 
 }
 
-export default useProduct3;
-
-
-
-
-
-
-
-
+export default useAllOrder;
 
 
 
@@ -35,18 +25,18 @@ export default useProduct3;
 // import { useQuery } from "react-query";
 // import useUser from "./useUser";
 
-// const useProduct3 = () =>{
-//     const [myProducts3, setProducts3] = useState([]);
+// const useAllOrder = () =>{
+//     const [allOrder, setAllOrder] = useState([]);
 //     const [user] = useUser()
 //     const token = localStorage.getItem("token");
 // useEffect(() =>{
-//      fetch('http://localhost:5000/api/v1/product')
+//      fetch('http://localhost:5000/api/v1/order')
 //     .then(res =>res.json())
-//     .then(data => setProducts3(data));
+//     .then(data => setAllOrder(data));
 // },[user,token])
-// return [myProducts3, setProducts3];
+// return [allOrder, setAllOrder];
 
 // }
 
-// export default useProduct3;
+// export default useAllOrder;
 

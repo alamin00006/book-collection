@@ -7,13 +7,15 @@ import Loading from '../Loading/Loading';
 import useUser from '../../Hooks/useUser';
 import axios from 'axios';
 import useAllUser from '../../Hooks/useAllUser';
+import { useQuery } from 'react-query';
 
 const Login = () => {
         
-const [user] = useUser()
+const [user,refetch,isLoading] = useUser()
 const [allUser] = useAllUser()
-console.log(allUser)
-
+// console.log(allUser)
+const token = localStorage.getItem("token");
+// console.log(user)
       const [userInfo, setUserInfo] = useState({
         email: "",
         password : ''
@@ -38,6 +40,8 @@ console.log(allUser)
       //     navigate(from, { replace: true });
       //   }
       // }, [token, from, navigate])
+   
+    
   
           const emailCheck = (e) =>{
           const emailRegex = /\S+@\S+\.\S+/;
@@ -80,10 +84,17 @@ console.log(allUser)
  }
 
 
-//  if(Userloading||loading){
-//    return <Loading></Loading> ;  
+//  if(isLoading){
+//   return(<Loading></Loading>)  
 //  }
+useEffect(() =>{
+    if(!user?.email){
+      refetch()
+  }else{
+    navigate('/')
+  }
 
+}, [refetch, token,user, isLoading,navigate])
 
     return (
        

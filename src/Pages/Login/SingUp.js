@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -8,6 +8,8 @@ import useUser from '../../Hooks/useUser';
 import axios from 'axios';
 import './SingUp.css'
 const SignUp = () => {
+  const [user,refetch,isLoading] = useUser()
+  const token = localStorage.getItem("token");
   const [name, setName] = useState()
   const [userInfo, setUserInfo] = useState({
       email: "",
@@ -103,7 +105,14 @@ const SignUp = () => {
 
  
  }
+useEffect(() =>{
+    if(!user?.email){
+      refetch()
+  }else{
+    navigate('/')
+  }
 
+}, [refetch, token,user, isLoading,navigate])
     return (
         <div className='bg-white'>
             <div className='container'>

@@ -54,6 +54,7 @@ import Coupon from './Dashboard/Admin/Coupon/Coupon';
 import TagsInput from './Dashboard/Admin/AddProduct/TagsInput';
 import Category from './Pages/Categorys/Category';
 import CategoryDetails from './Pages/Categorys/CategoryDetails';
+import OrderManagePage from './Dashboard/Admin/OrderMange/OrderManagePage';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -91,42 +92,7 @@ function App() {
 
   const AddToCarts = (item)=>{
     // dispatch(addToCart(item));
-    console.log(item);
-//     const orderData = {
-//       orderId : item._id ,
-//       name: item.name,
-//       customer:user?.email,
-//       customerName:user?.displayName,
-//       picture:item.picture,
-//       price : item.price,
-//       totalPrice:item.price,
-//       quantity:item.quantity,
-//       stock:item.stock,
-//       suppliyerName:item.suppliyerName,
-//       description:item.description
-    
-//   }
-
-//  const alreadyCarts = carts.find(cart =>cart?.orderId === item._id);
-
-//   if(alreadyCarts){
-//     return;
-//   }
-//   fetch(`http://localhost:5000/carts`, {
-//   method: 'POST',
-//   headers:{
-//     'content-type': 'application/json',
-//     authorization : `Bearer ${localStorage.getItem('accessToken')}`
-  
-//   },
-//   body: JSON.stringify(orderData)
-//   })
-//   .then(res => res.json()
-   
-//   )
-//   .then(data => {
- 
-//   })
+    // console.log(item);
 
   } 
   
@@ -185,6 +151,7 @@ function App() {
               <Route path='book-fair-add' element={<BookFair></BookFair>}></Route>
               <Route path='coupon-add' element={<Coupon></Coupon>}></Route>
               <Route path='order' element={<Order></Order>}></Route>
+              <Route path='order-manage' element={<OrderManagePage/>}></Route>
          </Route>
 
       </Routes>

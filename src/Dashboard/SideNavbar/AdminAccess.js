@@ -25,7 +25,7 @@ const AdminAccess = () => {
                     <OrderIcon/>
                 </div>
                 <div className='ms-2'>
-                    <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>অর্ডারস</Link>
+                    <Link to='/side-navbar/order-manage' className='text-decoration-none text-black'>অর্ডারস</Link>
                 </div>
           </li>
           <li className='list-unstyled d-flex align-items-center mt-4'>

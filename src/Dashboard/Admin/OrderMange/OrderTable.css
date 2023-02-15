@@ -1,0 +1,8 @@
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: white !important;
+}
+.order-status{
+    color: #065644;
+    font-weight: 900;
+    font-size: 14px;
+}

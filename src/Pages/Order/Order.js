@@ -49,7 +49,9 @@ try {
   console.log(error)
 }
 
-// if(isLoading){
+
+
+// if(isLoadingOrder){
 //   <Loading></Loading>
 // }
 

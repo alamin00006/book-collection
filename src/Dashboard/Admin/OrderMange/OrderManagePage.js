@@ -1,12 +1,10 @@
 
 import React, { useState } from 'react';
 import { Button} from 'react-bootstrap';
-import AddProductModal from './AddProductModal';
+// import AddProductModal from './AddProductModal';
+import OrderManage from './OrderMange';
 
-import ProductManage from './ProductManage';
-
-
-const ProductPage = () => {
+const OrderManagePage = () => {
     const [show, setShow] = useState(false);
     
     const handleClose = () => setShow(false);
@@ -47,14 +45,14 @@ const ProductPage = () => {
                      </div>
 
                     
-                    <AddProductModal show={show} setShow={setShow} handleClose={handleClose}/>
+                    {/* <AddProductModal show={show} setShow={setShow} handleClose={handleClose}/> */}
                     
     
                  </div>
              </div>
-              <ProductManage/>
+           <OrderManage/>
         </div>
     );
 };
 
-export default ProductPage;
+export default OrderManagePage;

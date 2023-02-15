@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
 import editProduct from './Product.module.css'
 
-const EditProductModal = ({show, handleClose, productEdit}) => {
+const EditProductModal = ({refetch,show, handleClose, productEdit}) => {
   const [discount, setDiscount] = useState('0')
   console.log(productEdit?._id)
  const [categories] = useCategories();
@@ -85,13 +85,11 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
         }
       });
         
-        if(data.status===400){
-          return toast.error(data.data.error)
-        }
-        toast.success(data.data.message)
+       refetch()
+       return toast.success(data.data.message)
          
        }catch(error){
-        console.log(error)
+        return toast.error(error.response.data.message)
        }
       
     
@@ -195,7 +193,7 @@ const EditProductModal = ({show, handleClose, productEdit}) => {
         </Modal.Body>
         
       </Modal>
-      <ToastContainer/>
+   
         </div>
     );
 };

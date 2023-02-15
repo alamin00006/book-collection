@@ -1,3 +1,5 @@
+
+
 import { async } from "@firebase/util";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -30,6 +32,9 @@ const useUser = ()=>{
             headers: {
               Authorization : `Bearer ${token}`
             },
+          },
+          {
+            refetchInterval: 6000
           })
           .then((data) => setUser(data?.data?.data))
           .catch((err) => {

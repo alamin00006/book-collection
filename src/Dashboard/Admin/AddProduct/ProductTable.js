@@ -7,9 +7,9 @@ import DetailsIcon from '../../../svgIcons/DetailsIcon';
 import EditIcon from '../../../svgIcons/EditIcon';
 import './ProductTable.css'
 
-const ProductTable = ({setEditProduct, product, index, handleShow, setDeleteProduct, productDelete}) => {
+const ProductTable = ({refetch,setEditProduct, product, index, handleShow, setDeleteProduct, productDelete}) => {
 
-console.log(productDelete)
+// console.log(productDelete)
 const handleDelete = async()=>{
 
 
@@ -26,14 +26,11 @@ const handleDelete = async()=>{
           'Content-Type': 'application/json'
         }
       });
-        
-        if(data.status===400){
-          return toast.error(data.data.error)
-        }
-        toast.success(data.data.message)
+         refetch()
+       return toast.success(data.data.message)
          
        }catch(error){
-        console.log(error)
+        return toast.error(error.response.data.message)
        }
       
 }
@@ -41,7 +38,7 @@ const handleDelete = async()=>{
     
 
     return (
-            <tr>
+        <tr>
         <td>{index+1}</td>
         <td>{product?.nameB}</td>
         <td>{product?.quantity}</td>
@@ -68,9 +65,8 @@ const handleDelete = async()=>{
                     </div>
             </div>
         </td>
-        
-        </tr>
-      
+       
+        </tr>           
     );
 };
 

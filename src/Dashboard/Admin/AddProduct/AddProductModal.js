@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { toast, ToastContainer } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
+import useProduct3 from '../../../Hooks/UseProduct3';
 import addProduct from './Product.module.css'
 
 
 const AddProductModal = ({show, handleClose}) => {
-  
+  const [myProducts3, refetch] = useProduct3()
   const [discount, setDiscount] = useState('0')
   const [image, setImage] = useState([])
   const [productPdf, setProductPdf] = useState([])
@@ -152,12 +153,9 @@ const AddProductModal = ({show, handleClose}) => {
  
        try{
         const data = await axios.post('http://localhost:5000/api/v1/product',formData);
-        
-        if(data.status===400){
-          return toast.error(data.data.error)
-        }
-        
-        toast.success(data.data.message)
+       
+        refetch()
+       toast.success(data.data.message)
          
        }catch(error){
         return(error.message)
@@ -291,7 +289,7 @@ const AddProductModal = ({show, handleClose}) => {
         </Modal.Body>
         
       </Modal>
-      <ToastContainer/>
+
         </div>
     );
 };
