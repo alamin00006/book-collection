@@ -10,8 +10,9 @@
     width: 60px;
     height: 60px;
 }
-.pagination{
-    margin-right: 10px;
+.pagination button{
+    margin-right: 5px;
+    border-radius: 5px;
 }
 .page-selected{
     background-color: red;

@@ -1,5 +1,10 @@
 .category-list{
-    background-color: aquamarine;
-    height: 100px;
+    background-color: #12856a;
+    height: 80px;
     cursor: pointer;
+    color:white;
+    border-radius: 5px;
+}
+.product-related-info{
+    border:1px solid #12856a;
 }

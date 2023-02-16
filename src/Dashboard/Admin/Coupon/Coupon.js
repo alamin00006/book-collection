@@ -30,7 +30,7 @@ const Coupon = () => {
 
     return (
         <div className='product-info '>
-              <h2 className='text-center p-5 bg-danger text-white'>Coupon Add</h2>
+              <h2 className='text-center p-5 text-white'>Coupon Add</h2>
             <form onSubmit={handleCouponAdd} className='category-form'>
                  <div className=''>
                    
@@ -39,7 +39,7 @@ const Coupon = () => {
 
                          <input style={{width:"100%", height:'60px', border:'1px solid gray'}} type="number" name='discountPercent' className='rounded fs-5 mt-1' placeholder='Enter Discount' />
 
-                        <input style={{width:"100%", height:'60px'}} className='bg-warning rounded text-white fw-bolder fs-5 mt-1' type="submit" value='Coupon Add'/>
+                        <input style={{width:"100%", height:'60px'}} className='product-info-add rounded text-white fw-bolder fs-5 mt-1' type="submit" value='Coupon Add'/>
                        </div>
                     
                  </div>

@@ -1,15 +1,11 @@
-import { useState } from "react";
 import { useQuery } from "react-query";
 // import useUser from "./useUser";
-
 const useAllOrder = () =>{
-    const [pageCount, setPageCount] = useState(0)
-    const [page, setPage] = useState(1)
     const {data: allOrder, isLoading, refetch} = useQuery('allOrder', () => fetch('http://localhost:5000/api/v1/order', {
         method: "GET",
     }).then(res =>res.json()))
   
-return [allOrder, refetch,isLoading, pageCount, setPageCount,page,setPage];
+return [allOrder, refetch,isLoading];
 
 }
 

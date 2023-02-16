@@ -6,7 +6,7 @@ import AddProductModal from './AddProductModal';
 import ProductManage from './ProductManage';
 
 
-const ProductPage = () => {
+const ProductPage = ({refetch}) => {
     const [show, setShow] = useState(false);
     
     const handleClose = () => setShow(false);
@@ -41,18 +41,18 @@ const ProductPage = () => {
                      
                      <div className=''>
                        
-                       <Button className='bg-warning text-white  rounded px-5 py-2' onClick={handleShow}>
+                       <Button className='product-manage-page text-white  rounded px-5 py-2' onClick={handleShow}>
                        + Add Product
                     </Button>
                      </div>
 
                     
-                    <AddProductModal show={show} setShow={setShow} handleClose={handleClose}/>
+                    <AddProductModal refetch={refetch} show={show} setShow={setShow} handleClose={handleClose}/>
                     
     
                  </div>
              </div>
-              <ProductManage/>
+              {/* <ProductManage/> */}
         </div>
     );
 };

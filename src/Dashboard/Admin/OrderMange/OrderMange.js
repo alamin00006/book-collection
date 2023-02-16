@@ -1,29 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Table } from 'react-bootstrap';
-import useAllOrder from '../../../Hooks/useAllOrder';
+import { useQuery } from "react-query";
 import { ToastContainer } from 'react-toastify';
-// import EditProductModal from './EditProductModal';
 import OrderTable from './OrderTable';
 import './OrderTable.css'
 // import OrderPagination from './OrderPagination';
 
 const OrderManage = () => {
+  const [orderDelete, setOrderDelete] = useState(null)
+  const [pageCount, setPageCount] = useState(0)
+  const [page, setPage] = useState(0)
+  const [allOrder,setAllOrder] = useState([]);
 
-    const [orderDelete, setOrderDelete] = useState(null)
-
-    const [allOrder, refetch] = useAllOrder();
-    // console.log(allOrder?.data?.length)
-    // const [pageCount, setPageCount] = useState(0)
-    // const [page, setPage] = useState(1)
-
-   
-    useEffect(() =>{
-      if(allOrder?.data.length >0){
-        const totalPageCount = Math.ceil(allOrder?.data.length/5);
-        setPageCount(totalPageCount);
-      }
-    },[allOrder])
-    console.log(pageCount)
+  const { isLoading, refetch} = useQuery(['allOrder',page], () => fetch(`http://localhost:5000/api/v1/order?page=${page}&size=${5}`, {
+      method: "GET",
+  }).then(res =>res.json())
+  .then(data =>{
+    setAllOrder(data?.data?.orders)
+    const totalPageCount = Math.ceil(data?.data?.orderTotalCount/5);
+     setPageCount(totalPageCount)
+ 
+  }))
+  
     return (
         <div>
             <Table striped bordered responsive className='mt-3'>
@@ -42,19 +40,22 @@ const OrderManage = () => {
       <tbody>
         
       {
-             allOrder?.data?.map((order, index) => <OrderTable order={order} index={index} setOrderDelete={setOrderDelete} orderDelete={orderDelete}  refetch={refetch}></OrderTable>)
+             allOrder?.map((order, index) => <OrderTable order={order} index={index} setOrderDelete={setOrderDelete} orderDelete={orderDelete}  refetch={refetch}></OrderTable>)
           } 
            <ToastContainer className="toast-position"
         position="top-center"/>
       </tbody>
     </Table>
     {/* <OrderPagination/> */}
-     <div className='pagination'>
+     <div className='pagination d-flex justify-content-end'>
      {
-        [...Array(pageCount).keys()].map(number =><button
+        [...Array(pageCount).keys()].map((number,index) =><div key={index}>
+          <button
            onClick={()=>setPage(number)}
            className={page===number?'page-selected':''}>
-            {number+1}</button>)
+            {number+1}</button>
+        </div>)
+           
       }
      </div>
         </div>

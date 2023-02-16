@@ -1,12 +1,12 @@
 .logo{
-    width: 200px;
-    height: auto;
+    width: 100px;
+    height: 50px;
 }
 .sing-Out{
 cursor: pointer;
 }
 .account-part{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 .account-part:hover{
     text-decoration: none;

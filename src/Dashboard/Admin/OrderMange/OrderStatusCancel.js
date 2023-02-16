@@ -42,10 +42,20 @@ const OrderStatusCancel = ({order,refetch}) => {
         {
             order?.orderStatus === "Cancelled"?<div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked disabled/>
-          </div>:
-            <div onClick={handleOrderStatus} class="form-check form-switch">
+          </div>:''
+            
+        }
+        {
+            order?.orderStatus === "Approved"?<div onClick={handleOrderStatus} class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-        </div>
+        </div>:''
+            
+        }
+        {
+            order?.orderStatus === "Pending"?<div onClick={handleOrderStatus} class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+        </div>:''
+            
         }
       </div>
     );

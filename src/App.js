@@ -56,6 +56,8 @@ import Category from './Pages/Categorys/Category';
 import CategoryDetails from './Pages/Categorys/CategoryDetails';
 import OrderManagePage from './Dashboard/Admin/OrderMange/OrderManagePage';
 import ResetPasssword from './Pages/Login/ResetPasssword';
+import ReviewMange from './Dashboard/Admin/ReviewMange/ReviewMange';
+import ProductManage from './Dashboard/Admin/AddProduct/ProductManage';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -146,7 +148,7 @@ function App() {
          <Route path='/side-navbar' element={<SideNavbar></SideNavbar>}>
               <Route index element={<Dashboard></Dashboard>}></Route>
               <Route path='user-order' element={<UserOrder></UserOrder>}></Route>
-              <Route path='product-page' element={<ProductPage></ProductPage>}></Route>
+              <Route path='product-page' element={<ProductManage/>}></Route>
               <Route path='category-add' element={<CategoryAdd></CategoryAdd>}></Route>
               <Route path='writer-add' element={<WriterAdd></WriterAdd>}></Route>
               <Route path='publication-add' element={<Publication></Publication>}></Route>
@@ -154,6 +156,7 @@ function App() {
               <Route path='coupon-add' element={<Coupon></Coupon>}></Route>
               <Route path='order' element={<Order></Order>}></Route>
               <Route path='order-manage' element={<OrderManagePage/>}></Route>
+              <Route path='review-manage' element={<ReviewMange/>}></Route>
          </Route>
 
       </Routes>

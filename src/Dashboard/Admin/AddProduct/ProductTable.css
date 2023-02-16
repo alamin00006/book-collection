@@ -2,5 +2,8 @@
     cursor:pointer
 }
 .edit-icon{
-    background-color: rgb(138, 209, 220) !important;
+    background-color: #065644 !important;
+}
+.product-manage-page{
+    background-color: #065644 !important;
 }

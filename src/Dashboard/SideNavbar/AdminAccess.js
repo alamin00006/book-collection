@@ -6,6 +6,7 @@ import CouponIcon from '../../svgIcons/CouponIcon';
 import OrderIcon from '../../svgIcons/OrderIcon';
 import ProductIcon from '../../svgIcons/ProductIcon';
 import PublicationIcon from '../../svgIcons/PublicationIcon';
+import ReviewIcon from '../../svgIcons/ReviewIcon';
 import WriterIcon from '../../svgIcons/WriterIcon';
 
 const AdminAccess = () => {
@@ -26,6 +27,14 @@ const AdminAccess = () => {
                 </div>
                 <div className='ms-2'>
                     <Link to='/side-navbar/order-manage' className='text-decoration-none text-black'>অর্ডারস</Link>
+                </div>
+          </li>
+            <li className='list-unstyled d-flex align-items-center mt-4'>
+                <div>
+                    <ReviewIcon/>
+                </div>
+                <div className='ms-2'>
+                    <Link to='/side-navbar/review-manage' className='text-decoration-none text-black'>রিভিউস</Link>
                 </div>
           </li>
           <li className='list-unstyled d-flex align-items-center mt-4'>

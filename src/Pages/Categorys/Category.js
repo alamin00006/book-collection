@@ -10,7 +10,8 @@ const Category = () => {
         navigate(`/category/${_id}`)
         }
     return (
-        <div className='container'>
+      <div className='bg-white'>
+            <div className='container product-related-info'>
             <div className='row mt-2 g-2'>
             {
                categories?.data?.map(category =><div key={category._id} className='col-lg-3 col-md-4 col-sm-6'>
@@ -21,6 +22,7 @@ const Category = () => {
             }
             </div>
         </div>
+      </div>
     );
 };
 

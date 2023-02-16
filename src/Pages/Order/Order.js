@@ -17,7 +17,7 @@ const Order = () => {
     const shipping = 50;
     const [myProducts2, setProducts2] = useState([]);
 
-  const { isLoading } = useQuery(
+  const { isLoading,refetch } = useQuery(
     "data",
     async () => {
       const { data } = await axios.get(
@@ -41,10 +41,13 @@ try {
  async function fetchData(){
  await fetch(`http://localhost:5000/api/v1/order/${user?.email}`)
   .then(res =>res.json())
-  .then(data => setProducts2(data?.data));
+  .then(data => {
+    setProducts2(data?.data)
+    refetch()
+  });
  }
  fetchData()    
-  },[user,token])
+  },[user,token,refetch])
 } catch (error) {
   console.log(error)
 }

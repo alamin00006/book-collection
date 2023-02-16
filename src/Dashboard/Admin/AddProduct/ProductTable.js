@@ -7,7 +7,7 @@ import DetailsIcon from '../../../svgIcons/DetailsIcon';
 import EditIcon from '../../../svgIcons/EditIcon';
 import './ProductTable.css'
 
-const ProductTable = ({refetch,setEditProduct, product, index, handleShow, setDeleteProduct, productDelete}) => {
+const ProductTable = ({refetch,setEditProduct,setProductDetails, product, index, handleShowEdit,handleShowDetails, setDeleteProduct, productDelete}) => {
 
 // console.log(productDelete)
 const handleDelete = async()=>{
@@ -43,14 +43,18 @@ const handleDelete = async()=>{
         <td>{product?.nameB}</td>
         <td>{product?.quantity}</td>
         <td>{product?.price}</td>
-        <td className='text-center'>
-            <span className='details-icon'>
+        <td className='text-center' onClick={()=>setProductDetails(product)}>
+            <Button className='details-icon' onClick={handleShowDetails} >
+                <span>
                 <DetailsIcon/>
-            </span></td>
+                </span>
+            </Button>
+        
+        </td>
         <td>
             <div className='d-flex align-items-center justify-content-center'>
-                <div onClick={setEditProduct(product)}>
-                    <Button className='edit-icon' onClick={handleShow} >
+                <div onClick={()=>setEditProduct(product)}>
+                    <Button className='edit-icon' onClick={handleShowEdit} >
                         <span>
                             <EditIcon/>
                         </span>

@@ -1,14 +1,13 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 import useCategories from '../../../Hooks/useCategories';
-import useProduct3 from '../../../Hooks/UseProduct3';
 import addProduct from './Product.module.css'
 
 
-const AddProductModal = ({show, handleClose}) => {
-  const [myProducts3, refetch] = useProduct3()
+const AddProductModal = ({refetch,show, handleClose}) => {
+
   const [discount, setDiscount] = useState('0')
   const [image, setImage] = useState([])
   const [productPdf, setProductPdf] = useState([])
@@ -27,6 +26,7 @@ const AddProductModal = ({show, handleClose}) => {
  const removeTag =(index)=>{
      setTags(tags.filter((el, i) => i !== index))
  }
+
  const handleNewProduct = async(e) =>{
   e.preventDefault();
     if(tags.length >5){
@@ -149,20 +149,17 @@ const AddProductModal = ({show, handleClose}) => {
         }
        }
     
-   
- 
        try{
         const data = await axios.post('http://localhost:5000/api/v1/product',formData);
+        refetch() 
+        toast.success(data.data.message)
        
-        refetch()
-       toast.success(data.data.message)
-         
        }catch(error){
-        return(error.message)
+        return toast.warn(error.response.data.message)
        }
          
       e.target.reset()
-      
+     
     
 };
     return (
@@ -261,7 +258,7 @@ const AddProductModal = ({show, handleClose}) => {
                 </div>
 
                <div className='col-lg-6 mt-2'> 
-                  <label> Upload a Pdf (if you have) : </label>
+                  <label> Upload a Pdf : </label>
                   <input multiple onChange={(e) =>{setProductPdf(e.target.files)}} required type="file" className='product-picture' name="pdf" placeholder='productPicture' id="" />
                 </div>
 

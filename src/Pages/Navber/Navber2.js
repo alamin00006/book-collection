@@ -4,7 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import logo from '../../Images/booklogo.jpg'
+import logo from '../../Images/nafieun-logo.jpeg'
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 import '../Navber/Navber2.css'
 import { Link, useNavigate } from 'react-router-dom';

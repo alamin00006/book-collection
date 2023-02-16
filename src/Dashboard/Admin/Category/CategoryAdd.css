@@ -1,9 +1,18 @@
 .product-info{
     margin-top: 20px;
-    background-color: rgb(89 255 224 / 25%);
+    background-color: #12856a;
+    /* background-color: #065644; */
     border-radius: 5px;
+}
+.product-info h2{
+    
+    background-color: #065644;
+    /* background-color: #12856a; */
+  
 }
 .category-form{
     padding: 100px 15px;
-    
+}
+.product-info-add{
+ background-color: red;
 }
