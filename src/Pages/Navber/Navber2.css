@@ -5,6 +5,12 @@
 .sing-Out{
 cursor: pointer;
 }
+.account-part{
+    text-decoration: none;
+}
+.account-part:hover{
+    text-decoration: none;
+}
 .first-navbar{
     background-color: #12856a;
 }

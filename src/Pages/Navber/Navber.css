@@ -11,8 +11,8 @@
 .subject-link{
     color: white !important;
     text-decoration: none;
-    
-    
+    cursor: pointer;
+   
 }
 .subject-link:hover{
    text-decoration: none;
@@ -74,6 +74,22 @@
    text-decoration: none;
    background-color: white;
    color: red;
+}
+
+.dropdown-menu{
+    border: 1px solid black !important;
+
+}
+.dropdown-menu ul .book-fair{
+     width: 208px;
+
+}
+
+.dropdown-menu ul .book-fair:hover{
+   text-decoration: none;
+   background-color: white;
+   color: red;
+   cursor: pointer;
 }
 
 

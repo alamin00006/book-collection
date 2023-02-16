@@ -2,14 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const OrderStatusUpdate = ({order,refetch}) => {
+const OrderStatusCancel = ({order,refetch}) => {
 
   const handleOrderStatus = async()=>{
  
  
    const formData = new FormData();
   
-    formData.append('orderStatus', "Approved")
+    formData.append('orderStatus', "Cancelled")
    
 //    if(orderStatusUpdate){
 //     setOrderStatusUpdate(false)
@@ -40,7 +40,7 @@ const OrderStatusUpdate = ({order,refetch}) => {
         
       <div>
         {
-            order?.orderStatus === "Approved"?<div class="form-check form-switch">
+            order?.orderStatus === "Cancelled"?<div class="form-check form-switch">
             <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked disabled/>
           </div>:
             <div onClick={handleOrderStatus} class="form-check form-switch">
@@ -51,4 +51,4 @@ const OrderStatusUpdate = ({order,refetch}) => {
     );
 };
 
-export default OrderStatusUpdate;
+export default OrderStatusCancel;

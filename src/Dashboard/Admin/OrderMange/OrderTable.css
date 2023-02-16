@@ -6,3 +6,14 @@
     font-weight: 900;
     font-size: 14px;
 }
+.order-image img{
+    width: 60px;
+    height: 60px;
+}
+.pagination{
+    margin-right: 10px;
+}
+.page-selected{
+    background-color: red;
+    color:white;
+}

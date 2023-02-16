@@ -79,7 +79,7 @@ const token = localStorage.getItem("token");
   
          
    }catch(error){
-    return toast.error(error.response.data.message)
+    return toast.warn(error.response.data.message)
    }
  }
 
@@ -118,7 +118,7 @@ useEffect(() =>{
                           <input onChange={passwordCheck} className='d-block mt-2' type="password" placeholder='Enter Your Password' name="password" id="password" required/>
                           {error?.passWordError&& <p className='text-danger'>{error.passWordError}</p>}
                           <div className='d-flex justify-content-end'>
-                          <Link to="" className='text-danger forgot-password py-1'>
+                          <Link to="/reset-password" className='text-danger forgot-password py-1'>
                           পাসওয়ার্ড ভুলে গেছেন?
                           </Link>
                           </div>
@@ -133,7 +133,8 @@ useEffect(() =>{
             </div>
             
         </div>
-        <ToastContainer/>
+        <ToastContainer className="toast-position"
+        position="top-center"/>
         </div>
     );
 };

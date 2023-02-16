@@ -61,15 +61,13 @@ const Navber2 = () => {
         <Nav.Link className='ms-5 text-decoration-none text-white' as={Link} to="/cart">
           <ShoppingCartIcon className='add-to-icon1'/>{cart?.cartItems?.length}
             </Nav.Link>
-           
-             
-            {user?.email?<>
+         {user?.email?<>
             
        {/* <p className="mt-3 ms-3 text-black sing-Out">
           <Link onClick={SingOutHandle} to="">Sign Out</Link>
        </p> */}
        <p className="mt-3 ms-3 text-black sing-Out ">
-          <Link className='text-white' to="/side-navbar">আমার একাউন্ট</Link>
+          <Link className='text-white account-part' to="/side-navbar">আমার একাউন্ট</Link>
        </p>
       
       </>:

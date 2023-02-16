@@ -94,12 +94,11 @@ const SignUp = () => {
    axios
       .post("http://localhost:5000/api/v1/user/signup", {name:name,email:userInfo?.email, password:userInfo?.password })
       .then(() => {
-        // console.log("user is registered");
-        navigate("/login");
+          navigate("/login");
       })
       .catch((error) => {
         console.log(error)
-        return toast.error(error.response.data.message)
+        return toast.warn(error.response.data.message)
         
       });
 
@@ -150,7 +149,8 @@ useEffect(() =>{
             </div>
             
         </div>
-         <ToastContainer/>
+         <ToastContainer className="toast-position"
+        position="top-center"/>
         </div>
     
     );

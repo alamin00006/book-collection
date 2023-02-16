@@ -65,7 +65,7 @@ const nagadNumber =  e.target?.nagadNumber?.value;
 const nagadTrx =  e.target?.nagadTrx?.value;
 
 if(district==='Select Your District'){
-return toast.error('Please Select Your District');
+return toast.error('আপনার জেলার টি সিলেক্ট করুন');
 }
  
   const orderData = {
@@ -88,41 +88,17 @@ return toast.error('Please Select Your District');
   };
   
   try{
-    const data = await axios.post('http://localhost:5000/api/v1/order',orderData);
-    
-    if(data.status===400){
-      return toast.error(data.data.error)
-    }
+     await axios.post('http://localhost:5000/api/v1/order',orderData);
+  
     //  toast.success(data.data.message)
-     navigate('/side-navbar/order')
      localStorage.removeItem('cartItems')
+     navigate('/side-navbar/order')
      window.location.reload(false);
-     
-     
+
    }catch(error){
     console.log(error)
    }
-     
-  // e.target.reset()
 
-
-
-
-  // fetch(`http://localhost:5000/api/v1/order`, {
-  // method: 'POST',
-  // headers:{
-  //   'content-type': 'application/json',
-   
-  // },
-  // body: JSON.stringify(orderData)
-  // })
-  // .then(res => res.json()
-  // )
-  // .then(data => {
-  //     // navigate('/order')
-  //     localStorage.removeItem('cartItems')
-  //     // window.location.reload(false);
-  // })
   } 
 
     return (
@@ -386,7 +362,7 @@ return toast.error('Please Select Your District');
   
   </div>
   <div className='text-center checkout-button mt-3 rounded'>
- <input className='order-button text-white fw-bold fs-5' type="submit" value='Order'/>
+ <input className='order-button text-white fw-bold fs-5' type="submit" value='অর্ডার কনফার্ম করুন'/>
     
         </div>
       
@@ -419,7 +395,8 @@ return toast.error('Please Select Your District');
            </div>
       </div>
    
-      <ToastContainer />
+      <ToastContainer className="toast-position"
+        position="top-center"/>
   </div>
       </div>
     );

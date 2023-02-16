@@ -62,19 +62,19 @@ const orderDetails =(_id) =>{
 
  return (
         <div className='container'>
-        
+            <h4 className='mt-4 fw-bolder'>অর্ডার</h4>
         {
           myProducts2.length <=0?<h5 className='mt-5 text-danger'>দুঃখিত আপনি আমাদের কাছে এখন পর্যন্ত কোনো অর্ডার করেন নি</h5>:
           <div className="order-table">
-          <Table striped>
+          <Table striped bordered className='mt-4'>
       <thead>
         <tr>
           <th>#</th>
-          <th>Date</th>
-          <th>State</th>
-          <th>Tk</th>
-          <th>Payment Method</th>
-          <th>Action</th>
+          <th>তারিখ</th>
+          <th>অবস্থা</th>
+          <th>মোট</th>
+          <th>মূল্যপরিশোধ পদ্ধতি</th>
+          <th>এ্যকশান</th>
         </tr>
       </thead>
       <tbody>
@@ -85,10 +85,12 @@ const orderDetails =(_id) =>{
             <tr key={data?._id}>
                <td>{data?._id.slice(13)}</td>
                <td>{data?.updatedAt.split('T')?.[0]}</td>
-               <td className='text-danger fw-bold'>{data?.orderStatus}</td>
-               <td className="fw-bold">{data?.orderItems?.[0]?.cartTotalAmount+shipping}</td>
-               <td>{data?.paymentType}</td>
-               <td className='see-details' onClick={()=>orderDetails(data?._id)}>See Details</td>
+               <td className={`${data?.orderStatus==="Approved"?"customer-order-status":'text-danger fw-bold'}`}>{data?.orderStatus}</td>
+               <td className="fw-bold">Tk {data?.orderItems?.[0]?.cartTotalAmount+shipping}</td>
+               <td>
+                {data?.paymentType}
+               </td>
+               <td className='see-details' onClick={()=>orderDetails(data?._id)}>দেখুন</td>
             </tr>
           )
         })

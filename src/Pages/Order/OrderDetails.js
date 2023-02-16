@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
-import Loading from '../Loading/Loading';
+// import Loading from '../Loading/Loading';
 import './OrderDetails.css'
-import invoiceLogo from '../../Images/invoicelogo.png'
+import nafiuenLogo from '../../Images/nafieun-logo.jpeg'
 import { Table } from 'react-bootstrap';
 import { PrinterIcon } from '@heroicons/react/24/outline'
 
@@ -37,9 +37,10 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
 
 
     return (
-        <div className='container'>
-            <div className=''>
-                  <div className='thanks px-3 py-2 mt-5 rounded'>
+        <div className='bg-white'>
+            <div className='container'>
+            <div className='pt-2'>
+                  <div className='thanks px-3 py-3 rounded'>
                       <h6>Thank you {orderProduct?.name}, Your order have been received !
                       </h6>
                   </div>
@@ -49,14 +50,11 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
                  <div className=''>
                     <div className='d-flex align-items-center'>
                         <div className='mb-2'>
-                            <img className='invoice-logo' src={invoiceLogo} alt=''/>
+                            <img className='invoice-logo' src={nafiuenLogo} alt=''/>
                         </div>
-                        <h6>BOIFLY</h6>
                     </div>
                      <div className='our-address'>
-                     
-                     <h6>Book Shop</h6>
-                      <p>Bangla Bazar, Dhaka</p>
+                    <p>Bangla Bazar, Dhaka</p>
                       <p>105 No. House</p>
                      </div>
                  </div>
@@ -65,8 +63,8 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
             
             <div className='d-lg-flex flex-sm-none justify-content-between invoice-part border-top border-white p-4'>
                <div>
-                   <h6>DATE</h6>
-                   <p>29/12/2022</p>
+               <h6>ORDER DATE</h6>
+                   <p>{orderProduct?.updatedAt?.split('T')?.[0]}</p>
                </div>
                    <div>
                         <h6>INVOICR NO.</h6>
@@ -89,11 +87,12 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
                  </div>
                  
             </div>
-            <div className='bg-white p-4'>
-               <Table responsive hover className='border' size="sm">
+            <div className='bg-white pt-2'>
+               <Table responsive bordered  size="sm">
                     <thead>
                         <tr className='text-center'>
                         <th>#</th>
+                        <th>Product</th>
                         <th>PRODUCT NAME</th>
                         <th>QUANTITY</th>
                         <th>ITEM PRICE</th>
@@ -106,6 +105,7 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
                         return(
                         <tr className='text-center'>
                             <td>{index+1}</td>
+                            <td className='order-image'><img src={`http://localhost:5000/${order?.image?.[0]}`} alt=""/></td>
                             <td>{order.nameB}</td>
                             <td className='fw-bolder'> {order.cartQuantity}</td>
                             <td className='fw-bolder'>{order.price}</td>
@@ -148,6 +148,7 @@ const total = orderProduct?.orderItems?.[0]?.cartTotalAmount + shipping;
                     </button>
                 </div>
             </div>
+        </div>
         </div>
         </div>
     );

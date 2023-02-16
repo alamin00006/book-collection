@@ -55,6 +55,7 @@ import TagsInput from './Dashboard/Admin/AddProduct/TagsInput';
 import Category from './Pages/Categorys/Category';
 import CategoryDetails from './Pages/Categorys/CategoryDetails';
 import OrderManagePage from './Dashboard/Admin/OrderMange/OrderManagePage';
+import ResetPasssword from './Pages/Login/ResetPasssword';
 
 function App() {
   const [user] = useAuthState(auth);
@@ -115,6 +116,7 @@ function App() {
         <Route path='/EducationResearch' element={<EducationResearch></EducationResearch>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/singUp' element={<SignUp carts={carts}></SignUp>}></Route>
+        <Route path='/reset-password' element={<ResetPasssword/>}></Route>
         <Route path='/summary' element={<Product3Summary></Product3Summary>}></Route>
         <Route path='/productDetails/:detailsId' element={<ProductDetails></ProductDetails>}></Route>
         <Route path='/product2Details/:details2Id' element={<Product2Details></Product2Details>}></Route>

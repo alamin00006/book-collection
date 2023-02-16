@@ -74,7 +74,7 @@ const Navber = ({handleIslamicBook}) => {
                   
                   </li>
                      <li class="nav-item dropdown">
-                     <a class="subject-link subject-link2 dropdown-toggle pb-4" href="..">বিষয়</a>
+                     <span class="subject-link subject-link2 dropdown-toggle pb-4">বিষয়</span>
                      <div className='dropdown-menu'>
                   <div className='drop-list'>
                   <div class="d-flex">
@@ -184,10 +184,10 @@ const Navber = ({handleIslamicBook}) => {
                   
                   
                      <li class="nav-item dropdown">
-                     <a class="subject-link subject-link2 pb-4 dropdown-toggle" href="..">বইমেলা</a>
+                     <a class="subject-link subject-link2 pb-4 dropdown-toggle book-fair-part" href="..">বইমেলা</a>
                      <div class="dropdown-menu">
                      <ul>
-                        <li><a class="dropdown-item" href=".."> বইমেলা 2023</a></li>
+                        <li><span class="dropdown-item book-fair"> বইমেলা 2023</span></li>
                                        
                      </ul>
                   
