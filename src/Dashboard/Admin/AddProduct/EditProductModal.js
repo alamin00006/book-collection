@@ -56,7 +56,7 @@ const EditProductModal = ({refetch,show, handleClose, productEdit}) => {
       bookFair:e.target.bookFair.value,
       descriptionB:e.target.productDetailsBangla.value,
       writerDetails:e.target.writerDetails.value,
-     
+      BookSalesInfo:e.target.BookSalesInfo.value ||''
   
   }
   if(productAdd.bookFair ==='If the Book of Fair'){
@@ -76,6 +76,7 @@ const EditProductModal = ({refetch,show, handleClose, productEdit}) => {
      formData.append('bookFair', productAdd.bookFair)
      formData.append('descriptionB', productAdd.descriptionB)
      formData.append('writerDetails', productAdd.writerDetails)
+     formData.append('BookSalesInfo', productAdd.BookSalesInfo)
  
        try{
         const data = await axios.patch(`http://localhost:5000/api/v1/product/${productEdit._id}`,formData,
@@ -155,13 +156,23 @@ const EditProductModal = ({refetch,show, handleClose, productEdit}) => {
                      }
                   </select>
                 </div>
-                <div className='col-lg-8'> 
+                <div className='col-lg-4'> 
                   <label for='publication'>Publications : <span className='text-danger fw-bold fs-5'>*</span></label>
                   <select style={{width:"100%", height:'45px'}} required name='publicationName' id='publication' defaultValue={productEdit?.publication?.publicationName}>
                     <option selected disabled>Select A Publication</option>
                      {
                       categories?.data?.map(category =><option>{category.name}</option>)
                      }
+                  </select>
+                </div>
+                <div className='col-lg-4 mt-1'> 
+                  <label for='book-sales-info' className='text-danger'>If the Book Salse Info : </label>
+                  <select style={{width:"100%", height:'45px'}} name='BookSalesInfo' id='book-sales-info' defaultValue={productEdit?.bookFair}>
+                    <option selected disabled className='book-fair'> Select Book Salse Info</option>
+                    <option>None</option>
+                    <option>এই সপ্তাহের বেস্ট সেল বুক</option>
+                    <option>এই মাসের টপ সেল বুক</option>
+                    <option>টেকনোলজি রিলেটেড বুক</option>
                   </select>
                 </div>
                 <div className='col-lg-4 mt-1'> 

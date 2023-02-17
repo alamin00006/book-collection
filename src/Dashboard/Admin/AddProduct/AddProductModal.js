@@ -80,6 +80,7 @@ const AddProductModal = ({refetch,show, handleClose}) => {
       descriptionB:e.target.productDetailsBangla.value,
       descriptionE:e.target.productDetailsEnglish.value,
       writerDetails:e.target.writerDetails.value,
+      BookSalesInfo:'',
      }
  
   if(productAdd.bookFair ==='If the Book of Fair'){
@@ -101,7 +102,8 @@ const AddProductModal = ({refetch,show, handleClose}) => {
      formData.append('descriptionB', productAdd.descriptionB)
      formData.append('descriptionE', productAdd.descriptionE)
      formData.append('writerDetails', productAdd.writerDetails)
-   
+     formData.append('BookSalesInfo', productAdd.BookSalesInfo)
+      
     const isValidFileUploaded=(file)=>{
       const validExtensions = ['png','jpeg','jpg','PNG','JPG','jpeg','JPEG']
       const fileExtension = file.type.split('/')[1]

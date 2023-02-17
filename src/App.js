@@ -128,7 +128,7 @@ function App() {
         <Route path='/product5Details/:details5Id' element={<Product5Details></Product5Details>}></Route>
         <Route path='/product6Details/:details6Id' element={<Product6Details></Product6Details>}></Route>
         <Route path='/cart' element={<ShoppingCart></ShoppingCart>}></Route>
-        <Route path='/nonTeckAll/product3AllDetails/:details3Id' element={<Product3AllDetails></Product3AllDetails>}></Route>
+        <Route path='/week-best-sale-all' element={<Product3AllDetails></Product3AllDetails>}></Route>
         <Route path='' element={
         
           <AddToCart></AddToCart> 
