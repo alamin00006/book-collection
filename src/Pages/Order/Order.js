@@ -1,11 +1,11 @@
 import React, {useEffect, useState } from 'react';
-import Loading from '../Loading/Loading';
 import Table from 'react-bootstrap/Table';
 import { useQuery } from 'react-query';
 import { useNavigate } from 'react-router-dom';
 import './Order.css'
-import useUser from '../../Hooks/useUser';
+// import useUser from '../../Hooks/useUser';
 import axios from 'axios';
+import Loading from '../Loading/Loading';
 
 const Order = () => {
   // const [user,refetch,isLoading] = useUser();
@@ -35,28 +35,35 @@ const Order = () => {
     }
   );
 
-
-try {
-  useEffect(() =>{
- async function fetchData(){
- await fetch(`http://localhost:5000/api/v1/order/${user?.email}`)
-  .then(res =>res.json())
-  .then(data => {
+  const { isLoadingOrder, refetchOrder} = useQuery(['myProducts2',user,token,refetch], () => fetch(`http://localhost:5000/api/v1/order/${user?.email}`, {
+      method: "GET",
+  }).then(res =>res.json())
+  .then(data =>{
     setProducts2(data?.data)
     refetch()
-  });
- }
- fetchData()    
-  },[user,token,refetch])
-} catch (error) {
-  console.log(error)
-}
+  }))
 
-
-
-// if(isLoadingOrder){
-//   <Loading></Loading>
+// try {
+//   useEffect(() =>{
+//  async function fetchData(){
+//  await fetch(`http://localhost:5000/api/v1/order/${user?.email}`)
+//   .then(res =>res.json())
+//   .then(data => {
+//     setProducts2(data?.data)
+//     refetch()
+//   });
+//  }
+//  fetchData()    
+//   },[user,token,refetch])
+// } catch (error) {
+//   console.log(error)
 // }
+
+
+
+if(isLoading|| isLoadingOrder){
+  return <Loading></Loading>
+}
 
 const orderDetails =(_id) =>{
   navigate(`/order/${_id}`)

@@ -32,7 +32,7 @@ const ProductManage = () => {
   }).then(res =>res.json())
   .then(data =>{
     setProducts3(data?.data?.products)
-    // console.log(data?.data?.products)
+    console.log(data?.data?.products)
     const totalPageCount = Math.ceil(data?.data?.productTotalCount/3);
      setPageCount(totalPageCount)
      
