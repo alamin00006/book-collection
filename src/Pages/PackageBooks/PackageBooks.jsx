@@ -4,30 +4,30 @@ import "../Products2/Products2.css";
 import Cart from "../AddToCart/Cart";
 import { useEffect, useState } from "react";
 
-const Products3 = ({ AddToCarts }) => {
+const PackageBooks = ({ AddToCarts }) => {
   const [myProducts3] = useProduct3();
-  const [weekSales, setWeekSale] = useState([]);
+  const [packageBooks, setPackageBooks] = useState([]);
 
   useEffect(() => {
     const weekBestSales = myProducts3?.data?.filter(
-      (weekSale) => weekSale?.BookSalesInfo === "এই সপ্তাহের বেস্ট সেল বুক"
+      (weekSale) => weekSale?.BookSalesInfo === "প্যাকেজ বই"
     );
-    setWeekSale(weekBestSales);
+    setPackageBooks(weekBestSales);
   }, [myProducts3]);
 
   return (
     <div className="container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h3 className="mt-0">এই সপ্তাহের বেস্টসেলার</h3>
+        <h3 className="mt-0">প্যাকেজ বই</h3>
         <div className="text-center">
           {" "}
-          <Link className="my-button text-black" to="/week-best-sale-all">
+          <Link className="my-button text-black" to="/all-package-books">
             আরও দেখুন
           </Link>
         </div>
       </div>
       <div className="my-card-main my-card">
-        {weekSales?.map((data, index) => (
+        {packageBooks?.map((data, index) => (
           <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart>
         ))}
       </div>
@@ -35,4 +35,4 @@ const Products3 = ({ AddToCarts }) => {
   );
 };
 
-export default Products3;
+export default PackageBooks;
