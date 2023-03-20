@@ -12,9 +12,12 @@ const AllDormioBooks = () => {
   const [allIslamicBooks, setAllIslamicBooks] = useState({});
 
   const { isLoading, refetch } = useQuery([myProducts3, islamicId], () =>
-    fetch(`http://localhost:5000/api/v1/category/${islamicId}`, {
-      method: "GET",
-    })
+    fetch(
+      `https://book-server-sg0u.onrender.com/api/v1/category/${islamicId}`,
+      {
+        method: "GET",
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           // Navigate('/');

@@ -84,7 +84,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
 
     try {
       const data = await axios.patch(
-        `http://localhost:5000/api/v1/product/${productEdit._id}`,
+        `https://book-server-sg0u.onrender.com/api/v1/product/${productEdit._id}`,
         formData,
         {
           headers: {

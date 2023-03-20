@@ -1,64 +1,79 @@
-import axios from 'axios';
-import React from 'react';
-import { toast } from 'react-toastify';
+import axios from "axios";
+import React from "react";
+import { toast } from "react-toastify";
 
-const OrderStatusCancel = ({order,refetch}) => {
+const OrderStatusCancel = ({ order, refetch }) => {
+  const handleOrderStatus = async () => {
+    const formData = new FormData();
 
-  const handleOrderStatus = async()=>{
- 
- 
-   const formData = new FormData();
-  
-    formData.append('orderStatus', "Cancelled")
-   
-//    if(orderStatusUpdate){
-//     setOrderStatusUpdate(false)
-//     formData.append('orderStatus', "Pending")
-//    }
-   
+    formData.append("orderStatus", "Cancelled");
 
-   try{
-    const data = await axios.patch(`http://localhost:5000/api/v1/order/${order._id}`,formData,
-  {
-    headers: {
-      'Content-Type': 'application/json'
+    //    if(orderStatusUpdate){
+    //     setOrderStatusUpdate(false)
+    //     formData.append('orderStatus', "Pending")
+    //    }
+
+    try {
+      const data = await axios.patch(
+        `https://book-server-sg0u.onrender.com/api/v1/order/${order._id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (data.status === 400) {
+        return toast.error(data.data.error);
+      }
+      refetch();
+      toast.success(data.data.message);
+      // setOrderStatusUpdate(true)
+    } catch (error) {
+      console.log(error);
     }
-  });
-    
-    if(data.status===400){
-      return toast.error(data.data.error)
-    }
-    refetch()
-    toast.success(data.data.message)
-    // setOrderStatusUpdate(true)
-   }catch(error){
-    console.log(error)
-   }
-  }
-    
-    return (
-        
-      <div>
-        {
-            order?.orderStatus === "Cancelled"?<div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked disabled/>
-          </div>:''
-            
-        }
-        {
-            order?.orderStatus === "Approved"?<div onClick={handleOrderStatus} class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-        </div>:''
-            
-        }
-        {
-            order?.orderStatus === "Pending"?<div onClick={handleOrderStatus} class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
-        </div>:''
-            
-        }
-      </div>
-    );
+  };
+
+  return (
+    <div>
+      {order?.orderStatus === "Cancelled" ? (
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckCheckedDisabled"
+            checked
+            disabled
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      {order?.orderStatus === "Approved" ? (
+        <div onClick={handleOrderStatus} class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+      {order?.orderStatus === "Pending" ? (
+        <div onClick={handleOrderStatus} class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="flexSwitchCheckDefault"
+          />
+        </div>
+      ) : (
+        ""
+      )}
+    </div>
+  );
 };
 
 export default OrderStatusCancel;

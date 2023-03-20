@@ -1,121 +1,134 @@
-import React, {useEffect, useState } from 'react';
-import Table from 'react-bootstrap/Table';
-import { useQuery } from 'react-query';
-import { useNavigate } from 'react-router-dom';
-import './Order.css'
+import React, { useEffect, useState } from "react";
+import Table from "react-bootstrap/Table";
+import { useQuery } from "react-query";
+import { useNavigate } from "react-router-dom";
+import "./Order.css";
 // import useUser from '../../Hooks/useUser';
-import axios from 'axios';
-import Loading from '../Loading/Loading';
+import axios from "axios";
+import Loading from "../Loading/Loading";
 
 const Order = () => {
   // const [user,refetch,isLoading] = useUser();
-  const [user, setUser] = useState({})
+  const [user, setUser] = useState({});
   const token = localStorage.getItem("token");
   // console.log(user?.email)
-    const navigate = useNavigate()
-    // const cart = useSelector((state) => state.cart);
-    const shipping = 50;
-    const [myProducts2, setProducts2] = useState([]);
+  const navigate = useNavigate();
+  // const cart = useSelector((state) => state.cart);
+  const shipping = 50;
+  const [myProducts2, setProducts2] = useState([]);
 
-  const { isLoading,refetch } = useQuery(
+  const { isLoading, refetch } = useQuery(
     "data",
     async () => {
       const { data } = await axios.get(
-        "http://localhost:5000/api/v1/user/me",{
+        "https://book-server-sg0u.onrender.com/api/v1/user/me",
+        {
           headers: {
-                      Authorization : `Bearer ${token}`
-                    },
+            Authorization: `Bearer ${token}`,
+          },
         }
-        
       );
       return setUser(data?.data);
     },
     {
-      refetchInterval: 6000
+      refetchInterval: 6000,
     }
   );
 
-  const { isLoadingOrder, refetchOrder} = useQuery(['myProducts2',user,token,refetch], () => fetch(`http://localhost:5000/api/v1/order/${user?.email}`, {
-      method: "GET",
-  }).then(res =>res.json())
-  .then(data =>{
-    setProducts2(data?.data)
-    refetch()
-  }))
+  const { isLoadingOrder, refetchOrder } = useQuery(
+    ["myProducts2", user, token, refetch],
+    () =>
+      fetch(
+        `https://book-server-sg0u.onrender.com/api/v1/order/${user?.email}`,
+        {
+          method: "GET",
+        }
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setProducts2(data?.data);
+          refetch();
+        })
+  );
 
-// try {
-//   useEffect(() =>{
-//  async function fetchData(){
-//  await fetch(`http://localhost:5000/api/v1/order/${user?.email}`)
-//   .then(res =>res.json())
-//   .then(data => {
-//     setProducts2(data?.data)
-//     refetch()
-//   });
-//  }
-//  fetchData()    
-//   },[user,token,refetch])
-// } catch (error) {
-//   console.log(error)
-// }
+  // try {
+  //   useEffect(() =>{
+  //  async function fetchData(){
+  //  await fetch(`https://book-server-sg0u.onrender.com/api/v1/order/${user?.email}`)
+  //   .then(res =>res.json())
+  //   .then(data => {
+  //     setProducts2(data?.data)
+  //     refetch()
+  //   });
+  //  }
+  //  fetchData()
+  //   },[user,token,refetch])
+  // } catch (error) {
+  //   console.log(error)
+  // }
 
-
-
-if(isLoading|| isLoadingOrder){
-  return <Loading></Loading>
-}
-
-const orderDetails =(_id) =>{
-  navigate(`/order/${_id}`)
-
+  if (isLoading || isLoadingOrder) {
+    return <Loading></Loading>;
   }
 
- return (
-        <div className='container'>
-            <h4 className='mt-4 fw-bolder'>অর্ডার</h4>
-        {
-          myProducts2.length <=0?<h5 className='mt-5 text-danger'>দুঃখিত আপনি আমাদের কাছে এখন পর্যন্ত কোনো অর্ডার করেন নি</h5>:
-          <div className="order-table">
-          <Table striped bordered className='mt-4'>
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>তারিখ</th>
-          <th>অবস্থা</th>
-          <th>মোট</th>
-          <th>মূল্যপরিশোধ পদ্ধতি</th>
-          <th>এ্যকশান</th>
-        </tr>
-      </thead>
-      <tbody>
-      
-      {
-        myProducts2?.map((data, index) =>{
-          return(
-            <tr key={data?._id}>
-               <td>{data?._id.slice(13)}</td>
-               <td>{data?.updatedAt.split('T')?.[0]}</td>
-               <td className={`${data?.orderStatus==="Approved"?"customer-order-status":'text-danger fw-bold'}`}>{data?.orderStatus}</td>
-               <td className="fw-bold">Tk {data?.orderItems?.[0]?.cartTotalAmount+shipping}</td>
-               <td>
-                {data?.paymentType}
-               </td>
-               <td className='see-details' onClick={()=>orderDetails(data?._id)}>দেখুন</td>
-            </tr>
-          )
-        })
-      }
-        
-        </tbody>
-    </Table>
-          
-          </div>
+  const orderDetails = (_id) => {
+    navigate(`/order/${_id}`);
+  };
 
-          
-        }
-          
+  return (
+    <div className="container">
+      <h4 className="mt-4 fw-bolder">অর্ডার</h4>
+      {myProducts2.length <= 0 ? (
+        <h5 className="mt-5 text-danger">
+          দুঃখিত আপনি আমাদের কাছে এখন পর্যন্ত কোনো অর্ডার করেন নি
+        </h5>
+      ) : (
+        <div className="order-table">
+          <Table striped bordered className="mt-4">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>তারিখ</th>
+                <th>অবস্থা</th>
+                <th>মোট</th>
+                <th>মূল্যপরিশোধ পদ্ধতি</th>
+                <th>এ্যকশান</th>
+              </tr>
+            </thead>
+            <tbody>
+              {myProducts2?.map((data, index) => {
+                return (
+                  <tr key={data?._id}>
+                    <td>{data?._id.slice(13)}</td>
+                    <td>{data?.updatedAt.split("T")?.[0]}</td>
+                    <td
+                      className={`${
+                        data?.orderStatus === "Approved"
+                          ? "customer-order-status"
+                          : "text-danger fw-bold"
+                      }`}
+                    >
+                      {data?.orderStatus}
+                    </td>
+                    <td className="fw-bold">
+                      Tk {data?.orderItems?.[0]?.cartTotalAmount + shipping}
+                    </td>
+                    <td>{data?.paymentType}</td>
+                    <td
+                      className="see-details"
+                      onClick={() => orderDetails(data?._id)}
+                    >
+                      দেখুন
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 
 export default Order;

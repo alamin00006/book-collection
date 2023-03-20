@@ -1,22 +1,20 @@
 import { useQuery } from "react-query";
 // import useUser from "./useUser";
-const useAllOrder = () =>{
-    const {data: allOrder, isLoading, refetch} = useQuery('allOrder', () => fetch('http://localhost:5000/api/v1/order', {
-        method: "GET",
-    }).then(res =>res.json()))
-  
-return [allOrder, refetch,isLoading];
+const useAllOrder = () => {
+  const {
+    data: allOrder,
+    isLoading,
+    refetch,
+  } = useQuery("allOrder", () =>
+    fetch("https://book-server-sg0u.onrender.com/api/v1/order", {
+      method: "GET",
+    }).then((res) => res.json())
+  );
 
-}
+  return [allOrder, refetch, isLoading];
+};
 
 export default useAllOrder;
-
-
-
-
-
-
-
 
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -28,7 +26,7 @@ export default useAllOrder;
 //     const [user] = useUser()
 //     const token = localStorage.getItem("token");
 // useEffect(() =>{
-//      fetch('http://localhost:5000/api/v1/order')
+//      fetch('https://book-server-sg0u.onrender.com/api/v1/order')
 //     .then(res =>res.json())
 //     .then(data => setAllOrder(data));
 // },[user,token])
@@ -37,4 +35,3 @@ export default useAllOrder;
 // }
 
 // export default useAllOrder;
-

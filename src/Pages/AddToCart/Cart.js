@@ -39,7 +39,11 @@ const Cart = ({ data }) => {
           onClick={product3Details}
           className="d-flex flex-column align-items-center book-inner"
         >
-          <img src={`http://localhost:5000/${data.image}`} class="" alt="..." />
+          <img
+            src={`https://book-server-sg0u.onrender.com/${data?.image}`}
+            class=""
+            alt="..."
+          />
           <div class="book-body mt-3">
             <h6 class="book-title">{data.nameB} </h6>
             <p class="writer-name">{data.nameB}</p>
@@ -117,7 +121,7 @@ export default Cart;
 //          const totalPrice = price;
 
 //         const newQuantity = {quantity, totalPrice };
-//         const url = `http://localhost:5000/carts/${cart._id}`;
+//         const url = `https://book-server-sg0u.onrender.com/carts/${cart._id}`;
 //               fetch(url, {
 //                   method: 'PUT',
 //                   headers: {
@@ -143,7 +147,7 @@ export default Cart;
 //        const totalPrice = price;
 
 //       const newQuantity = {quantity, totalPrice };
-//        const url = `http://localhost:5000/carts/${cart._id}`;
+//        const url = `https://book-server-sg0u.onrender.com/carts/${cart._id}`;
 //              fetch(url, {
 //                  method: 'PUT',
 //                  headers: {
@@ -160,7 +164,7 @@ export default Cart;
 
 //     const handleDeleteCart = (id)=>{
 
-//         const url = `http://localhost:5000/carts/${id}`;
+//         const url = `https://book-server-sg0u.onrender.com/carts/${id}`;
 //             fetch(url , {
 //                 method: "DELETE",
 //               }).then(res => res.json())

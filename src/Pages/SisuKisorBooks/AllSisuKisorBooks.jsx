@@ -12,7 +12,7 @@ const AllSisuKisorBooks = () => {
   const [allSisuBooks, setAllSisuBooks] = useState({});
 
   const { isLoading, refetch } = useQuery([myProducts3, sisuId], () =>
-    fetch(`http://localhost:5000/api/v1/category/${sisuId}`, {
+    fetch(`https://book-server-sg0u.onrender.com/api/v1/category/${sisuId}`, {
       method: "GET",
     })
       .then((res) => {

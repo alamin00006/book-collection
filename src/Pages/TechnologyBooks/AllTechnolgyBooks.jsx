@@ -12,9 +12,12 @@ const AllTechnolgyBooks = () => {
   const [allTechnologyBooks, setAllTechnologyBooks] = useState({});
 
   const { isLoading, refetch } = useQuery([myProducts3, technologyId], () =>
-    fetch(`http://localhost:5000/api/v1/category/${technologyId}`, {
-      method: "GET",
-    })
+    fetch(
+      `https://book-server-sg0u.onrender.com/api/v1/category/${technologyId}`,
+      {
+        method: "GET",
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           // Navigate('/');

@@ -71,7 +71,7 @@ function App() {
   };
 
   // const cart = useSelector((state) => state.cart);
-  //   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`http://localhost:5000/carts?customer=${user?.email}`, {
+  //   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`https://book-server-sg0u.onrender.com/carts?customer=${user?.email}`, {
   //     method: "GET",
   //     headers: {
   //       'authorization': `Bearer ${localStorage.getItem('accessToken')}`

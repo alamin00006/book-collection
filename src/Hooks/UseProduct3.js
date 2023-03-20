@@ -1,34 +1,22 @@
-
-
 import { useQuery } from "react-query";
 // import useUser from "./useUser";
 
-const useProduct3 = () =>{
-    // const [allOrder, setAllOrder] = useState([]);
-    const {data: myProducts3, isLoading, refetch} = useQuery('myProducts3', () => fetch('http://localhost:5000/api/v1/product', {
-        method: "GET",
-    }).then(res =>res.json()))
-  
-return [myProducts3, refetch,isLoading];
+const useProduct3 = () => {
+  // const [allOrder, setAllOrder] = useState([]);
+  const {
+    data: myProducts3,
+    isLoading,
+    refetch,
+  } = useQuery("myProducts3", () =>
+    fetch("https://book-server-sg0u.onrender.com/api/v1/product", {
+      method: "GET",
+    }).then((res) => res.json())
+  );
 
-}
+  return [myProducts3, refetch, isLoading];
+};
 
 export default useProduct3;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import axios from "axios";
 // import { useEffect, useState } from "react";
@@ -40,7 +28,7 @@ export default useProduct3;
 //     const [user] = useUser()
 //     const token = localStorage.getItem("token");
 // useEffect(() =>{
-//      fetch('http://localhost:5000/api/v1/product')
+//      fetch('https://book-server-sg0u.onrender.com/api/v1/product')
 //     .then(res =>res.json())
 //     .then(data => setProducts3(data));
 // },[user,token])
@@ -49,4 +37,3 @@ export default useProduct3;
 // }
 
 // export default useProduct3;
-

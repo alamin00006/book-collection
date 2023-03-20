@@ -30,9 +30,12 @@ const ProductManage = () => {
   const { isLoading, refetch } = useQuery(
     ["myProducts3", page, myProducts3, pageCount],
     () =>
-      fetch(`http://localhost:5000/api/v1/product?page=${page}&size=${3}`, {
-        method: "GET",
-      })
+      fetch(
+        `https://book-server-sg0u.onrender.com/api/v1/product?page=${page}&size=${3}`,
+        {
+          method: "GET",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setProducts3(data?.data?.products);
