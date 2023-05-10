@@ -7,7 +7,7 @@ const CategoryDetails = () => {
   const { categoryDetailsId } = useParams();
   const [categoryDetails, setCategoryDetails] = useState({});
 
-  const { isLoading, refetch } = useQuery([], () =>
+  const { isLoading, refetch } = useQuery([categoryDetailsId], () =>
     fetch(
       `https://book-server-sg0u.onrender.com/api/v1/category/${categoryDetailsId}`,
       {
@@ -45,7 +45,7 @@ const CategoryDetails = () => {
           )}
         </div>
       </div>
-      <div className="my-card-main my-card">
+      <div className="my-card-main my-card mt-2">
         {categoryDetails?.products?.map((data, index) => (
           <Cart key={data._id} data={data}></Cart>
         ))}

@@ -1,25 +1,25 @@
-.logo{
-    width: 100px;
-    height: 50px;
+.logo {
+  width: 100px;
+  height: 50px;
 }
-.sing-Out{
-cursor: pointer;
+.sing-Out {
+  cursor: pointer;
 }
-.account-part{
-    text-decoration: none !important;
+.account-part {
+  text-decoration: none !important;
 }
-.account-part:hover{
-    text-decoration: none;
+.account-part:hover {
+  text-decoration: none;
 }
-.first-navbar{
-    background-color: #12856a;
+.first-navbar {
+  background-color: #12856a;
 }
-.search-field{
-    width:94%;
-    height: 45px;
+.search-field {
+  width: 94%;
+  height: 45px;
 }
-.search-button{
-    background-color: #065644 !important;
-    outline: none !important;
-    border: none !important;
+.search-button {
+  background-color: #065644 !important;
+  outline: none !important;
+  border: none !important;
 }

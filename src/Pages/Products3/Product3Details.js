@@ -15,8 +15,50 @@ import Product3ToggleButton from "./Product3ToggleButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/reducers/cartSlice";
 import { useQuery } from "react-query";
-
+import ViewPdfModal from "../ViewPdf/ViewPdfModal";
+import Cart from "../AddToCart/Cart";
+import useProduct3 from "../../Hooks/UseProduct3";
+import Slider from "react-slick";
 const Product3Details = ({ AddToCarts }) => {
+  let settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
+
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+  const [show, setShow] = useState(false);
+  const handleShow = () => setShow(true);
+
+  const [myProducts3] = useProduct3();
   const { details3Id } = useParams();
   const [singleProduct3, setSingleProduct3] = useState({});
   const discount = parseFloat(
@@ -26,7 +68,7 @@ const Product3Details = ({ AddToCarts }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const Cart = cart.cartItems.find(
+  const Cart2 = cart.cartItems.find(
     (cartItem) => cartItem._id === singleProduct3._id
   );
 
@@ -64,7 +106,12 @@ const Product3Details = ({ AddToCarts }) => {
     })
       .then((res) => res.json())
       .then((data) => setSingleProduct3(data?.data));
-  }, []);
+  }, [details3Id]);
+
+  const relatedProduct = myProducts3?.data?.filter(
+    (product) =>
+      product.category?.categoryName === singleProduct3?.category?.categoryName
+  );
 
   return (
     <div class="container">
@@ -86,7 +133,9 @@ const Product3Details = ({ AddToCarts }) => {
               <h3 class="product-title">{singleProduct3.nameB}</h3>
               <p>
                 লেখক :{" "}
-                <span className="text-primary">{singleProduct3.nameB}</span>
+                <span className="text-primary">
+                  {singleProduct3.writer?.writerName}
+                </span>
               </p>
               <div>
                 <StarIcon className=" star-icon " />
@@ -94,9 +143,9 @@ const Product3Details = ({ AddToCarts }) => {
                 <StarIcon className=" star-icon " />
                 <StarIcon className=" star-icon " />
                 <StarIcon className=" star-icon " />
-                <span>/ 14 Reviews</span>
+                {/* <span>/ 14 Reviews</span> */}
               </div>
-              <p>Publisher : টেকনিক্যাল প্রকাশনী</p>
+              <p>Publisher : {singleProduct3?.publication?.publicationName}</p>
               {singleProduct3.discount !== 0 ? (
                 <p className="previous-tk">TK.{singleProduct3.price}</p>
               ) : (
@@ -110,7 +159,6 @@ const Product3Details = ({ AddToCarts }) => {
                   You save TK.{discount} ({singleProduct3.discount}%)
                 </span>
               </p>
-              <p className="book-tag">Electrical Licence Viva Guide</p>
               <div className="d-flex">
                 <div>
                   <CheckCircleIcon className=" stock-in-icon " />
@@ -134,15 +182,26 @@ const Product3Details = ({ AddToCarts }) => {
                 </p>
               </div>
               <div className="d-flex">
-                {/* <div>
-                <button class="reading-button btn btn-default" type="button">একটু পড়ে দেখুন</button>
-                </div> */}
+                <div>
+                  <button
+                    onClick={handleShow}
+                    class="reading-button btn btn-default"
+                    type="button"
+                  >
+                    একটু পড়ে দেখুন
+                  </button>
+                  <ViewPdfModal
+                    show={show}
+                    setShow={setShow}
+                    singleProduct3={singleProduct3}
+                  />
+                </div>
                 <div className="d-flex align-items-center add-to-button">
                   <div>
                     <ShoppingCartIcon className="add-to-icon " />
                   </div>
                   <div>
-                    {Cart ? (
+                    {Cart2 ? (
                       <button
                         class="add-to-cart add-To-Cart btn btn-default"
                         type="button"
@@ -191,7 +250,11 @@ const Product3Details = ({ AddToCarts }) => {
               <div>
                 <hr />
                 <h5>Related Products</h5>
-                <Product3Related2 />
+                {relatedProduct ? (
+                  <Product3Related2 relatedProduct={relatedProduct} />
+                ) : (
+                  ""
+                )}
               </div>
             </div>
           </div>
@@ -208,14 +271,15 @@ const Product3Details = ({ AddToCarts }) => {
           />
         </div>
         <hr />
-        {/* <h3 className='mb-3 px-4'>Related Products</h3>
-            
-            <div className='my-card-main my-card px-4 mt-4'>
-            {
-                 myProducts.slice(0,5).map( product => <Product product={product}></Product>) 
-             }
-             
-            </div> */}
+        <h3 className="mb-3 px-4">Related Products</h3>
+
+        <Slider {...settings}>
+          {relatedProduct?.map((data, index) => (
+            <div className="my-card-main my-card">
+              <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

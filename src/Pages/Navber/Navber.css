@@ -1,106 +1,101 @@
-/* .book-collection{
-    font-size: 14px !important;
-    text-decoration: none;
-    margin-left: 10px;
-    margin-right: 8px;
-} */
-
-.second-navbar{
-    background-color: #065644;
+.navbar-brand {
+  font-size: 1.1rem !important;
 }
-.subject-link{
-    color: white !important;
-    text-decoration: none;
-    cursor: pointer;
-   
+.navbar .navbar-toggler {
+  border: none;
 }
-.subject-link:hover{
-   text-decoration: none;
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 !important;
 }
-.subject-link2{
-    margin-left: 10px !important;
+.second-navbar {
+  background-color: #065644;
 }
-.dropdown-menu{
-    margin-top: 14px !important;
-    z-index: 999 !important;
-   
+.subject-link {
+  color: white !important;
+  text-decoration: none;
+  cursor: pointer;
 }
-.dropdown-menu .drop-list{
-    position:absolute;
-    top: 0;
-    left: -64px;
-    background-color: white;
-    border: 1px solid black;
+.subject-link:hover {
+  text-decoration: none;
 }
-.dropdown-menu .drop-list-1{
-    position:absolute;
-    top: 0;
-    left: 0px;
-    background-color: white;
-    border: 1px solid black;
-       
+.subject-link2 {
+  margin-left: 10px !important;
 }
-.dropdown-menu .drop-list-3{
-    position:absolute;
-    top: 0;
-    left: -120px;
-    background-color: white;
-    border: 1px solid black;
-  }
-.dropdown-menu .drop-list a{
-   font-size: 16px;
+.dropdown-menu {
+  margin-top: 14px !important;
+  z-index: 999 !important;
 }
-.dropdown-menu .drop-list-3 a{
-   font-size: 16px;
+.dropdown-menu .drop-list {
+  position: absolute;
+  top: 0;
+  left: -64px;
+  background-color: white;
+  border: 1px solid black;
 }
-.dropdown-menu .drop-list-1 a{
-   font-size: 16px;
+.dropdown-menu .drop-list-1 {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  background-color: white;
+  border: 1px solid black;
 }
-
-.dropdown-menu ul{
-    padding-left: 0 !important;
-    
+.dropdown-menu .drop-list-3 {
+  position: absolute;
+  top: 0;
+  left: -120px;
+  background-color: white;
+  border: 1px solid black;
 }
-.dropdown-menu ul li{
-    list-style: none !important;
-   
+.dropdown-menu .drop-list a {
+  font-size: 16px;
 }
-.dropdown-menu ul li a{
-    list-style: none !important;
-    width: 208px;
-    white-space: pre-line;
+.dropdown-menu .drop-list-3 a {
+  font-size: 16px;
 }
-.dropdown-menu ul li a:hover{
-   text-decoration: none;
-   background-color: white;
-   color: red;
+.dropdown-menu .drop-list-1 a {
+  font-size: 16px;
 }
 
-.dropdown-menu{
-    border: 1px solid black !important;
-
+.dropdown-menu ul {
+  padding-left: 0 !important;
 }
-.dropdown-menu ul .book-fair{
-     width: 208px;
-
+.dropdown-menu ul li {
+  list-style: none !important;
+}
+.dropdown-menu ul li a {
+  list-style: none !important;
+  width: 208px;
+  white-space: pre-line;
+}
+.dropdown-menu ul li a:hover {
+  text-decoration: none;
+  background-color: white;
+  color: red;
 }
 
-.dropdown-menu ul .book-fair:hover{
-   text-decoration: none;
-   background-color: white;
-   color: red;
-   cursor: pointer;
+.dropdown-menu {
+  border: 1px solid black !important;
+}
+.dropdown-menu ul .book-fair {
+  width: 208px;
 }
 
-
-
-
-
-
+.dropdown-menu ul .book-fair:hover {
+  text-decoration: none;
+  background-color: white;
+  color: red;
+  cursor: pointer;
+}
 
 @media all and (min-width: 992px) {
-	.navbar .nav-item .dropdown-menu{ display: none; }
-	
-	.navbar .nav-item:hover .dropdown-menu{ display: block; }
-	.navbar .nav-item .dropdown-menu{ margin-top:0; }
-}	
+  .navbar .nav-item .dropdown-menu {
+    display: none;
+  }
+
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .nav-item .dropdown-menu {
+    margin-top: 0;
+  }
+}

@@ -1,55 +1,57 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import useProduct3 from "../../Hooks/UseProduct3";
 
-const Product3Related2 = () => {
-    return (
-        <div id="demo" class="carousel slide mt-3" data-bs-ride="carousel">
-        <div class="carousel-indicators carousel-director">
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-        </div>
-        <div class="carousel-inner">
+const Product3Related2 = ({ relatedProduct }) => {
+  console.log(relatedProduct[0]?.nameB);
+
+  return (
+    <div id="demo" class="carousel slide mt-3" data-bs-ride="carousel">
+      <div class="carousel-indicators carousel-director">
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="0"
+          class="active"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#demo"
+          data-bs-slide-to="2"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        {relatedProduct?.slice(0, 3).map((data) => (
           <div class="carousel-item active">
-          <div className='d-flex related-slider-1'>
-          <div>
-            <img src="https://img.freepik.com/premium-photo/opened-book-bible-background_112554-164.jpg" alt="Los Angeles" class="d-block"/>
-            </div>
-            <div className="ms-3">
-              <p>ইলেকট্রিক্যাল লাইসেন্স ভাইভা গাইড</p>
-              <p>প্রকৌশলী ভবসিন্ধু বিশ্বাস</p>
-              <h5>TK.200</h5>
-            </div>
-          </div>
-            
-          </div>
-          <div class="carousel-item">
-          <div className='d-flex related-slider-1'>
-          <div>
-            <img src="https://img.freepik.com/premium-photo/opened-book-bible-background_112554-164.jpg" alt="Los Angeles" class="d-block"/>
-            </div>
-            <div className="ms-3">
-              <p>ইলেকট্রিক্যাল লাইসেন্স ভাইভা গাইড</p>
-              <p>প্রকৌশলী ভবসিন্ধু বিশ্বাস</p>
-              <h5>TK.200</h5>
+            <div className="d-flex related-slider-1">
+              <div>
+                <img
+                  style={{ width: "100px" }}
+                  src={`https://book-server-sg0u.onrender.com/${data?.image}`}
+                  alt="Los Angeles"
+                  class="d-block"
+                />
+              </div>
+              <div className="ms-3">
+                <p>{data.nameB}</p>
+                <p>{data.writer.writerName}</p>
+                <h5>
+                  TK.
+                  {data.discount
+                    ? parseFloat((data.price / 100) * data.discount).toFixed(2)
+                    : data.price}
+                </h5>
+              </div>
             </div>
           </div>
-          </div>
-          <div class="carousel-item">
-          <div className='d-flex related-slider-1'>
-          <div>
-            <img src="https://img.freepik.com/premium-photo/opened-book-bible-background_112554-164.jpg" alt="Los Angeles" class="d-block"/>
-            </div>
-            <div className="ms-3">
-              <p>ইলেকট্রিক্যাল লাইসেন্স ভাইভা গাইড</p>
-              <p>প্রকৌশলী ভবসিন্ধু বিশ্বাস</p>
-              <h5>TK.200</h5>
-            </div>
-          </div>
-          </div>
-        </div>
-
-</div>
-    );
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Product3Related2;

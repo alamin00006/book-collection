@@ -58,6 +58,13 @@ import AllDormioBooks from "./Pages/IslamicBooks/AllDormioBooks";
 import AllSisuKisorBooks from "./Pages/SisuKisorBooks/AllSisuKisorBooks";
 import AllPackgageBooks from "./Pages/PackageBooks/AllPackgageBooks";
 import AllTechnolgyBooks from "./Pages/TechnologyBooks/AllTechnolgyBooks";
+import Publications from "./Pages/publications/Publications";
+import PublicationDetails from "./Pages/publications/PublicationDetails";
+import Writers from "./Pages/Writers/Writers";
+import WriterDetails from "./Pages/Writers/WriterDetails";
+import BannerAdd from "./Dashboard/Admin/Banner/BannerAdd";
+import UpComming from "./Pages/UpComming/UpComming";
+import Error from "./Pages/Error/Error.jsx";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -194,17 +201,28 @@ function App() {
         ></Route>
         {/* Shipping Routes */}
         <Route path="/shipping" element={<Shipping></Shipping>}></Route>
+        {/* bisoybittik routes */}
         <Route path="/category" element={<Category />}></Route>
-        {/* <Route path='/order' element={<Order></Order>}></Route> */}
+        <Route
+          path="/category/:categoryDetailsId"
+          element={<CategoryDetails></CategoryDetails>}
+        ></Route>
+        <Route path="/publication" element={<Publications />}></Route>
+        <Route
+          path="/publication/:publicationDetailsId"
+          element={<PublicationDetails />}
+        ></Route>
+        <Route path="/writer" element={<Writers />}></Route>
+        <Route
+          path="/writer/:writerDetailsId"
+          element={<WriterDetails />}
+        ></Route>
 
         <Route
           path="/order/:orderDetailsId"
           element={<OrderDetails></OrderDetails>}
         ></Route>
-        <Route
-          path="/category/:categoryDetailsId"
-          element={<CategoryDetails></CategoryDetails>}
-        ></Route>
+
         {/* <Route path='/product-add' element={<AddProduct></AddProduct>}></Route> */}
         <Route path="/side-navbar" element={<SideNavbar></SideNavbar>}>
           <Route index element={<Dashboard></Dashboard>}></Route>
@@ -224,7 +242,10 @@ function App() {
           <Route path="order" element={<Order></Order>}></Route>
           <Route path="order-manage" element={<OrderManagePage />}></Route>
           <Route path="review-manage" element={<ReviewMange />}></Route>
+          <Route path="banner-add" element={<BannerAdd />}></Route>
         </Route>
+        <Route path="/up-comming" element={<UpComming />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
 
       <Footer></Footer>

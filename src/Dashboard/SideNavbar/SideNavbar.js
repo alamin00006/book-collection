@@ -1,93 +1,122 @@
-import React from 'react';
-import { Link, Outlet, useNavigate } from 'react-router-dom';
-import DashboardIcon from '../../svgIcons/DashboardIcon';
-import LoveIcon from '../../svgIcons/LoveIcon';
-import OrderIcon from '../../svgIcons/OrderIcon';
-import ProfileIcon from '../../svgIcons/ProfileIcon';
-import QuestionIcon from '../../svgIcons/QuestionIcon';
-import ShippingIcon from '../../svgIcons/ShippingIcon';
-import SingOutIcon from '../../svgIcons/SingOutIcon';
-import AdminAccess from './AdminAccess';
+import React from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import DashboardIcon from "../../svgIcons/DashboardIcon";
+import LoveIcon from "../../svgIcons/LoveIcon";
+import OrderIcon from "../../svgIcons/OrderIcon";
+import ProfileIcon from "../../svgIcons/ProfileIcon";
+import QuestionIcon from "../../svgIcons/QuestionIcon";
+
+import SingOutIcon from "../../svgIcons/SingOutIcon";
+import AdminAccess from "./AdminAccess";
+import useUser from "../../Hooks/useUser";
 
 const SideNavbar = () => {
+  const [user, refetch, isLoading] = useUser();
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const SingOutHandle = () => {
+    localStorage.removeItem("token");
 
-    const SingOutHandle = ()=>{
-  
-        navigate('/')
-        localStorage.removeItem('token');
-        window.location.reload(false);
-        
-    
-      }
-    return (
-        <div className='container'>
-          <div className='row bg-white'>
-                 <div className='col-lg-3 col-md-3 col-sm-12 border'>
-                 <div className='py-3'>
-                          <h5 className='px-2'>আমার একাউন্ট</h5>
-                        <ul className='px-2 py-3'>
-                            <li className='list-unstyled d-flex align-items-center'>
-                                  <div className=''>
-                                     <DashboardIcon/>
-                                  </div>
-                                 <div className='ms-2'>
-                                 <Link to='/side-navbar' className='text-decoration-none text-black '>ড্যাশবোর্ড</Link>
-                                 </div>
-                            </li>
-                              <AdminAccess/>
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
-                                    <OrderIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link to='/side-navbar/order' className='text-decoration-none text-black'>অর্ডার</Link>
-                                </div>
-                            </li>
-                         
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
-                                    <ProfileIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>প্রোফাইল</Link>
-                                </div>
-                            </li>
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
-                                    <LoveIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>ইচ্ছেতালিকা</Link>
-                                </div>
-                            </li>
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
-                                    <QuestionIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link to='/side-navbar/user-order' className='text-decoration-none text-black'>সাপোর্ট</Link>
-                                </div>
-                            </li>
-                            <li className='list-unstyled d-flex align-items-center mt-4'>
-                                <div>
-                                    <SingOutIcon/>
-                                </div>
-                                <div className='ms-2'>
-                                   <Link onClick={SingOutHandle} to='' className='text-decoration-none text-black'>লগ আউট</Link>
-                                </div>
-                            </li>
-                        
-                        </ul>
+    // window.location.reload(false);
+    refetch();
+  };
+  return (
+    <div className="container">
+      <div className="row bg-white">
+        <div className="col-lg-3 col-md-3 col-sm-12 border">
+          <div className="py-3">
+            <h5 className="px-2">আমার একাউন্ট</h5>
+            <ul className="px-2 py-3">
+              <li className="list-unstyled d-flex align-items-center">
+                <div className="">
+                  <DashboardIcon />
                 </div>
-                 </div>
-                <div className='col-lg-9 col-md-9 col-sm-12'>
-                    <Outlet></Outlet>
+                <div className="ms-2">
+                  <Link
+                    to="/side-navbar"
+                    className="text-decoration-none text-black "
+                  >
+                    ড্যাশবোর্ড
+                  </Link>
                 </div>
+              </li>
+              <AdminAccess />
+              <li className="list-unstyled d-flex align-items-center mt-4">
+                <div>
+                  <OrderIcon />
+                </div>
+                <div className="ms-2">
+                  <Link
+                    to="/side-navbar/order"
+                    className="text-decoration-none text-black"
+                  >
+                    অর্ডার
+                  </Link>
+                </div>
+              </li>
+
+              <li className="list-unstyled d-flex align-items-center mt-4">
+                <div>
+                  <ProfileIcon />
+                </div>
+                <div className="ms-2">
+                  <Link
+                    to="/side-navbar/user-order"
+                    className="text-decoration-none text-black"
+                  >
+                    প্রোফাইল
+                  </Link>
+                </div>
+              </li>
+              <li className="list-unstyled d-flex align-items-center mt-4">
+                <div>
+                  <LoveIcon />
+                </div>
+                <div className="ms-2">
+                  <Link
+                    to="/side-navbar/user-order"
+                    className="text-decoration-none text-black"
+                  >
+                    ইচ্ছেতালিকা
+                  </Link>
+                </div>
+              </li>
+              <li className="list-unstyled d-flex align-items-center mt-4">
+                <div>
+                  <QuestionIcon />
+                </div>
+                <div className="ms-2">
+                  <Link
+                    to="/side-navbar/user-order"
+                    className="text-decoration-none text-black"
+                  >
+                    সাপোর্ট
+                  </Link>
+                </div>
+              </li>
+              <li className="list-unstyled d-flex align-items-center mt-4">
+                <div>
+                  <SingOutIcon />
+                </div>
+                <div className="ms-2">
+                  <Link
+                    onClick={SingOutHandle}
+                    to="/"
+                    className="text-decoration-none text-black"
+                  >
+                    লগ আউট
+                  </Link>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
-    );
+        <div className="col-lg-9 col-md-9 col-sm-12">
+          <Outlet></Outlet>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default SideNavbar;

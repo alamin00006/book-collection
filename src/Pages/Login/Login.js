@@ -6,13 +6,10 @@ import "react-toastify/dist/ReactToastify.css";
 import Loading from "../Loading/Loading";
 import useUser from "../../Hooks/useUser";
 import axios from "axios";
-import useAllUser from "../../Hooks/useAllUser";
-import { useQuery } from "react-query";
 
 const Login = () => {
   const [user, refetch, isLoading] = useUser();
-  const [allUser] = useAllUser();
-  // console.log(allUser)
+
   const token = localStorage.getItem("token");
   // console.log(user)
   const [userInfo, setUserInfo] = useState({
@@ -26,19 +23,6 @@ const Login = () => {
   });
 
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  // useEffect(() =>{
-  //   if(user){
-  //     navigate(from, { replace: true })
-  // }
-  // },[user])
-  // useEffect(() =>{
-
-  //     if(token){
-  //     navigate(from, { replace: true });
-  //   }
-  // }, [token, from, navigate])
 
   const emailCheck = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;
@@ -74,6 +58,7 @@ const Login = () => {
       );
       localStorage.setItem("token", data.data?.data?.token);
       navigate("/");
+      refetch();
     } catch (error) {
       return toast.warn(error.response.data.message);
     }

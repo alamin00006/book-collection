@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
-// import axios from 'axios';
-const useCategories = () => {
-  const [categories, setCategories] = useState([]);
+import { useQuery } from "react-query";
 
-  useEffect(() => {
-    fetch("https://book-server-sg0u.onrender.com/api/v1/category")
-      .then((res) => res.json())
-      .then((data) => setCategories(data));
-  }, []);
-  return [categories, setCategories];
+const useCategories = () => {
+  const {
+    data: categories,
+    isLoading,
+    refetch,
+  } = useQuery(["categories"], () =>
+    fetch("https://book-server-sg0u.onrender.com/api/v1/category", {
+      method: "GET",
+    }).then((res) => res.json())
+  );
+
+  return [categories, refetch, isLoading];
 };
 
 export default useCategories;

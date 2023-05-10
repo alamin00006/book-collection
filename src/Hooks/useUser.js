@@ -1,24 +1,11 @@
-import { async } from "@firebase/util";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const useUser = () => {
   const [user, setUser] = useState({});
   const token = localStorage.getItem("token");
-  //     useEffect(() =>{
-  //     async function userFetch(){
-  //      await fetch('https://book-server-sg0u.onrender.com/api/v1/user/me',{
-  //         headers: {
-  //           Authorization : `Bearer ${token}`
-  //           },
-  //       })
-  //      .then(res =>res.json())
-  //      .then(data => setUser(data));
-  //     }
-  //     userFetch()
-  //  },[user,token])
-  //  return [user];
+
   const { isLoading, refetch } = useQuery(["user", token], () => {
     async function getUser() {
       if (!token) {

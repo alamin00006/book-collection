@@ -5,6 +5,8 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.12",
+    "@react-pdf-viewer/core": "^3.6.0",
+    "@react-pdf-viewer/default-layout": "^3.6.0",
     "@reduxjs/toolkit": "^1.9.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -13,6 +15,7 @@
     "bootstrap": "^5.2.0",
     "bootstrap-icons": "^1.10.3",
     "firebase": "^9.9.2",
+    "pdfjs-dist": "^2.15.349",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
@@ -22,8 +25,10 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
     "react-toastify": "^9.1.1",
     "rsuite": "^5.23.0",
+    "slick-carousel": "^1.8.1",
     "swiper": "^9.0.4",
     "web-vitals": "^2.1.4"
   },

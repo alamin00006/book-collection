@@ -3,17 +3,9 @@ import React, { useState } from "react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  addToCart,
-  decreaseCart,
-  incrementCart,
-} from "../store/reducers/cartSlice";
+import { addToCart } from "../store/reducers/cartSlice";
 import AddToCart from "./AddToCart";
 import "./Cart.css";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper";
 
 const Cart = ({ data }) => {
   const dispatch = useDispatch();
@@ -46,7 +38,7 @@ const Cart = ({ data }) => {
           />
           <div class="book-body mt-3">
             <h6 class="book-title">{data.nameB} </h6>
-            <p class="writer-name">{data.nameB}</p>
+            <p class="writer-name">{data?.writer?.writerName}</p>
             <p className="mb-4">
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />

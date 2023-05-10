@@ -11,25 +11,17 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import useUser from "../../Hooks/useUser";
+import SearchIcon from "../../svgIcons/SearchIcon";
 
 const Navber2 = () => {
   // const token = localStorage.getItem("token");
 
   const [user] = useUser();
+  const token = localStorage.getItem("token");
 
   // refetch()
 
   const cart = useSelector((state) => state.cart);
-
-  const navigate = useNavigate();
-
-  // const SingOutHandle = ()=>{
-
-  //   navigate('/')
-  //   localStorage.removeItem('accessToken');
-  //   window.location.reload(false);
-
-  // }
 
   return (
     <div className="container">
@@ -38,8 +30,11 @@ const Navber2 = () => {
           <Link to="/">
             <img className="logo" src={logo} alt="" />
           </Link>
-          <Navbar.Toggle aria-controls="navbarScroll" />
-          <Navbar.Collapse id="navbarScroll">
+          <Navbar.Toggle aria-controls="basic-navbar-nav">
+            <SearchIcon />
+          </Navbar.Toggle>
+
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav
               className="me-auto my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
@@ -63,11 +58,8 @@ const Navber2 = () => {
             <ShoppingCartIcon className="add-to-icon1" />
             {cart?.cartItems?.length}
           </Nav.Link>
-          {user?.email ? (
+          {token ? (
             <>
-              {/* <p className="mt-3 ms-3 text-black sing-Out">
-          <Link onClick={SingOutHandle} to="">Sign Out</Link>
-       </p> */}
               <p className="mt-3 ms-3 text-black sing-Out ">
                 <Link className="text-white account-part" to="/side-navbar">
                   আমার একাউন্ট

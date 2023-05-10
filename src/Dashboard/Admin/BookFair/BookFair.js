@@ -1,24 +1,27 @@
 import axios from "axios";
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
+import useBookFairs from "../../../Hooks/useBookFair";
 
 const BookFair = () => {
-  const handleBookFairAdd = async (e) => {
+  const [bookfairs, refetch] = useBookFairs();
+
+  const bookFair = bookfairs?.data[0];
+
+  const handleBookFairUpdate = async (e) => {
     e.preventDefault();
     const bookFairAdd = {
       bookFairYear: e.target.bookFairYear.value,
     };
 
     try {
-      const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/book-fair",
+      const data = await axios.patch(
+        `https://book-server-sg0u.onrender.com/api/v1/book-fair/${bookFair?._id}`,
         bookFairAdd
       );
 
-      if (data.status === 400) {
-        return toast.error(data.data.error);
-      }
       toast.success(data.data.message);
+      refetch();
     } catch (error) {
       return toast.error(error);
     }
@@ -28,8 +31,8 @@ const BookFair = () => {
 
   return (
     <div className="product-info ">
-      <h2 className="text-center p-5 text-white">Book Fair Year Add</h2>
-      <form onSubmit={handleBookFairAdd} className="category-form">
+      <h2 className="text-center p-5 text-white">Book Fair Year Update</h2>
+      <form onSubmit={handleBookFairUpdate} className="category-form">
         <div className="">
           <div>
             <input
@@ -41,13 +44,13 @@ const BookFair = () => {
               type="text"
               name="bookFairYear"
               className="rounded fs-5"
-              placeholder="Enter Book Fair Year"
+              defaultValue={bookFair?.bookFairYear}
             />
             <input
               style={{ width: "100%", height: "60px" }}
               className="product-info-add rounded text-white fw-bolder fs-5 mt-1"
               type="submit"
-              value="Book Fair Add"
+              value="Book Fair Update"
             />
           </div>
         </div>
