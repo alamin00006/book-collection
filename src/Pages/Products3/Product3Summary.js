@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-const Product3Summary = () => {
-    return (
-        <div className='container mt-3 lh-1'>
-            <p>"বিসিএস প্রিলিমিনারি প্রশ্ন ব্যাংক" বইটি সম্পর্কে কিছু কথা :</p>
-            <p>পরীক্ষার যাবতীয় প্রশ্ন ব্যাংক মিরপুর সমাধান সহ যাবতীয় বিষয় দেওয়া আছে  </p>
-        </div>
-    );
+const Product3Summary = ({ singleProduct3 }) => {
+  return (
+    <div className="container mt-3 lh-1">
+      <p>"{singleProduct3?.nameB}" বইটি সম্পর্কে কিছু কথা :</p>
+      <p>{singleProduct3?.descriptionB ? singleProduct3?.descriptionB : ""}</p>
+    </div>
+  );
 };
 
 export default Product3Summary;

@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import useProduct3 from "../../Hooks/UseProduct3";
+import React from "react";
 
 const Product3Related2 = ({ relatedProduct }) => {
-  console.log(relatedProduct[0]?.nameB);
-
   return (
     <div id="demo" class="carousel slide mt-3" data-bs-ride="carousel">
       <div class="carousel-indicators carousel-director">
@@ -25,8 +22,8 @@ const Product3Related2 = ({ relatedProduct }) => {
         ></button>
       </div>
       <div class="carousel-inner">
-        {relatedProduct?.slice(0, 3).map((data) => (
-          <div class="carousel-item active">
+        {relatedProduct?.slice(0, 3).map((data, index) => (
+          <div className={`carousel-item ${index === 0 ? "active" : ""}`}>
             <div className="d-flex related-slider-1">
               <div>
                 <img
@@ -42,7 +39,12 @@ const Product3Related2 = ({ relatedProduct }) => {
                 <h5>
                   TK.
                   {data.discount
-                    ? parseFloat((data.price / 100) * data.discount).toFixed(2)
+                    ? parseFloat(
+                        data.price -
+                          Math.ceil((data.price / 100) * data.discount).toFixed(
+                            2
+                          )
+                      )
                     : data.price}
                 </h5>
               </div>

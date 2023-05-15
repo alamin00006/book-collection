@@ -51,22 +51,6 @@ const Order = () => {
         })
   );
 
-  // try {
-  //   useEffect(() =>{
-  //  async function fetchData(){
-  //  await fetch(`https://book-server-sg0u.onrender.com/api/v1/order/${user?.email}`)
-  //   .then(res =>res.json())
-  //   .then(data => {
-  //     setProducts2(data?.data)
-  //     refetch()
-  //   });
-  //  }
-  //  fetchData()
-  //   },[user,token,refetch])
-  // } catch (error) {
-  //   console.log(error)
-  // }
-
   if (isLoading || isLoadingOrder) {
     return <Loading></Loading>;
   }
@@ -84,7 +68,7 @@ const Order = () => {
         </h5>
       ) : (
         <div className="order-table">
-          <Table striped bordered className="mt-4">
+          <Table bordered className="mt-4" size="lg" responsive>
             <thead>
               <tr>
                 <th>#</th>
@@ -105,7 +89,7 @@ const Order = () => {
                       className={`${
                         data?.orderStatus === "Approved"
                           ? "customer-order-status"
-                          : "text-danger fw-bold"
+                          : "text-white fw-bold bg-danger"
                       }`}
                     >
                       {data?.orderStatus}
@@ -115,7 +99,7 @@ const Order = () => {
                     </td>
                     <td>{data?.paymentType}</td>
                     <td
-                      className="see-details"
+                      className="see-details text-center"
                       onClick={() => orderDetails(data?._id)}
                     >
                       দেখুন

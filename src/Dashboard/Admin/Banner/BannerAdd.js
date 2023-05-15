@@ -53,7 +53,7 @@ const BannerAdd = () => {
       toast.success(data.data.message);
       refetch();
     } catch (error) {
-      return toast.error(error);
+      return toast.warn(error.response.data.message);
     }
 
     e.target.reset();

@@ -4,12 +4,16 @@ import { Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import useCategories from "../../../Hooks/useCategories";
 import addProduct from "./Product.module.css";
+import useWriters from "../../../Hooks/useWriters";
+import usePublications from "../../../Hooks/usePublications";
 
 const AddProductModal = ({ refetch, show, handleClose }) => {
   const [discount, setDiscount] = useState("0");
   const [image, setImage] = useState([]);
   const [productPdf, setProductPdf] = useState([]);
   const [categories] = useCategories();
+  const [writers] = useWriters();
+  const [publications] = usePublications();
   const [tags, setTags] = useState([]);
 
   const handleKeyDown = (e) => {
@@ -50,10 +54,10 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
     const selectedCategory = categories.data.find(
       (categoryName) => categoryName.name === e.target.categoryName.value
     );
-    const selectedWriter = categories.data.find(
+    const selectedWriter = writers.data.find(
       (writerName) => writerName.name === e.target.writerName.value
     );
-    const selectedPublication = categories.data.find(
+    const selectedPublication = publications.data.find(
       (publicationName) =>
         publicationName.name === e.target.publicationName.value
     );
@@ -305,7 +309,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 <option selected disabled>
                   Select A Writer
                 </option>
-                {categories?.data?.map((category) => (
+                {writers?.data?.map((category) => (
                   <option>{category.name}</option>
                 ))}
               </select>
@@ -324,7 +328,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 <option selected disabled>
                   Select A Publication
                 </option>
-                {categories?.data?.map((category) => (
+                {publications?.data?.map((category) => (
                   <option>{category.name}</option>
                 ))}
               </select>

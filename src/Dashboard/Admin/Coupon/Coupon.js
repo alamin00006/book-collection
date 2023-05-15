@@ -21,7 +21,7 @@ const Coupon = () => {
       }
       toast.success(data.data.message);
     } catch (error) {
-      return toast.error(error);
+      return toast.warn(error.response.data.message);
     }
 
     e.target.reset();
@@ -66,7 +66,7 @@ const Coupon = () => {
           </div>
         </div>
       </form>
-      <ToastContainer />
+      <ToastContainer className="toast-position" position="top-center" />
     </div>
   );
 };

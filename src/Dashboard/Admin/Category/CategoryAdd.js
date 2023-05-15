@@ -1,8 +1,12 @@
 import axios from "axios";
 import React from "react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "./CategoryAdd.css";
+import useCategories from "../../../Hooks/useCategories";
+
 const CategoryAdd = () => {
+  const [categories, refetch] = useCategories();
+
   const handleCategoryAdd = async (e) => {
     e.preventDefault();
     const categoryAdd = {
@@ -19,8 +23,9 @@ const CategoryAdd = () => {
         return toast.error(data.data.error);
       }
       toast.success(data.data.message);
+      refetch();
     } catch (error) {
-      return toast.error(error);
+      return toast.warn(error.response.data.message);
     }
 
     e.target.reset();
@@ -52,6 +57,7 @@ const CategoryAdd = () => {
           </div>
         </div>
       </form>
+      <ToastContainer className="toast-position" position="top-center" />
     </div>
   );
 };

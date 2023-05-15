@@ -4,12 +4,15 @@ import { Modal } from "react-bootstrap";
 import { toast } from "react-toastify";
 import useCategories from "../../../Hooks/useCategories";
 import editProduct from "./Product.module.css";
+import useWriters from "../../../Hooks/useWriters";
+import usePublications from "../../../Hooks/usePublications";
 
 const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
   const [discount, setDiscount] = useState("0");
 
   const [categories] = useCategories();
-
+  const [writers] = useWriters();
+  const [publications] = usePublications();
   const handleNewProduct = async (e) => {
     e.preventDefault();
 
@@ -31,10 +34,10 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     const selectedCategory = categories.data.find(
       (categoryName) => categoryName.name === e.target.categoryName.value
     );
-    const selectedWriter = categories.data.find(
+    const selectedWriter = writers.data.find(
       (writerName) => writerName.name === e.target.writerName.value
     );
-    const selectedPublication = categories.data.find(
+    const selectedPublication = publications.data.find(
       (publicationName) =>
         publicationName.name === e.target.publicationName.value
     );
@@ -93,8 +96,8 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
         }
       );
 
+      toast.success(data.data.message);
       refetch();
-      return toast.success(data.data.message);
     } catch (error) {
       return toast.error(error.response.data.message);
     }
@@ -234,7 +237,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 <option selected disabled>
                   Select A Writer
                 </option>
-                {categories?.data?.map((category) => (
+                {writers?.data?.map((category) => (
                   <option>{category.name}</option>
                 ))}
               </select>
@@ -254,7 +257,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 <option selected disabled>
                   Select A Publication
                 </option>
-                {categories?.data?.map((category) => (
+                {publications?.data?.map((category) => (
                   <option>{category.name}</option>
                 ))}
               </select>

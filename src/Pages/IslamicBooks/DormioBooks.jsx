@@ -45,7 +45,7 @@ const DormioBooks = ({ AddToCarts }) => {
   const [dormioBooks, setDormioBooks] = useState([]);
   useEffect(() => {
     const dormioBook = myProducts3?.data?.filter(
-      (dormio) => dormio?.category?.categoryName === "ধর্মীয় বই"
+      (dormio) => dormio?.category?.categoryName === "ধর্মীয় বই"
     );
 
     setDormioBooks(() => dormioBook);

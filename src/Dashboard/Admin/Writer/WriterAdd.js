@@ -1,8 +1,11 @@
 import axios from "axios";
 import React from "react";
 import { toast, ToastContainer } from "react-toastify";
+import useWriters from "../../../Hooks/useWriters";
 
 const WriterAdd = () => {
+  const [writers, refetch] = useWriters();
+
   const handleWriterAdd = async (e) => {
     e.preventDefault();
     const writerAdd = {
@@ -19,8 +22,9 @@ const WriterAdd = () => {
         return toast.error(data.data.error);
       }
       toast.success(data.data.message);
+      refetch();
     } catch (error) {
-      return toast.error(error);
+      return toast.warn(error.response.data.message);
     }
 
     e.target.reset();
@@ -52,7 +56,7 @@ const WriterAdd = () => {
           </div>
         </div>
       </form>
-      <ToastContainer />
+      <ToastContainer className="toast-position" position="top-center" />
     </div>
   );
 };

@@ -1,9 +1,10 @@
-.see-details{
-    cursor: pointer;
-    color: red !important;
-    padding: 10px;
+.see-details {
+  cursor: pointer;
+  color: rgb(255, 255, 255) !important;
+  padding: 10px;
+  background-color: #065644 !important;
 }
-.customer-order-status{
-    color: #065644!important;
-    font-weight: 700;
+.customer-order-status {
+  color: #065644 !important;
+  font-weight: 700;
 }
