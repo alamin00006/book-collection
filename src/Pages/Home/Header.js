@@ -2,7 +2,7 @@ import React from "react";
 import Navber from "../Navber/Navber";
 import Navber2 from "../Navber/Navber2";
 import "./Header.css";
-// import OffCanvasNavbar from "../OffCanvasNavbar/OffCanvasNavbar";
+import OffCanvasNavbar from "../OffCanvasNavbar/OffCanvasNavbar";
 
 const Header = ({ handleIslamicBook }) => {
   return (
@@ -13,7 +13,7 @@ const Header = ({ handleIslamicBook }) => {
       <div className="second-navbar">
         <Navber handleIslamicBook={handleIslamicBook}></Navber>
       </div>
-      {/* <OffCanvasNavbar /> */}
+      <OffCanvasNavbar />
     </div>
   );
 };
