@@ -23,3 +23,94 @@
   outline: none !important;
   border: none !important;
 }
+
+.my-account-aria {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+}
+
+.search-little-icon {
+  position: absolute !important;
+  top: 20px;
+  right: 200px;
+}
+
+@media screen and (max-width: 320px) {
+  /* CSS rules or styles for small screens */
+  .main-Navbar {
+    display: none;
+  }
+  .search-little-icon {
+    position: absolute !important;
+    top: 20px;
+    right: 150px;
+  }
+  .cart-icon {
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    right: 105px;
+  }
+  .login-aria {
+    position: absolute;
+    top: 22px;
+    right: 0px;
+  }
+  .my-account-aria {
+    position: absolute;
+    top: 5px;
+    right: -10px;
+  }
+}
+
+/* Styles for screens with a width between 321px and 768px */
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  /* CSS rules or styles for medium screens */
+  .main-Navbar {
+    display: none;
+  }
+  .search-little-icon {
+    position: absolute !important;
+    top: 22px;
+    right: 150px;
+  }
+  .cart-icon {
+    position: absolute;
+    top: 22px;
+    right: 100px;
+  }
+  .login-aria {
+    position: absolute;
+    top: 25px;
+    right: 0px;
+  }
+  .my-account-aria {
+    position: absolute;
+    top: 8px;
+    right: -10px;
+  }
+}
+
+/* Styles for screens with a width greater than 768px */
+@media screen and (min-width: 769px) {
+  /* CSS rules or styles for large screens */
+  .main-Navbar {
+    display: block;
+  }
+  .cart-icon {
+    position: absolute;
+    top: 20px;
+    right: 65px;
+  }
+  .login-aria {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+  }
+  .my-account-aria {
+    position: absolute;
+    top: 8px;
+    right: -45px;
+  }
+}

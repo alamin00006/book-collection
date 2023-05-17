@@ -16,8 +16,8 @@ const Navber = () => {
   const [writers] = useWriters();
 
   return (
-    <div className="container">
-      <nav className="navbar navbar-expand-lg ">
+    <div className="container main-Navbar">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand text-white text-decorarion-none">
             হোম

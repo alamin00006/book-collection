@@ -31,12 +31,14 @@ const Navber2 = () => {
             <img className="logo" src={logo} alt="" />
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <SearchIcon />
+            <div className="search-little-icon">
+              <SearchIcon />
+            </div>
           </Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav
-              className="me-auto my-2 my-lg-0"
+              className="ms-1 my-2 my-lg-0"
               style={{ maxHeight: "100px" }}
               navbarScroll
             ></Nav>
@@ -55,36 +57,41 @@ const Navber2 = () => {
             as={Link}
             to="/cart"
           >
-            <ShoppingCartIcon className="add-to-icon1" />
-            {cart?.cartItems?.length}
+            <div className="cart-icon">
+              <ShoppingCartIcon className="add-to-icon1" />
+              {cart?.cartItems?.length}
+            </div>
           </Nav.Link>
+
           {token ? (
             <>
-              <p className="mt-3 ms-3 text-black sing-Out ">
+              <p className="mt-3 ms-3 text-black sing-Out my-account-aria">
                 <Link className="text-white account-part" to="/side-navbar">
                   আমার একাউন্ট
                 </Link>
               </p>
             </>
           ) : (
-            <Nav.Link as={Link} to="/login" className="ms-3 text-white">
-              <svg
-                className="fs-2"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-person-circle"
-                viewBox="0 0 16 16"
-              >
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                <path
-                  fill-rule="evenodd"
-                  d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                />
-              </svg>{" "}
-              Login
-            </Nav.Link>
+            <p className="login-aria">
+              <Nav.Link as={Link} to="/login" className="ms-3 text-white">
+                <svg
+                  className="fs-2"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-person-circle"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                  <path
+                    fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                  />
+                </svg>{" "}
+                Login
+              </Nav.Link>
+            </p>
           )}
         </Container>
       </Navbar>
