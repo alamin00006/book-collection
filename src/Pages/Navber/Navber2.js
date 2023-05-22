@@ -24,8 +24,8 @@ const Navber2 = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <div className="container">
-      <Navbar className="" expand="lg">
+    <div className="container ">
+      <Navbar className=" sticky-nav" expand="lg">
         <Container fluid>
           <Link to="/">
             <img className="logo" src={logo} alt="" />

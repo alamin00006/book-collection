@@ -40,7 +40,7 @@ import Dashboard from "./Dashboard/SideNavbar/Dashboard";
 
 import OrderDetails from "./Pages/Order/OrderDetails";
 import SideNavbar from "./Dashboard/SideNavbar/SideNavbar";
-import UserOrder from "./Dashboard/SideNavbar/UserOrder";
+
 import ProductPage from "./Dashboard/Admin/AddProduct/ProductPage";
 import CategoryAdd from "./Dashboard/Admin/Category/CategoryAdd";
 import WriterAdd from "./Dashboard/Admin/Writer/WriterAdd";
@@ -65,6 +65,8 @@ import WriterDetails from "./Pages/Writers/WriterDetails";
 import BannerAdd from "./Dashboard/Admin/Banner/BannerAdd";
 import UpComming from "./Pages/UpComming/UpComming";
 import Error from "./Pages/Error/Error.jsx";
+import UserProfile from "./Dashboard/UserProfile/UserProfile";
+import Support from "./Dashboard/Support/Support";
 
 function App() {
   const [user] = useAuthState(auth);
@@ -76,29 +78,6 @@ function App() {
   const handleIslamicBook = (islamic) => {
     setIslamicBook(islamic);
   };
-
-  // const cart = useSelector((state) => state.cart);
-  //   const { isLoading, refetch} = useQuery(['users', user], () => fetch(`https://book-server-sg0u.onrender.com/carts?customer=${user?.email}`, {
-  //     method: "GET",
-  //     headers: {
-  //       'authorization': `Bearer ${localStorage.getItem('accessToken')}`
-  //  }
-  // }).then(res =>{
-  //   if(res.status ===401 || res.status === 403){
-  //             Navigate('/');
-  //             signOut(auth);
-  //             localStorage.removeItem('accessToken')
-  //             }
-  //          return res.json()
-  // })
-  // .then(data =>{
-  //   setCarts(data)
-
-  // }))
-  // if(isLoading){
-  //   <Loading></Loading>
-  // }
-  // refetch()
 
   const AddToCarts = (item) => {
     // dispatch(addToCart(item));
@@ -223,10 +202,13 @@ function App() {
           element={<OrderDetails></OrderDetails>}
         ></Route>
 
-        {/* <Route path='/product-add' element={<AddProduct></AddProduct>}></Route> */}
         <Route path="/side-navbar" element={<SideNavbar></SideNavbar>}>
           <Route index element={<Dashboard></Dashboard>}></Route>
-          <Route path="user-order" element={<UserOrder></UserOrder>}></Route>
+          <Route
+            path="user-profile"
+            element={<UserProfile></UserProfile>}
+          ></Route>
+          <Route path="support" element={<Support></Support>}></Route>
           <Route path="product-page" element={<ProductManage />}></Route>
           <Route
             path="category-add"

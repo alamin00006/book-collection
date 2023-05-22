@@ -61,7 +61,7 @@ const SideNavbar = () => {
                 </div>
                 <div className="ms-2">
                   <Link
-                    to="/side-navbar/user-order"
+                    to="/side-navbar/user-profile"
                     className="text-decoration-none text-black"
                   >
                     প্রোফাইল
@@ -74,7 +74,7 @@ const SideNavbar = () => {
                 </div>
                 <div className="ms-2">
                   <Link
-                    to="/side-navbar/user-order"
+                    to="/up-comming"
                     className="text-decoration-none text-black"
                   >
                     ইচ্ছেতালিকা
@@ -87,7 +87,7 @@ const SideNavbar = () => {
                 </div>
                 <div className="ms-2">
                   <Link
-                    to="/side-navbar/user-order"
+                    to="/side-navbar/support"
                     className="text-decoration-none text-black"
                   >
                     সাপোর্ট

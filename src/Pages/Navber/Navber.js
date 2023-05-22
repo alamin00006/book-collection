@@ -196,7 +196,7 @@ const Navber = () => {
                   <div className="drop-list-3">
                     <div className="d-flex">
                       <ul>
-                        {publications?.data?.slice(0, 7).map((publication) => (
+                        {publications?.data?.slice(0, 8).map((publication) => (
                           <li key={publication._id}>
                             <Link
                               to={`/publication/${publication._id}`}
@@ -208,7 +208,7 @@ const Navber = () => {
                         ))}
                       </ul>
                       <ul>
-                        {publications?.data?.slice(7, 14).map((publication) => (
+                        {publications?.data?.slice(8, 15).map((publication) => (
                           <li key={publication._id}>
                             <Link
                               to={`/publication/${publication._id}`}
@@ -221,7 +221,7 @@ const Navber = () => {
                       </ul>
                       <ul>
                         {publications?.data
-                          ?.slice(14, 21)
+                          ?.slice(15, 22)
                           .map((publication) => (
                             <li key={publication._id}>
                               <Link
@@ -235,7 +235,7 @@ const Navber = () => {
                       </ul>
                       <ul>
                         {publications?.data
-                          ?.slice(21, 27)
+                          ?.slice(22, 28)
                           .map((publication) => (
                             <li key={publication._id}>
                               <Link
@@ -249,7 +249,7 @@ const Navber = () => {
                       </ul>
                       <ul>
                         {publications?.data
-                          ?.slice(27, 33)
+                          ?.slice(28, 34)
                           .map((publication) => (
                             <li key={publication._id}>
                               <Link
@@ -284,7 +284,13 @@ const Navber = () => {
                           className="dropdown-item book-fair"
                         >
                           {" "}
-                          বইমেলা {bookfair?.bookFairYear}
+                          <Link
+                            to="/up-comming"
+                            style={{ color: "black", textDecoration: "none" }}
+                          >
+                            {" "}
+                            বইমেলা {bookfair?.bookFairYear}
+                          </Link>
                         </span>
                       ))}
                     </li>

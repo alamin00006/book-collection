@@ -1,36 +1,63 @@
-.my-card{
-    display: grid;
-    grid-template-columns:  repeat(5, 1fr);
-    gap: 20px;
-    z-index: 0 !important;
+/* .my-card {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  z-index: 0 !important;
+} */
+
+img {
+  height: 200px;
+}
+.details {
+  width: 100%;
 }
 
-img{
-    height: 200px;
-}
-.details{
-    width: 100%;
+/* @media only screen and (max-width: 767px) {
+  .my-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+
+  img {
+    height: 150px;
+  }
+} */
+
+/* @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .my-card {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  img {
+    height: 250px;
+  }
+} */
+
+@media screen and (max-width: 320px) {
+  /* CSS rules or styles for small screens */
+  /* .my-card {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+
+  img {
+    height: 150px;
+  } */
 }
 
-@media only screen and (max-width:767px){
-  
-    .my-card{
-      grid-template-columns:  1fr 1fr;
-        gap: 60px;
-    }   
-
-    img{
-        height: 150px;
-    }
+/* Styles for screens with a width between 321px and 768px */
+@media screen and (min-width: 321px) and (max-width: 768px) {
+  /* CSS rules or styles for medium screens */
+  /* .my-card {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+  }
+  img {
+    height: 250px;
+  } */
 }
 
-@media only screen and (min-width:768px) and (max-width:1023px) {
-    .my-card{
-        grid-template-columns: 1fr 1fr 1fr;
-          gap: 40px;
-      }
-      img{
-        height: 250px;
-    }     
+/* Styles for screens with a width greater than 768px */
+@media screen and (min-width: 769px) {
+  /* CSS rules or styles for large screens */
 }
-    
