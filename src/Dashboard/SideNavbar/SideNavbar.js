@@ -11,7 +11,9 @@ import AdminAccess from "./AdminAccess";
 import useUser from "../../Hooks/useUser";
 
 const SideNavbar = () => {
+  const token = localStorage.getItem("token");
   const [user, refetch, isLoading] = useUser();
+
   const navigate = useNavigate();
 
   const SingOutHandle = () => {
@@ -23,95 +25,98 @@ const SideNavbar = () => {
   return (
     <div className="container">
       <div className="row bg-white">
-        <div className="col-lg-3 col-md-3 col-sm-12 border">
-          <div className="py-3">
-            <h5 className="px-2">আমার একাউন্ট</h5>
-            <ul className="px-2 py-3">
-              <li className="list-unstyled d-flex align-items-center">
-                <div className="">
-                  <DashboardIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    to="/side-navbar"
-                    className="text-decoration-none text-black "
-                  >
-                    ড্যাশবোর্ড
-                  </Link>
-                </div>
-              </li>
-              {token && user && user?.role === "Admin" ? <AdminAccess /> : ""}
+        {token && user && user.role === "Admin" ? (
+          <AdminAccess />
+        ) : (
+          <div className="col-lg-3 col-md-3 col-sm-12 border">
+            <div className="py-3">
+              <h5 className="px-2">আমার একাউন্ট</h5>
+              <ul className="px-2 py-3">
+                <li className="list-unstyled d-flex align-items-center">
+                  <div className="">
+                    <DashboardIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      to="/side-navbar"
+                      className="text-decoration-none text-black "
+                    >
+                      ড্যাশবোর্ড
+                    </Link>
+                  </div>
+                </li>
+                <li className="list-unstyled d-flex align-items-center mt-4">
+                  <div>
+                    <OrderIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      to="/side-navbar/order"
+                      className="text-decoration-none text-black"
+                    >
+                      অর্ডার
+                    </Link>
+                  </div>
+                </li>
 
-              <li className="list-unstyled d-flex align-items-center mt-4">
-                <div>
-                  <OrderIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    to="/side-navbar/order"
-                    className="text-decoration-none text-black"
-                  >
-                    অর্ডার
-                  </Link>
-                </div>
-              </li>
-
-              <li className="list-unstyled d-flex align-items-center mt-4">
-                <div>
-                  <ProfileIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    to="/side-navbar/user-profile"
-                    className="text-decoration-none text-black"
-                  >
-                    প্রোফাইল
-                  </Link>
-                </div>
-              </li>
-              <li className="list-unstyled d-flex align-items-center mt-4">
-                <div>
-                  <LoveIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    to="/up-comming"
-                    className="text-decoration-none text-black"
-                  >
-                    ইচ্ছেতালিকা
-                  </Link>
-                </div>
-              </li>
-              <li className="list-unstyled d-flex align-items-center mt-4">
-                <div>
-                  <QuestionIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    to="/side-navbar/support"
-                    className="text-decoration-none text-black"
-                  >
-                    সাপোর্ট
-                  </Link>
-                </div>
-              </li>
-              <li className="list-unstyled d-flex align-items-center mt-4">
-                <div>
-                  <SingOutIcon />
-                </div>
-                <div className="ms-2">
-                  <Link
-                    onClick={SingOutHandle}
-                    to="/"
-                    className="text-decoration-none text-black"
-                  >
-                    লগ আউট
-                  </Link>
-                </div>
-              </li>
-            </ul>
+                <li className="list-unstyled d-flex align-items-center mt-4">
+                  <div>
+                    <ProfileIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      to="/side-navbar/user-profile"
+                      className="text-decoration-none text-black"
+                    >
+                      প্রোফাইল
+                    </Link>
+                  </div>
+                </li>
+                <li className="list-unstyled d-flex align-items-center mt-4">
+                  <div>
+                    <LoveIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      to="/up-comming"
+                      className="text-decoration-none text-black"
+                    >
+                      ইচ্ছেতালিকা
+                    </Link>
+                  </div>
+                </li>
+                <li className="list-unstyled d-flex align-items-center mt-4">
+                  <div>
+                    <QuestionIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      to="/side-navbar/support"
+                      className="text-decoration-none text-black"
+                    >
+                      সাপোর্ট
+                    </Link>
+                  </div>
+                </li>
+                <li className="list-unstyled d-flex align-items-center mt-4">
+                  <div>
+                    <SingOutIcon />
+                  </div>
+                  <div className="ms-2">
+                    <Link
+                      onClick={SingOutHandle}
+                      to="/"
+                      className="text-decoration-none text-black"
+                    >
+                      লগ আউট
+                    </Link>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
+
         <div className="col-lg-9 col-md-9 col-sm-12">
           <Outlet></Outlet>
         </div>
