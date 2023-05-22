@@ -40,7 +40,8 @@ const SideNavbar = () => {
                   </Link>
                 </div>
               </li>
-              <AdminAccess />
+              {token && user?.role === "Admin" ? <AdminAccess /> : ""}
+
               <li className="list-unstyled d-flex align-items-center mt-4">
                 <div>
                   <OrderIcon />
