@@ -27,7 +27,7 @@ const Dashboard = () => {
   return (
     <div className="container">
       {/* User Dashboard Route */}
-      {token && user?.role === "Admin" ? (
+      {token && user && user?.role === "Admin" ? (
         <AdminDashbordRoute />
       ) : (
         <>
