@@ -29,7 +29,7 @@ import AddToCart from "./Pages/AddToCart/AddToCart";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "./firebase.init";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Shipping from "./Pages/Shipping/Shipping";
 import Order from "./Pages/Order/Order";
 import { useDispatch, useSelector } from "react-redux";
@@ -67,14 +67,23 @@ import UpComming from "./Pages/UpComming/UpComming";
 import Error from "./Pages/Error/Error.jsx";
 import UserProfile from "./Dashboard/UserProfile/UserProfile";
 import Support from "./Dashboard/Support/Support";
+import useUser from "./Hooks/useUser";
 
 function App() {
-  const [user] = useAuthState(auth);
   const [carts, setCarts] = useState([]);
   const [total, setTotal] = useState(1);
   const dispatch = useDispatch();
   const [islamicBook, setIslamicBook] = useState("");
 
+  const token = localStorage.getItem("token");
+  const [user, refetch, isLoading] = useUser();
+  console.log(user);
+
+  useEffect(() => {
+    if (!user?.email && !token) {
+      refetch();
+    }
+  }, [user, refetch, token]);
   const handleIslamicBook = (islamic) => {
     setIslamicBook(islamic);
   };
@@ -202,7 +211,16 @@ function App() {
           element={<OrderDetails></OrderDetails>}
         ></Route>
 
-        <Route path="/side-navbar" element={<SideNavbar></SideNavbar>}>
+        <Route
+          path="/side-navbar"
+          element={
+            <SideNavbar
+              token={token}
+              user={user}
+              refetch={refetch}
+            ></SideNavbar>
+          }
+        >
           <Route index element={<Dashboard></Dashboard>}></Route>
           <Route
             path="user-profile"

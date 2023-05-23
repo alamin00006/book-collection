@@ -21,13 +21,13 @@ const Dashboard = () => {
   const SingOutHandle = () => {
     localStorage.removeItem("token");
 
-    // window.location.reload(false);
     refetch();
   };
+
   return (
     <div className="container">
-      {/* User Dashboard Route */}
-      {token && user && user?.role === "Admin" ? (
+      {/*normal User Dashboard Route */}
+      {token && user?.role === "Admin" ? (
         <AdminDashbordRoute />
       ) : (
         <>

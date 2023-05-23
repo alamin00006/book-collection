@@ -9,8 +9,14 @@ import PublicationIcon from "../../svgIcons/PublicationIcon";
 import ReviewIcon from "../../svgIcons/ReviewIcon";
 import WriterIcon from "../../svgIcons/WriterIcon";
 import BannerIcon from "../../svgIcons/BannerIcons";
+import SingOutIcon from "../../svgIcons/SingOutIcon";
 
-const AdminAccess = () => {
+const AdminAccess = ({ refetch }) => {
+  const SingOutHandle = () => {
+    localStorage.removeItem("token");
+
+    refetch();
+  };
   return (
     <div>
       <li className="list-unstyled d-flex align-items-center mt-4">
@@ -128,6 +134,20 @@ const AdminAccess = () => {
             className="text-decoration-none text-black"
           >
             ব্যানার
+          </Link>
+        </div>
+      </li>
+      <li className="list-unstyled d-flex align-items-center mt-4">
+        <div>
+          <SingOutIcon />
+        </div>
+        <div className="ms-2">
+          <Link
+            onClick={SingOutHandle}
+            to="/"
+            className="text-decoration-none text-black"
+          >
+            লগ আউট
           </Link>
         </div>
       </li>
