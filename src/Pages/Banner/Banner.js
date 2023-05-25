@@ -1,9 +1,8 @@
 import React from "react";
-
 import "../Banner/Banner.css";
 import useBanner from "../../Hooks/useBanner";
 import Slider from "react-slick";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [allBanner] = useBanner();
@@ -23,17 +22,14 @@ const Banner = () => {
         <Slider {...settings} className="mySwiper">
           {allBanner?.data.map((banner) => (
             <div className="slider">
-              <img
-                src={`https://book-server-sg0u.onrender.com/${banner?.image}`}
-                alt=""
-              />
+              <img src={banner?.image} alt="" />
             </div>
           ))}
         </Slider>
       </div>
-      <div className="row second-banner mt-4">
+      {/* <div className="row second-banner mt-4">
         <div className="col-lg-4 col-md-4 col-sm-12">
-          {/* Islamic Book */}
+
           <Link to="/up-comming">
             {" "}
             <img
@@ -43,7 +39,7 @@ const Banner = () => {
           </Link>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
-          {/* top selling Book */}
+
           <Link to="/up-comming">
             <img
               src="https://boiferry.com/assets/images/redactor/TRzp2H4kNG4i3DsuX50G2zRFPcLiTRasCr2VXORA.webp"
@@ -52,7 +48,7 @@ const Banner = () => {
           </Link>
         </div>
         <div className="col-lg-4 col-md-4 col-sm-12">
-          {/* Programming Book */}
+ 
           <Link to="/up-comming">
             <img
               src="https://boiferry.com/assets/images/redactor/TRzp2H4kNG4i3DsuX50G2zRFPcLiTRasCr2VXORA.webp"
@@ -60,7 +56,7 @@ const Banner = () => {
             />
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -12,7 +12,6 @@ const BannerAdd = () => {
   const handleBannerAdd = async (e) => {
     e.preventDefault();
 
-    const formData = new FormData();
     const isValidFileUploaded = (file) => {
       const validExtensions = [
         "png",
@@ -28,10 +27,12 @@ const BannerAdd = () => {
       return validExtensions.includes(fileExtension);
     };
 
-    if (image?.length > 3) {
-      return toast.error("please provide more than 3 banner picture");
+    if (image?.length > 1) {
+      return toast.error("please provide one banner picture");
     }
     const file = image[0];
+    const imgbbapi = "76188552c6fc6bf4a3912664a291870a";
+    const formData = new FormData();
     if (file.size > 5000000) {
       return toast.error("Product Picture size 5MB more than not allowed");
     } else {
@@ -43,18 +44,32 @@ const BannerAdd = () => {
         return toast.error("Banner Picture is not valid");
       }
     }
+    const url = `https://api.imgbb.com/1/upload?key=${imgbbapi}`;
+    await fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then(async (imgData) => {
+        if (imgData.success) {
+          const bannerAdd = {
+            image: imgData.data.url,
+          };
 
-    try {
-      const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/banner",
-        formData
-      );
-
-      toast.success(data.data.message);
-      refetch();
-    } catch (error) {
-      return toast.warn(error.response.data.message);
-    }
+          // save Banner to the database
+          try {
+            const data = await axios.post(
+              "http://localhost:5000/api/v1/banner",
+              bannerAdd
+            );
+            refetch();
+            toast.success(data.data.message);
+          } catch (error) {
+            console.log(error);
+            return toast.warn(error.response.data.message);
+          }
+        }
+      });
 
     e.target.reset();
   };

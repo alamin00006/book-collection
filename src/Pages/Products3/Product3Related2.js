@@ -28,7 +28,7 @@ const Product3Related2 = ({ relatedProduct }) => {
               <div>
                 <img
                   style={{ width: "100px" }}
-                  src={`https://book-server-sg0u.onrender.com/${data?.image}`}
+                  src={data?.image}
                   alt="Los Angeles"
                   class="d-block"
                 />

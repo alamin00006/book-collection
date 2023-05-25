@@ -2,7 +2,6 @@ import "./App.css";
 import Footer from "./Pages/Footer/Footer";
 import Home from "./Pages/Home/Home";
 import Header from "./Pages/Home/Header";
-import IslamicBook from "./Pages/BookCollection/IslamicBook";
 import PreOrder from "./Pages/BookCollection/PreOrder";
 import General from "./Pages/BookCollection/General";
 import Engineering from "./Pages/BookCollection/Engineering";
@@ -26,28 +25,17 @@ import Products3All from "./Pages/Products3/Product3All";
 import Product3AllDetails from "./Pages/Products3/Product3AllDetails";
 import Product3Summary from "./Pages/Products3/Product3Summary";
 import AddToCart from "./Pages/AddToCart/AddToCart";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "./firebase.init";
-
-import { useEffect, useState } from "react";
 import Shipping from "./Pages/Shipping/Shipping";
 import Order from "./Pages/Order/Order";
-import { useDispatch, useSelector } from "react-redux";
-import { addByIncrement, addToCart } from "./Pages/store/reducers/cartSlice";
-import DrawerCart from "./Pages/AddToCart/Drawer";
 import ShoppingCart from "./Pages/AddToCart/ShoppingCart";
 import Dashboard from "./Dashboard/SideNavbar/Dashboard";
-
 import OrderDetails from "./Pages/Order/OrderDetails";
 import SideNavbar from "./Dashboard/SideNavbar/SideNavbar";
-
-import ProductPage from "./Dashboard/Admin/AddProduct/ProductPage";
 import CategoryAdd from "./Dashboard/Admin/Category/CategoryAdd";
 import WriterAdd from "./Dashboard/Admin/Writer/WriterAdd";
 import Publication from "./Dashboard/Admin/Publication/Publication";
 import BookFair from "./Dashboard/Admin/BookFair/BookFair";
 import Coupon from "./Dashboard/Admin/Coupon/Coupon";
-import TagsInput from "./Dashboard/Admin/AddProduct/TagsInput";
 import Category from "./Pages/Categorys/Category";
 import CategoryDetails from "./Pages/Categorys/CategoryDetails";
 import OrderManagePage from "./Dashboard/Admin/OrderMange/OrderManagePage";
@@ -67,42 +55,15 @@ import UpComming from "./Pages/UpComming/UpComming";
 import Error from "./Pages/Error/Error.jsx";
 import UserProfile from "./Dashboard/UserProfile/UserProfile";
 import Support from "./Dashboard/Support/Support";
-import useUser from "./Hooks/useUser";
 
 function App() {
-  const [carts, setCarts] = useState([]);
-  const [total, setTotal] = useState(1);
-  const dispatch = useDispatch();
-  const [islamicBook, setIslamicBook] = useState("");
-
-  const token = localStorage.getItem("token");
-  const [user, refetch, isLoading] = useUser();
-  console.log(user);
-
-  useEffect(() => {
-    if (!user?.email && !token) {
-      refetch();
-    }
-  }, [user, refetch, token]);
-  const handleIslamicBook = (islamic) => {
-    setIslamicBook(islamic);
-  };
-
-  const AddToCarts = (item) => {
-    // dispatch(addToCart(item));
-    // console.log(item);
-  };
-
   return (
     <div>
-      <Header handleIslamicBook={handleIslamicBook}></Header>
+      <Header></Header>
 
       <Routes>
-        <Route path="/" element={<Home AddToCarts={AddToCarts}></Home>}></Route>
-        <Route
-          path="/islamicBook"
-          element={<IslamicBook islamicBook={islamicBook}></IslamicBook>}
-        ></Route>
+        <Route path="/" element={<Home></Home>}></Route>
+
         <Route path="/book" element={<Book></Book>}></Route>
         <Route path="/PreOrder" element={<PreOrder></PreOrder>}></Route>
         <Route
@@ -132,7 +93,7 @@ function App() {
           element={<EducationResearch></EducationResearch>}
         ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
-        <Route path="/singUp" element={<SignUp carts={carts}></SignUp>}></Route>
+        <Route path="/singUp" element={<SignUp></SignUp>}></Route>
         <Route path="/reset-password" element={<ResetPasssword />}></Route>
         <Route
           path="/summary"
@@ -149,7 +110,7 @@ function App() {
 
         <Route
           path="/product3Details/:details3Id"
-          element={<Product3Details AddToCarts={AddToCarts}></Product3Details>}
+          element={<Product3Details></Product3Details>}
         ></Route>
         <Route
           path="/product4Details/:details4Id"
@@ -211,16 +172,7 @@ function App() {
           element={<OrderDetails></OrderDetails>}
         ></Route>
 
-        <Route
-          path="/side-navbar"
-          element={
-            <SideNavbar
-              token={token}
-              user={user}
-              refetch={refetch}
-            ></SideNavbar>
-          }
-        >
+        <Route path="/side-navbar" element={<SideNavbar></SideNavbar>}>
           <Route index element={<Dashboard></Dashboard>}></Route>
           <Route
             path="user-profile"

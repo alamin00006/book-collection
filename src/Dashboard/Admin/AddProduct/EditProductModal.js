@@ -45,6 +45,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     const productAdd = {
       nameB: e.target.productNameBangla.value,
       nameE: e.target.productNameEnglish.value,
+      bookTranslator: e.target.bookTranslator.value,
       price: e.target.price.value,
       quantity: e.target.quantity.value,
       discount: discount,
@@ -55,6 +56,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
       },
       writer: {
         writerName: selectedWriter.name,
+        writerDetails: selectedWriter.writerDetails,
         writer_id: selectedWriter._id,
       },
       publication: {
@@ -63,6 +65,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
       },
       bookFair: e.target.bookFair.value,
       descriptionB: e.target.productDetailsBangla.value,
+      descriptionE: e.target.productDetailsEnglish.value,
       writerDetails: e.target.writerDetails.value,
       BookSalesInfo: e.target.BookSalesInfo.value || "",
     };
@@ -73,6 +76,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     const formData = new FormData();
     formData.append("nameB", productAdd.nameB);
     formData.append("nameE", productAdd.nameE);
+    formData.append("bookTranslator", productAdd.bookTranslator);
     formData.append("price", productAdd.price);
     formData.append("quantity", productAdd.quantity);
     formData.append("discount", productAdd?.discount);
@@ -82,7 +86,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     formData.append("publication", JSON.stringify(productAdd.publication));
     formData.append("bookFair", productAdd.bookFair);
     formData.append("descriptionB", productAdd.descriptionB);
-    formData.append("writerDetails", productAdd.writerDetails);
+    formData.append("descriptionE", productAdd.descriptionE);
     formData.append("BookSalesInfo", productAdd.BookSalesInfo);
 
     try {
@@ -112,16 +116,16 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title className="">Edit Product</Modal.Title>
+          <Modal.Title className="">Update Book</Modal.Title>
         </Modal.Header>
         <Modal.Body className="rounded">
           <form
             onSubmit={handleNewProduct}
             className="mt-2 product-form px-4 mx-2 py-3 rounded row"
           >
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>
-                Product Name in Bangla :{" "}
+                Book Name in Bangla :{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <input
@@ -133,9 +137,9 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 placeholder="Product Name in Bangla"
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>
-                Product Name in English:{" "}
+                Book Name in English:{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <input
@@ -148,6 +152,20 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
               />
             </div>
 
+            <div className="col-lg-4">
+              <label>
+                Book Translator:{" "}
+                <span className="text-danger fw-bold fs-5">*</span>
+              </label>
+              <input
+                type="text"
+                className=""
+                name="bookTranslator"
+                placeholder="Book Translator"
+                id=""
+                defaultValue={productEdit?.bookTranslator}
+              />
+            </div>
             <div className="col-lg-4">
               <label>
                 Price : <span className="text-danger fw-bold fs-5">*</span>
@@ -174,7 +192,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 defaultValue={productEdit?.quantity}
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>Discount : </label>
               <input
                 onChange={(e) => setDiscount(e.target.value)}
@@ -185,7 +203,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 defaultValue={productEdit?.discount}
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label for="status">
                 Status : <span className="text-danger fw-bold fs-5">*</span>
               </label>
@@ -300,6 +318,19 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
             </div>
 
             <div className="col-lg-12">
+              <label for="product-details-English">
+                Book Details in English :{" "}
+                <span className="text-danger fw-bold fs-5">*</span>
+              </label>
+              <textarea
+                className="rounded"
+                id="product-details-English"
+                name="productDetailsEnglish"
+                rows="5"
+                defaultValue={productEdit?.descriptionE}
+              />
+            </div>
+            <div className="col-lg-12">
               <label for="product-details-Bangla">
                 Product Details in Bangla:{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
@@ -310,17 +341,6 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
                 name="productDetailsBangla"
                 rows="5"
                 defaultValue={productEdit?.descriptionB}
-              />
-            </div>
-
-            <div className="col-lg-12">
-              <label for="writerDetails">Writer Details in Bangla:</label>
-              <textarea
-                className="rounded"
-                id="writerDetails"
-                name="writerDetails"
-                rows="4"
-                defaultValue={productEdit?.writerDetails}
               />
             </div>
 

@@ -14,7 +14,7 @@ const OrderManage = () => {
 
   const { isLoading, refetch } = useQuery(["allOrder", page], () =>
     fetch(
-      `https://book-server-sg0u.onrender.com/api/v1/order?page=${page}&size=${5}`,
+      `https://book-server-sg0u.onrender.com/api/v1/order?page=${page}&size=${10}`,
       {
         method: "GET",
       }
@@ -22,7 +22,7 @@ const OrderManage = () => {
       .then((res) => res.json())
       .then((data) => {
         setAllOrder(data?.data?.orders);
-        const totalPageCount = Math.ceil(data?.data?.orderTotalCount / 5);
+        const totalPageCount = Math.ceil(data?.data?.orderTotalCount / 10);
         setPageCount(totalPageCount);
       })
   );

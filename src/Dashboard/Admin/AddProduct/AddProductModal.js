@@ -10,7 +10,7 @@ import usePublications from "../../../Hooks/usePublications";
 const AddProductModal = ({ refetch, show, handleClose }) => {
   const [discount, setDiscount] = useState("0");
   const [image, setImage] = useState([]);
-  const [productPdf, setProductPdf] = useState([]);
+  // const [productPdf, setProductPdf] = useState([]);
   const [categories] = useCategories();
   const [writers] = useWriters();
   const [publications] = usePublications();
@@ -61,56 +61,30 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
       (publicationName) =>
         publicationName.name === e.target.publicationName.value
     );
-
-    const productAdd = {
-      nameB: e.target.productNameBangla.value,
-      nameE: e.target.productNameEnglish.value,
-      price: e.target.price.value,
-      quantity: e.target.quantity.value,
-      discount: discount,
-      status: e.target.status.value,
-      category: {
-        categoryName: selectedCategory.name,
-        category_id: selectedCategory._id,
-      },
-      writer: {
-        writerName: selectedWriter.name,
-        writer_id: selectedWriter._id,
-      },
-      publication: {
-        publicationName: selectedPublication.name,
-        publication_id: selectedPublication._id,
-      },
-
-      bookFair: e.target.bookFair.value,
-      productTags: [tags],
-      descriptionB: e.target.productDetailsBangla.value,
-      descriptionE: e.target.productDetailsEnglish.value,
-      writerDetails: e.target.writerDetails.value,
-      BookSalesInfo: "",
-    };
-
-    if (productAdd.bookFair === "If the Book of Fair") {
-      productAdd.bookFair = null;
-    }
-
-    const formData = new FormData();
-    formData.append("nameB", productAdd.nameB);
-    formData.append("nameE", productAdd.nameE);
-    formData.append("price", productAdd.price);
-    formData.append("quantity", productAdd.quantity);
-    formData.append("discount", productAdd?.discount);
-    formData.append("status", productAdd.status);
-    formData.append("category", JSON.stringify(productAdd.category));
-    formData.append("writer", JSON.stringify(productAdd.writer));
-    formData.append("publication", JSON.stringify(productAdd.publication));
-    formData.append("bookFair", productAdd.bookFair);
-    formData.append("productTags", productAdd.productTags);
-    formData.append("descriptionB", productAdd.descriptionB);
-    formData.append("descriptionE", productAdd.descriptionE);
-    formData.append("writerDetails", productAdd.writerDetails);
-    formData.append("BookSalesInfo", productAdd.BookSalesInfo);
-
+    console.log(selectedWriter);
+    // const formData = new FormData();
+    // formData.append("nameB", productAdd.nameB);
+    // formData.append("nameE", productAdd.nameE);
+    // formData.append("price", productAdd.price);
+    // formData.append("quantity", productAdd.quantity);
+    // formData.append("discount", productAdd?.discount);
+    // formData.append("status", productAdd.status);
+    // formData.append("category", JSON.stringify(productAdd.category));
+    // formData.append("writer", JSON.stringify(productAdd.writer));
+    // formData.append("publication", JSON.stringify(productAdd.publication));
+    // formData.append("bookFair", productAdd.bookFair);
+    // formData.append("productTags", productAdd.productTags);
+    // formData.append("descriptionB", productAdd.descriptionB);
+    // formData.append("descriptionE", productAdd.descriptionE);
+    // formData.append("writerDetails", productAdd.writerDetails);
+    // formData.append("BookSalesInfo", productAdd.BookSalesInfo);
+    // const categoryStringify = {
+    //   category: JSON.stringify({
+    //     categoryName: selectedCategory.name,
+    //     category_id: selectedCategory._id,
+    //   }),
+    // };
+    // console.log(categoryStringify.category);
     const isValidFileUploaded = (file) => {
       const validExtensions = [
         "png",
@@ -125,16 +99,36 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
       const fileExtension = file.type.split("/")[1];
       return validExtensions.includes(fileExtension);
     };
-    const isValidPdfFile = (file) => {
-      const validExtensions = ["pdf", "PDF"];
-      const fileExtension = file?.type?.split("/")[1];
-      return validExtensions.includes(fileExtension);
-    };
+    // const isValidPdfFile = (file) => {
+    //   const validExtensions = ["pdf", "PDF"];
+    //   const fileExtension = file?.type?.split("/")[1];
+    //   return validExtensions.includes(fileExtension);
+    // };
 
     if (image?.length > 1) {
       return toast.error("please provide one book picture");
     }
     const file = image[0];
+
+    // if (productPdf.length > 1) {
+    //   return toast.error("please provide one pdf file");
+    // }
+
+    // const pdf = productPdf[0];
+
+    // if (pdf.size > 5000000) {
+    //   return toast.error("pdf file size 5MB more than not allowed");
+    // } else {
+    //   if (isValidPdfFile(pdf)) {
+    //     Array.from(productPdf)?.forEach((item) => {
+    //       formData.append("pdf", item);
+    //     });
+    //   } else {
+    //     return toast.error("pdf file is not valid");
+    //   }
+    // }
+    const imgbbapi = "76188552c6fc6bf4a3912664a291870a";
+    const formData = new FormData();
     if (file.size > 5000000) {
       return toast.error("Product Picture size 5MB more than not allowed");
     } else {
@@ -146,35 +140,61 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
         return toast.error("Product Picture is not valid");
       }
     }
+    const url = `https://api.imgbb.com/1/upload?key=${imgbbapi}`;
+    await fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then(async (imgData) => {
+        if (imgData.success) {
+          const productAdd = {
+            nameB: e.target.productNameBangla.value,
+            nameE: e.target.productNameEnglish.value,
+            bookTranslator: e.target.bookTranslator.value,
+            price: e.target.price.value,
+            quantity: e.target.quantity.value,
+            discount: discount,
+            status: e.target.status.value,
+            category: JSON.stringify({
+              categoryName: selectedCategory.name,
+              category_id: selectedCategory._id,
+            }),
+            writer: JSON.stringify({
+              writerName: selectedWriter.name,
+              writerDetails: selectedWriter.writerDetails,
+              writer_id: selectedWriter._id,
+            }),
+            publication: JSON.stringify({
+              publicationName: selectedPublication.name,
+              publication_id: selectedPublication._id,
+            }),
 
-    if (productPdf.length > 1) {
-      return toast.error("please provide one pdf file");
-    }
+            bookFair: e.target.bookFair.value,
+            productTags: tags,
+            descriptionB: e.target.productDetailsBangla.value,
+            descriptionE: e.target.productDetailsEnglish.value,
+            BookSalesInfo: "",
+            image: imgData.data.url,
+          };
 
-    const pdf = productPdf[0];
-
-    if (pdf.size > 5000000) {
-      return toast.error("pdf file size 5MB more than not allowed");
-    } else {
-      if (isValidPdfFile(pdf)) {
-        Array.from(productPdf)?.forEach((item) => {
-          formData.append("pdf", item);
-        });
-      } else {
-        return toast.error("pdf file is not valid");
-      }
-    }
-
-    try {
-      const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/product",
-        formData
-      );
-      refetch();
-      toast.success(data.data.message);
-    } catch (error) {
-      return toast.warn(error.response.data.message);
-    }
+          if (productAdd.bookFair === "If the Book of Fair") {
+            productAdd.bookFair = null;
+          }
+          // save Product information to the database
+          try {
+            const data = await axios.post(
+              "http://localhost:5000/api/v1/product",
+              productAdd
+            );
+            refetch();
+            toast.success(data.data.message);
+          } catch (error) {
+            console.log(error);
+            return toast.warn(error.response.data.message);
+          }
+        }
+      });
 
     e.target.reset();
   };
@@ -195,9 +215,9 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
             onSubmit={handleNewProduct}
             className="mt-2 product-form px-4 mx-2 py-3 rounded row"
           >
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>
-                Product Name in Bangla :{" "}
+                Book Name in Bangla :{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <input
@@ -209,17 +229,29 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 id=""
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>
-                Product Name in English:{" "}
+                Book Name in English:{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <input
                 type="text"
                 className=""
                 name="productNameEnglish"
-                required
                 placeholder="Product Name in English"
+                id=""
+              />
+            </div>
+            <div className="col-lg-4">
+              <label>
+                Book Translator:{" "}
+                <span className="text-danger fw-bold fs-5">*</span>
+              </label>
+              <input
+                type="text"
+                className=""
+                name="bookTranslator"
+                placeholder="Book Translator"
                 id=""
               />
             </div>
@@ -250,7 +282,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 id=""
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label>Discount : </label>
               <input
                 onChange={(e) => setDiscount(e.target.value)}
@@ -261,7 +293,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 id=""
               />
             </div>
-            <div className="col-lg-4">
+            <div className="col-lg-6">
               <label for="status">
                 Status : <span className="text-danger fw-bold fs-5">*</span>
               </label>
@@ -351,7 +383,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
 
             <div className="col-lg-12">
               <label for="product-details-Bangla">
-                Product Details in Bangla:{" "}
+                Book Details in Bangla:{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <textarea
@@ -363,7 +395,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
             </div>
             <div className="col-lg-12">
               <label for="product-details-English">
-                Product Details in English :{" "}
+                Book Details in English :{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
               </label>
               <textarea
@@ -373,16 +405,8 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 rows="5"
               />
             </div>
+
             <div className="col-lg-12">
-              <label for="writerDetails">Writer Details in Bangla:</label>
-              <textarea
-                className="rounded"
-                id="writerDetails"
-                name="writerDetails"
-                rows="4"
-              />
-            </div>
-            <div className="col-lg-6">
               <label>
                 Upload a Book Picture :{" "}
                 <span className="text-danger fw-bold fs-5">*</span>
@@ -401,7 +425,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
               />
             </div>
 
-            <div className="col-lg-6 mt-2">
+            {/* <div className="col-lg-6 mt-2">
               <label> Upload a Pdf : </label>
               <input
                 multiple
@@ -415,10 +439,10 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
                 placeholder="productPicture"
                 id=""
               />
-            </div>
+            </div> */}
 
             <div className="col-lg-12 mt-2">
-              <label>Product Tag : </label>
+              <label>Book Tags : </label>
 
               {tags.map((tag, index) => (
                 <div className="tag-item" key={index}>

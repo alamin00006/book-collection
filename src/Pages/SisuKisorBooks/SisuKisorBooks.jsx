@@ -4,7 +4,7 @@ import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import Slider from "react-slick";
 
-const SisuKisorBooks = ({ AddToCarts }) => {
+const SisuKisorBooks = () => {
   let settings = {
     dots: false,
     infinite: true,
@@ -76,7 +76,7 @@ const SisuKisorBooks = ({ AddToCarts }) => {
       <Slider {...settings}>
         {sisuKisorBooks?.map((data, index) => (
           <div className="my-card-main my-card">
-            <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart>
+            <Cart key={data._id} data={data}></Cart>
           </div>
         ))}
       </Slider>

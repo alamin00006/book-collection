@@ -31,7 +31,7 @@ const ProductManage = () => {
     ["myProducts3", page, myProducts3, pageCount],
     () =>
       fetch(
-        `https://book-server-sg0u.onrender.com/api/v1/product?page=${page}&size=${3}`,
+        `https://book-server-sg0u.onrender.com/api/v1/product?page=${page}&size=${10}`,
         {
           method: "GET",
         }
@@ -40,7 +40,7 @@ const ProductManage = () => {
         .then((data) => {
           setProducts3(data?.data?.products);
 
-          const totalPageCount = Math.ceil(data?.data?.productTotalCount / 3);
+          const totalPageCount = Math.ceil(data?.data?.productTotalCount / 10);
           setPageCount(totalPageCount);
         })
   );

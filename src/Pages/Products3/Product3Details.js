@@ -74,22 +74,24 @@ const Product3Details = ({ AddToCarts }) => {
 
   const [reviews, setReview] = useState([]);
 
-  const { isLoading, refetch } = useQuery(["", singleProduct3], () =>
-    fetch(`https://book-server-sg0u.onrender.com/api/v1/review`, {
-      method: "GET",
-    })
-      .then((res) => {
-        if (res.status === 401 || res.status === 403) {
-          // navigate('/');
-          // signOut(auth);
-          // localStorage.removeItem('accessToken')
-        }
-        return res.json();
+  const { isLoading, refetch } = useQuery(
+    ["", singleProduct3, details3Id],
+    () =>
+      fetch(`https://book-server-sg0u.onrender.com/api/v1/review`, {
+        method: "GET",
       })
-      .then((data) => {
-        setReview(data.data);
-        // console.log(data.data)
-      })
+        .then((res) => {
+          if (res.status === 401 || res.status === 403) {
+            // navigate('/');
+            // signOut(auth);
+            // localStorage.removeItem('accessToken')
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setReview(data.data);
+          // console.log(data.data)
+        })
   );
   const approvedReviews = reviews.filter(
     (pReview) => pReview.status === "Approved"
@@ -124,7 +126,7 @@ const Product3Details = ({ AddToCarts }) => {
                   <img
                     className="details-pic"
                     alt=""
-                    src={`https://book-server-sg0u.onrender.com/${singleProduct3?.image}`}
+                    src={singleProduct3?.image}
                   />
                 </div>
               </div>
@@ -182,7 +184,7 @@ const Product3Details = ({ AddToCarts }) => {
                 </p>
               </div>
               <div className="d-flex">
-                <div>
+                {/* <div>
                   <button
                     onClick={handleShow}
                     class="reading-button btn btn-default"
@@ -195,7 +197,7 @@ const Product3Details = ({ AddToCarts }) => {
                     setShow={setShow}
                     singleProduct3={singleProduct3}
                   />
-                </div>
+                </div> */}
                 <div className="d-flex align-items-center add-to-button">
                   <div>
                     <ShoppingCartIcon className="add-to-icon " />

@@ -7,11 +7,11 @@ const BannerTable = ({ banner, index, refetch }) => {
   const handleDelete = async () => {
     try {
       const data = await axios.delete(
-        `https://book-server-sg0u.onrender.com/api/v1/banner/${banner?._id}`,
+        `http://localhost:5000/api/v1/banner/${banner?._id}`,
         {
-          data: {
-            image: banner.image,
-          },
+          // data: {
+          //   image: banner.image,
+          // },
         },
         {
           headers: {
@@ -29,10 +29,18 @@ const BannerTable = ({ banner, index, refetch }) => {
   return (
     <tr>
       <td>{index + 1}</td>
-      <td>{banner?.image?.split("\\")[2]}</td>
+      <td>
+        <img
+          style={{ width: "100px", height: "50px" }}
+          src={banner?.image}
+          alt="banner"
+        />
+      </td>
 
       <td onClick={handleDelete} className="text-center">
-        <DeleteIcon />
+        <span style={{ cursor: "pointer" }}>
+          <DeleteIcon />
+        </span>
       </td>
     </tr>
   );

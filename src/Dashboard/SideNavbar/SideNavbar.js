@@ -1,26 +1,28 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import DashboardIcon from "../../svgIcons/DashboardIcon";
 import LoveIcon from "../../svgIcons/LoveIcon";
 import OrderIcon from "../../svgIcons/OrderIcon";
 import ProfileIcon from "../../svgIcons/ProfileIcon";
 import QuestionIcon from "../../svgIcons/QuestionIcon";
-
 import SingOutIcon from "../../svgIcons/SingOutIcon";
-import AdminAccess from "./AdminAccess";
 
-const SideNavbar = ({ token, user, refetch }) => {
-  useEffect(() => {
-    if (!user?.email && !token) {
-      refetch();
-    }
-  }, [user, refetch, token]);
+// import AdminAccess from "./AdminAccess";
+
+import Loading from "../../Pages/Loading/Loading";
+import useUser from "../../Hooks/useUser";
+
+const SideNavbar = () => {
+  const [user, refetch, isLoading] = useUser();
+
   const SingOutHandle = () => {
     localStorage.removeItem("token");
 
     refetch();
   };
-
+  if (isLoading) {
+    <Loading></Loading>;
+  }
   return (
     <div className="container">
       <div className="row bg-white">
@@ -57,7 +59,6 @@ const SideNavbar = ({ token, user, refetch }) => {
                   </Link>
                 </div>
               </li>
-
               <li className="list-unstyled d-flex align-items-center mt-4">
                 <div>
                   <ProfileIcon />

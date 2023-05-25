@@ -9,6 +9,7 @@ const Product3Specification = ({ singleProduct3 }) => {
           <tr>
             <td>Title</td>
             <td>Author</td>
+            <td>Translator</td>
             <td>Publisher</td>
 
             <td>Country</td>
@@ -17,6 +18,7 @@ const Product3Specification = ({ singleProduct3 }) => {
           <tr>
             <td>{singleProduct3?.nameB}</td>
             <td>{singleProduct3?.writer?.writerName}</td>
+            <td>{singleProduct3?.bookTranslator}</td>
             <td>{singleProduct3?.publication?.publicationName}</td>
             <td>বাংলাদেশ</td>
             <td>বাংলা</td>

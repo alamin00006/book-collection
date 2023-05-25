@@ -15,10 +15,7 @@ const AllShoppingCart = ({ data }) => {
     <div className="row p-5 cart-item">
       <div className="col-lg-6 d-flex">
         <div className="cart-image">
-          <img
-            src={`https://book-server-sg0u.onrender.com/${data.image}`}
-            alt=""
-          />
+          <img src={data.image} alt="" />
         </div>
         <div className="ms-4">
           <p>{data.nameB}</p>

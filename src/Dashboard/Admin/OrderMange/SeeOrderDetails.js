@@ -81,10 +81,7 @@ const SeeOrderDetails = ({ show, setShow, order }) => {
                         <tr className="text-center">
                           <td>{index + 1}</td>
                           <td className="order-image">
-                            <img
-                              src={`https://book-server-sg0u.onrender.com/${order?.image?.[0]}`}
-                              alt=""
-                            />
+                            <img src={order?.image} alt="" />
                           </td>
                           <td>{order.nameB}</td>
                           <td className="fw-bolder"> {order.cartQuantity}</td>

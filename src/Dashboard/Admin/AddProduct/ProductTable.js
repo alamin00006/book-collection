@@ -22,13 +22,13 @@ const ProductTable = ({
   const handleDelete = async () => {
     try {
       const data = await axios.delete(
-        `https://book-server-sg0u.onrender.com/api/v1/product/${productDelete?._id}`,
-        {
-          data: {
-            image: productDelete.image,
-            productPdf: productDelete.productPdf,
-          },
-        },
+        `http://localhost:5000/api/v1/product/${productDelete?._id}`,
+        // {
+        //   data: {
+        //     image: productDelete.image,
+        //     productPdf: productDelete.productPdf,
+        //   },
+        // },
         {
           headers: {
             "Content-Type": "application/json",

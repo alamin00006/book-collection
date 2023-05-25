@@ -30,23 +30,5 @@ const useUser = () => {
     getUser();
   });
   return [user, refetch, isLoading];
-  // const { isLoading } = useQuery(
-  //   "data",
-  //   async () => {
-  //     const { data } = await axios.get(
-  //       "https://book-server-sg0u.onrender.com/api/v1/user/me",{
-  //         headers: {
-  //                     Authorization : `Bearer ${token}`
-  //                   },
-  //       }
-
-  //     );
-  //     return setUser(data?.data);
-  //   },
-  //   {
-  //     refetchInterval: 6000
-  //   }
-  // );
-  // return [user, isLoading]
 };
 export default useUser;
