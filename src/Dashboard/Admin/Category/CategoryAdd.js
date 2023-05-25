@@ -22,9 +22,12 @@ const CategoryAdd = () => {
   const { refetch, isLoading } = useQuery(
     ["categories", page, categories, pageCount, categoryEdit],
     () =>
-      fetch(`http://localhost:5000/api/v1/category?page=${page}&size=${10}`, {
-        method: "GET",
-      })
+      fetch(
+        `https://book-collection-server.vercel.app/api/v1/category?page=${page}&size=${10}`,
+        {
+          method: "GET",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setCategories(data?.data?.categories);
@@ -42,7 +45,7 @@ const CategoryAdd = () => {
 
     try {
       const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/category",
+        "https://book-collection-server.vercel.app/api/v1/category",
         categoryAdd
       );
       toast.success(data.data.message);

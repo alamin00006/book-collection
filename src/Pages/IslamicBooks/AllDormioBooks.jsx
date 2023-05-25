@@ -13,7 +13,7 @@ const AllDormioBooks = () => {
 
   const { isLoading, refetch } = useQuery([myProducts3, islamicId], () =>
     fetch(
-      `https://book-server-sg0u.onrender.com/api/v1/category/${islamicId}`,
+      `https://book-collection-server.vercel.app/api/v1/category/${islamicId}`,
       {
         method: "GET",
       }

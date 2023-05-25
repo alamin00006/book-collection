@@ -6,7 +6,7 @@ const useBookFairs = () => {
     isLoading,
     refetch,
   } = useQuery(["bookfairs"], () =>
-    fetch("https://book-server-sg0u.onrender.com/api/v1/book-fair", {
+    fetch("https://book-collection-server.vercel.app/api/v1/book-fair", {
       method: "GET",
     }).then((res) => res.json())
   );

@@ -59,7 +59,7 @@ const BannerAdd = () => {
           // save Banner to the database
           try {
             const data = await axios.post(
-              "http://localhost:5000/api/v1/banner",
+              "https://book-collection-server.vercel.app/api/v1/banner",
               bannerAdd
             );
             refetch();

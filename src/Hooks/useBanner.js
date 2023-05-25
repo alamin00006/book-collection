@@ -6,7 +6,7 @@ const useBanner = () => {
     isLoading,
     refetch,
   } = useQuery(["allBanner"], () =>
-    fetch("https://book-server-sg0u.onrender.com/api/v1/banner", {
+    fetch("https://book-collection-server.vercel.app/api/v1/banner", {
       method: "GET",
     }).then((res) => res.json())
   );

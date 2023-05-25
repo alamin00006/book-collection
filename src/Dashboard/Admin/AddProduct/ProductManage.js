@@ -31,7 +31,7 @@ const ProductManage = () => {
     ["myProducts3", page, myProducts3, pageCount],
     () =>
       fetch(
-        `https://book-server-sg0u.onrender.com/api/v1/product?page=${page}&size=${10}`,
+        `https://book-collection-server.vercel.app/api/v1/product?page=${page}&size=${10}`,
         {
           method: "GET",
         }

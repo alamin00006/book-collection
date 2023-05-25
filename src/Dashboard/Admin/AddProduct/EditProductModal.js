@@ -91,7 +91,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
 
     try {
       const data = await axios.patch(
-        `https://book-server-sg0u.onrender.com/api/v1/product/${productEdit._id}`,
+        `https://book-collection-server.vercel.app/api/v1/product/${productEdit._id}`,
         formData,
         {
           headers: {

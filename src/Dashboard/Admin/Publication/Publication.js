@@ -22,7 +22,7 @@ const Publication = () => {
     ["publications", page, publications, pageCount, publicationEdit],
     () =>
       fetch(
-        `http://localhost:5000/api/v1/publication?page=${page}&size=${10}`,
+        `https://book-collection-server.vercel.app/api/v1/publication?page=${page}&size=${10}`,
         {
           method: "GET",
         }
@@ -45,7 +45,7 @@ const Publication = () => {
 
     try {
       const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/publication",
+        "https://book-collection-server.vercel.app/api/v1/publication",
         publicationAdd
       );
 

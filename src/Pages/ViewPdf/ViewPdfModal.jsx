@@ -26,7 +26,7 @@ const ViewPdfModal = ({ show, setShow, singleProduct3 }) => {
           <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.15.349/build/pdf.worker.js">
             <div style={{ height: "750px" }}>
               <Viewer
-                fileUrl={`https://book-server-sg0u.onrender.com/${singleProduct3?.productPdf}`}
+                fileUrl={`https://book-collection-server.vercel.app/${singleProduct3?.productPdf}`}
                 plugins={[defaultLayoutPluginInstance]}
               />
             </div>

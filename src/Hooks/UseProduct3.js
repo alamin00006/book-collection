@@ -8,7 +8,7 @@ const useProduct3 = () => {
     isLoading,
     refetch,
   } = useQuery("myProducts3", () =>
-    fetch("https://book-server-sg0u.onrender.com/api/v1/product", {
+    fetch("https://book-collection-server.vercel.app/api/v1/product", {
       method: "GET",
     }).then((res) => res.json())
   );

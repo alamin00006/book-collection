@@ -12,7 +12,7 @@ const PublicationEditModal = ({ publicationEdit, setShow, show, refetch }) => {
     };
     try {
       const data = await axios.patch(
-        `http://localhost:5000/api/v1/publication/${publicationEdit?._id}`,
+        `https://book-collection-server.vercel.app/api/v1/publication/${publicationEdit?._id}`,
         publicationUpdate
       );
 

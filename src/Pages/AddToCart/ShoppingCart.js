@@ -44,7 +44,7 @@ const ShoppingCart = () => {
 
   //   }
 
-  //   fetch(`https://book-server-sg0u.onrender.com/promoCode`, {
+  //   fetch(`https://book-collection-server.vercel.app/promoCode`, {
   //   method: 'POST',
   //   headers:{
   //     'content-type': 'application/json',

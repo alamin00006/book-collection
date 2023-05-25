@@ -12,9 +12,12 @@ const AllSisuKisorBooks = () => {
   const [allSisuBooks, setAllSisuBooks] = useState({});
 
   const { isLoading, refetch } = useQuery([myProducts3, sisuId], () =>
-    fetch(`https://book-server-sg0u.onrender.com/api/v1/category/${sisuId}`, {
-      method: "GET",
-    })
+    fetch(
+      `https://book-collection-server.vercel.app/api/v1/category/${sisuId}`,
+      {
+        method: "GET",
+      }
+    )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           // Navigate('/');

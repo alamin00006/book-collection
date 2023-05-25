@@ -13,7 +13,7 @@ const useUser = () => {
       } else {
         await axios
           .get(
-            "https://book-server-sg0u.onrender.com/api/v1/user/me",
+            "https://book-collection-server.vercel.app/api/v1/user/me",
             {
               headers: {
                 Authorization: `Bearer ${token}`,

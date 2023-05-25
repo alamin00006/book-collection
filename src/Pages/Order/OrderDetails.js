@@ -17,7 +17,7 @@ const OrderDetails = () => {
     ["orderProduct", orderDetailsId],
     () =>
       fetch(
-        `https://book-server-sg0u.onrender.com/api/v1/order/orderDetails/${orderDetailsId}`,
+        `https://book-collection-server.vercel.app/api/v1/order/orderDetails/${orderDetailsId}`,
         {
           method: "GET",
         }

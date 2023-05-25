@@ -77,7 +77,7 @@ const Product3Details = ({ AddToCarts }) => {
   const { isLoading, refetch } = useQuery(
     ["", singleProduct3, details3Id],
     () =>
-      fetch(`https://book-server-sg0u.onrender.com/api/v1/review`, {
+      fetch(`https://book-collection-server.vercel.app/api/v1/review`, {
         method: "GET",
       })
         .then((res) => {
@@ -102,7 +102,7 @@ const Product3Details = ({ AddToCarts }) => {
   };
 
   useEffect(() => {
-    const url = `https://book-server-sg0u.onrender.com/api/v1/product/${details3Id}`;
+    const url = `https://book-collection-server.vercel.app/api/v1/product/${details3Id}`;
     fetch(url, {
       method: "GET",
     })

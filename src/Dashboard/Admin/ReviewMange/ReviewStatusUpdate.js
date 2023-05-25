@@ -10,7 +10,7 @@ const ReviewStatusUpdate = ({ review, refetch }) => {
 
     try {
       const data = await axios.patch(
-        `https://book-server-sg0u.onrender.com/api/v1/review/${review._id}`,
+        `https://book-collection-server.vercel.app/api/v1/review/${review._id}`,
         formData,
         {
           headers: {

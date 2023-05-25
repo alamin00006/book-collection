@@ -21,9 +21,12 @@ const WriterAdd = () => {
   const { refetch, isLoading } = useQuery(
     ["writers", page, writers, pageCount, writerEdit],
     () =>
-      fetch(`http://localhost:5000/api/v1/writer?page=${page}&size=${10}`, {
-        method: "GET",
-      })
+      fetch(
+        `https://book-collection-server.vercel.app/api/v1/writer?page=${page}&size=${10}`,
+        {
+          method: "GET",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           setWriters(data?.data?.writers);
@@ -42,7 +45,7 @@ const WriterAdd = () => {
 
     try {
       const data = await axios.post(
-        "http://localhost:5000/api/v1/writer",
+        "https://book-collection-server.vercel.app/api/v1/writer",
         writerAdd
       );
 

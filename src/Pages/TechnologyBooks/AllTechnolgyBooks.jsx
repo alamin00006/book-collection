@@ -13,7 +13,7 @@ const AllTechnolgyBooks = () => {
 
   const { isLoading, refetch } = useQuery([myProducts3, technologyId], () =>
     fetch(
-      `https://book-server-sg0u.onrender.com/api/v1/category/${technologyId}`,
+      `https://book-collection-server.vercel.app/api/v1/category/${technologyId}`,
       {
         method: "GET",
       }

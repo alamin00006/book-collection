@@ -15,7 +15,7 @@ const OrderStatusCancel = ({ order, refetch }) => {
 
     try {
       const data = await axios.patch(
-        `https://book-server-sg0u.onrender.com/api/v1/order/${order._id}`,
+        `https://book-collection-server.vercel.app/api/v1/order/${order._id}`,
         formData,
         {
           headers: {

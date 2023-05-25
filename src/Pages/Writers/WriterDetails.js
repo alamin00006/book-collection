@@ -9,7 +9,7 @@ const WriterDetails = () => {
 
   const { isLoading, refetch } = useQuery([writerDetailsId], () =>
     fetch(
-      `https://book-server-sg0u.onrender.com/api/v1/writer/${writerDetailsId}`,
+      `https://book-collection-server.vercel.app/api/v1/writer/${writerDetailsId}`,
       {
         method: "GET",
       }

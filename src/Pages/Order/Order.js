@@ -21,7 +21,7 @@ const Order = () => {
     "data",
     async () => {
       const { data } = await axios.get(
-        "https://book-server-sg0u.onrender.com/api/v1/user/me",
+        "https://book-collection-server.vercel.app/api/v1/user/me",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ const Order = () => {
     ["myProducts2", user, token, refetch],
     () =>
       fetch(
-        `https://book-server-sg0u.onrender.com/api/v1/order/${user?.email}`,
+        `https://book-collection-server.vercel.app/api/v1/order/${user?.email}`,
         {
           method: "GET",
         }

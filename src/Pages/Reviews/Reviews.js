@@ -20,7 +20,7 @@ const Reviews = ({ singleProduct3, approvedReviews, setReview }) => {
   // const [filterReviews, setFilterReviews] = useState([]);
   // console.log(user?.email)
   const { isLoading, refetch } = useQuery([singleProduct3], () =>
-    fetch(`https://book-server-sg0u.onrender.com/api/v1/review`, {
+    fetch(`https://book-collection-server.vercel.app/api/v1/review`, {
       method: "GET",
     })
       .then((res) => {
@@ -69,7 +69,7 @@ const Reviews = ({ singleProduct3, approvedReviews, setReview }) => {
 
     try {
       const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/review",
+        "https://book-collection-server.vercel.app/api/v1/review",
         reviewData
       );
 

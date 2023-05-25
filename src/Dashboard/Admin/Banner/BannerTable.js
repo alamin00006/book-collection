@@ -7,7 +7,7 @@ const BannerTable = ({ banner, index, refetch }) => {
   const handleDelete = async () => {
     try {
       const data = await axios.delete(
-        `http://localhost:5000/api/v1/banner/${banner?._id}`,
+        `https://book-collection-server.vercel.app/api/v1/banner/${banner?._id}`,
         {
           // data: {
           //   image: banner.image,

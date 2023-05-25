@@ -85,7 +85,7 @@ const SignUp = () => {
     e.preventDefault();
 
     axios
-      .post("https://book-server-sg0u.onrender.com/api/v1/user/signup", {
+      .post("https://book-collection-server.vercel.app/api/v1/user/signup", {
         name: name,
         email: userInfo?.email,
         password: userInfo?.password,

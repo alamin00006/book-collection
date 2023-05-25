@@ -12,7 +12,7 @@ const Coupon = () => {
 
     try {
       const data = await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/coupon-add",
+        "https://book-collection-server.vercel.app/api/v1/coupon-add",
         couponAdd
       );
 

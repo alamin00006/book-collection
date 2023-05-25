@@ -14,7 +14,7 @@ const OrderManage = () => {
 
   const { isLoading, refetch } = useQuery(["allOrder", page], () =>
     fetch(
-      `https://book-server-sg0u.onrender.com/api/v1/order?page=${page}&size=${10}`,
+      `https://book-collection-server.vercel.app/api/v1/order?page=${page}&size=${10}`,
       {
         method: "GET",
       }

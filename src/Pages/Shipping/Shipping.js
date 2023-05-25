@@ -86,7 +86,7 @@ const Shipping = () => {
 
     try {
       await axios.post(
-        "https://book-server-sg0u.onrender.com/api/v1/order",
+        "https://book-collection-server.vercel.app/api/v1/order",
         orderData
       );
 

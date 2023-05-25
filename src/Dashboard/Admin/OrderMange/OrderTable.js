@@ -16,7 +16,7 @@ const OrderTable = ({ refetch, order, index, setOrderDelete, orderDelete }) => {
   const handleDelete = async () => {
     try {
       const data = await axios.delete(
-        `https://book-server-sg0u.onrender.com/api/v1/order/${orderDelete?._id}`,
+        `https://book-collection-server.vercel.app/api/v1/order/${orderDelete?._id}`,
         {
           headers: {
             "Content-Type": "application/json",
