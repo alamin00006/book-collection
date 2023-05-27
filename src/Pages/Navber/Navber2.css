@@ -64,7 +64,7 @@
     visibility: hidden;
   }
   .searching-nav {
-    margin-left: -5px;
+    margin-left: -10px;
   }
   .logo {
     width: 100px;
@@ -74,15 +74,18 @@
   .main-Navbar {
     display: none;
   }
+  .search-field {
+    width: 100% !important;
+  }
   .search-little-icon {
     position: absolute !important;
-    top: 20px;
+    top: 25px;
     right: 180px;
   }
   .cart-icon {
     position: absolute;
     right: 50px;
-    top: 20px;
+    top: 25px;
     right: 125px;
   }
   .login-aria {
@@ -92,7 +95,7 @@
   }
   .my-account-aria {
     position: absolute;
-    top: 5px;
+    top: 10px;
     right: 10px;
   }
 }

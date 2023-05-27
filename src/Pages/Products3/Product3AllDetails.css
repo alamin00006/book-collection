@@ -388,11 +388,32 @@ h5 {
   visibility: hidden;
   text-transform: uppercase;
 }
+.add-to-btn2 {
+  background-color: #ff9900;
+  width: 180px;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 150px;
+  margin-left: 9px;
+  visibility: hidden;
+  text-transform: uppercase;
+}
 .add-to-btn a {
   color: white;
   text-decoration: none;
 }
+.add-to-btn2 a {
+  color: white;
+  text-decoration: none;
+}
 .add-to-btn a:hover {
+  color: white;
+}
+.add-to-btn2 a:hover {
   color: white;
 }
 .details-button {
@@ -412,6 +433,10 @@ h5 {
 }
 
 .single-card:hover .add-to-btn {
+  visibility: visible;
+  /* top: 160px; */
+}
+.single-card:hover .add-to-btn2 {
   visibility: visible;
   /* top: 160px; */
 }
@@ -445,6 +470,11 @@ h5 {
   outline: none;
   color: rgb(255, 255, 255);
 }
+.add-to-btn2:hover {
+  background-color: #ffa41c;
+  outline: none;
+  color: rgb(255, 255, 255);
+}
 
 /* animation */
 @keyframes slide {
@@ -460,5 +490,8 @@ h5 {
 }
 
 .single-card:hover .add-to-btn {
+  animation: slide 0.5s linear;
+}
+.single-card:hover .add-to-btn2 {
   animation: slide 0.5s linear;
 }

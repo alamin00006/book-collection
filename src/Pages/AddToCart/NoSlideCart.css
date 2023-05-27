@@ -16,8 +16,8 @@ img {
   .my-card {
     grid-template-columns: 1fr;
   }
-  .add-to-btn {
-    margin-left: 35px !important;
+  .add-to-btn2 {
+    margin-left: 56px !important;
   }
   img {
     height: 150px;
@@ -28,10 +28,11 @@ img {
 @media screen and (min-width: 321px) and (max-width: 767px) {
   /* CSS rules or styles for medium screens */
   .my-card {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
   }
-  .add-to-btn {
-    margin-left: 70px !important;
+  .add-to-btn2 {
+    margin-left: -5px !important;
   }
   img {
     height: 150px;
@@ -45,7 +46,7 @@ img {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 60px;
   }
-  .add-to-btn {
+  .add-to-btn2 {
     margin-left: 5px !important;
   }
   img {
@@ -58,14 +59,13 @@ img {
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
-  .add-to-btn {
+  .add-to-btn2 {
     margin-left: 10px !important;
   }
   img {
     height: 150px;
   }
 }
-
 .all-cart {
   box-shadow: 6px 8px 6px 6px #ebebeb;
 }
