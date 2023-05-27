@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../Images/nafieun-logo.jpeg";
+import logo from "../../Images/logo.png";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { HiPhoneOutgoing } from "react-icons/hi";
+import { FaFacebookSquare } from "react-icons/fa";
 import "../Navber/Navber2.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import useUser from "../../Hooks/useUser";
@@ -24,8 +26,14 @@ const Navber2 = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <div className="container ">
-      <Navbar className=" sticky-nav" expand="lg">
+    <div className="container p-0">
+      <div className="d-flex nav-call-icon">
+        <div>
+          <HiPhoneOutgoing className="text-white" />
+        </div>
+        <h6 className="text-white ms-2">01749718743</h6>
+      </div>
+      <Navbar className="searching-nav" expand="lg">
         <Container fluid>
           <Link to="/">
             <img className="logo" src={logo} alt="" />
@@ -52,6 +60,17 @@ const Navber2 = () => {
               <Button className="text-white search-button">Search</Button>
             </Form>
           </Navbar.Collapse>
+          <a href="https://web.facebook.com/abiyan012" target="blank">
+            <div className="d-flex nav-fb-icon">
+              <h6 className="text-white ">
+                আমাদের সাথে ফেসবুকে যুক্ত হতে এখানে ক্লিক করুন
+              </h6>
+              <div className="ms-2">
+                <FaFacebookSquare className="text-white mb-2" />
+              </div>
+            </div>
+          </a>
+
           <Nav.Link
             className="ms-5 text-decoration-none text-white"
             as={Link}
