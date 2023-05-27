@@ -11,6 +11,74 @@ img {
   width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  /* .my-card {
+    grid-template-columns: 1fr;
+  }
+  .add-to-btn2 {
+    margin-left: 56px !important;
+  }
+  img {
+    height: 150px;
+  } */
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  /* .my-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+  .add-to-btn2 {
+    margin-left: 10px !important;
+  }
+  img {
+    height: 150px;
+  } */
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  /* .my-card {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 60px;
+  }
+  .add-to-btn2 {
+    margin-left: 10px !important;
+  }
+  img {
+    height: 150px;
+  } */
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  /* .my-card {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
+  .add-to-btn2 {
+    margin-left: 10px !important;
+  }
+  img {
+    height: 150px;
+  } */
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /* .my-card {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+  }
+  .add-to-btn2 {
+    margin-left: 0px !important;
+  }
+  img {
+    height: 150px;
+  } */
+}
+
 @media screen and (max-width: 320px) {
   /* CSS rules or styles for small screens */
   .my-card {
@@ -29,10 +97,10 @@ img {
   /* CSS rules or styles for medium screens */
   .my-card {
     grid-template-columns: 1fr 1fr;
-    gap: 60px;
+    gap: 10px;
   }
   .add-to-btn2 {
-    margin-left: -5px !important;
+    margin-left: -10px !important;
   }
   img {
     height: 150px;
@@ -44,10 +112,10 @@ img {
   /* CSS rules or styles for large screens */
   .my-card {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
+    gap: 10px;
   }
   .add-to-btn2 {
-    margin-left: 5px !important;
+    margin-left: 20px !important;
   }
   img {
     height: 150px;

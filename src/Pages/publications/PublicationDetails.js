@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Cart from "../AddToCart/Cart";
+import NoSlideCart from "../AddToCart/NoSlideCart";
 
 const PublicationDetails = () => {
   const { publicationDetailsId } = useParams();
@@ -29,7 +30,7 @@ const PublicationDetails = () => {
   );
   return (
     <div className="container bg-white">
-      <h4 className="bg-white p-3">{publicationDetails.name} বইসমূহ</h4>
+      <h4 className="bg-white p-3">{publicationDetails.name}সমূহ</h4>
       <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
         <div className="p-5">
           <h2>{publicationDetails.name}</h2>
@@ -49,7 +50,7 @@ const PublicationDetails = () => {
       </div>
       <div className="my-card-main my-card">
         {publicationDetails?.products?.map((data, index) => (
-          <Cart key={data._id} data={data}></Cart>
+          <NoSlideCart key={data._id} data={data}></NoSlideCart>
         ))}
       </div>
     </div>

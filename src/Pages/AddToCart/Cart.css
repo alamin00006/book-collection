@@ -31,7 +31,7 @@ img {
     grid-template-columns: 1fr;
   }
   .add-to-btn {
-    margin-left: 70px !important;
+    margin-left: 60px !important;
   }
   img {
     height: 150px;
@@ -46,7 +46,7 @@ img {
     gap: 60px;
   }
   .add-to-btn {
-    margin-left: 5px !important;
+    margin-left: 17px !important;
   }
   img {
     height: 150px;
@@ -59,7 +59,7 @@ img {
     gap: 20px;
   }
   .add-to-btn {
-    margin-left: 10px !important;
+    margin-left: 17px !important;
   }
   img {
     height: 150px;

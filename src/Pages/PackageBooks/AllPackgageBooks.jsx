@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
+import NoSlideCart from "../AddToCart/NoSlideCart";
 
 const AllPackgageBooks = () => {
   const [myProducts3] = useProduct3();
@@ -32,7 +33,7 @@ const AllPackgageBooks = () => {
 
         <div className="my-card-main my-card mt-2">
           {packageBooks?.map((data, index) => (
-            <Cart key={data._id} data={data}></Cart>
+            <NoSlideCart key={data._id} data={data}></NoSlideCart>
           ))}
         </div>
       </div>

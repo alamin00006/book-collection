@@ -14,7 +14,6 @@
 .logo {
   width: 150px;
   height: 70px;
-  margin-top: 15px;
 }
 .sing-Out {
   cursor: pointer;
@@ -70,6 +69,7 @@
     width: 100px;
     height: 60px;
     margin-top: 0px;
+    margin-left: -20px !important;
   }
   .main-Navbar {
     display: none;
@@ -79,23 +79,23 @@
   }
   .search-little-icon {
     position: absolute !important;
-    top: 25px;
+    top: 30px;
     right: 180px;
   }
   .cart-icon {
     position: absolute;
     right: 50px;
-    top: 25px;
+    top: 30px;
     right: 125px;
   }
   .login-aria {
     position: absolute;
-    top: 22px;
-    right: 20px;
+    top: 30px;
+    right: 30px;
   }
   .my-account-aria {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 10px;
   }
 }
@@ -103,12 +103,7 @@
 /* Styles for screens with a width between 321px and 768px */
 @media screen and (min-width: 321px) and (max-width: 768px) {
   /* CSS rules or styles for medium screens */
-  .nav-call-icon {
-    visibility: hidden;
-  }
-  .nav-fb-icon {
-    visibility: hidden;
-  }
+
   .searching-nav {
     margin-left: -15px;
   }
@@ -116,35 +111,34 @@
     width: 150px;
     height: 70px;
     margin-top: 0px;
+    margin-left: -20px !important;
   }
-  .nav-call-icon {
-    display: none;
-  }
-  .nav-fb-icon {
-    display: none;
-  }
+
   .main-Navbar {
     display: none;
   }
+  .search-field {
+    width: 100% !important;
+  }
   .search-little-icon {
     position: absolute !important;
-    top: 24px;
+    top: 42px;
     right: 170px;
   }
   .cart-icon {
     position: absolute;
-    top: 22px;
-    right: 110px;
+    top: 40px;
+    right: 120px;
   }
   .login-aria {
     position: absolute;
-    top: 25px;
-    right: 10px;
+    top: 40px;
+    right: 20px;
   }
   .my-account-aria {
     position: absolute;
-    top: 8px;
-    right: -10px;
+    top: 30px;
+    right: 0px;
   }
 }
 
@@ -156,17 +150,17 @@
   }
   .cart-icon {
     position: absolute;
-    top: 45px;
+    top: 32px;
     right: 140px;
   }
   .login-aria {
     position: absolute;
-    top: 50px;
+    top: 35px;
     right: 30px;
   }
   .my-account-aria {
     position: absolute;
-    top: 32px;
+    top: 22px;
     right: 20px;
   }
   .offCanvas-navbar {

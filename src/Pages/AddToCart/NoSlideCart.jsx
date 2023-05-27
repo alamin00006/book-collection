@@ -73,13 +73,15 @@ const NoSlideCart = ({ data }) => {
             </Link>
           </button>
         ) : (
-          <button
+         <div className="add-cart-btn">
+             <button
             disabled={data.quantity === 0 ? true : false}
             className=" add-to-btn2"
             onClick={() => handleAddToCart(data)}
           >
             Add to Cart
           </button>
+         </div>
         )}
       </div>
     </>

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import Loading from "../Loading/Loading";
+import NoSlideCart from "../AddToCart/NoSlideCart";
 
 const AllTechnolgyBooks = () => {
   const [myProducts3] = useProduct3();
@@ -54,7 +55,7 @@ const AllTechnolgyBooks = () => {
 
         <div className="my-card-main my-card mt-2">
           {allTechnologyBooks?.products?.slice(0, 20).map((data, index) => (
-            <Cart key={data._id} data={data}></Cart>
+            <NoSlideCart key={data._id} data={data}></NoSlideCart>
           ))}
         </div>
       </div>
