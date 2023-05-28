@@ -561,7 +561,7 @@ const Shipping = () => {
               </div>
               <div className="text-center checkout-button mt-3 rounded">
                 <input
-                  className="order-button text-white fw-bold fs-5"
+                  className="order-button text-white fw-bold"
                   type="submit"
                   value="অর্ডার কনফার্ম করুন"
                 />
