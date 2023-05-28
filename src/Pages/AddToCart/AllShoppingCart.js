@@ -19,7 +19,7 @@ const AllShoppingCart = ({ data }) => {
         </div>
         <div className="ms-4">
           <p>{data.nameB}</p>
-          <p>{data.nameB}</p>
+          <p>{data?.writer?.writerName}</p>
         </div>
       </div>
       <div className="col-lg-6 d-flex mt-5">

@@ -17,7 +17,7 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Login/SingUp";
 import ProductDetails from "./Pages/Products/ProductDetails";
 import Product2Details from "./Pages/Products2/Product2Details";
-import Product3Details from "./Pages/Products3/Product3Details";
+// import Product3Details from "./Pages/Products3/Product3Details";
 import Product4Details from "./Pages/Products4/Product4Details";
 import Product5Details from "./Pages/Products5/Product5Details";
 import Product6Details from "./Pages/Products6/Product6Details";
@@ -55,7 +55,12 @@ import UpComming from "./Pages/UpComming/UpComming";
 import Error from "./Pages/Error/Error.jsx";
 import UserProfile from "./Dashboard/UserProfile/UserProfile";
 import Support from "./Dashboard/Support/Support";
+import { lazy } from "react";
+import Loadable from "./Pages/LazyLoading/Loadable";
 
+const Product3Details = Loadable(
+  lazy(() => import("./Pages/Products3/Product3Details"))
+);
 function App() {
   return (
     <div>

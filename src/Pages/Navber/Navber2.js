@@ -4,11 +4,9 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo from "../../Images/logo.png";
 import logo2 from "../../Images/logo2.png";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
-import { HiPhoneOutgoing } from "react-icons/hi";
-import { FaFacebookSquare } from "react-icons/fa";
+
 import "../Navber/Navber2.css";
 import { Link } from "react-router-dom";
 
@@ -17,8 +15,6 @@ import useUser from "../../Hooks/useUser";
 import SearchIcon from "../../svgIcons/SearchIcon";
 
 const Navber2 = () => {
-  // const token = localStorage.getItem("token");
-
   const [user] = useUser();
   const token = localStorage.getItem("token");
 

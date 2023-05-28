@@ -69,7 +69,9 @@ const TechnologyBook = () => {
   return (
     <div className="container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mt-0">টেকনোলজি বই</h4>
+        <h4 className="mt-0" style={{ fontSize: "1.3rem" }}>
+          টেকনোলজি বই
+        </h4>
         <div className="text-center">
           {" "}
           <h6

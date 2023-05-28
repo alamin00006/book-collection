@@ -25,26 +25,6 @@ const SignUp = () => {
   //   const [token] = useToken(user)
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
-  // useEffect(() =>{
-  //     if(user){
-  //         navigate('/')
-
-  //     }
-  // },[ user, navigate])
-
-  // useEffect(() =>{
-
-  //     if(!token){
-  //         navigate(from, { replace: true });
-  //   }
-
-  // }, [token, from, navigate])
-  // useEffect(() =>{
-  //     if(hookError){
-  //         toast(hookError.message)
-  //  }
-  // },[hookError])
 
   const emailCheck = (e) => {
     const emailRegex = /\S+@\S+\.\S+/;

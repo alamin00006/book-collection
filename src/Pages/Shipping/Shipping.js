@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { Link, useNavigate } from "react-router-dom";
-import auth from "../../firebase.init";
+
+import { useNavigate } from "react-router-dom";
+
 import "./Shipping.css";
 import cod from "../../Images/cod.png";
 import bkash from "../../Images/bkash.png";
 import nagad from "../../Images/Nagad-Logo.png";
-import Loading from "../Loading/Loading";
-import { allRemoveFromCart, getTotals } from "../store/reducers/cartSlice";
+import dutch from "../../Images/dutch-logo.png";
+
+import { getTotals } from "../store/reducers/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
@@ -30,14 +31,17 @@ const Shipping = () => {
   const [showCashOn, setShowCashOn] = useState(true);
   const [showBkash, setShowBkash] = useState(false);
   const [showNagad, setShowNagad] = useState(false);
+  const [showDucth, setShowDutch] = useState(false);
 
   const [isActive1, setIsActive1] = useState(true);
   const [isActive2, setIsActive2] = useState(false);
   const [isActive3, setIsActive3] = useState(false);
+  const [isActive4, setIsActive4] = useState(false);
 
   let toggleClassCheck1 = isActive1 ? "active" : "";
   let toggleClassCheck2 = isActive2 ? "active" : "";
   let toggleClassCheck3 = isActive3 ? "active" : "";
+  let toggleClassCheck4 = isActive4 ? "active" : "";
   const navigate = useNavigate();
 
   const AllOrder = async (e) => {
@@ -61,9 +65,11 @@ const Shipping = () => {
     const bkashTrx = e.target?.bkashTrx?.value;
     const nagadNumber = e.target?.nagadNumber?.value;
     const nagadTrx = e.target?.nagadTrx?.value;
+    const dutchNumber = e.target?.dutchNumber?.value;
+    const dutchTrx = e.target?.dutchTrx?.value;
 
     if (district === "Select Your District") {
-      return toast.error("আপনার জেলার টি সিলেক্ট করুন");
+      return toast.error("আপনার জেলা টি সিলেক্ট করুন");
     }
 
     const orderData = {
@@ -82,6 +88,8 @@ const Shipping = () => {
       bkashTrx: bkashTrx,
       nagadNumber: nagadNumber,
       nagadTrx: nagadTrx,
+      dutchNumber: dutchNumber,
+      dutchTrx: dutchTrx,
     };
 
     try {
@@ -289,9 +297,11 @@ const Shipping = () => {
                           setShowCashOn(true),
                           setShowBkash(false),
                           setShowNagad(false),
+                          setShowDutch(false),
                           setIsActive1(true),
                           setIsActive2(false),
-                          setIsActive3(false)
+                          setIsActive3(false),
+                          setIsActive4(false)
                         );
                       }}
                       className={`mb-3  ${toggleClassCheck1}`}
@@ -331,9 +341,11 @@ const Shipping = () => {
                           setShowCashOn(false),
                           setShowBkash(true),
                           setShowNagad(false),
+                          setShowDutch(false),
                           setIsActive1(false),
                           setIsActive2(true),
-                          setIsActive3(false)
+                          setIsActive3(false),
+                          setIsActive4(false)
                         );
                       }}
                       className={`mb-4 ${toggleClassCheck2}`}
@@ -404,9 +416,11 @@ const Shipping = () => {
                           setShowCashOn(false),
                           setShowBkash(false),
                           setShowNagad(true),
+                          setShowDutch(false),
                           setIsActive1(false),
                           setIsActive2(false),
-                          setIsActive3(true)
+                          setIsActive3(true),
+                          setIsActive4(false)
                         );
                       }}
                       className={`mb-4 ${toggleClassCheck3}`}
@@ -460,6 +474,81 @@ const Shipping = () => {
                           <input
                             className="ms-3 mt-1 bkash-info-input"
                             name="nagadTrx"
+                            required
+                            type="text"
+                            placeholder="8N6MM9REN"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className="col-lg-12 col-md-12 col-sm-12">
+                  <div className="nagad mobile-payment d-flex align-items-center">
+                    <div
+                      onClick={() => {
+                        return (
+                          setShowCashOn(false),
+                          setShowBkash(false),
+                          setShowNagad(false),
+                          setShowDutch(true),
+                          setIsActive1(false),
+                          setIsActive2(false),
+                          setIsActive3(false),
+                          setIsActive4(true)
+                        );
+                      }}
+                      className={`mb-4 ${toggleClassCheck4}`}
+                    >
+                      <input
+                        id="dutch"
+                        style={{ height: "25px", width: "25px" }}
+                        className="radio-button"
+                        type="radio"
+                        name="payment"
+                        value="dutch"
+                      />
+                    </div>
+                    <label for="dutch" className="ms-3">
+                      <div>
+                        <img src={dutch} alt="" />
+                      </div>
+                    </label>
+                  </div>
+                  {showDucth ? (
+                    <div>
+                      <p>
+                        দয়া করে প্রথমে পেমেন্ট সম্পন্ন করে নিচের ফরম পূরণ পূর্বক
+                        আপনার অর্ডার প্লেস করুন।
+                      </p>
+                      <p>
+                        নিচের নগদ পারসোনাল নাম্বারে টোটাল চার্জ সেন্ড মানি করুণ।
+                        এরপর যে নগদ নাম্বার থেকে ট্রানজেকশনটি করা হয়েছে সেটি ও
+                        ট্রানজেকশন নাম্বার/আইডিটি নিচের ঘরে সংযুক্ত করুন।
+                      </p>
+                      <p>Ducth-Bangla Personal Number : 01622738449</p>
+                      <div className="d-flex align-items-center">
+                        <div>
+                          <label>Dutch Bangla Number</label>
+                        </div>
+                        <div>
+                          <input
+                            className="ms-3 bkash-info-input"
+                            name="dutchNumber"
+                            required
+                            type="text"
+                            placeholder="017xxxxxxxxxxx"
+                          />
+                        </div>
+                      </div>
+                      <div className="d-flex align-items-center">
+                        <div>
+                          <label>Ducth-Bangla Tranx ID </label>
+                        </div>
+                        <div>
+                          <input
+                            className="ms-3 mt-1 bkash-info-input"
+                            name="dutchTrx"
                             required
                             type="text"
                             placeholder="8N6MM9REN"

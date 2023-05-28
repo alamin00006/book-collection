@@ -1,5 +1,5 @@
 .navbar-brand {
-  font-size: 1.1rem !important;
+  font-size: 1.3rem !important;
 }
 .navbar .navbar-toggler {
   border: none;
@@ -24,6 +24,7 @@
 .dropdown-menu {
   margin-top: 14px !important;
   z-index: 999 !important;
+  animation: slideDown 800ms ease-in-out;
 }
 .dropdown-menu .drop-list {
   position: absolute;
@@ -47,13 +48,13 @@
   border: 1px solid black;
 }
 .dropdown-menu .drop-list a {
-  font-size: 16px;
+  font-size: 1.3rem;
 }
 .dropdown-menu .drop-list-3 a {
-  font-size: 16px;
+  font-size: 1.3rem;
 }
 .dropdown-menu .drop-list-1 a {
-  font-size: 16px;
+  font-size: 1.3rem;
 }
 
 .dropdown-menu ul {
@@ -73,17 +74,15 @@
   color: red;
 }
 
-/* .dropdown-menu {
-  border: 1px solid black !important;
-} */
 .dropdown-menu ul .book-fair {
   width: 208px;
+  font-size: 1.3rem;
 }
 
 .dropdown-menu ul .book-fair:hover {
   text-decoration: none;
   background-color: white;
-  color: red;
+  color: red !important;
   cursor: pointer;
 }
 
@@ -97,5 +96,16 @@
   }
   .navbar .nav-item .dropdown-menu {
     margin-top: 0;
+  }
+}
+/* dropdown animation */
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

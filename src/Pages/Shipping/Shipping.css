@@ -1,7 +1,7 @@
-.shipping-address{
-  border:1px solid #065644;
+.shipping-address {
+  border: 1px solid #065644;
 }
- input {
+input {
   width: 100%;
   margin-bottom: 20px;
   padding: 10px;
@@ -12,6 +12,7 @@
 label {
   margin-bottom: 10px;
   display: block;
+  font-size: 1.3rem !important;
 }
 
 .icon-container {
@@ -19,7 +20,6 @@ label {
   padding: 7px 0;
   font-size: 24px;
 }
-
 
 hr {
   border: 1px solid lightgrey;
@@ -29,52 +29,54 @@ span.price {
   float: right;
   color: grey;
 }
-.radio-button{
+.radio-button {
   margin-top: 20px;
   cursor: pointer;
 }
-.cash-on-delivery img{
-width: 40px;
-height:40px;
-cursor: pointer;
-
+.cash-on-delivery img {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
 }
-.mobile-payment img{
-margin-bottom: 5px;
-width: 70px;
-height:30px;
-cursor: pointer;
+h6 {
+  font-size: 1.3rem !important;
 }
-.bkash-info-input{
+.mobile-payment img {
+  margin-bottom: 5px;
+  width: 70px;
+  height: 30px;
+  cursor: pointer;
+}
+.bkash-info-input {
   padding: 3px;
 }
 
-.cash-on{
-
+.cash-on {
   border-radius: 3px;
 }
-.cash-on.active{
-
-color: white;
-}
-.bkash{
-  
-  border-radius: 3px;
-}
-.bkash.active{
-
+.cash-on.active {
   color: white;
 }
-.nagad{
- 
+.bkash {
   border-radius: 3px;
 }
-.nagad.active{
-
+.bkash.active {
   color: white;
 }
-.order-button{
-  background-color:#065644;
+.nagad {
+  border-radius: 3px;
 }
-
-
+.nagad.active {
+  color: white;
+}
+.order-button {
+  background-color: #065644;
+  font-size: 1.3rem !important;
+}
+.cart-total-part h6,
+p {
+  font-size: 1.3rem !important;
+}
+.checkout-button a {
+  font-size: 1.3rem !important;
+}

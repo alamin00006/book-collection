@@ -242,6 +242,7 @@ body {
   border: none !important;
   font-weight: 700 !important;
   text-transform: uppercase;
+  font-size: 1.2rem;
 }
 .add-To-Cart a {
   text-decoration: none !important;
@@ -349,7 +350,7 @@ h5 {
   font-size: 0.8rem;
 }
 .book-body .writer-name {
-  font-size: 0.7rem;
+  font-size: 1rem !important;
   line-height: 0.5;
 }
 .tk-part {
@@ -474,6 +475,7 @@ h5 {
 }
 .book-body .book-title {
   width: 150px;
+  font-size: 1.2rem;
 }
 .book-inner:hover {
   box-shadow: 3px 8px 8px 3px #f5f2f2;
