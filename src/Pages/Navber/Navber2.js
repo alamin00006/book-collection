@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import logo from "../../Images/logo.png";
+import logo2 from "../../Images/logo2.png";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { HiPhoneOutgoing } from "react-icons/hi";
 import { FaFacebookSquare } from "react-icons/fa";
@@ -30,7 +31,7 @@ const Navber2 = () => {
       <Navbar className="searching-nav" expand="lg">
         <Container fluid>
           <Link to="/">
-            <img className="logo" src={logo} alt="" />
+            <img className="logo" src={logo2} alt="" />
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <div className="search-little-icon">

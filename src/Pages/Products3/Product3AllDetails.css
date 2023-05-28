@@ -375,7 +375,7 @@ h5 {
 }
 
 .add-to-btn {
-  background-color: #ff9900;
+  background-color: #12856a;
   width: 180px;
   outline: none;
   border: none;
@@ -417,7 +417,7 @@ h5 {
   color: white;
 }
 .details-button {
-  background-color: rgb(5, 76, 255);
+  background-color: #065644;
   width: 100%;
   outline: none;
   border: none;
@@ -430,6 +430,7 @@ h5 {
   cursor: pointer;
   position: relative;
   z-index: 0 !important;
+  border: 1px solid rgb(225, 225, 225);
 }
 
 .single-card:hover .add-to-btn {
@@ -460,13 +461,13 @@ h5 {
   color: white;
 }
 .details-button:hover {
-  background-color: rgb(37, 99, 255);
+  background-color: #12856a;
   width: 100%;
-  outline: none;
+
   color: rgb(255, 255, 255);
 }
 .add-to-btn:hover {
-  background-color: #ffa41c;
+  background-color: #065644;
   outline: none;
   color: rgb(255, 255, 255);
 }

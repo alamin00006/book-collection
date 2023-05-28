@@ -25,13 +25,21 @@ img {
 }
 
 /* Styles for screens with a width between 321px and 768px */
-@media screen and (min-width: 321px) and (max-width: 767px) {
+@media screen and (min-width: 321px) and (max-width: 375px) {
   /* CSS rules or styles for medium screens */
-  .my-card {
-    grid-template-columns: 1fr;
-  }
+
   .add-to-btn {
     margin-left: 60px !important;
+  }
+  img {
+    height: 150px;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 480px) {
+  /* CSS rules or styles for medium screens */
+
+  .add-to-btn {
+    margin-left: 85px !important;
   }
   img {
     height: 150px;
@@ -41,10 +49,7 @@ img {
 /* Styles for screens with a width greater than 768px */
 @media screen and (min-width: 768px) {
   /* CSS rules or styles for large screens */
-  .my-card {
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 60px;
-  }
+
   .add-to-btn {
     margin-left: 17px !important;
   }
@@ -54,10 +59,6 @@ img {
 }
 
 @media only screen and (min-width: 992px) {
-  .my-card {
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
-  }
   .add-to-btn {
     margin-left: 17px !important;
   }

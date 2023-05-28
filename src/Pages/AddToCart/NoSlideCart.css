@@ -93,14 +93,29 @@ img {
 }
 
 /* Styles for screens with a width between 321px and 768px */
-@media screen and (min-width: 321px) and (max-width: 767px) {
+@media screen and (min-width: 321px) and (max-width: 425px) {
   /* CSS rules or styles for medium screens */
   .my-card {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
   }
   .add-to-btn2 {
-    margin-left: -10px !important;
+    margin-left: 0px !important;
+  }
+  img {
+    height: 150px;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 767px) {
+  /* CSS rules or styles for medium screens */
+  .my-card {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .add-to-btn2 {
+    /* margin-left: -10px !important; */
+    display: none;
   }
   img {
     height: 150px;

@@ -73,13 +73,15 @@ const Cart = ({ data }) => {
             </Link>
           </button>
         ) : (
-          <button
-            disabled={data.quantity === 0 ? true : false}
-            className=" add-to-btn"
-            onClick={() => handleAddToCart(data)}
-          >
-            Add to Cart
-          </button>
+          <div className="addCart-btn">
+            <button
+              disabled={data.quantity === 0 ? true : false}
+              className=" add-to-btn"
+              onClick={() => handleAddToCart(data)}
+            >
+              Add to Cart
+            </button>
+          </div>
         )}
       </div>
     </>
