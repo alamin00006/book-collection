@@ -4,10 +4,10 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart } from "../store/reducers/cartSlice";
-import AddToCart from "./AddToCart";
-import "./NoSlideCart.css";
+import AddToCart from "../AddToCart/AddToCart";
+import "./RelatedProduct.css";
 
-const NoSlideCart = ({ data }) => {
+const RelatedProductCart = ({ data }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
 
@@ -67,7 +67,7 @@ const NoSlideCart = ({ data }) => {
         </div>
 
         {Cart ? (
-          <button className=" add-to-btn2">
+          <button className=" add-to-btn3">
             <Link class=" text-decoration-none " to="/cart">
               View Cart
             </Link>
@@ -76,7 +76,7 @@ const NoSlideCart = ({ data }) => {
           <div className="add-cart-btn">
             <button
               disabled={data.quantity === 0 ? true : false}
-              className=" add-to-btn2"
+              className=" add-to-btn3"
               onClick={() => handleAddToCart(data)}
             >
               Add to Cart
@@ -88,4 +88,4 @@ const NoSlideCart = ({ data }) => {
   );
 };
 
-export default NoSlideCart;
+export default RelatedProductCart;

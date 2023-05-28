@@ -1,4 +1,14 @@
 .slick-slider .slick-arrow {
-  background-color: rgb(255, 0, 0) !important;
-  color: rgb(255, 255, 255) !important;
+  background-color: #fdfdfd !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  font-family: "slick";
+  font-size: 24px;
+  line-height: 1;
+  opacity: 1;
+  color: rgb(255, 8, 8);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

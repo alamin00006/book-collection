@@ -151,7 +151,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
           const productAdd = {
             nameB: e.target.productNameBangla.value,
             nameE: e.target.productNameEnglish.value,
-            bookTranslator: e.target.bookTranslator.value,
+            bookTranslator: e.target?.bookTranslator?.value,
             price: e.target.price.value,
             quantity: e.target.quantity.value,
             discount: discount,

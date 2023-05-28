@@ -19,6 +19,8 @@ import ViewPdfModal from "../ViewPdf/ViewPdfModal";
 import Cart from "../AddToCart/Cart";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Slider from "react-slick";
+import NoSlideCart from "../AddToCart/NoSlideCart";
+import RelatedProductCart from "../RealatedProduct/RelatedProductCart";
 const Product3Details = ({ AddToCarts }) => {
   let settings = {
     dots: false,
@@ -275,13 +277,17 @@ const Product3Details = ({ AddToCarts }) => {
         <hr />
         <h3 className="mb-3 px-4">Related Products</h3>
 
-        <Slider {...settings}>
-          {relatedProduct?.map((data, index) => (
-            <div className="my-card-main my-card">
-              <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart>
+        <div className="row">
+          {relatedProduct?.slice(0, 12).map((data, index) => (
+            <div className="col-lg-2 col-md-4 col-sm-12">
+              <RelatedProductCart
+                key={data._id}
+                data={data}
+                AddToCarts={AddToCarts}
+              ></RelatedProductCart>
             </div>
           ))}
-        </Slider>
+        </div>
       </div>
     </div>
   );

@@ -389,7 +389,7 @@ h5 {
   text-transform: uppercase;
 }
 .add-to-btn2 {
-  background-color: #ff9900;
+  background-color: #12856a;
   width: 180px;
   outline: none;
   border: none;
@@ -402,6 +402,20 @@ h5 {
   visibility: hidden;
   text-transform: uppercase;
 }
+.add-to-btn3 {
+  background-color: #12856a;
+  width: 180px;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 150px;
+  margin-left: 0px;
+  visibility: hidden;
+  text-transform: uppercase;
+}
 .add-to-btn a {
   color: white;
   text-decoration: none;
@@ -410,10 +424,17 @@ h5 {
   color: white;
   text-decoration: none;
 }
+.add-to-btn3 a {
+  color: white;
+  text-decoration: none;
+}
 .add-to-btn a:hover {
   color: white;
 }
 .add-to-btn2 a:hover {
+  color: white;
+}
+.add-to-btn3 a:hover {
   color: white;
 }
 .details-button {
@@ -438,6 +459,10 @@ h5 {
   /* top: 160px; */
 }
 .single-card:hover .add-to-btn2 {
+  visibility: visible;
+  /* top: 160px; */
+}
+.single-card:hover .add-to-btn3 {
   visibility: visible;
   /* top: 160px; */
 }
@@ -472,7 +497,12 @@ h5 {
   color: rgb(255, 255, 255);
 }
 .add-to-btn2:hover {
-  background-color: #ffa41c;
+  background-color: #12856a;
+  outline: none;
+  color: rgb(255, 255, 255);
+}
+.add-to-btn3:hover {
+  background-color: #12856a;
   outline: none;
   color: rgb(255, 255, 255);
 }
@@ -494,5 +524,8 @@ h5 {
   animation: slide 0.5s linear;
 }
 .single-card:hover .add-to-btn2 {
+  animation: slide 0.5s linear;
+}
+.single-card:hover .add-to-btn3 {
   animation: slide 0.5s linear;
 }

@@ -17,7 +17,7 @@ const Banner = () => {
     slidesToScroll: 1,
   };
   return (
-    <div className="container banner-part mt-1">
+    <div className="container banner-part mt-2">
       <div>
         <Slider {...settings} className="mySwiper">
           {allBanner?.data.map((banner) => (
