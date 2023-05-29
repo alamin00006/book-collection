@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Cart from "../AddToCart/Cart";
 import NoSlideCart from "../AddToCart/NoSlideCart";
+import Loading from "../Loading/Loading";
 
 const WriterDetails = () => {
   const { writerDetailsId } = useParams();
@@ -18,16 +19,18 @@ const WriterDetails = () => {
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           // Navigate('/');
-          // signOut(auth);
           // localStorage.removeItem('accessToken')
         }
         return res.json();
       })
       .then((data) => {
-        console.log(data.data);
         setWriterDetails(data.data);
+        refetch();
       })
   );
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container bg-white">
       <h4 className="bg-white p-3">{writerDetails.name}সমূহ</h4>

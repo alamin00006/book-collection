@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import Slider from "react-slick";
+import Loading from "../Loading/Loading";
 
 const SisuKisorBooks = () => {
   let settings = {
@@ -49,7 +50,7 @@ const SisuKisorBooks = () => {
       },
     ],
   };
-  const [myProducts3, refetch] = useProduct3();
+  const [myProducts3, refetch, isLoading] = useProduct3();
   const [sisuKisorBooks, setSisoKisorBooks] = useState([]);
   useEffect(() => {
     const sisuBook = myProducts3?.data?.filter(
@@ -59,13 +60,15 @@ const SisuKisorBooks = () => {
     refetch();
   }, [myProducts3, refetch]);
 
-  console.log(sisuKisorBooks?.[0]?.category?.category_id);
+  // console.log(sisuKisorBooks?.[0]?.category?.category_id);
   const navigate = useNavigate();
 
   const allSisuBookId = (_id) => {
     navigate(`/all-sisu-books/${_id}`);
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">

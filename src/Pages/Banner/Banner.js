@@ -2,10 +2,11 @@ import React from "react";
 import "../Banner/Banner.css";
 import useBanner from "../../Hooks/useBanner";
 import Slider from "react-slick";
+import Loading from "../Loading/Loading";
 // import { Link } from "react-router-dom";
 
 const Banner = () => {
-  const [allBanner] = useBanner();
+  const [allBanner, refetch, isLoading] = useBanner();
   const settings = {
     dots: false,
     arrows: false,
@@ -16,6 +17,9 @@ const Banner = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container banner-part mt-2">
       <div>

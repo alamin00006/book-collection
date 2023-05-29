@@ -2,22 +2,12 @@ import "./App.css";
 import Footer from "./Pages/Footer/Footer";
 import Home from "./Pages/Home/Home";
 import Header from "./Pages/Home/Header";
-import PreOrder from "./Pages/BookCollection/PreOrder";
-import General from "./Pages/BookCollection/General";
-import Engineering from "./Pages/BookCollection/Engineering";
-import EngineeringJob from "./Pages/BookCollection/EngineeringJob";
-import AdmissionGuide from "./Pages/BookCollection/AdmissionGuide";
-import EducationResearch from "./Pages/BookCollection/EducationResearch";
-import English from "./Pages/BookCollection/English";
-import ComputerProgramming from "./Pages/BookCollection/ComputerProgramming";
-import MarketingSaling from "./Pages/BookCollection/ComputerProgramming";
 import { Routes, Route } from "react-router-dom";
-import Book from "./Pages/BookCollection/Book";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/Login/SingUp";
 import ProductDetails from "./Pages/Products/ProductDetails";
 import Product2Details from "./Pages/Products2/Product2Details";
-// import Product3Details from "./Pages/Products3/Product3Details";
+import Product3Details from "./Pages/Products3/Product3Details";
 import Product4Details from "./Pages/Products4/Product4Details";
 import Product5Details from "./Pages/Products5/Product5Details";
 import Product6Details from "./Pages/Products6/Product6Details";
@@ -55,12 +45,7 @@ import UpComming from "./Pages/UpComming/UpComming";
 import Error from "./Pages/Error/Error.jsx";
 import UserProfile from "./Dashboard/UserProfile/UserProfile";
 import Support from "./Dashboard/Support/Support";
-import { lazy } from "react";
-import Loadable from "./Pages/LazyLoading/Loadable";
 
-const Product3Details = Loadable(
-  lazy(() => import("./Pages/Products3/Product3Details"))
-);
 function App() {
   return (
     <div>
@@ -68,35 +53,6 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
-
-        <Route path="/book" element={<Book></Book>}></Route>
-        <Route path="/PreOrder" element={<PreOrder></PreOrder>}></Route>
-        <Route
-          path="/ComputerProgramming"
-          element={<ComputerProgramming></ComputerProgramming>}
-        ></Route>
-        <Route
-          path="/MarketingSaling"
-          element={<MarketingSaling></MarketingSaling>}
-        ></Route>
-        <Route path="/English" element={<English></English>}></Route>
-        <Route path="/General" element={<General></General>}></Route>
-        <Route
-          path="/Engineering"
-          element={<Engineering></Engineering>}
-        ></Route>
-        <Route
-          path="/EngineeringJob"
-          element={<EngineeringJob></EngineeringJob>}
-        ></Route>
-        <Route
-          path="/AdmissionGuide"
-          element={<AdmissionGuide></AdmissionGuide>}
-        ></Route>
-        <Route
-          path="/EducationResearch"
-          element={<EducationResearch></EducationResearch>}
-        ></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/singUp" element={<SignUp></SignUp>}></Route>
         <Route path="/reset-password" element={<ResetPasssword />}></Route>

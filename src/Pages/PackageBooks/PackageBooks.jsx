@@ -4,6 +4,7 @@ import "../Products2/Products2.css";
 import Cart from "../AddToCart/Cart";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
+import Loading from "../Loading/Loading";
 
 const PackageBooks = () => {
   let settings = {
@@ -50,16 +51,19 @@ const PackageBooks = () => {
       },
     ],
   };
-  const [myProducts3] = useProduct3();
+  const [myProducts3, refetch, isLoading] = useProduct3();
   const [packageBooks, setPackageBooks] = useState([]);
 
   useEffect(() => {
-    const weekBestSales = myProducts3?.data?.filter(
+    const packegeBooks = myProducts3?.data?.filter(
       (weekSale) => weekSale?.BookSalesInfo === "প্যাকেজ বই"
     );
-    setPackageBooks(weekBestSales);
-  }, [myProducts3]);
-
+    setPackageBooks(packegeBooks);
+    refetch();
+  }, [myProducts3, refetch]);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">

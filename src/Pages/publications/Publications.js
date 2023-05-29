@@ -2,13 +2,17 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../Categorys/Category.css";
 import usePublications from "../../Hooks/usePublications";
+import Loading from "../Loading/Loading";
 
 const Publications = () => {
-  const [publications] = usePublications();
+  const [publications, refetch, isLoading] = usePublications();
   const navigate = useNavigate();
   const publicationDetails = (_id) => {
     navigate(`/publication/${_id}`);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="bg-white">
       <div className="container product-related-info">

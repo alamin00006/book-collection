@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import NoSlideCart from "../AddToCart/NoSlideCart";
+import Loading from "../Loading/Loading";
 
 const AllPackgageBooks = () => {
-  const [myProducts3] = useProduct3();
+  const [myProducts3, refetch, isLoading] = useProduct3();
   const [packageBooks, setPackageBook] = useState([]);
 
   useEffect(() => {
@@ -12,8 +13,12 @@ const AllPackgageBooks = () => {
       (weekSale) => weekSale?.BookSalesInfo === "প্যাকেজ বই"
     );
     setPackageBook(weekBestSales);
-  }, [myProducts3]);
+    refetch();
+  }, [myProducts3, refetch]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="bg-white">
       <div className="container border">

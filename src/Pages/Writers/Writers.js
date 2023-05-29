@@ -3,13 +3,17 @@ import { useNavigate } from "react-router-dom";
 import "../Categorys/Category.css";
 
 import useWriters from "../../Hooks/useWriters";
+import Loading from "../Loading/Loading";
 
 const Writers = () => {
-  const [writers] = useWriters();
+  const [writers, refetch, isLoading] = useWriters();
   const navigate = useNavigate();
   const writerDetails = (_id) => {
     navigate(`/writer/${_id}`);
   };
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="bg-white">
       <div className="container product-related-info">

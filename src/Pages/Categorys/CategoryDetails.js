@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import Cart from "../AddToCart/Cart";
 import NoSlideCart from "../AddToCart/NoSlideCart";
+import Loading from "../Loading/Loading";
 
 const CategoryDetails = () => {
   const { categoryDetailsId } = useParams();
@@ -18,7 +19,6 @@ const CategoryDetails = () => {
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
           // Navigate('/');
-          // signOut(auth);
           // localStorage.removeItem('accessToken')
         }
         return res.json();
@@ -28,6 +28,9 @@ const CategoryDetails = () => {
         setCategoryDetails(data.data);
       })
   );
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container bg-white">
       <h4 className="bg-white p-3">{categoryDetails.name}সমূহ</h4>

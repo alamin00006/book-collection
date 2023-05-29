@@ -21,6 +21,7 @@ import useProduct3 from "../../Hooks/UseProduct3";
 import Slider from "react-slick";
 import NoSlideCart from "../AddToCart/NoSlideCart";
 import RelatedProductCart from "../RealatedProduct/RelatedProductCart";
+import Loading from "../Loading/Loading";
 const Product3Details = ({ AddToCarts }) => {
   let settings = {
     dots: false,
@@ -116,7 +117,9 @@ const Product3Details = ({ AddToCarts }) => {
     (product) =>
       product.category?.categoryName === singleProduct3?.category?.categoryName
   );
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div class="container">
       <div class="details-page">

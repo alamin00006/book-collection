@@ -4,6 +4,7 @@ import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import Slider from "react-slick";
 import "./DormioBooks.css";
+import Loading from "../Loading/Loading";
 
 const DormioBooks = () => {
   let settings = {
@@ -50,7 +51,7 @@ const DormioBooks = () => {
       },
     ],
   };
-  const [myProducts3, refetch] = useProduct3();
+  const [myProducts3, refetch, isLoading] = useProduct3();
   const [dormioBooks, setDormioBooks] = useState([]);
   useEffect(() => {
     const dormioBook = myProducts3?.data?.filter(
@@ -61,13 +62,15 @@ const DormioBooks = () => {
     refetch();
   }, [myProducts3, refetch]);
 
-  console.log(dormioBooks?.[0]?.category?.category_id);
+  // console.log(dormioBooks?.[0]?.category?.category_id);
   const navigate = useNavigate();
 
   const allIslamicBookId = (_id) => {
     navigate(`/all-dormio-books/${_id}`);
   };
-
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div className="container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
