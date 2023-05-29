@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import DashboardIcon from "../../svgIcons/DashboardIcon";
 import LoveIcon from "../../svgIcons/LoveIcon";
@@ -14,15 +14,22 @@ import useUser from "../../Hooks/useUser";
 
 const SideNavbar = () => {
   const [user, refetch, isLoading] = useUser();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
 
   const SingOutHandle = () => {
     localStorage.removeItem("token");
-
     refetch();
   };
   if (isLoading) {
     <Loading></Loading>;
   }
+
+  useEffect(() => {
+    if (!token) {
+      return navigate("/");
+    }
+  }, [token, navigate]);
   return (
     <div className="container">
       <div className="row bg-white">

@@ -56,7 +56,7 @@ const PackageBooks = () => {
 
   useEffect(() => {
     const packegeBooks = myProducts3?.data?.filter(
-      (weekSale) => weekSale?.BookSalesInfo === "প্যাকেজ বই"
+      (packegeBook) => packegeBook?.category?.categoryName === "প্যাকেজ বই"
     );
     setPackageBooks(packegeBooks);
     refetch();

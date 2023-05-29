@@ -9,10 +9,10 @@ const AllPackgageBooks = () => {
   const [packageBooks, setPackageBook] = useState([]);
 
   useEffect(() => {
-    const weekBestSales = myProducts3?.data?.filter(
-      (weekSale) => weekSale?.BookSalesInfo === "প্যাকেজ বই"
+    const packageBooks = myProducts3?.data?.filter(
+      (packegeBook) => packegeBook?.category?.categoryName === "প্যাকেজ বই"
     );
-    setPackageBook(weekBestSales);
+    setPackageBook(packageBooks);
     refetch();
   }, [myProducts3, refetch]);
 
