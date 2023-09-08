@@ -125,7 +125,7 @@ const Login = () => {
                 )}
                 <div className="d-flex justify-content-end">
                   <Link
-                    to="/reset-password"
+                    to="/forgot-password"
                     className="text-danger forgot-password py-1"
                   >
                     পাসওয়ার্ড ভুলে গেছেন?

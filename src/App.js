@@ -29,7 +29,8 @@ import Coupon from "./Dashboard/Admin/Coupon/Coupon";
 import Category from "./Pages/Categorys/Category";
 import CategoryDetails from "./Pages/Categorys/CategoryDetails";
 import OrderManagePage from "./Dashboard/Admin/OrderMange/OrderManagePage";
-import ResetPasssword from "./Pages/Login/ResetPasssword";
+import ResetPasssword from "./Pages/Login/ResetPassword";
+import ForgotPassword from "./Pages/Login/ForgotPassword";
 import ReviewMange from "./Dashboard/Admin/ReviewMange/ReviewMange";
 import ProductManage from "./Dashboard/Admin/AddProduct/ProductManage";
 import AllDormioBooks from "./Pages/IslamicBooks/AllDormioBooks";
@@ -55,7 +56,11 @@ function App() {
         <Route path="/" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/singUp" element={<SignUp></SignUp>}></Route>
-        <Route path="/reset-password" element={<ResetPasssword />}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route
+          path="/reset-password/:id/:userCode"
+          element={<ResetPasssword />}
+        ></Route>
         <Route
           path="/summary"
           element={<Product3Summary></Product3Summary>}

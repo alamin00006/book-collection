@@ -350,7 +350,7 @@ h5 {
   font-size: 0.8rem;
 }
 .book-body .writer-name {
-  font-size: 1rem !important;
+  font-size: 0.8rem !important;
   line-height: 0.5;
 }
 .tk-part {
@@ -359,10 +359,12 @@ h5 {
 .pre-tk {
   color: rgb(174, 174, 174);
   font-weight: 600;
+  font-size: 0.9rem;
 }
 .now-tk {
   color: #373737;
   font-weight: 600;
+  font-size: 1rem;
 }
 
 .my-button {
@@ -475,7 +477,7 @@ h5 {
 }
 .book-body .book-title {
   width: 150px;
-  font-size: 1.2rem;
+  font-size: 1rem !important;
 }
 .book-inner:hover {
   box-shadow: 3px 8px 8px 3px #f5f2f2;

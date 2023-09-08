@@ -300,7 +300,7 @@ const Navber = () => {
 
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white"
+                  className="subject-link subject-link2 pb-4 text-white other-nav"
                   to="/up-comming"
                 >
                   উপন্যাস
@@ -308,7 +308,7 @@ const Navber = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white"
+                  className="subject-link subject-link2 pb-4 text-white other-nav"
                   to="/up-comming"
                 >
                   বেস্টসেলার বই
@@ -316,28 +316,37 @@ const Navber = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white"
+                  className="subject-link subject-link2 pb-4 text-white other-nav"
                   to="/up-comming"
                 >
                   ইঞ্জিনিয়ারিং
                 </Link>
               </li>
             </ul>
-            <ul className="navbar-nav ms-auto">
+            <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/up-comming">
+                <Link
+                  className="nav-link text-white other-nav"
+                  to="/up-comming"
+                >
                   {" "}
                   ইসলামিক বই{" "}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/up-comming">
+                <Link
+                  className="nav-link text-white other-nav"
+                  to="/up-comming"
+                >
                   {" "}
                   প্রি-অর্ডার{" "}
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/up-comming">
+                <Link
+                  className="nav-link text-white other-nav"
+                  to="/up-comming"
+                >
                   {" "}
                   অতিরিক্ত ছাড়ের বই{" "}
                 </Link>
