@@ -6,7 +6,10 @@ body {
   border-radius: 2px;
   box-shadow: 6px 8px 6px 6px #ebebeb;
 }
-
+.details p {
+  font-size: 1rem !important;
+  font-family: "Atma", cursive;
+}
 .details-side-1 {
   padding: 20px;
   background-color: #fff;
@@ -111,6 +114,8 @@ body {
 .colors {
   text-transform: UPPERCASE;
   font-weight: bold;
+  font-family: "Atma", cursive;
+  font-size: 1.2rem;
 }
 
 .checked,
@@ -301,6 +306,11 @@ h5 {
   border-radius: 2px;
   box-shadow: 6px 8px 6px 6px #ebebeb;
 }
+.product-summary-section p {
+  font-family: "Atma", cursive;
+  font-size: 1rem !important;
+  line-height: 1.8;
+}
 .summary {
   padding: 5px 10px;
   border-radius: 3px;
@@ -388,6 +398,7 @@ h5 {
   position: absolute;
   top: 150px;
   margin-left: 9px;
+  font-size: 1rem;
   visibility: hidden;
   text-transform: uppercase;
 }
@@ -449,6 +460,7 @@ h5 {
   padding: 5px 10px;
   font-weight: 500;
   visibility: hidden;
+  font-size: 1rem;
 }
 .single-card {
   cursor: pointer;
@@ -532,4 +544,9 @@ h5 {
 }
 .single-card:hover .add-to-btn3 {
   animation: slide 0.5s linear;
+}
+/* For Slider */
+.slick-track {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
 }

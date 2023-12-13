@@ -53,7 +53,7 @@ const Navber2 = () => {
           </Navbar.Collapse>
 
           <Nav.Link
-            className="ms-5 text-decoration-none text-white"
+            className="ms-5 text-decoration-none text-black"
             as={Link}
             to="/cart"
           >
@@ -65,8 +65,8 @@ const Navber2 = () => {
 
           {token ? (
             <>
-              <p className="mt-3 ms-3 text-black sing-Out my-account-aria">
-                <Link className="text-white account-part" to="/side-navbar">
+              <p className="mt-3 ms-3  sing-Out my-account-aria">
+                <Link className=" account-part text-black" to="/side-navbar">
                   আমার একাউন্ট
                 </Link>
               </p>
@@ -76,7 +76,7 @@ const Navber2 = () => {
               <Nav.Link
                 as={Link}
                 to="/login"
-                className="ms-3 text-white d-flex align-items-center"
+                className="ms-3 text-black d-flex align-items-center"
               >
                 <div>
                   <svg

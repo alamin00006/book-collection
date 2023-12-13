@@ -8,10 +8,11 @@
   box-shadow: 0 0 0 !important;
 }
 .second-navbar {
-  background-color: #065644;
+  background-color: #ffffff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 .subject-link {
-  color: white !important;
+  color: rgb(0, 0, 0) !important;
   text-decoration: none;
   cursor: pointer;
 }

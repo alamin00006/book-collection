@@ -19,7 +19,7 @@ const Navber = () => {
     <div className="container main-Navbar">
       <nav className="navbar navbar-expand-lg">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand text-white text-decorarion-none">
+          <Link to="/" className="navbar-brand text-decorarion-none">
             হোম
           </Link>
           <button
@@ -300,7 +300,7 @@ const Navber = () => {
 
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white other-nav"
+                  className="subject-link subject-link2 pb-4  other-nav"
                   to="/up-comming"
                 >
                   উপন্যাস
@@ -308,7 +308,7 @@ const Navber = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white other-nav"
+                  className="subject-link subject-link2 pb-4  other-nav"
                   to="/up-comming"
                 >
                   বেস্টসেলার বই
@@ -316,7 +316,7 @@ const Navber = () => {
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="subject-link subject-link2 pb-4 text-white other-nav"
+                  className="subject-link subject-link2 pb-4  other-nav"
                   to="/up-comming"
                 >
                   ইঞ্জিনিয়ারিং
@@ -326,7 +326,7 @@ const Navber = () => {
             <ul className="navbar-nav ms-auto ">
               <li className="nav-item">
                 <Link
-                  className="nav-link text-white other-nav"
+                  className="nav-link text-black  other-nav"
                   to="/up-comming"
                 >
                   {" "}
@@ -335,7 +335,7 @@ const Navber = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  className="nav-link text-white other-nav"
+                  className="nav-link text-black other-nav"
                   to="/up-comming"
                 >
                   {" "}
@@ -344,7 +344,7 @@ const Navber = () => {
               </li>
               <li className="nav-item">
                 <Link
-                  className="nav-link text-white other-nav"
+                  className="nav-link text-black other-nav"
                   to="/up-comming"
                 >
                   {" "}

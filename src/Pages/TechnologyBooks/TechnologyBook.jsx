@@ -13,7 +13,7 @@ const TechnologyBook = () => {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-
+    adaptiveHeight: true,
     responsive: [
       {
         breakpoint: 1024,
