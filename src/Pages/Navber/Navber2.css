@@ -32,18 +32,20 @@
   background-color: #ffffff;
 }
 .search-field {
-  width: 85%;
-  height: 45px;
+  width: 65%;
+  height: 38px;
   margin-top: 20px;
+  margin-left: 80px;
 }
 .search-field .form-control {
   border-radius: 2px !important;
 }
 
 .search-button {
-  background-color: #065644 !important;
+  background-color: #f29434 !important;
   outline: none !important;
   border: none !important;
+  border-radius: 0px 8px 8px 0px;
 }
 
 .search-little-icon {

@@ -4,12 +4,13 @@ import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import logo2 from "../../Images/logo2.png";
+// import logo2 from "../../Images/logo2.png";
+import logo2 from "../../Images/abianLogo5.jpeg";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 import "../Navber/Navber2.css";
 import { Link } from "react-router-dom";
-
+import { IoSearch } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import useUser from "../../Hooks/useUser";
 import SearchIcon from "../../svgIcons/SearchIcon";
@@ -41,7 +42,7 @@ const Navber2 = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             ></Nav>
-            <Form className="d-flex search-field">
+            {/* <Form className="d-flex search-field">
               <Form.Control
                 type="search"
                 placeholder="Search"
@@ -49,7 +50,20 @@ const Navber2 = () => {
                 aria-label="Search"
               />
               <Button className="text-white search-button">Search</Button>
-            </Form>
+            </Form> */}
+            <div className="d-flex justify-content-center search-field">
+              <input
+                type="text"
+                placeholder="বইয়ের নাম ও লেখকের নাম দিয়ে অনুসন্ধান করুন"
+              />
+              <span className="search-button px-3 ">
+                {" "}
+                <IoSearch
+                  className="mt-2 font-bold"
+                  style={{ color: "white", width: "16px", height: "16px" }}
+                />
+              </span>
+            </div>
           </Navbar.Collapse>
 
           <Nav.Link
