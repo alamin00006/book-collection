@@ -8,7 +8,7 @@ body {
 }
 .details p {
   font-size: 1rem !important;
-  font-family: "Atma", cursive;
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .details-side-1 {
   padding: 20px;
@@ -114,8 +114,8 @@ body {
 .colors {
   text-transform: UPPERCASE;
   font-weight: bold;
-  font-family: "Atma", cursive;
-  font-size: 1.2rem;
+  font-family: "Hind Siliguri", sans-serif !important;
+  font-size: 1rem;
 }
 
 .checked,
@@ -307,7 +307,7 @@ h5 {
   box-shadow: 6px 8px 6px 6px #ebebeb;
 }
 .product-summary-section p {
-  font-family: "Atma", cursive;
+  font-family: "Hind Siliguri", sans-serif !important;
   font-size: 1rem !important;
   line-height: 1.8;
 }
@@ -355,12 +355,14 @@ h5 {
 }
 .book-body {
   text-align: center;
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .book-body h6 {
-  font-size: 0.8rem;
+  font-size: 15px !important;
 }
 .book-body .writer-name {
-  font-size: 0.8rem !important;
+  font-family: "Hind Siliguri", sans-serif !important;
+  font-size: 14px !important;
   line-height: 0.5;
 }
 .tk-part {
@@ -401,6 +403,7 @@ h5 {
   font-size: 1rem;
   visibility: hidden;
   text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .add-to-btn2 {
   background-color: #12856a;
@@ -415,6 +418,7 @@ h5 {
   margin-left: 9px;
   visibility: hidden;
   text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .add-to-btn3 {
   background-color: #12856a;
@@ -429,6 +433,7 @@ h5 {
   margin-left: 0px;
   visibility: hidden;
   text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
 }
 .add-to-btn a {
   color: white;
@@ -488,6 +493,7 @@ h5 {
   padding: 10px;
 }
 .book-body .book-title {
+  font-family: "Hind Siliguri", sans-serif !important;
   width: 150px;
   font-size: 1rem !important;
 }

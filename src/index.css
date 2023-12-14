@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  font-family: "Tiro Bangla", serif;
+  font-family: "Hind Siliguri", sans-serif !important;
   font-size: 1rem !important;
 }
