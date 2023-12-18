@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 // import logo2 from "../../Images/logo2.png";
-import logo2 from "../../Images/abianLogo5.jpeg";
+import logo2 from "../../Images/abiyanLogo11.png";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 import "../Navber/Navber2.css";
@@ -27,7 +27,7 @@ const Navber2 = () => {
     <div className="container p-0">
       <Navbar className="searching-nav" expand="lg">
         <Container fluid>
-          <Link to="/">
+          <Link to="/" className="mx-4">
             <img className="logo" src={logo2} alt="" />
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav">

@@ -119,8 +119,8 @@ const Navber = () => {
                   </span>
                   <div className="dropdown-menu">
                     <div className="drop-list">
-                      <div className="d-flex">
-                        <ul>
+                      <div className="d-flex ">
+                        <ul className="">
                           {categories?.data?.slice(0, 8).map((category) => (
                             <li key={category._id}>
                               <Link
@@ -132,7 +132,7 @@ const Navber = () => {
                             </li>
                           ))}
                         </ul>
-                        <ul>
+                        <ul className="">
                           {categories?.data?.slice(8, 15).map((category) => (
                             <li key={category._id}>
                               <Link
@@ -144,7 +144,7 @@ const Navber = () => {
                             </li>
                           ))}
                         </ul>
-                        <ul>
+                        <ul className="">
                           {categories?.data?.slice(15, 22).map((category) => (
                             <li key={category._id}>
                               <Link
@@ -156,7 +156,7 @@ const Navber = () => {
                             </li>
                           ))}
                         </ul>
-                        <ul>
+                        <ul className="">
                           {categories?.data?.slice(22, 28).map((category) => (
                             <li key={category._id}>
                               <Link
@@ -168,7 +168,7 @@ const Navber = () => {
                             </li>
                           ))}
                         </ul>
-                        <ul>
+                        <ul className="">
                           {categories?.data?.slice(28, 34).map((category) => (
                             <li key={category._id}>
                               <Link
@@ -189,8 +189,8 @@ const Navber = () => {
                     </div>
                   </div>
                 </li>
-                <li className="nav-item dropdown">
-                  <span className="subject-link subject-link2 dropdown-toggle pb-4">
+                <li className="nav-item dropdown ">
+                  <span className="subject-link subject-link2 dropdown-toggle pb-4 ">
                     প্রকাশনী
                   </span>
                   <div className="dropdown-menu">

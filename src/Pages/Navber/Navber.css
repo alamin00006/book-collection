@@ -28,6 +28,7 @@
 .other-nav {
   font-size: 15px !important;
 }
+
 .dropdown-menu {
   margin-top: 14px !important;
   z-index: 999 !important;
@@ -53,6 +54,7 @@
   position: absolute;
   top: 0;
   left: -167px;
+
   background-color: white;
   border: 1px solid black;
 }
@@ -67,7 +69,8 @@
 }
 
 .dropdown-menu ul {
-  /* padding-left: 0 !important; */
+  padding: 0 !important;
+  margin-left: 25px;
   font-size: 13px !important;
 }
 .dropdown-menu ul li {
@@ -75,7 +78,8 @@
 }
 .dropdown-menu ul li a {
   list-style: disc !important;
-  width: 227px;
+
+  width: 198px;
   white-space: pre-line;
 }
 .dropdown-menu ul li a:hover {
