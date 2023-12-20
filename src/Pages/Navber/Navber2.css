@@ -36,9 +36,7 @@
   height: 38px;
   margin-top: 20px;
   margin-left: 80px;
-}
-.search-field .form-control {
-  border-radius: 2px !important;
+  border-radius: 8px 0px 0px 8px !important;
 }
 
 .search-button {
@@ -78,6 +76,7 @@
     width: 100% !important;
     margin-left: 5px !important;
   }
+
   .search-little-icon {
     position: absolute !important;
     top: 30px;

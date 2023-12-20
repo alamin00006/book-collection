@@ -19,7 +19,7 @@ const Navber = () => {
     <div className="navbar-border">
       <div className="container main-Navbar">
         <nav className="navbar navbar-expand-lg">
-          <div className="container-fluid">
+          <div className="container-fluid p-0">
             <Link to="/" className="navbar-brand text-decorarion-none">
               হোম
             </Link>

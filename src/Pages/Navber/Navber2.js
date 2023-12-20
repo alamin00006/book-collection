@@ -25,10 +25,15 @@ const Navber2 = () => {
 
   return (
     <div className="container p-0">
-      <Navbar className="searching-nav" expand="lg">
-        <Container fluid>
-          <Link to="/" className="mx-4">
-            <img className="logo" src={logo2} alt="" />
+      <Navbar className="searching-nav " expand="lg">
+        <Container fluid className="">
+          <Link to="/" className="">
+            <img
+              className="logo "
+              style={{ width: "150px", height: "70px", marginLeft: "32px" }}
+              src={logo2}
+              alt=""
+            />
           </Link>
           <Navbar.Toggle aria-controls="basic-navbar-nav">
             <div className="search-little-icon">
