@@ -1,6 +1,3 @@
-.navbar-border {
-  border-top: 0.4px solid rgb(202, 202, 202);
-}
 .navbar-brand {
   font-size: 16px !important;
 }
@@ -37,7 +34,7 @@
 .dropdown-menu .drop-list {
   position: absolute;
   top: 0;
-  left: -125px;
+  left: -95px;
 
   background-color: white;
   border: 1px solid black;
@@ -46,14 +43,14 @@
 .dropdown-menu .drop-list-1 {
   position: absolute;
   top: 0;
-  left: -55px;
+  left: -25px;
   background-color: white;
   border: 1px solid black;
 }
 .dropdown-menu .drop-list-3 {
   position: absolute;
   top: 0;
-  left: -187px;
+  left: -155px;
 
   background-color: white;
   border: 1px solid black;

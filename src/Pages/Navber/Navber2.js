@@ -6,7 +6,9 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 // import logo2 from "../../Images/logo2.png";
 import logo2 from "../../Images/abiyanLogo11.png";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+
+import { AiOutlineUser } from "react-icons/ai";
+import { HiOutlineShoppingBag } from "react-icons/hi2";
 
 import "../Navber/Navber2.css";
 import { Link } from "react-router-dom";
@@ -24,13 +26,13 @@ const Navber2 = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <div className="container p-0">
+    <nav className="container p-0 ">
       <Navbar className="searching-nav " expand="lg">
         <Container fluid className="">
           <Link to="/" className="">
             <img
               className="logo "
-              style={{ width: "150px", height: "70px", marginLeft: "32px" }}
+              style={{ width: "100px", height: "70px", marginLeft: "32px" }}
               src={logo2}
               alt=""
             />
@@ -42,11 +44,11 @@ const Navber2 = () => {
           </Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav
-              className="ms-1 my-2 my-lg-0"
-              style={{ maxHeight: "100px" }}
-              navbarScroll
-            ></Nav>
+            {/* <Nav
+            className="ms-1 my-2 my-lg-0"
+            style={{ maxHeight: "100px" }}
+            navbarScroll
+          ></Nav> */}
             {/* <Form className="d-flex search-field">
               <Form.Control
                 type="search"
@@ -60,6 +62,7 @@ const Navber2 = () => {
               <input
                 type="text"
                 placeholder="বইয়ের নাম ও লেখকের নাম দিয়ে অনুসন্ধান করুন"
+                style={{ borderRadius: " 8px 0px 0px 8px" }}
               />
               <span className="search-button px-3 ">
                 {" "}
@@ -72,22 +75,38 @@ const Navber2 = () => {
           </Navbar.Collapse>
 
           <Nav.Link
-            className="ms-5 text-decoration-none text-black"
+            className=" text-decoration-none text-black"
             as={Link}
             to="/cart"
           >
             <div className="cart-icon">
-              <ShoppingCartIcon className="add-to-icon1" />
+              <HiOutlineShoppingBag
+                className="add-to-icon1"
+                style={{ width: "30px", height: "30px" }}
+              />
+
               {cart?.cartItems?.length}
             </div>
           </Nav.Link>
 
           {token ? (
             <>
-              <p className="mt-3 ms-3  sing-Out my-account-aria">
-                <Link className=" account-part text-black" to="/side-navbar">
+              <p className=" sing-Out my-account-aria">
+                {/* <Link className=" account-part text-black" to="/side-navbar">
                   আমার একাউন্ট
-                </Link>
+                </Link> */}
+                <Nav.Link
+                  as={Link}
+                  to="/side-navbar"
+                  className="text-black d-flex flex-column align-items-center account-part"
+                >
+                  <div>
+                    <AiOutlineUser style={{ width: "30px", height: "30px" }} />
+                  </div>
+                  <div className="">
+                    <span style={{ fontSize: "14px" }}>My Account</span>
+                  </div>
+                </Nav.Link>
               </p>
             </>
           ) : (
@@ -95,33 +114,20 @@ const Navber2 = () => {
               <Nav.Link
                 as={Link}
                 to="/login"
-                className="ms-3 text-black d-flex align-items-center"
+                className="text-black d-flex flex-column align-items-center "
               >
                 <div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    fill="currentColor"
-                    className="bi bi-person-circle"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                    <path
-                      fill-rule="evenodd"
-                      d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-                    />
-                  </svg>
+                  <AiOutlineUser style={{ width: "30px", height: "30px" }} />
                 </div>
-                <div className="ms-2 mt-2">
-                  <span>লগ ইন</span>
+                <div className="">
+                  <span style={{ fontSize: "14px" }}>Sign Up/In</span>
                 </div>
               </Nav.Link>
             </p>
           )}
         </Container>
       </Navbar>
-    </div>
+    </nav>
   );
 };
 

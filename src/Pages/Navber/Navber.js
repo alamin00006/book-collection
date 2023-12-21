@@ -16,11 +16,14 @@ const Navber = () => {
   const [writers] = useWriters();
 
   return (
-    <div className="navbar-border">
+    <div>
       <div className="container main-Navbar">
         <nav className="navbar navbar-expand-lg">
           <div className="container-fluid p-0">
-            <Link to="/" className="navbar-brand text-decorarion-none">
+            <Link
+              to="/"
+              className="navbar-brand text-decorarion-none text-black"
+            >
               হোম
             </Link>
             <button
@@ -35,7 +38,11 @@ const Navber = () => {
                 <LIneIcon />
               </Navbar.Toggle>
             </button>
-            <div className="collapse navbar-collapse" id="main_nav">
+            <div
+              className="collapse navbar-collapse"
+              id="main_nav"
+              style={{ marginLeft: "-20px" }}
+            >
               <ul className="navbar-nav">
                 <li className="nav-item dropdown">
                   <span className="subject-link subject-link2 dropdown-toggle pb-4">

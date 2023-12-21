@@ -30,13 +30,17 @@
 }
 .first-navbar {
   background-color: #ffffff;
+  border-bottom: 0.4px solid rgb(202, 202, 202);
 }
 .search-field {
-  width: 65%;
+  width: 70%;
   height: 38px;
   margin-top: 20px;
   margin-left: 80px;
-  border-radius: 8px 0px 0px 8px !important;
+}
+.search-field input:focus {
+  border: 1px solid #12856b !important;
+  outline: 0;
 }
 
 .search-button {
@@ -44,6 +48,7 @@
   outline: none !important;
   border: none !important;
   border-radius: 0px 8px 8px 0px;
+  cursor: pointer;
 }
 
 .search-little-icon {
@@ -67,7 +72,7 @@
     width: 100px;
     height: 60px;
     margin-top: 0px;
-    margin-left: -20px !important;
+    margin-left: 8px !important;
   }
   .main-Navbar {
     display: none;
@@ -151,13 +156,13 @@
   }
   .cart-icon {
     position: absolute;
-    top: 32px;
+    top: 35px;
     right: 140px;
   }
   .login-aria {
     position: absolute;
-    top: 35px;
-    right: 30px;
+    top: 25px;
+    right: 15px;
   }
   .my-account-aria {
     position: absolute;
