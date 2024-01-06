@@ -5,52 +5,10 @@ import Cart from "../AddToCart/Cart";
 import Slider from "react-slick";
 import "./DormioBooks.css";
 import Loading from "../Loading/Loading";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 const DormioBooks = () => {
-  let settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-    adaptiveHeight: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
+
   const [myProducts3, refetch, isLoading] = useProduct3();
   const [dormioBooks, setDormioBooks] = useState([]);
   useEffect(() => {
@@ -72,10 +30,12 @@ const DormioBooks = () => {
     return <Loading />;
   }
   return (
-    <div className="container card-area bg-white p-4">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mt-0">ধর্মীয় বই</h4>
-        <div className="text-center">
+    <div className="container card-area bg-white p-0">
+      <div className=" ">
+        <h4 className="mt-3">ধর্মীয় বই</h4>
+        
+        
+        {/* <div className="text-center">
           {" "}
           <h6
             onClick={() =>
@@ -89,15 +49,57 @@ const DormioBooks = () => {
               আরও দেখুন
             </Link>
           </h6>
-        </div>
+        </div> */}
       </div>
-      <Slider {...settings} width="1206px">
+      <hr style={{color:'#13856B'}}/>
+      <div className="mt-3 card-splide-slider slider_margin card-slider ">
+        <Splide
+          options={{
+            // type: "loop",
+            arrows:
+            dormioBooks?.length > 5
+                ? true
+                : false,
+            rewind: true,
+            drag: "free",
+
+            // autoplay: true,
+            gap: "10px",
+            perPage: 5,
+            height: "500px",
+            pauseOnHover: true,
+            pagination: false,
+            breakpoints: {
+              1200: { arrows: true, perPage: 4 },
+              800: { arrows: true, perPage: 2 },
+              640: {
+                // type: "loop",
+                arrows: true,
+                perPage: 1,
+            
+                drag: "free",
+                rewind: true,
+                // padding: "3rem",
+              },
+            },
+          }}
+        >
+
+            { dormioBooks?.map((data, index) => (
+                <SplideSlide>
+                   <Cart key={data._id} data={data}></Cart>
+                </SplideSlide>
+              ))
+           }
+        </Splide>
+      </div>
+      {/* <Slider {...settings} width="1206px">
         {dormioBooks?.map((data, index) => (
           <div className="my-card-main my-card">
             <Cart key={data._id} data={data}></Cart>
           </div>
         ))}
-      </Slider>
+      </Slider> */}
     </div>
   );
 };

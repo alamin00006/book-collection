@@ -195,7 +195,7 @@ img {
   font-weight: 600;
   border-radius: 5px;
 }
-.discount {
+/* .discount {
   position: absolute;
   top: 0;
   left: 10px;
@@ -203,7 +203,7 @@ img {
   color: white;
   border-radius: 50%;
   padding: 5px;
-}
+} */
 .available-quantity {
   margin-left: 10px;
 }

@@ -17,9 +17,9 @@ const Navber = () => {
 
   return (
     <div>
-      <div className="container main-Navbar">
-        <nav className="navbar navbar-expand-lg">
-          <div className="container-fluid p-0">
+      <div className="container main-Navbar " >
+        <nav className="navbar navbar-expand-lg" >
+          <div className="container-fluid p-0" >
             <Link
               to="/"
               className="navbar-brand text-decorarion-none text-black"
@@ -43,15 +43,15 @@ const Navber = () => {
               id="main_nav"
               style={{ marginLeft: "-20px" }}
             >
-              <ul className="navbar-nav">
-                <li className="nav-item dropdown">
+              <ul className="navbar-nav" >
+                <li className="nav-item dropdown " >
                   <span className="subject-link subject-link2 dropdown-toggle pb-4">
                     লেখক
                   </span>
-                  <div className="dropdown-menu">
-                    <div className="drop-list-1">
-                      <div className="d-flex">
-                        <ul>
+                  <div className="dropdown-menu " >
+                    <div className="drop-list-1 " >
+                      <div className="d-flex border" style={{boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.40)'}}>
+                        <ul  >
                           {writers?.data?.slice(0, 8).map((writer) => (
                             <li key={writer._id}>
                               <Link
@@ -126,7 +126,7 @@ const Navber = () => {
                   </span>
                   <div className="dropdown-menu">
                     <div className="drop-list">
-                      <div className="d-flex ">
+                      <div className="d-flex border"style={{boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.40)'}}>
                         <ul className="">
                           {categories?.data?.slice(0, 8).map((category) => (
                             <li key={category._id}>
@@ -202,7 +202,7 @@ const Navber = () => {
                   </span>
                   <div className="dropdown-menu">
                     <div className="drop-list-3">
-                      <div className="d-flex">
+                      <div className="d-flex border"style={{boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.40)'}}>
                         <ul>
                           {publications?.data
                             ?.slice(0, 8)
@@ -287,13 +287,13 @@ const Navber = () => {
                   <span className="subject-link subject-link2 pb-4 dropdown-toggle book-fair-part">
                     বইমেলা
                   </span>
-                  <div className="dropdown-menu">
+                  <div className="dropdown-menu" style={{boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.40)'}}>
                     <ul>
                       <li>
                         {bookfairs?.data.map((bookfair) => (
                           <span
                             key={bookfair._id}
-                            className="dropdown-item book-fair"
+                            className="dropdown-item book-fair "
                           >
                             {" "}
                             <Link

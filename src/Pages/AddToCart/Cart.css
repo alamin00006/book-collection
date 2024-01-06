@@ -1,9 +1,230 @@
+
+.single-card {
+  cursor: pointer;
+  position: relative;
+  z-index: 0 !important;
+  border: 0.4px solid var(--Green, #13856B);
+
+
+}
 .my-card {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 50px;
 }
 
+.card-area {
+  /* box-shadow: 6px 8px 6px 6px #ebebeb; */
+  border-radius: 3px;
+ 
+
+}
+
+.book-inner img {
+  width: 190px !important;
+  height: 272px !important;
+}
+.book-body {
+  text-align: center;
+  font-family: "Hind Siliguri", sans-serif !important;
+  
+}
+.book-body h6 {
+  font-size: 15px !important;
+}
+.book-body .writer-name {
+  font-family: "Hind Siliguri", sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5;
+}
+.tk-part {
+  line-height: 0;
+  position: absolute;
+  bottom: 20px;
+}
+.pre-tk {
+  color: rgb(174, 174, 174);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.now-tk {
+  color: #373737;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.my-button {
+  display: block;
+  margin: 20px;
+  text-decoration: none;
+}
+.my-button:hover {
+  text-decoration: none;
+  color: red !important;
+}
+
+.add-to-btn {
+  background-color: #f29434;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 150px;
+  /* margin-left: 9px; */
+  font-size: 1rem;
+  visibility: hidden;
+  text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
+}
+.add-to-btn2 {
+  background-color: #f29434;
+  width: 180px;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 150px;
+  margin-left: 9px;
+  visibility: hidden;
+  text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
+}
+.add-to-btn3 {
+  background-color: #f29434;
+  width: 180px;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  position: absolute;
+  top: 150px;
+  margin-left: 0px;
+  visibility: hidden;
+  text-transform: uppercase;
+  font-family: "Hind Siliguri", sans-serif !important;
+}
+.add-to-btn a {
+  color: white;
+  text-decoration: none;
+}
+.add-to-btn2 a {
+  color: white;
+  text-decoration: none;
+}
+.add-to-btn3 a {
+  color: white;
+  text-decoration: none;
+}
+.add-to-btn a:hover {
+  color: white;
+}
+.add-to-btn2 a:hover {
+  color: white;
+}
+.add-to-btn3 a:hover {
+  color: white;
+}
+.details-button {
+  background-color: #f29434;
+  width: 100%;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  font-weight: 500;
+  visibility: hidden;
+  font-size: 1rem;
+}
+
+
+.single-card:hover  {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+  
+}
+.single-card:hover .add-to-btn {
+  visibility: visible;
+  /* top: 160px; */
+
+}
+.single-card:hover .add-to-btn2 {
+  visibility: visible;
+  /* top: 160px; */
+}
+.single-card:hover .add-to-btn3 {
+  visibility: visible;
+  /* top: 160px; */
+}
+.single-card:hover .details-button {
+  visibility: visible;
+}
+.book-inner {
+  padding: 10px;
+}
+.book-body .book-title {
+  font-family: "Hind Siliguri", sans-serif !important;
+  width: 150px;
+  font-size: 1rem !important;
+}
+/* .book-inner:hover {
+  box-shadow: 3px 8px 8px 3px #f5f2f2;
+} */
+
+.details-button a {
+  color: white;
+}
+.details-button a:hover {
+  color: white;
+}
+.details-button:hover {
+  background-color: #f29639ec;
+  width: 100%;
+
+  color: rgb(255, 255, 255);
+}
+.add-to-btn:hover {
+  background-color: #f29639ec;
+  outline: none;
+  color: rgb(255, 255, 255);
+}
+.add-to-btn2:hover {
+  background-color: #f29639ec;
+  outline: none;
+  color: rgb(255, 255, 255);
+}
+.add-to-btn3:hover {
+  background-color: #f29639ec;
+  outline: none;
+  color: rgb(255, 255, 255);
+}
+
+/* animation */
+@keyframes slide {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: 100px;
+  }
+  100% {
+    top: 150px;
+  }
+}
+
+.single-card:hover .add-to-btn {
+  animation: slide 0.5s linear;
+}
+.single-card:hover .add-to-btn2 {
+  animation: slide 0.5s linear;
+}
+.single-card:hover .add-to-btn3 {
+  animation: slide 0.5s linear;
+}
 img {
   height: 200px;
 }
@@ -60,7 +281,7 @@ img {
 
 @media only screen and (min-width: 992px) {
   .add-to-btn {
-    margin-left: 17px !important;
+    margin-left: 0px !important;
   }
   img {
     height: 150px;
@@ -182,13 +403,14 @@ img {
   border-radius: 5px;
 }
 .discount {
-  position: absolute;
+  /* position: absolute;
   top: 0;
   left: 10px;
   background-color: red;
   color: white;
   border-radius: 50%;
-  padding: 5px;
+  padding: 5px; */
+  font-size: 14px;
 }
 .available-quantity {
   margin-left: 10px;

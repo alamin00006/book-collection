@@ -24,3 +24,85 @@ h4 {
   font-size: 1rem !important;
   cursor: pointer;
 }
+
+/* Slider */
+.card-splide-slider .splide__arrow--prev::before {
+  /* content: url("../../Images/arrow2.png"); */
+  /* Add your custom icon or image here */
+  /* border-radius: 5px 0px 0px 5px; */
+  border: 1px solid #e5e5e5;
+  background: white;
+  padding: 6px 14px;
+  /* border-radius: 50%; */
+}
+
+.card-splide-slider svg {
+  /* display: none; */
+
+  border-radius: 0% !important;
+
+}
+
+.card-splide-slider .splide__arrow--next::before {
+  /* content: url("../../Images/arrow1.png"); */
+  /* Add your custom icon or image here */
+  border: 1px solid #e5e5e5;
+  background: rgb(255, 255, 255);
+  padding: 6px 14px;
+  /* border-radius: 50%; */
+  /* box-shadow: 0 0 20px 5px rgba(35, 35, 35, 0.5); */
+}
+/* 
+
+
+/* Customize the left arrow button position */
+
+.card-splide-slider .splide__arrow--prev {
+  left: 1035px !important;
+  top: -40px !important;
+  /* display: none; */
+  opacity: 0.9 !important;
+}
+
+/* Customize the right arrow button position */
+
+.card-splide-slider .splide__arrow--next {
+  right: 0px;
+  top: -40px !important;
+  /* display: none; */
+  opacity: 0.9 !important;
+
+}
+
+
+.splide__arrow {
+  align-items: center;
+  background: white !important;
+  border: 1px solid #13856B !important;
+  border-radius: 0% !important;
+  cursor: pointer;
+  display: flex;
+  height: 2em;
+  justify-content: center;
+  opacity: .7;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2em;
+  z-index: 1;
+
+}
+@media screen and (max-width: 600px) {
+  .card-splide-slider .splide__arrow--prev {
+    left: 210px;
+    top: 410px !important;
+    display: none !important;
+  }
+
+  .card-splide-slider .splide__arrow--next {
+    right: 200px !important;
+    top: 410px !important;
+    display: none !important;
+  }
+}
