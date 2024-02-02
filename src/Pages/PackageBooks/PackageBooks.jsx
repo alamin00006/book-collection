@@ -77,6 +77,7 @@ const PackageBooks = () => {
           </Link>
         </div>
       </div>
+     
       <Slider {...settings}>
         {packageBooks?.map((data, index) => (
           <div className="my-card-main my-card">

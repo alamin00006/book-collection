@@ -30,26 +30,12 @@ const DormioBooks = () => {
     return <Loading />;
   }
   return (
-    <div className="container card-area bg-white p-0">
+    <div className="container card-area bg-white px-3">
       <div className=" ">
-        <h4 className="mt-3">ধর্মীয় বই</h4>
+        <h4 className=" pt-3">ধর্মীয় বই</h4>
         
         
-        {/* <div className="text-center">
-          {" "}
-          <h6
-            onClick={() =>
-              allIslamicBookId(dormioBooks?.[0]?.category?.category_id)
-            }
-          >
-            <Link
-              className="my-button text-black"
-              to={`/all-dormio-books/${dormioBooks?.[0]?.category?.category_id}`}
-            >
-              আরও দেখুন
-            </Link>
-          </h6>
-        </div> */}
+      
       </div>
       <hr style={{color:'#13856B'}}/>
       <div className="mt-3 card-splide-slider slider_margin card-slider ">
@@ -93,13 +79,22 @@ const DormioBooks = () => {
            }
         </Splide>
       </div>
-      {/* <Slider {...settings} width="1206px">
-        {dormioBooks?.map((data, index) => (
-          <div className="my-card-main my-card">
-            <Cart key={data._id} data={data}></Cart>
-          </div>
-        ))}
-      </Slider> */}
+        {/* <div className="text-center ">
+          {" "}
+          <h6
+            onClick={() =>
+              allIslamicBookId(dormioBooks?.[0]?.category?.category_id)
+            }
+          >
+            <Link
+              className="my-button text-black"
+              to={`/all-dormio-books/${dormioBooks?.[0]?.category?.category_id}`}
+            >
+              আরও দেখুন
+            </Link>
+          </h6>
+        </div> */}
+   
     </div>
   );
 };

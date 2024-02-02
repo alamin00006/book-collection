@@ -26,15 +26,17 @@ const Cart = ({ data }) => {
   return (
     <>
       {" "}
-      <div className="single-card p-0" style={{height:500}}>
+      <div className="single-card p-0" style={{height:400}}>
         <div
           onClick={product3Details}
           className="d-flex flex-column align-items-center book-inner"
         >
           <img src={data?.image} class="" alt="..." />
           <div class="book-body mt-3">
-            <h6 class="book-title">{data.nameB} </h6>
-            <p class="writer-name">{data?.writer?.writerName}</p>
+            <h6 class="book-title">{data.nameB?.slice(0,40)} 
+                  </h6>
+            <p class="writer-name">{data?.writer?.writerName?.slice(0,50)} 
+            </p>
             {/* <p className="mb-4">
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
@@ -42,21 +44,21 @@ const Cart = ({ data }) => {
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
             </p> */}
-            <p className="mb-4 writer-name" >
+            {/* <p className="mb-4 writer-name" >
              {
               data?.publication?.publicationName
              }
-            </p>
+            </p> */}
             {data.quantity !== 0 ? (
               ""
             ) : (
               <span className="stock-out">Stock Out</span>
             )}
-            {/* {data?.discount <= 5 ? (
+            {data?.discount <= 5 ? (
               ""
             ) : (
               <span className="discount">{data.discount}%</span>
-            )} */}
+            )}
             <div className="tk-part d-flex justify-content-between ">
            <div>
            <span className="text-decoration-line-through pre-tk">
@@ -64,13 +66,13 @@ const Cart = ({ data }) => {
               </span>{" "}
               <span className="ms-2 now-tk" style={{color:'#13856B'}}>TK {discountPrice}</span>
            </div>
-           <div className="ms-3">
+           {/* <div className="ms-3">
            {data?.discount <= 0 ? (
               ""
             ) : (
               <span className="discount" style={{color:'#13856B'}}>{data.discount}% of</span>
             )}
-           </div>
+           </div> */}
             </div>
             {/* <div className=" text-center">
               <button class=" details-button " onClick={product3Details}>

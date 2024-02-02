@@ -58,7 +58,7 @@ h4 {
 /* Customize the left arrow button position */
 
 .card-splide-slider .splide__arrow--prev {
-  left: 1035px !important;
+  left: 1000px !important;
   top: -40px !important;
   /* display: none; */
   opacity: 0.9 !important;
