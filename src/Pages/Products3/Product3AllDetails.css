@@ -5,7 +5,7 @@
 }
 .details p {
   font-size: 1rem !important;
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
 }
 .details-side-1 {
   padding: 20px;
@@ -111,7 +111,7 @@
 .colors {
   text-transform: UPPERCASE;
   font-weight: bold;
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
   font-size: 1rem;
 }
 
@@ -304,7 +304,7 @@ h5 {
   box-shadow: 6px 8px 6px 6px #ebebeb;
 }
 .product-summary-section p {
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
   font-size: 1rem !important;
   line-height: 1.8;
 }

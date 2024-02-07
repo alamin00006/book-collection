@@ -1,11 +1,9 @@
-
 .single-card {
   cursor: pointer;
   position: relative;
   z-index: 0 !important;
-  
-/* border: 0.1px solid var(--Green, #13856B); */
 
+  /* border: 0.1px solid var(--Green, #13856B); */
 }
 .my-card {
   display: grid;
@@ -14,10 +12,8 @@
 }
 
 .card-area {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
   border-radius: 3px;
- 
-
 }
 
 .book-inner img {
@@ -26,14 +22,13 @@
 }
 .book-body {
   /* text-align: center; */
-  font-family: "Hind Siliguri", sans-serif !important;
-  
+  font-family: "Tiro Bangla", serif !important;
 }
 .book-body h6 {
   font-size: 15px !important;
 }
 .book-body .writer-name {
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
   font-size: 14px !important;
   line-height: 1.5;
 }
@@ -62,7 +57,10 @@
   text-decoration: none;
   color: red !important;
 }
-
+.margin_addtoButton {
+  margin: 0 12px !important;
+  margin-top: -180px !important;
+}
 .add-to-btn {
   background-color: #f29434;
   width: 100%;
@@ -71,13 +69,13 @@
   color: white;
   padding: 5px 10px;
   font-weight: 500;
-  position: absolute;
-  top: 150px;
-  /* margin-left: 9px; */
+  /* position: absolute; */
+  /* top: 150px; */
+
   font-size: 1rem;
   visibility: hidden;
   text-transform: uppercase;
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
 }
 .add-to-btn2 {
   background-color: #f29434;
@@ -92,7 +90,7 @@
   margin-left: 9px;
   visibility: hidden;
   text-transform: uppercase;
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
 }
 .add-to-btn3 {
   background-color: #f29434;
@@ -107,7 +105,7 @@
   margin-left: 0px;
   visibility: hidden;
   text-transform: uppercase;
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
 }
 .add-to-btn a {
   color: white;
@@ -142,15 +140,12 @@
   font-size: 1rem;
 }
 
-
-.single-card:hover  {
-  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.40);
-  
+.single-card:hover {
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
 }
 .single-card:hover .add-to-btn {
   visibility: visible;
   /* top: 160px; */
-
 }
 .single-card:hover .add-to-btn2 {
   visibility: visible;
@@ -167,7 +162,7 @@
   padding: 10px;
 }
 .book-body .book-title {
-  font-family: "Hind Siliguri", sans-serif !important;
+  font-family: "Tiro Bangla", serif !important;
   width: 150px;
   font-size: 1rem !important;
 }
@@ -206,17 +201,17 @@
 /* animation */
 @keyframes slide {
   0% {
-    top: 0px;
+    margin-top: 0px !important;
   }
   50% {
-    top: 100px;
+    margin-top: -120px !important;
   }
   100% {
-    top: 150px;
+    margin-top: -180px !important;
   }
 }
 
-.single-card:hover .add-to-btn {
+.single-card:hover .margin_addtoButton {
   animation: slide 0.5s linear;
 }
 .single-card:hover .add-to-btn2 {

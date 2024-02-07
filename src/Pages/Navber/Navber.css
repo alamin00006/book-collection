@@ -1,3 +1,6 @@
+.main-Navbar {
+  position: relative !important;
+}
 .navbar-brand {
   font-size: 16px !important;
 }
@@ -30,7 +33,6 @@
   margin-top: 14px !important;
   z-index: 99 !important;
   animation: slideDown 800ms ease-in-out;
-  
 }
 .dropdown-menu .drop-list {
   position: absolute;
@@ -73,11 +75,11 @@
 }
 .dropdown-menu ul li {
   list-style: disc !important;
-  line-height: 25px
+  line-height: 25px;
 }
 .dropdown-menu ul li a {
   list-style: disc !important;
-  
+
   width: 198px;
   white-space: pre-line;
 }

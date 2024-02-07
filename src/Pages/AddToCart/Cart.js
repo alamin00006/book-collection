@@ -26,17 +26,15 @@ const Cart = ({ data }) => {
   return (
     <>
       {" "}
-      <div className="single-card p-0" style={{height:400}}>
+      <div className="single-card p-0" style={{ height: 400 }}>
         <div
           onClick={product3Details}
           className="d-flex flex-column align-items-center book-inner"
         >
           <img src={data?.image} class="" alt="..." />
           <div class="book-body mt-3">
-            <h6 class="book-title">{data.nameB?.slice(0,40)} 
-                  </h6>
-            <p class="writer-name">{data?.writer?.writerName?.slice(0,50)} 
-            </p>
+            <h6 class="book-title">{data.nameB?.slice(0, 40)}</h6>
+            <p class="writer-name">{data?.writer?.writerName?.slice(0, 50)}</p>
             {/* <p className="mb-4">
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
@@ -60,13 +58,15 @@ const Cart = ({ data }) => {
               <span className="discount">{data.discount}%</span>
             )}
             <div className="tk-part d-flex justify-content-between ">
-           <div>
-           <span className="text-decoration-line-through pre-tk">
-                TK {data.price}
-              </span>{" "}
-              <span className="ms-2 now-tk" style={{color:'#13856B'}}>TK {discountPrice}</span>
-           </div>
-           {/* <div className="ms-3">
+              <div>
+                <span className="text-decoration-line-through pre-tk">
+                  TK {data.price}
+                </span>{" "}
+                <span className="ms-2 now-tk" style={{ color: "#13856B" }}>
+                  TK {discountPrice}
+                </span>
+              </div>
+              {/* <div className="ms-3">
            {data?.discount <= 0 ? (
               ""
             ) : (
@@ -83,13 +83,15 @@ const Cart = ({ data }) => {
         </div>
 
         {Cart ? (
-          <button className=" add-to-btn">
-            <Link class=" text-decoration-none " to="/cart">
-              View Cart
-            </Link>
-          </button>
+          <div className="margin_addtoButton">
+            <button className=" add-to-btn">
+              <Link class=" text-decoration-none " to="/cart">
+                View Cart
+              </Link>
+            </button>
+          </div>
         ) : (
-          <div className="">
+          <div className="margin_addtoButton">
             <button
               disabled={data.quantity === 0 ? true : false}
               className=" add-to-btn"
