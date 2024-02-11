@@ -1,0 +1,42 @@
+.home_page_category {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.btn-style {
+  cursor: pointer;
+  background: transparent;
+
+  outline: none;
+  transition: 1s ease-in-out;
+}
+
+.svg-style {
+  position: absolute;
+  left: 0;
+  top: 0;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: 1s ease-in-out;
+}
+
+.btn-style:hover {
+  transition: 1s ease-in-out;
+  background: #12856b;
+}
+
+.btn-style:hover .svg-style {
+  stroke-dashoffset: -480;
+}
+
+.btn-style span {
+  color: rgb(16, 14, 14);
+  font-size: 1rem;
+  font-weight: 100;
+}
+.btn-style:hover span {
+  color: rgb(255, 255, 255);
+}

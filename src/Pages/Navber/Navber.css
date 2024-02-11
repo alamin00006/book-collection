@@ -37,7 +37,7 @@
 .dropdown-menu .drop-list {
   position: absolute;
   top: 0;
-  left: -92px;
+  left: -96px;
 
   background-color: white;
   /* border: 1px solid black; */
@@ -46,14 +46,14 @@
 .dropdown-menu .drop-list-1 {
   position: absolute;
   top: 0;
-  left: -22px;
+  left: -25px;
   background-color: white;
   /* border: 1px solid black; */
 }
 .dropdown-menu .drop-list-3 {
   position: absolute;
   top: 0;
-  left: -155px;
+  left: -158px;
 
   background-color: white;
   /* border: 1px solid black; */

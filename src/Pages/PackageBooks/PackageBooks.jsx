@@ -65,7 +65,7 @@ const PackageBooks = () => {
     return <Loading />;
   }
   return (
-    <div className="container card-area bg-white p-4">
+    <div className="container card-area bg-white p-4 mt-3">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h4 className="mt-0" style={{ fontSize: "1.3rem" }}>
           প্যাকেজ বই
@@ -77,7 +77,7 @@ const PackageBooks = () => {
           </Link>
         </div>
       </div>
-     
+
       <Slider {...settings}>
         {packageBooks?.map((data, index) => (
           <div className="my-card-main my-card">

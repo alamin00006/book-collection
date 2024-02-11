@@ -7,12 +7,13 @@ import Payment from "../Payment/Payment";
 import Products3 from "../Products3/Products3";
 import SisuKisorBooks from "../SisuKisorBooks/SisuKisorBooks";
 import TechnologyBook from "../TechnologyBooks/TechnologyBook";
+import HomeCategory from "../../components/HomepageCategory/HomeCategory";
 
 const Home = () => {
   return (
     <div className="container">
       <Banner></Banner>
-
+      <HomeCategory />
       {/* <Products3 AddToCarts={AddToCarts}></Products3> */}
       <DormioBooks></DormioBooks>
       <SisuKisorBooks></SisuKisorBooks>
