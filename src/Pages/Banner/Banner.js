@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 const Banner = () => {
   const [allBanner, refetch, isLoading] = useBanner();
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     autoplay: true,
     autoplaySpeed: 2500,
@@ -21,9 +21,9 @@ const Banner = () => {
     return <Loading />;
   }
   return (
-    <div className="container banner-part mt-2">
+    <div className="container banner-part mt-3">
       <div>
-        <Slider {...settings} className="mySwiper">
+        <Slider {...settings} >
           {allBanner?.data.map((banner) => (
             <div className="slider">
               <img src={banner?.image} alt="" />

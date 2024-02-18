@@ -82,7 +82,7 @@ const Cart = ({ data }) => {
           </div>
         </div>
 
-        {Cart ? (
+        {/* {Cart ? (
           <div className="margin_addtoButton">
             <button className=" add-to-btn">
               <Link class=" text-decoration-none " to="/cart">
@@ -100,7 +100,7 @@ const Cart = ({ data }) => {
               Add to Cart
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

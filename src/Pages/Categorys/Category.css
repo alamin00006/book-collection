@@ -8,3 +8,30 @@
 .product-related-info{
     border:1px solid #12856a;
 }
+
+.writer_list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+.category_list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+.writer_list h5{
+    cursor: pointer;
+    font-size: 1rem; 
+  }
+.category_list h5{
+    cursor: pointer;
+    font-size: 1rem; 
+  }
+.writer_list h5:hover{
+    color: red; 
+
+  }
+.writer_list button:hover{
+    box-shadow: 3px 3px #888888;
+
+  }

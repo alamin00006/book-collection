@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
 import Slider from "react-slick";
@@ -13,7 +13,10 @@ const TechnologyBook = () => {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
+    
     adaptiveHeight: true,
+    // prevArrow: <SlickArrowLeft />,
+    // nextArrow: <SlickArrowRight />,
     responsive: [
       {
         breakpoint: 1024,
@@ -76,25 +79,42 @@ const TechnologyBook = () => {
         <h4 className="mt-0" style={{ fontSize: "1.3rem" }}>
           টেকনোলজি বই
         </h4>
-        <div className="text-center">
-          {" "}
-          <h6
-            onClick={() =>
-              alltechnologyBookId(technologyBooks?.[0]?.category?.category_id)
-            }
-            className="my-button text-black"
-          >
-            আরও দেখুন
-          </h6>
-        </div>
+     
       </div>
       <Slider {...settings}>
         {technologyBooks?.map((data, index) => (
-          <div className="my-card-main my-card">
-            <Cart key={data._id} data={data}></Cart>
+          <div className="" key={data._id}>
+            <Cart data={data}></Cart>
           </div>
         ))}
       </Slider>
+
+
+      <div className="d-flex justify-content-center py-4">
+          {" "}
+          <h6
+             onClick={() =>
+              alltechnologyBookId(technologyBooks?.[0]?.category?.category_id)
+            }
+            style={{backgroundColor:"#12856a", borderRadius:"3px",
+          padding:"10px 20px"}}
+          >
+            <Link
+              className=" text-decoration-none"
+                style={{
+                  fontSize:"1rem",
+                  color:"white",
+            
+                }}
+              to={`/all-technology-books/${technologyBooks?.[0]?.category?.category_id}`}
+            >
+              এ বিষয়ের সকল বই
+            </Link>
+          </h6>
+        </div> 
+
+
+
     </div>
   );
 };

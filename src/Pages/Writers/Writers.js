@@ -4,6 +4,8 @@ import "../Categorys/Category.css";
 
 import useWriters from "../../Hooks/useWriters";
 import Loading from "../Loading/Loading";
+import writerIcon from '../../Images/emptywriter.jpg'
+import { IoSearch } from "react-icons/io5";
 
 const Writers = () => {
   const [writers, refetch, isLoading] = useWriters();
@@ -15,21 +17,64 @@ const Writers = () => {
     return <Loading />;
   }
   return (
-    <div className="bg-white">
-      <div className="container product-related-info">
-        <div className="row mt-2 g-2">
-          {writers?.data?.map((writer) => (
-            <div key={writer._id} className="col-lg-3 col-md-4 col-sm-6">
-              <h5
-                onClick={() => writerDetails(writer._id)}
-                className="category-list px-5 py-2 d-flex justify-content-center align-items-center"
-              >
-                {writer.name}
-              </h5>
-            </div>
-          ))}
+    <div className="bg-white container">
+       <div className="my-3 ">
+            <h3 style={{
+              fontSize:"1.2rem"
+            }}>সকল লেখক</h3>
+           <div className="search-field2">
+
+           <input type="text" placeholder="লেখক অনুসন্ধান করুন" style={{
+                width:"250px",
+                height:"30px",
+                borderRadius:0
+              }} />
+            <span className="search-button2 px-3 ">
+                {" "}
+                <IoSearch
+                  className=" font-bold"
+                  style={{ color: "white", width: "16px", height: "16px" }}
+                />
+              </span>
+           </div>
+              
+          </div>
+      <div className="writer_list mt-2" >
+      {writers?.data?.map((writer) => (
+        <div key={writer._id} className=" border" >
+          <div className="text-center mb-2"  onClick={() => writerDetails(writer._id)} style={{
+            cursor:"pointer"
+          }}>
+            <img
+              style={{
+                width: "150px",
+                height: "120px"
+              }}
+              src={writerIcon}
+              alt=""
+            />
+          </div>
+          <h5
+            onClick={() => writerDetails(writer._id)}
+            className="px-2 py-1 d-flex justify-content-center "
+          >
+            {writer.name }  
+        
+          </h5>
+        <div className="d-flex justify-content-center mb-2">
+
+        <div>
+        <button className="btn border" style={{
+          backgroundColor:"#12856a",
+          color:"white"
+        }} onClick={() => writerDetails(writer._id)}>সকল বই</button>
+          <button className="btn border ms-2"  onClick={() => writerDetails(writer._id)}>{
+              writer?.products?.length >0 ? <span>{`(${writer?.products?.length} টি বই)`}</span>:"0 বই " }</button>
         </div>
-      </div>
+        </div>
+        </div>
+      ))}
+    </div>
     </div>
   );
 };

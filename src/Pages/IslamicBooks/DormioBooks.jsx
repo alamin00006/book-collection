@@ -6,11 +6,14 @@ import Slider from "react-slick";
 import "./DormioBooks.css";
 import Loading from "../Loading/Loading";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { MdKeyboardArrowRight } from "react-icons/md";
+import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const DormioBooks = () => {
 
   const [myProducts3, refetch, isLoading] = useProduct3();
   const [dormioBooks, setDormioBooks] = useState([]);
+  const [lastSlideIndex, setLastSlideIndex] = useState(0);
   useEffect(() => {
     const dormioBook = myProducts3?.data?.filter(
       (dormio) => dormio?.category?.categoryName === "ধর্মীয় বই"
@@ -29,8 +32,73 @@ const DormioBooks = () => {
   if (isLoading) {
     return <Loading />;
   }
+
+
+
+  // const SlickArrowLeft = ({ currentSlide, slideCount, ...props }) => {
+   
+  //     return  <MdKeyboardArrowRight   {...props}/>
+  //     ;
+    
+  // };
+
+  // const SlickArrowRight = ({ currentSlide, slideCount, ...props }) => {
+ 
+  //     return <MdKeyboardArrowLeft   {...props} style={{
+  //       width:"20px", height:"20px"
+  //     }}/>;
+    
+  // };
+  let settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 5,
+    initialSlide: 0,
+    
+    adaptiveHeight: true,
+    // prevArrow: <SlickArrowLeft />,
+    // nextArrow: <SlickArrowRight />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+    ],
+  };
+
   return (
-    <div className="container card-area bg-white px-3">
+    <div className="container card-area bg-white px-3 mt-3">
       <div className=" ">
         <h4 className=" pt-3">ধর্মীয় বই</h4>
         
@@ -38,63 +106,43 @@ const DormioBooks = () => {
       
       </div>
       <hr style={{color:'#13856B'}}/>
-      <div className="mt-3 card-splide-slider slider_margin card-slider ">
-        <Splide
-          options={{
-            // type: "loop",
-            arrows:
-            dormioBooks?.length > 5
-                ? true
-                : false,
-            rewind: true,
-            drag: "free",
-
-            // autoplay: true,
-            gap: "10px",
-            perPage: 5,
-            height: "500px",
-            pauseOnHover: true,
-            pagination: false,
-            breakpoints: {
-              1200: { arrows: true, perPage: 4 },
-              800: { arrows: true, perPage: 2 },
-              640: {
-                // type: "loop",
-                arrows: true,
-                perPage: 1,
+      <div className="mt-3   ">
+       
+             <Slider {...settings}>
+             { dormioBooks?.map((data, index) => (
             
-                drag: "free",
-                rewind: true,
-                // padding: "3rem",
-              },
-            },
-          }}
-        >
+            <Cart key={data._id} data={data} ></Cart>
+    
+       ))
+    }
 
-            { dormioBooks?.map((data, index) => (
-                <SplideSlide>
-                   <Cart key={data._id} data={data}></Cart>
-                </SplideSlide>
-              ))
-           }
-        </Splide>
+             </Slider>
+           
+        
       </div>
-        {/* <div className="text-center ">
+     
+      <div className="d-flex justify-content-center py-4">
           {" "}
           <h6
             onClick={() =>
               allIslamicBookId(dormioBooks?.[0]?.category?.category_id)
             }
+            style={{backgroundColor:"#12856a", borderRadius:"3px",
+          padding:"10px 20px"}}
           >
             <Link
-              className="my-button text-black"
+              className=" text-decoration-none"
+                style={{
+                  fontSize:"1rem",
+                  color:"white",
+            
+                }}
               to={`/all-dormio-books/${dormioBooks?.[0]?.category?.category_id}`}
             >
-              আরও দেখুন
+              এ বিষয়ের সকল বই
             </Link>
           </h6>
-        </div> */}
-   
+        </div> 
     </div>
   );
 };

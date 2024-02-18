@@ -54,6 +54,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Home></Home>}></Route>
+        <Route path="/home" element={<Home></Home>}></Route>
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/singUp" element={<SignUp></SignUp>}></Route>
         <Route path="/forgot-password" element={<ForgotPassword />}></Route>
@@ -162,7 +163,10 @@ function App() {
           <Route path="review-manage" element={<ReviewMange />}></Route>
           <Route path="banner-add" element={<BannerAdd />}></Route>
         </Route>
-        <Route path="/up-comming" element={<UpComming />}></Route>
+        <Route path="/up-comming-book" element={<UpComming />}></Route>
+        <Route path="/up-comming-academic" element={<UpComming />}></Route>
+        <Route path="/up-comming-offer" element={<UpComming />}></Route>
+        <Route path="/up-comming-stesonary" element={<UpComming />}></Route>
         <Route path="*" element={<Error />}></Route>
       </Routes>
 

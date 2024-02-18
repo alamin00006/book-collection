@@ -42,6 +42,10 @@
   border: 1px solid #12856b !important;
   outline: 0;
 }
+.search-field2 input:focus {
+  border: 1px solid #12856b !important;
+  outline: 0;
+}
 
 .search-button {
   background-color: #f29434 !important;
@@ -49,6 +53,14 @@
   border: none !important;
   border-radius: 0px 8px 8px 0px;
   cursor: pointer;
+}
+.search-button2 {
+  background-color: #f29434 !important;
+  outline: none !important;
+  border: none !important;
+  border-radius: 0px 8px 8px 0px;
+  cursor: pointer;
+  padding: 7.5px;
 }
 
 .search-little-icon {

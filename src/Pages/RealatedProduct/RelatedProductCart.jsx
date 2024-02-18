@@ -26,22 +26,27 @@ const RelatedProductCart = ({ data }) => {
   return (
     <>
       {" "}
-      <div className="single-card">
+      <div className="single-card p-0 mb-3" style={{ height: 400 }}>
         <div
           onClick={product3Details}
           className="d-flex flex-column align-items-center book-inner"
         >
           <img src={data?.image} class="" alt="..." />
           <div class="book-body mt-3">
-            <h6 class="book-title">{data.nameB} </h6>
-            <p class="writer-name">{data?.writer?.writerName}</p>
-            <p className="mb-4">
+            <h6 class="book-title">{data.nameB?.slice(0, 40)}</h6>
+            <p class="writer-name">{data?.writer?.writerName?.slice(0, 50)}</p>
+            {/* <p className="mb-4">
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
               <StarIcon className=" star-icon " />
-            </p>
+            </p> */}
+            {/* <p className="mb-4 writer-name" >
+             {
+              data?.publication?.publicationName
+             }
+            </p> */}
             {data.quantity !== 0 ? (
               ""
             ) : (
@@ -52,37 +57,50 @@ const RelatedProductCart = ({ data }) => {
             ) : (
               <span className="discount">{data.discount}%</span>
             )}
-            <p className="tk-part">
-              <span className="text-decoration-line-through pre-tk">
-                TK {data.price}
-              </span>{" "}
-              <span className="ms-2 now-tk">TK {discountPrice}</span>
-            </p>
-            <div className=" text-center">
+            <div className="tk-part d-flex justify-content-between ">
+              <div>
+                <span className="text-decoration-line-through pre-tk">
+                  TK {data.price}
+                </span>{" "}
+                <span className="ms-2 now-tk" style={{ color: "#13856B" }}>
+                  TK {discountPrice}
+                </span>
+              </div>
+              {/* <div className="ms-3">
+           {data?.discount <= 0 ? (
+              ""
+            ) : (
+              <span className="discount" style={{color:'#13856B'}}>{data.discount}% of</span>
+            )}
+           </div> */}
+            </div>
+            {/* <div className=" text-center">
               <button class=" details-button " onClick={product3Details}>
                 View Details
               </button>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        {Cart ? (
-          <button className=" add-to-btn3">
-            <Link class=" text-decoration-none " to="/cart">
-              View Cart
-            </Link>
-          </button>
+        {/* {Cart ? (
+          <div className="margin_addtoButton">
+            <button className=" add-to-btn">
+              <Link class=" text-decoration-none " to="/cart">
+                View Cart
+              </Link>
+            </button>
+          </div>
         ) : (
-          <div className="add-cart-btn">
+          <div className="margin_addtoButton">
             <button
               disabled={data.quantity === 0 ? true : false}
-              className=" add-to-btn3"
+              className=" add-to-btn"
               onClick={() => handleAddToCart(data)}
             >
               Add to Cart
             </button>
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

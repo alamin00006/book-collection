@@ -67,8 +67,8 @@ const Navber2 = () => {
               <span className="search-button px-3 ">
                 {" "}
                 <IoSearch
-                  className="mt-2 font-bold"
-                  style={{ color: "white", width: "16px", height: "16px" }}
+                  className=" font-bold"
+                  style={{ color: "white", width: "16px", height: "16px", marginTop:11 }}
                 />
               </span>
             </div>

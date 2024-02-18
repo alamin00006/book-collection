@@ -30,7 +30,10 @@ const Product3Details = ({ AddToCarts }) => {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-
+    
+    adaptiveHeight: true,
+    // prevArrow: <SlickArrowLeft />,
+    // nextArrow: <SlickArrowRight />,
     responsive: [
       {
         breakpoint: 1024,
@@ -54,6 +57,15 @@ const Product3Details = ({ AddToCarts }) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          initialSlide: 1,
+        },
+      },
+      {
+        breakpoint: 320,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1,
         },
       },
     ],
@@ -213,7 +225,7 @@ const Product3Details = ({ AddToCarts }) => {
                         class="add-to-cart add-To-Cart btn btn-default"
                         type="button"
                       >
-                        <Link to="/cart">View Cart</Link>
+                        <Link to="/cart" >View Cart</Link>
                       </button>
                     ) : (
                       <button
@@ -268,7 +280,7 @@ const Product3Details = ({ AddToCarts }) => {
         </div>
       </div>
       {/* Product Summary Section */}
-      <div className="bg-white product-summary-section pb-5">
+      <div className="bg-white product-summary-section pb-5 mb-5">
         <div className=" mt-3 py-5 px-4">
           <h5 className="mb-4">Product Specification & Summary</h5>
           <Product3ToggleButton
@@ -277,20 +289,20 @@ const Product3Details = ({ AddToCarts }) => {
             setReview={setReview}
           />
         </div>
-        <hr />
-        <h3 className="mb-3 px-4">Related Products</h3>
+        <hr/>
+        <h3 className="mb-3 px-4 ">Related Products</h3>
 
-        <div className="row">
+        <Slider {...settings}>
           {relatedProduct?.slice(0, 12).map((data, index) => (
-            <div className="col-lg-2 col-md-4 col-sm-12">
+            
               <RelatedProductCart
                 key={data._id}
                 data={data}
                 AddToCarts={AddToCarts}
               ></RelatedProductCart>
-            </div>
+     
           ))}
-        </div>
+        </Slider>
       </div>
     </div>
   );
