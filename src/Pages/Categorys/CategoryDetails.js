@@ -32,9 +32,11 @@ const CategoryDetails = () => {
     return <Loading />;
   }
   return (
-    <div className="custom-container bg-white">
-      <h4 className="bg-white p-3">{categoryDetails.name}সমূহ</h4>
-      <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
+    <div className="custom-container bg-white ">
+      <h4 className="bg-white p-3 mt-3 card-area">
+        {categoryDetails.name}সমূহ
+      </h4>
+      <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded ">
         <div className="p-5">
           <h2>{categoryDetails.name}</h2>
           {categoryDetails?.products?.length > 0 ? (
@@ -49,7 +51,7 @@ const CategoryDetails = () => {
           )}
         </div>
       </div>
-      <div className="my-card-main my-card mt-2">
+      <div className="my-card-main my-card mt-2 card-area px-2 py-2">
         {categoryDetails?.products?.map((data, index) => (
           <NoSlideCart key={data._id} data={data}></NoSlideCart>
         ))}

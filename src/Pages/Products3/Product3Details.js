@@ -21,6 +21,7 @@ import useProduct3 from "../../Hooks/UseProduct3";
 import Slider from "react-slick";
 import NoSlideCart from "../AddToCart/NoSlideCart";
 import RelatedProductCart from "../RealatedProduct/RelatedProductCart";
+import OwlCarousel from "react-owl-carousel";
 import Loading from "../Loading/Loading";
 const Product3Details = ({ AddToCarts }) => {
   let settings = {
@@ -132,10 +133,28 @@ const Product3Details = ({ AddToCarts }) => {
   if (isLoading) {
     return <Loading />;
   }
+
+  const options = {
+    loop: true,
+    marginLeft: 30,
+    nav: true,
+    dots: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 5,
+      },
+    },
+  };
   return (
     <div class="custom-container">
       <div class="details-page">
-        <div class="custom-container-fluid details-side">
+        <div class="container-fluid details-side">
           <div class="row ">
             <div class="col-lg-4 details-side-1">
               <div class="">
@@ -292,15 +311,25 @@ const Product3Details = ({ AddToCarts }) => {
         <hr />
         <h3 className="mb-3 px-4 ">Related Products</h3>
 
-        <Slider {...settings}>
-          {relatedProduct?.slice(0, 12).map((data, index) => (
-            <RelatedProductCart
-              key={data._id}
-              data={data}
-              AddToCarts={AddToCarts}
-            ></RelatedProductCart>
-          ))}
-        </Slider>
+        <div className="mt-3 px-3">
+          {relatedProduct?.length > 5 ? (
+            <OwlCarousel className="owl-theme" {...options}>
+              {relatedProduct?.map((data, index) => (
+                <RelatedProductCart
+                  key={data._id}
+                  data={data}
+                  AddToCarts={AddToCarts}
+                ></RelatedProductCart>
+              ))}
+            </OwlCarousel>
+          ) : (
+            <div className="my-card-main my-card">
+              {relatedProduct?.map((data, index) => (
+                <NoSlideCart key={data._id} data={data}></NoSlideCart>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

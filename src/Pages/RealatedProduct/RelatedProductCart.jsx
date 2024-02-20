@@ -26,7 +26,7 @@ const RelatedProductCart = ({ data }) => {
   return (
     <>
       {" "}
-      <div className="single-card p-0 mb-3" style={{ height: 400 }}>
+      <div className="single-card p-0 " style={{ height: 400 }}>
         <div
           onClick={product3Details}
           className="d-flex flex-column align-items-center book-inner"

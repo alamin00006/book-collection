@@ -76,6 +76,7 @@ const Writers = () => {
                   className="btn border"
                   style={{
                     backgroundColor: "#f29434",
+
                     color: "white",
                   }}
                   onClick={() => writerDetails(writer._id)}
