@@ -28,7 +28,7 @@ const Navber2 = () => {
   return (
     <nav className="custom-container p-0 ">
       <Navbar className="searching-nav " expand="lg">
-        <Container fluid className="">
+        <Container fluid className="px-0">
           <Link to="/" className="">
             <img
               className="logo "
@@ -44,20 +44,7 @@ const Navber2 = () => {
           </Navbar.Toggle>
 
           <Navbar.Collapse id="basic-navbar-nav">
-            {/* <Nav
-            className="ms-1 my-2 my-lg-0"
-            style={{ maxHeight: "100px" }}
-            navbarScroll
-          ></Nav> */}
-            {/* <Form className="d-flex search-field">
-              <Form.Control
-                type="search"
-                placeholder="Search"
-                className="me-2"
-                aria-label="Search"
-              />
-              <Button className="text-white search-button">Search</Button>
-            </Form> */}
+         
             <div className="d-flex justify-content-center search-field">
               <input
                 type="text"

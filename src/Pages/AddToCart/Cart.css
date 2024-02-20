@@ -26,7 +26,7 @@
   font-family: "Tiro Bangla", serif !important;
 }
 .book-body h6 {
-  font-size: 15px !important;
+  font-size: 10px !important;
 }
 .book-body .writer-name {
   font-family: "Tiro Bangla", serif !important;
@@ -311,25 +311,7 @@ img {
   color: rgb(0, 0, 0);
 }
 
-.cart-minus-icon {
-  width: 40px;
-  height: 32px;
-  cursor: pointer;
-  padding: 5px;
-  background-color: #065644;
-  margin-bottom: 3px;
-  color: white;
-}
-.cart-plus-icon {
-  width: 40px;
-  height: 32px !important;
-  cursor: pointer;
-  padding: 5px;
-  background-color: #065644;
-  height: 28px;
-  margin-bottom: 3px;
-  color: white;
-}
+
 .cart-trash-icon {
   width: 22px;
   cursor: pointer;
@@ -341,39 +323,11 @@ img {
   width: 50%;
 }
 
-.cart-total-part {
-  position: sticky;
-  top: 130px;
-  padding: 60px 0px;
-  height: 100vh;
-  border-top: 4.5px solid #065644;
-  border-left: 4.5px solid #065644;
-  border-radius: 5px;
-  background-color: #ffffff;
-  box-shadow: 3px 3px 1px 1px #065644;
-}
-.cart-total-part div {
-  border-bottom: 1px solid rgb(231, 229, 229);
-}
-.cart-total-part p {
-  font-size: 1.1rem;
-  font-weight: 500;
-}
 .checkout-title {
   color: #ff9900;
 }
-.checkout-button {
-  background-color: #065644;
-}
-.checkout-button:hover {
-  background-color: #065620;
-}
-.checkout-button button {
-  text-transform: uppercase;
-  font-size: 1.2rem;
-  font-weight: 500;
-  border: none;
-}
+
+
 .checkout-button a {
   text-decoration: none !important;
 }

@@ -11,18 +11,25 @@ import {
 const AllShoppingCart = ({ data }) => {
   const dispatch = useDispatch();
 
+  const discount = parseFloat(
+    ((data.price * data?.cartQuantity) / 100) * data.discount
+  ).toFixed(2);
+  const discountPrice = Math.ceil(discount);
+
   return (
-    <div className="row p-5 cart-item">
-      <div className="col-lg-6 d-flex">
+    <div className="row p-3 mb-3 card-area ">
+      <div className="col-lg-5 d-flex px-0">
         <div className="cart-image">
           <img src={data.image} alt="" />
         </div>
-        <div className="ms-4">
-          <p>{data.nameB}</p>
+        <div className="ms-4 mt-3">
+          <p style={{
+    
+          }}>{data.nameB}</p>
           <p>{data?.writer?.writerName}</p>
         </div>
       </div>
-      <div className="col-lg-6 d-flex mt-5">
+      <div className="col-lg-7 d-flex mt-5">
         <div className="cart-input-part">
           <MinusSmallIcon
             onClick={() => dispatch(decreaseCart(data))}
@@ -32,7 +39,8 @@ const AllShoppingCart = ({ data }) => {
             type="text"
             value={data.cartQuantity}
             readOnly
-            className="cart-input "
+            className="cart-input fw-bold"
+            style={{fontSize:"1rem", fontFamily:"Atma cursive"}}
           />
           <PlusSmallIcon
             onClick={() => {
@@ -42,11 +50,16 @@ const AllShoppingCart = ({ data }) => {
           />
         </div>
         <div className="d-flex justify-content-center">
-          <p>Tk {data.singleCartTotal}</p>
+        {data.discount !== 0 ? (
+                <p className="previous-tk">{data.singleCartTotal} ৳</p>
+              ) : (
+                ""
+              )}
+          <p className="mx-4 fw-bold"> {data.singleCartTotal- discountPrice} ৳</p>
           <p>
             <TrashIcon
               onClick={() => dispatch(removeFromCart(data))}
-              className="cart-trash-icon ms-5 "
+              className="cart-trash-icon "
             />
           </p>
         </div>

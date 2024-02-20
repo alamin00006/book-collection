@@ -18,12 +18,32 @@ const ShoppingCart = () => {
   // const [promoCodeDiscount, setPromoCodeDiscount] = useState('');
 
   const cart = useSelector((state) => state.cart);
-  const { cartTotalAmount } = useSelector((state) => state.cart);
+
+const [totalAmount, setTotalAmount] = useState(0)
+const [discountAmount, setDiscountAmount] = useState(0)
+const [isPromoCode, setIsPromoCode] = useState(false)
+
 
   useEffect(() => {
+   
+    if (cart && cart.cartItems) {
+      let totalAmount = 0;
+      let discountAmount = 0;
+   
+      for (const item of cart.cartItems) {
+          totalAmount += item.singleCartTotal;
+          discountAmount += ((item.price*item?.cartQuantity
+            )/100) * item.discount
+      
+      }
+      setTotalAmount(totalAmount);
+      setDiscountAmount(Math.ceil(discountAmount.toFixed(2)) );
+  }
+
     dispatch(getTotals());
   }, [cart, dispatch]);
   let shipping = 50;
+  
   // let ourPromoCode = '1AD55';
   // let promoDiscount = 10;
 
@@ -63,33 +83,48 @@ const ShoppingCart = () => {
   //     e.target.reset()
   //    }
 
-  const finalCartAmount = shipping + cartTotalAmount;
+  const finalCartAmount = shipping + (totalAmount-discountAmount);
+
 
   return (
     <div className="bg-white">
       <div className="custom-container">
         {cart?.cartItems?.length !== 0 ? (
-          <div className="row">
+          <div className="row gx-5">
             <div className="col-lg-8 col-md-8 col-sm-12">
               {cart.cartItems.map((data, index) => (
                 <AllShoppingCart key={index} data={data}></AllShoppingCart>
               ))}
             </div>
             <div className="col-lg-4 col-md-4 col-sm-12 p-4 cart-total-part">
-              <h6 className="mb-4 fs-5 text-center text-danger">
-                চেক-আউট সামারি
-              </h6>
-              <div className="d-flex justify-content-between">
-                <p>Sub Total</p>
-                <p>{cartTotalAmount}</p>
+             
+      <div>
+
+      <div className="d-flex justify-content-between">
+                <p>দাম</p>
+                <p>{totalAmount} ৳</p>
+              </div>
+              <div className="d-flex justify-content-between" style={{
+                borderBottom:"1px solid lightgrey"
+              }}>
+                <p>ছাড়</p>
+                <p>-{discountAmount} ৳</p>
+              </div>
+          
+              <div className="d-flex justify-content-between mt-3" style={{
+                borderBottom:"1px solid lightgrey"
+              }}>
+                <p>মোট</p>
+                <p>{totalAmount-discountAmount} ৳</p>
+              </div>
+            
+              <div className="d-flex justify-content-between mt-3">
+                <p>শিপিং চার্জ</p>
+                <p>{shipping} ৳</p>
               </div>
               <div className="d-flex justify-content-between">
-                <p>Shipping</p>
-                <p>{shipping}</p>
-              </div>
-              <div className="d-flex justify-content-between">
-                <p>Total</p>
-                <p>{finalCartAmount}</p>
+                <p>সর্বমোট</p>
+                <p className="fw-bold">{finalCartAmount} ৳</p>
               </div>
               {/* {
                     promoCodeAmount?<div className='d-flex justify-content-between'>
@@ -97,24 +132,41 @@ const ShoppingCart = () => {
                     <p>{promoCodeDiscount?promoCodeDiscount:''}</p>
                 </div>:''
                 } */}
-              <div className="d-flex justify-content-between">
-                <p>Payable Total</p>
-                <p>{finalCartAmount}</p>
-              </div>
+          
               <div className="text-center checkout-button mt-3 roundend">
                 <button className="btn text-center">
                   <Link className="text-white" to="/shipping">
-                    চেক আউট করতে এগিয়ে যান
+                    অর্ডার সম্পন্ন করুন
                   </Link>
                 </button>
               </div>
               <div className="mt-3">
-                {/* <form onSubmit={handlePromoCode}>
-            <label> If You Have a Promo Code</label>
-            <input type='text' name='promo' className='w-100 rounded' placeholder='Enter Your Promo Code'/>
-            <input type='submit' className='bg-primary text-white mt-1'/>
-            </form> */}
+                <form
+                //  onSubmit={handlePromoCode}
+                >
+                  {
+                    !isPromoCode?  <p onClick={()=>setIsPromoCode(true)} style={{
+                      cursor:"pointer",
+                      color:"red"
+                    
+                    }} className="promo_text"> If you have promo code</p>:""
+                  }
+           
+          {
+            isPromoCode?   
+            <div className="d-flex search-field2">
+            <input type='text' name='promo' className='w-100 rounded' style={{
+              height:"40px"
+            }} placeholder='Enter Promo Code'/>
+            <input type='submit' className='bg-white text-black ms-2 promo_button' style={{
+              borderColor:"#065644",
+              height:"40px"
+            }}/>
+            </div>:""
+          }
+            </form>
               </div>
+      </div>
             </div>
           </div>
         ) : (

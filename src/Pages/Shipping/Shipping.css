@@ -71,12 +71,9 @@ h6 {
 }
 .order-button {
   background-color: #065644;
-  font-size: 1.3rem !important;
+  font-size: 1rem !important;
 }
 .cart-total-part h6,
 p {
-  font-size: 1.3rem !important;
-}
-.checkout-button a {
-  font-size: 1.3rem !important;
+  font-size: 1rem !important;
 }
