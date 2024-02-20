@@ -41,7 +41,7 @@ const OrderDetails = () => {
 
   return (
     <div className="bg-white">
-      <div className="container">
+      <div className="custom-container">
         <div className="pt-2">
           <div className="thanks px-3 py-3 rounded">
             <h6>

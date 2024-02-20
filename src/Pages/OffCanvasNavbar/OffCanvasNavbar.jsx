@@ -19,10 +19,10 @@ const OffCanvasNavbar = () => {
   const [writers] = useWriters();
   return (
     <div
-      className="container offCanvas-navbar p-0"
+      className="custom-container offCanvas-navbar p-0"
       style={{ backgroundColor: "#065644" }}
     >
-      <Navbar expand={false} className="container mb-3 ">
+      <Navbar expand={false} className="custom-container mb-3 ">
         <Container fluid>
           <Navbar.Brand as={Link} to="/" className="text-white">
             Home

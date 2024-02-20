@@ -57,7 +57,7 @@ const Cart = ({ data }) => {
             ) : (
               <span className="discount">{data.discount}%</span>
             )}
-            <div className="tk-part d-flex justify-content-between ">
+            <div className="tk-part d-flex justify-content-between">
               <div>
                 <span className="text-decoration-line-through pre-tk">
                   TK {data.price}

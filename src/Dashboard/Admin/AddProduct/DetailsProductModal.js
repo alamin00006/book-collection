@@ -8,7 +8,7 @@ const DetailsProductModal = ({
 }) => {
   console.log(productDetails);
   return (
-    <div className="container">
+    <div className="custom-container">
       <Modal
         className={addProduct.modal}
         show={showDetails}

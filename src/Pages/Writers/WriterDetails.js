@@ -32,7 +32,7 @@ const WriterDetails = () => {
     return <Loading />;
   }
   return (
-    <div className="container bg-white">
+    <div className="custom-container bg-white">
       <h4 className="bg-white p-3">{writerDetails.name}সমূহ</h4>
       <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
         <div className="p-5">

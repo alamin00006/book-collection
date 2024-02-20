@@ -10,7 +10,6 @@ import { Nav, Navbar } from "react-bootstrap";
 import LIneIcon from "../../svgIcons/LIneIcon";
 
 const Navber = () => {
-
   const { pathname } = useLocation();
 
   const [navVlaue, setNaValue] = useState(pathname);
@@ -21,17 +20,18 @@ const Navber = () => {
 
   return (
     <div>
-    
-      <div className="container main-Navbar " >
-        <nav className="navbar navbar-expand-lg" >
-          <div className="container-fluid linkup p-0" >
+      <div className="custom-container main-Navbar ">
+        <nav className="navbar navbar-expand-lg">
+          <div className="container-fluid linkup p-0">
             <Link
               to="/"
               className="navbar-brand subject-link text-decorarion-none "
               onClick={() => setNaValue("/")}
-              style={{ color: navVlaue === "/" ? "white" : "black",
-                backgroundColor: navVlaue === "/" ? "#12856a" : ""}}
-                >
+              style={{
+                color: navVlaue === "/" ? "white" : "black",
+                backgroundColor: navVlaue === "/" ? "#f29434" : "",
+              }}
+            >
               হোম
             </Link>
             <button
@@ -51,68 +51,133 @@ const Navber = () => {
               id="main_nav"
               style={{ marginLeft: "-20px" }}
             >
-              <ul className="navbar-nav " >
-                <li className="nav-item  " >
+              <ul className="navbar-nav ">
+                <li className="nav-item  ">
                   <span className=" subject-link2 pb-4">
-                  <Link to="/writer" className="text-decoration-none subject-link "  onClick={() => setNaValue("/writer")} style={{ color: navVlaue === "/writer" ? "white" : "black",
-                backgroundColor: navVlaue === "/writer" ? "#12856a" : ""}}>লেখক</Link>
-                    
+                    <Link
+                      to="/writer"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/writer")}
+                      style={{
+                        color: navVlaue === "/writer" ? "white" : "black",
+                        backgroundColor:
+                          navVlaue === "/writer" ? "#f29434" : "",
+                      }}
+                    >
+                      লেখক
+                    </Link>
                   </span>
-                
                 </li>
                 <li className="nav-item n">
                   <span className=" subject-link2  pb-4">
-                    
-                    <Link to="/category" className="text-decoration-none subject-link "  onClick={() => setNaValue("/category")} style={{ color: navVlaue === "/category" ? "white" : "black",
-                backgroundColor: navVlaue === "/category" ? "#12856a" : ""}}>বিষয়</Link>
+                    <Link
+                      to="/category"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/category")}
+                      style={{
+                        color: navVlaue === "/category" ? "white" : "black",
+                        backgroundColor:
+                          navVlaue === "/category" ? "#f29434" : "",
+                      }}
+                    >
+                      বিষয়
+                    </Link>
                   </span>
-                 
                 </li>
                 <li className="nav-item  ">
                   <span className="subject-link2  pb-4 ">
-                   
-                    <Link to="/publication" className="text-decoration-none subject-link " onClick={() => setNaValue("/publication")} style={{ color: navVlaue === "/publication" ? "white" : "black",
-                backgroundColor: navVlaue === "/publication" ? "#12856a" : ""}}> প্রকাশনী</Link>
+                    <Link
+                      to="/publication"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/publication")}
+                      style={{
+                        color: navVlaue === "/publication" ? "white" : "black",
+                        backgroundColor:
+                          navVlaue === "/publication" ? "#f29434" : "",
+                      }}
+                    >
+                      {" "}
+                      প্রকাশনী
+                    </Link>
                   </span>
-              
                 </li>
 
                 <li className="nav-item ">
                   <span className=" subject-link2 pb-4 book-fair-part">
-                   
-                    <Link to="/up-comming-book" className="text-decoration-none subject-link " onClick={() => setNaValue("/up-comming-book")} style={{ color: navVlaue === "/up-comming-book" ? "white" : "black",
-                backgroundColor: navVlaue === "/up-comming-book" ? "#12856a" : ""}}>  বইমেলা</Link>
+                    <Link
+                      to="/up-comming-book"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/up-comming-book")}
+                      style={{
+                        color:
+                          navVlaue === "/up-comming-book" ? "white" : "black",
+                        backgroundColor:
+                          navVlaue === "/up-comming-book" ? "#f29434" : "",
+                      }}
+                    >
+                      {" "}
+                      বইমেলা
+                    </Link>
                   </span>
-             
                 </li>
                 <li className="nav-item ">
                   <span className=" subject-link2 pb-4 book-fair-part">
-                   
-                    <Link to="/up-comming-academic" className="text-decoration-none subject-link  " onClick={() => setNaValue("/up-comming-academic")}  style={{ color: navVlaue === "/up-comming-academic" ? "white" : "black",
-                backgroundColor: navVlaue === "/up-comming-academic" ? "#12856a" : ""}}>  একাডেমিক বই</Link>
+                    <Link
+                      to="/up-comming-academic"
+                      className="text-decoration-none subject-link  "
+                      onClick={() => setNaValue("/up-comming-academic")}
+                      style={{
+                        color:
+                          navVlaue === "/up-comming-academic"
+                            ? "white"
+                            : "black",
+                        backgroundColor:
+                          navVlaue === "/up-comming-academic" ? "#f29434" : "",
+                      }}
+                    >
+                      {" "}
+                      একাডেমিক বই
+                    </Link>
                   </span>
-             
                 </li>
                 <li className="nav-item ">
                   <span className=" subject-link2 pb-4 book-fair-part">
-                   
-                    <Link to="/up-comming-offer" className="text-decoration-none subject-link " onClick={() => setNaValue("/up-comming-offer")} style={{ color: navVlaue === "/up-comming-offer" ? "white" : "black",
-                backgroundColor: navVlaue === "/up-comming-offer" ? "#12856a" : ""}}>  অফারের বই</Link>
+                    <Link
+                      to="/up-comming-offer"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/up-comming-offer")}
+                      style={{
+                        color:
+                          navVlaue === "/up-comming-offer" ? "white" : "black",
+                        backgroundColor:
+                          navVlaue === "/up-comming-offer" ? "#f29434" : "",
+                      }}
+                    >
+                      {" "}
+                      অফারের বই
+                    </Link>
                   </span>
-             
                 </li>
                 <li className="nav-item ">
                   <span className=" subject-link2 pb-4 book-fair-part">
-                   
-                    <Link to="/up-comming-stesonary" className="text-decoration-none subject-link " onClick={() => setNaValue("/up-comming-stesonary")} style={{ color: navVlaue === "/up-comming-stesonary" ? "white" : "black",
-                backgroundColor: navVlaue === "/up-comming-stesonary" ? "#12856a" : ""}}>  ষ্টেশনারী</Link>
+                    <Link
+                      to="/up-comming-stesonary"
+                      className="text-decoration-none subject-link "
+                      onClick={() => setNaValue("/up-comming-stesonary")}
+                      style={{
+                        color:
+                          navVlaue === "/up-comming-stesonary"
+                            ? "white"
+                            : "black",
+                        backgroundColor:
+                          navVlaue === "/up-comming-stesonary" ? "#f29434" : "",
+                      }}
+                    >
+                      {" "}
+                      ষ্টেশনারী
+                    </Link>
                   </span>
-             
                 </li>
-
-             
-              
-               
               </ul>
               <ul className="navbar-nav ms-auto ">
                 <li className="nav-item">+8801540186257</li>

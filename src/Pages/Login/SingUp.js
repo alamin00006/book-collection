@@ -87,7 +87,7 @@ const SignUp = () => {
   }, [refetch, token, user, isLoading, navigate]);
   return (
     <div className="bg-white">
-      <div className="container">
+      <div className="custom-container">
         <div className="row">
           <div className="col-lg-6 col-md-6 col-sm-12 singup-image">
             <img

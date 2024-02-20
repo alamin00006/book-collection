@@ -1,9 +1,7 @@
 .main-Navbar {
   position: relative !important;
- 
 }
 .linkup {
-
   margin-left: -1px !important;
 }
 .navbar-brand {
@@ -20,15 +18,13 @@
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
 }
 .subject-link {
- 
   text-decoration: none;
   cursor: pointer;
   padding: 8px 8px;
 }
 .subject-link:hover {
   color: rgb(248, 248, 248) !important;
-  background-color: #12856a;
-
+  background-color: #f29434;
 }
 .subject-link2 {
   margin-left: 10px !important;
@@ -36,9 +32,6 @@
 .other-nav {
   font-size: 15px !important;
 }
-
-
-
 
 @media all and (min-width: 992px) {
   .navbar .nav-item .dropdown-menu {

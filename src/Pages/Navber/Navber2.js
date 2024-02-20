@@ -26,13 +26,13 @@ const Navber2 = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <nav className="container p-0 ">
+    <nav className="custom-container p-0 ">
       <Navbar className="searching-nav " expand="lg">
         <Container fluid className="">
           <Link to="/" className="">
             <img
               className="logo "
-              style={{ width: "100px", height: "70px", marginLeft: "32px" }}
+              style={{ width: "100px", height: "70px", marginLeft: "18px" }}
               src={logo2}
               alt=""
             />
@@ -68,7 +68,12 @@ const Navber2 = () => {
                 {" "}
                 <IoSearch
                   className=" font-bold"
-                  style={{ color: "white", width: "16px", height: "16px", marginTop:11 }}
+                  style={{
+                    color: "white",
+                    width: "16px",
+                    height: "16px",
+                    marginTop: 11,
+                  }}
                 />
               </span>
             </div>

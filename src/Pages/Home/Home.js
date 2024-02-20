@@ -11,7 +11,7 @@ import HomeCategory from "../../components/HomepageCategory/HomeCategory";
 
 const Home = () => {
   return (
-    <div className="container">
+    <div className="custom-container">
       <Banner></Banner>
       <HomeCategory />
       {/* <Products3 AddToCarts={AddToCarts}></Products3> */}

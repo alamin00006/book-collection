@@ -32,7 +32,7 @@ const AdminDashbordRoute = () => {
     refetch();
   };
   return (
-    <div className="container">
+    <div className="custom-container">
       {/* User Dashboard */}
       <h3 className="mt-5">ড্যাশবোর্ড</h3>
       <h3 className="mt-5">

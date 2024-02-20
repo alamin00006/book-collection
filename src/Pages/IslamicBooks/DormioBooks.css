@@ -1,40 +1,44 @@
-.slick-slider  {
-position: relative !important;
-
-}
-.slick-slider .slick-arrow {
-  background-color: transparent !important;
-
+.owl-carousel .owl-item {
+  padding-bottom: 10px !important;
 }
 
-.slick-prev:before,
-.slick-next:before {
-  font-family: "slick";
-  font-size: 24px;
-  line-height: 1;
-
-  opacity: 1;
-  color: rgb(255, 8, 8);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.owl-prev {
+  left: 0px;
+  top: 50%;
+  transform: translateY(-480px) translateX(540px);
 }
 
-.slick-next{
-  top: -45px;
-  right: -5px;
+.owl-next {
+  right: 0px;
+  top: 50%;
+  transform: translateY(-480px) translateX(533px);
 }
-.slick-prev{
-  top: -45px;
-  left: 1045px;
+
+.owl-prev,
+.owl-next {
+  background-color: #f29434 !important;
+
+  color: #ffffff !important; /* Set text color */
+  font-size: 25px !important; /* Adjust font size as needed */
+  width: 20px !important;
+  /* Adjust padding as needed */
 }
+
+.owl-prev:hover,
+.owl-next:hover {
+  background-color: #f1ae6b !important; /* Change background color on hover */
+  color: #fff; /* Change text color on hover */
+}
+
 .card-area .slick-slide {
-  padding: 10px; 
-  box-sizing: border-box; 
+  padding: 10px;
+  box-sizing: border-box;
 }
 .card-area {
   font-family: "Atma", cursive;
   font-size: 1.2rem;
 }
+
 h4 {
   font-size: 1.2rem !important;
 }
@@ -43,18 +47,46 @@ h4 {
   cursor: pointer;
 }
 
-
-
-/* @media screen and (max-width: 600px) {
-  .card-splide-slider .splide__arrow--prev {
-    left: 210px;
-    top: 410px !important;
-    display: none !important;
+@media (max-width: 576px) {
+  .custom-container {
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
   }
+}
 
-  .card-splide-slider .splide__arrow--next {
-    right: 200px !important;
-    top: 410px !important;
-    display: none !important;
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .custom-container {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
   }
-} */
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .custom-container {
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .custom-container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Extra extra large devices (larger desktops, 1400px and up) */
+@media (min-width: 1400px) {
+  .custom-container {
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

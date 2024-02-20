@@ -109,7 +109,7 @@ const Shipping = () => {
 
   return (
     <div className="bg-white">
-      <div className="container">
+      <div className="custom-container">
         <div class=" row">
           <div className="col-lg-8 shipping-address p-5 bg-white">
             <form onSubmit={AllOrder}>

@@ -60,7 +60,7 @@ const Order = () => {
   };
 
   return (
-    <div className="container">
+    <div className="custom-container">
       <h4 className="mt-4 fw-bolder">অর্ডার</h4>
       {myProducts2.length <= 0 ? (
         <h5 className="mt-5 text-danger">

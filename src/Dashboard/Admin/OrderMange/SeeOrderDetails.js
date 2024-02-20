@@ -9,7 +9,7 @@ const SeeOrderDetails = ({ show, setShow, order }) => {
   const total = order?.orderItems?.[0]?.cartTotalAmount + shipping;
 
   return (
-    <div className="container">
+    <div className="custom-container">
       <Modal
         className={editProduct.modal}
         show={show}

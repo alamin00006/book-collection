@@ -7,10 +7,10 @@ const Footer = () => {
   return (
     <>
       <div
-        class="container-fluid bg-dark text-light footer pt-5 mt-3 wow fadeIn"
+        class="custom-container-fluid bg-dark text-light footer pt-5 mt-3 wow fadeIn"
         data-wow-delay="0.1s"
       >
-        <div class="container py-5 px-0">
+        <div class="custom-container py-5 px-0">
           <div class="row g-5">
             <div class="col-lg-3 col-md-6">
               <div className="mb-3">
@@ -93,7 +93,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div class="container">
+        <div class="custom-container">
           <div class="copyright">
             <div class="row">
               <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">

@@ -35,7 +35,7 @@ const AllSisuKisorBooks = () => {
   }
   return (
     <div className="bg-white">
-      <div className="container border">
+      <div className="custom-container border">
         <h4 className="bg-white p-3"> শিশু-কিশোর বইসমূহ</h4>
 
         <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">

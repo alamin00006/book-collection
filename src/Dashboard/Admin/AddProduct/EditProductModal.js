@@ -107,7 +107,7 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     }
   };
   return (
-    <div className="container bg-warning">
+    <div className="custom-container bg-warning">
       <Modal
         className={editProduct.modal}
         show={show}

@@ -25,7 +25,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="container">
+    <div className="custom-container">
       {/*normal User Dashboard Route */}
       {token && user?.role === "Admin" ? (
         <AdminDashbordRoute />

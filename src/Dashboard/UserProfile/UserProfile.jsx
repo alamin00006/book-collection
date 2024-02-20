@@ -11,7 +11,7 @@ const UserProfile = () => {
     }
   }, [user, refetch, token]);
   return (
-    <div className="container p-5">
+    <div className="custom-container p-5">
       <h3 className="mb-5">আপনার অ্যাকাউন্টের বিবরণ</h3>
       <div className="row">
         <div className="col-lg-6 col-md-6 col-sm-12">

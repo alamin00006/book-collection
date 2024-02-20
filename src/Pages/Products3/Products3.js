@@ -16,7 +16,7 @@ const Products3 = ({ AddToCarts }) => {
   }, [myProducts3]);
 
   return (
-    <div className="container card-area bg-white p-4">
+    <div className="custom-container card-area bg-white p-4">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3 className="mt-0">এই সপ্তাহের বেস্টসেলার</h3>
         <div className="text-center">

@@ -83,7 +83,7 @@ const ResetPassword = () => {
 
   return (
     <div className="bg-white">
-      <div className="container">
+      <div className="custom-container">
         <div className=" signup-part">
           <form onSubmit={handleSubmit} className="login-form">
             <div>

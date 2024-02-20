@@ -67,7 +67,7 @@ const ShoppingCart = () => {
 
   return (
     <div className="bg-white">
-      <div className="container">
+      <div className="custom-container">
         {cart?.cartItems?.length !== 0 ? (
           <div className="row">
             <div className="col-lg-8 col-md-8 col-sm-12">

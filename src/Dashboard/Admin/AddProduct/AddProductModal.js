@@ -199,7 +199,7 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
     e.target.reset();
   };
   return (
-    <div className="container bg-warning">
+    <div className="custom-container bg-warning">
       <Modal
         className={addProduct.modal}
         show={show}

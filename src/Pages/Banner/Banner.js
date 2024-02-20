@@ -21,9 +21,9 @@ const Banner = () => {
     return <Loading />;
   }
   return (
-    <div className="container banner-part mt-3">
+    <div className="custom-container banner-part mt-3">
       <div>
-        <Slider {...settings} >
+        <Slider {...settings}>
           {allBanner?.data.map((banner) => (
             <div className="slider">
               <img src={banner?.image} alt="" />

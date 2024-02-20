@@ -2,57 +2,11 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
-import Slider from "react-slick";
-import Loading from "../Loading/Loading";
 
+import Loading from "../Loading/Loading";
+import OwlCarousel from "react-owl-carousel";
+import NoSlideCart from "../AddToCart/NoSlideCart";
 const TechnologyBook = () => {
-  let settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-    
-    adaptiveHeight: true,
-    // prevArrow: <SlickArrowLeft />,
-    // nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
   const [myProducts3, refetch, isLoading] = useProduct3();
   const [technologyBooks, setTechnolgoyBooks] = useState([]);
 
@@ -73,48 +27,74 @@ const TechnologyBook = () => {
   if (isLoading) {
     return <Loading />;
   }
-  return (
-    <div className="container card-area bg-white p-4 mt-3">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h4 className="mt-0" style={{ fontSize: "1.3rem" }}>
-          টেকনোলজি বই
-        </h4>
-     
-      </div>
-      <Slider {...settings}>
-        {technologyBooks?.map((data, index) => (
-          <div className="" key={data._id}>
-            <Cart data={data}></Cart>
-          </div>
-        ))}
-      </Slider>
 
+  const options = {
+    loop: true,
+    marginLeft: 30,
+    nav: true,
+    dots: false,
+    responsive: {
+      0: {
+        items: 1,
+      },
+      600: {
+        items: 3,
+      },
+      1000: {
+        items: 5,
+      },
+    },
+  };
+  return (
+    <div className="custom-container card-area bg-white px-3 mt-3 ">
+      <div className=" ">
+        <h4 className=" pt-3">টেকনোলজি বই</h4>
+      </div>
+      <hr style={{ color: "#13856B" }} />
+
+      <div className="mt-3 ">
+        {technologyBooks?.length > 4 ? (
+          <OwlCarousel className="owl-theme" {...options}>
+            {technologyBooks?.map((data, index) => (
+              <Cart key={data._id} data={data}></Cart>
+            ))}
+          </OwlCarousel>
+        ) : (
+          <div className="my-card-main my-card">
+            {technologyBooks?.map((data, index) => (
+              <NoSlideCart key={data._id} data={data}></NoSlideCart>
+            ))}
+          </div>
+        )}
+      </div>
 
       <div className="d-flex justify-content-center py-4">
-          {" "}
+        {technologyBooks?.length > 5 ? (
           <h6
-             onClick={() =>
+            onClick={() =>
               alltechnologyBookId(technologyBooks?.[0]?.category?.category_id)
             }
-            style={{backgroundColor:"#12856a", borderRadius:"3px",
-          padding:"10px 20px"}}
+            style={{
+              backgroundColor: "#f29434",
+              borderRadius: "3px",
+              padding: "10px 20px",
+            }}
           >
             <Link
               className=" text-decoration-none"
-                style={{
-                  fontSize:"1rem",
-                  color:"white",
-            
-                }}
+              style={{
+                fontSize: "1rem",
+                color: "white",
+              }}
               to={`/all-technology-books/${technologyBooks?.[0]?.category?.category_id}`}
             >
               এ বিষয়ের সকল বই
             </Link>
           </h6>
-        </div> 
-
-
-
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 };

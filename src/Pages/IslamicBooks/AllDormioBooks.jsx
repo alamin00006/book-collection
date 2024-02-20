@@ -34,7 +34,7 @@ const AllDormioBooks = () => {
   }
   return (
     <div className="bg-white">
-      <div className="container border">
+      <div className="custom-container border">
         <h4 className="bg-white p-3"> ধর্মীয় বইসমূহ</h4>
 
         <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">

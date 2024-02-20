@@ -14,7 +14,7 @@
 //       });
 //   }, [islamicBook]);
 //   return (
-//     <div className="container">
+//     <div className="custom-container">
 //       <h1>Comming Soon{myProducts2.length}</h1>
 //     </div>
 //   );

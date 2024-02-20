@@ -4,7 +4,7 @@ const AddToCart = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="container cart-item-page mt-3">
+    <div className="custom-container cart-item-page mt-3">
       <div className="text-center all-cart">
         <div className="bg-warning p-5">
           <h6 className="text-white fs-5 fw-bolder">Your Cart is Empty</h6>

@@ -31,7 +31,7 @@ const SideNavbar = () => {
     }
   }, [token, navigate]);
   return (
-    <div className="container">
+    <div className="custom-container">
       <div className="row bg-white">
         <div className="col-lg-3 col-md-3 col-sm-12 border">
           <div className="py-3">

@@ -30,7 +30,7 @@ const Product3Details = ({ AddToCarts }) => {
     slidesToShow: 5,
     slidesToScroll: 5,
     initialSlide: 0,
-    
+
     adaptiveHeight: true,
     // prevArrow: <SlickArrowLeft />,
     // nextArrow: <SlickArrowRight />,
@@ -133,9 +133,9 @@ const Product3Details = ({ AddToCarts }) => {
     return <Loading />;
   }
   return (
-    <div class="container">
+    <div class="custom-container">
       <div class="details-page">
-        <div class="container-fluid details-side">
+        <div class="custom-container-fluid details-side">
           <div class="row ">
             <div class="col-lg-4 details-side-1">
               <div class="">
@@ -225,7 +225,7 @@ const Product3Details = ({ AddToCarts }) => {
                         class="add-to-cart add-To-Cart btn btn-default"
                         type="button"
                       >
-                        <Link to="/cart" >View Cart</Link>
+                        <Link to="/cart">View Cart</Link>
                       </button>
                     ) : (
                       <button
@@ -289,18 +289,16 @@ const Product3Details = ({ AddToCarts }) => {
             setReview={setReview}
           />
         </div>
-        <hr/>
+        <hr />
         <h3 className="mb-3 px-4 ">Related Products</h3>
 
         <Slider {...settings}>
           {relatedProduct?.slice(0, 12).map((data, index) => (
-            
-              <RelatedProductCart
-                key={data._id}
-                data={data}
-                AddToCarts={AddToCarts}
-              ></RelatedProductCart>
-     
+            <RelatedProductCart
+              key={data._id}
+              data={data}
+              AddToCarts={AddToCarts}
+            ></RelatedProductCart>
           ))}
         </Slider>
       </div>

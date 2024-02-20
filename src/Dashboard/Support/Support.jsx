@@ -2,7 +2,7 @@ import React from "react";
 
 const Support = () => {
   return (
-    <div className="container p-5">
+    <div className="custom-container p-5">
       <h4 className="fw-bold">যোগাযোগের তথ্য</h4>
       <p className="mt-5">
         অনলাইন বিক্রয় সম্পর্কে আপনার যে কোনও প্রশ্নের উত্তর আমরা এখানেই দেব।
