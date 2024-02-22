@@ -28,96 +28,103 @@ const Navber2 = () => {
   return (
     <nav className="custom-container p-0 ">
       <Navbar className="searching-nav " expand="lg">
-        <Container fluid className="px-0">
-          <Link to="/" className="">
-            <img
-              className="logo "
-              style={{ width: "100px", height: "70px", marginLeft: "18px" }}
-              src={logo2}
-              alt=""
+        <Link to="/" className="">
+          <img
+            className="logo "
+            style={{ width: "100px", height: "70px", marginLeft: "30px" }}
+            src={logo2}
+            alt=""
+          />
+        </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav">
+          <div className="search-little-icon">
+            <SearchIcon />
+          </div>
+        </Navbar.Toggle>
+
+        <Navbar.Collapse id="basic-navbar-nav">
+          <div className="d-flex justify-content-center search-field">
+            <input
+              type="text"
+              placeholder="বইয়ের নাম ও লেখকের নাম দিয়ে অনুসন্ধান করুন"
+              style={{ borderRadius: " 8px 0px 0px 8px" }}
             />
-          </Link>
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <div className="search-little-icon">
-              <SearchIcon />
-            </div>
-          </Navbar.Toggle>
-
-          <Navbar.Collapse id="basic-navbar-nav">
-         
-            <div className="d-flex justify-content-center search-field">
-              <input
-                type="text"
-                placeholder="বইয়ের নাম ও লেখকের নাম দিয়ে অনুসন্ধান করুন"
-                style={{ borderRadius: " 8px 0px 0px 8px" }}
+            <span className="search-button px-3 ">
+              {" "}
+              <IoSearch
+                className=" font-bold"
+                style={{
+                  color: "white",
+                  width: "16px",
+                  height: "16px",
+                  marginTop: 11,
+                }}
               />
-              <span className="search-button px-3 ">
-                {" "}
-                <IoSearch
-                  className=" font-bold"
-                  style={{
-                    color: "white",
-                    width: "16px",
-                    height: "16px",
-                    marginTop: 11,
-                  }}
-                />
-              </span>
-            </div>
-          </Navbar.Collapse>
+            </span>
+          </div>
+        </Navbar.Collapse>
 
-          <Nav.Link
-            className=" text-decoration-none text-black"
-            as={Link}
-            to="/cart"
-          >
-            <div className="cart-icon">
-              <HiOutlineShoppingBag
-                className="add-to-icon1"
-                style={{ width: "30px", height: "30px" }}
-              />
+        <Nav.Link
+          className=" text-decoration-none text-black"
+          as={Link}
+          to="/cart"
+        >
+          <div className="cart-icon">
+            <HiOutlineShoppingBag
+              className="add-to-icon1"
+              style={{ width: "30px", height: "30px" }}
+            />
 
-              {cart?.cartItems?.length}
-            </div>
-          </Nav.Link>
+            {cart?.cartItems?.length}
+          </div>
+        </Nav.Link>
 
-          {token ? (
-            <>
-              <p className=" sing-Out my-account-aria">
-                {/* <Link className=" account-part text-black" to="/side-navbar">
+        {token ? (
+          <>
+            <p
+              className=" sing-Out my-account-aria"
+              style={{
+                marginRight: "-19px",
+              }}
+            >
+              {/* <Link className=" account-part text-black" to="/side-navbar">
                   আমার একাউন্ট
                 </Link> */}
-                <Nav.Link
-                  as={Link}
-                  to="/side-navbar"
-                  className="text-black d-flex flex-column align-items-center account-part"
-                >
-                  <div>
-                    <AiOutlineUser style={{ width: "30px", height: "30px" }} />
-                  </div>
-                  <div className="">
-                    <span style={{ fontSize: "14px" }}>My Account</span>
-                  </div>
-                </Nav.Link>
-              </p>
-            </>
-          ) : (
-            <p className="login-aria">
               <Nav.Link
                 as={Link}
-                to="/login"
-                className="text-black d-flex flex-column align-items-center "
+                to="/side-navbar"
+                className="text-black d-flex flex-column align-items-center account-part"
               >
                 <div>
                   <AiOutlineUser style={{ width: "30px", height: "30px" }} />
                 </div>
                 <div className="">
-                  <span style={{ fontSize: "14px" }}>Sign Up/In</span>
+                  <span style={{ fontSize: "14px" }}>My Account</span>
                 </div>
               </Nav.Link>
             </p>
-          )}
-        </Container>
+          </>
+        ) : (
+          <p
+            className="login-aria"
+            style={{
+              marginRight: "-14px",
+            }}
+          >
+            <Nav.Link
+              as={Link}
+              to="/login"
+              className="text-black d-flex flex-column align-items-center "
+            >
+              <div>
+                <AiOutlineUser style={{ width: "30px", height: "30px" }} />
+              </div>
+              <div className="">
+                <span style={{ fontSize: "14px" }}>Sign Up/In</span>
+              </div>
+            </Nav.Link>
+          </p>
+        )}
       </Navbar>
     </nav>
   );

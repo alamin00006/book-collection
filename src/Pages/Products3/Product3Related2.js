@@ -2,8 +2,8 @@ import React from "react";
 
 const Product3Related2 = ({ relatedProduct }) => {
   return (
-    <div id="demo" class="carousel slide mt-3" data-bs-ride="carousel">
-      <div class="carousel-indicators carousel-director">
+    <div id="demo" class="carousel slide mt-3 pb-5" data-bs-ride="carousel">
+      <div className="carousel-indicators carousel-director mt-4">
         <button
           type="button"
           data-bs-target="#demo"
@@ -33,9 +33,10 @@ const Product3Related2 = ({ relatedProduct }) => {
                   class="d-block"
                 />
               </div>
-              <div className="ms-3">
+              <div className="ms-3 mt-2">
                 <p>{data.nameB}</p>
                 <p>{data.writer.writerName}</p>
+
                 <h5>
                   TK.
                   {data.discount

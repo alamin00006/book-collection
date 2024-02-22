@@ -1,9 +1,7 @@
 .main-Navbar {
   position: relative !important;
 }
-.linkup {
-  margin-left: -1px !important;
-}
+
 .navbar-brand {
   font-size: 16px !important;
 }
@@ -20,21 +18,36 @@
 .subject-link {
   text-decoration: none;
   cursor: pointer;
-  padding: 8px 8px;
+  /* padding: 8px 8px; */
 }
-.subject-link:hover {
-  color: rgb(248, 248, 248) !important;
-  background-color: #f29434;
-}
+
 .subject-link2 {
-  margin-left: 10px !important;
+  margin-right: 10px !important;
 }
 .other-nav {
   font-size: 15px !important;
 }
 
+.nav-item a {
+  border: 0.1px solid rgb(189, 189, 189);
+  padding: 5px 8px;
+  cursor: pointer;
+}
+.nav-item li a {
+  color: black;
+  cursor: pointer;
+}
+
+.nav-item a:hover {
+  color: white !important;
+  background-color: #f29434;
+}
+
+.nav-item a:not(:last-child) {
+  border-right: none !important;
+}
 @media all and (min-width: 992px) {
-  .navbar .nav-item .dropdown-menu {
+  /* .navbar .nav-item .dropdown-menu {
     display: none;
   }
 
@@ -43,7 +56,7 @@
   }
   .navbar .nav-item .dropdown-menu {
     margin-top: 0;
-  }
+  } */
 }
 /* dropdown animation */
 @keyframes slideDown {

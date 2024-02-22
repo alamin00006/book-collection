@@ -224,13 +224,13 @@
   line-height: 0;
 }
 .add-to-button {
-  background-color: #065644;
+  background-color: #f29434;
   padding: 0 20px !important;
   border-radius: 3px !important;
 }
 
 .add-to-button:hover {
-  background-color: #065610;
+  background-color: #065644;
 }
 
 .add-to-icon1 {
@@ -238,6 +238,7 @@
 }
 .add-to-icon {
   width: 30px;
+  height: 22px;
   color: #ffffff;
 }
 .add-To-Cart {
@@ -267,10 +268,8 @@
 .delivery-info {
   background-color: #f6f6f6;
   padding: 20px 25px !important;
-
 }
-.delivery-info p{
-
+.delivery-info p {
   font-size: 1rem !important;
 }
 .cash-icon {

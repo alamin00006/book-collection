@@ -52,11 +52,11 @@ const Cart = ({ data }) => {
             ) : (
               <span className="stock-out">Stock Out</span>
             )}
-            {data?.discount <= 5 ? (
+            {/* {data?.discount <= 5 ? (
               ""
             ) : (
               <span className="discount">{data.discount}%</span>
-            )}
+            )} */}
             <div className="tk-part d-flex justify-content-between">
               <div>
                 <span className="text-decoration-line-through pre-tk">
@@ -66,13 +66,15 @@ const Cart = ({ data }) => {
                   TK {discountPrice}
                 </span>
               </div>
-              {/* <div className="ms-3">
-           {data?.discount <= 0 ? (
-              ""
-            ) : (
-              <span className="discount" style={{color:'#13856B'}}>{data.discount}% of</span>
-            )}
-           </div> */}
+              <div className="ms-3">
+                {data?.discount <= 0 ? (
+                  ""
+                ) : (
+                  <span className="fw-bold" style={{ color: "red" }}>
+                    {data.discount}% off
+                  </span>
+                )}
+              </div>
             </div>
             {/* <div className=" text-center">
               <button class=" details-button " onClick={product3Details}>

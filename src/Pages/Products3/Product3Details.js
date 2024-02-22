@@ -7,6 +7,7 @@ import { TruckIcon } from "@heroicons/react/24/outline";
 import { TicketIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+import { BsCartPlus } from "react-icons/bs";
 import { StarIcon } from "@heroicons/react/24/solid";
 import Product from "../Products/Product";
 import Product3Related2 from "./Product3Related2";
@@ -167,7 +168,7 @@ const Product3Details = ({ AddToCarts }) => {
                 </div>
               </div>
             </div>
-            <div class="details col-lg-5 details-side-2">
+            <div class="details col-lg-5 details-side-2 mt-3">
               <h3 class="product-title">{singleProduct3.nameB}</h3>
               <p>
                 লেখক :{" "}
@@ -185,16 +186,14 @@ const Product3Details = ({ AddToCarts }) => {
               </div>
               <p>Publisher : {singleProduct3?.publication?.publicationName}</p>
               {singleProduct3.discount !== 0 ? (
-                <p className="previous-tk">TK.{singleProduct3.price}</p>
+                <p className="previous-tk">{singleProduct3.price} ৳</p>
               ) : (
                 ""
               )}
               <p>
-                <span className="present-tk text-primary">
-                  TK.{discountPrice}
-                </span>
-                <span className="text-warning save-tk">
-                  You save TK.{discount} ({singleProduct3.discount}%)
+                <span className="present-tk ">{discountPrice} ৳</span>
+                <span className="text-danger save-tk">
+                  You save {discount} ৳ ({singleProduct3.discount}%)
                 </span>
               </p>
               <div className="d-flex">
@@ -236,7 +235,7 @@ const Product3Details = ({ AddToCarts }) => {
                 </div> */}
                 <div className="d-flex align-items-center add-to-button">
                   <div>
-                    <ShoppingCartIcon className="add-to-icon " />
+                    <BsCartPlus className="add-to-icon " />
                   </div>
                   <div>
                     {Cart2 ? (
@@ -283,7 +282,7 @@ const Product3Details = ({ AddToCarts }) => {
                 <div>
                   <TicketIcon className=" earn-icon text-blue-500" />
                 </div>
-                <p>Purchase & Earn</p>
+                <p>Gain knowledge by purchasing</p>
               </div>
               <div>
                 <hr />
@@ -308,9 +307,9 @@ const Product3Details = ({ AddToCarts }) => {
             setReview={setReview}
           />
         </div>
-        <hr />
-        <h3 className="mb-3 px-4 ">Related Products</h3>
 
+        <h5 className="mb-3 px-4 ">Related Products</h5>
+        <hr style={{ color: "#13856B" }} />
         <div className="mt-3 px-3">
           {relatedProduct?.length > 5 ? (
             <OwlCarousel className="owl-theme" {...options}>
