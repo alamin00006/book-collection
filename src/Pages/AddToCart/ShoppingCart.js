@@ -83,17 +83,17 @@ const ShoppingCart = () => {
   const finalCartAmount = shipping + (totalAmount - discountAmount);
 
   return (
-    <div className="bg-white">
-      <div className="custom-container">
+    <div className="custom-container mt-3 ">
+      <div className="">
         {cart?.cartItems?.length !== 0 ? (
-          <div className="row gx-5">
-            <div className="col-lg-8 col-md-8 col-sm-12">
+          <div className="row view-cart-content ">
+            <div className="col-lg-8 col-md-8 col-sm-12 ">
               {cart.cartItems.map((data, index) => (
                 <AllShoppingCart key={index} data={data}></AllShoppingCart>
               ))}
             </div>
 
-            <div className="p-3 cart-total-content col-lg-4 col-md-4 col-sm-12  cart-total-part">
+            <div className="p-3 cart-total-content col-lg-4 col-md-4 col-sm-12  cart-total-part ">
               <div className="d-flex justify-content-between">
                 <p>দাম</p>
                 <p>{totalAmount} ৳</p>

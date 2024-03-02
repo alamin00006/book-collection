@@ -6,81 +6,32 @@ import { ArrowPathIcon } from "@heroicons/react/24/outline";
 import { TruckIcon } from "@heroicons/react/24/outline";
 import { TicketIcon } from "@heroicons/react/24/outline";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
-import { ShoppingCartIcon } from "@heroicons/react/24/outline";
+
 import { BsCartPlus } from "react-icons/bs";
 import { StarIcon } from "@heroicons/react/24/solid";
-import Product from "../Products/Product";
+
 import Product3Related2 from "./Product3Related2";
-import Reviews from "../Reviews/Reviews";
+
 import Product3ToggleButton from "./Product3ToggleButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../store/reducers/cartSlice";
 import { useQuery } from "react-query";
-import ViewPdfModal from "../ViewPdf/ViewPdfModal";
-import Cart from "../AddToCart/Cart";
+// import ViewPdfModal from "../ViewPdf/ViewPdfModal";
+
 import useProduct3 from "../../Hooks/UseProduct3";
-import Slider from "react-slick";
+
 import NoSlideCart from "../AddToCart/NoSlideCart";
 import RelatedProductCart from "../RealatedProduct/RelatedProductCart";
 import OwlCarousel from "react-owl-carousel";
 import Loading from "../Loading/Loading";
 const Product3Details = ({ AddToCarts }) => {
-  let settings = {
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 5,
-    initialSlide: 0,
-
-    adaptiveHeight: true,
-    // prevArrow: <SlickArrowLeft />,
-    // nextArrow: <SlickArrowRight />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-      {
-        breakpoint: 320,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 1,
-        },
-      },
-    ],
-  };
-  const [show, setShow] = useState(false);
-  const handleShow = () => setShow(true);
-
   const [myProducts3] = useProduct3();
   const { details3Id } = useParams();
   const [singleProduct3, setSingleProduct3] = useState({});
   const discount = parseFloat(
     (singleProduct3.price / 100) * singleProduct3.discount
   ).toFixed(2);
+  console.log(discount);
   const discountPrice = singleProduct3.price - Math.ceil(discount);
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -193,7 +144,7 @@ const Product3Details = ({ AddToCarts }) => {
               <p>
                 <span className="present-tk ">{discountPrice} ৳</span>
                 <span className="text-danger save-tk">
-                  You save {discount} ৳ ({singleProduct3.discount}%)
+                  You save {Math.ceil(discount)} ৳ ({singleProduct3.discount}%)
                 </span>
               </p>
               <div className="d-flex">

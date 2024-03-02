@@ -17,51 +17,59 @@ const AllShoppingCart = ({ data }) => {
   const discountPrice = Math.ceil(discount);
 
   return (
-    <div className="row p-3 mb-3 card-area ">
-      <div className="col-lg-5 d-flex px-0">
-        <div className="cart-image">
-          <img src={data.image} alt="" />
+    <div
+      className="row mb-3  "
+      style={{
+        padding: "0 10px",
+      }}
+    >
+      <div className="card-area p-3">
+        <div className="col-lg-5 d-flex ">
+          <div className="cart-image ">
+            <img src={data.image} alt="" />
+          </div>
+          <div className="ms-4 mt-3">
+            <p style={{}}>{data.nameB}</p>
+            <p>{data?.writer?.writerName}</p>
+          </div>
         </div>
-        <div className="ms-4 mt-3">
-          <p style={{
-    
-          }}>{data.nameB}</p>
-          <p>{data?.writer?.writerName}</p>
-        </div>
-      </div>
-      <div className="col-lg-7 d-flex mt-5">
-        <div className="cart-input-part">
-          <MinusSmallIcon
-            onClick={() => dispatch(decreaseCart(data))}
-            className="cart-minus-icon border-0"
-          />
-          <input
-            type="text"
-            value={data.cartQuantity}
-            readOnly
-            className="cart-input fw-bold"
-            style={{fontSize:"1rem", fontFamily:"Atma cursive"}}
-          />
-          <PlusSmallIcon
-            onClick={() => {
-              dispatch(incrementCart(data));
-            }}
-            className="cart-plus-icon border-0"
-          />
-        </div>
-        <div className="d-flex justify-content-center">
-        {data.discount !== 0 ? (
-                <p className="previous-tk">{data.singleCartTotal} ৳</p>
-              ) : (
-                ""
-              )}
-          <p className="mx-4 fw-bold"> {data.singleCartTotal- discountPrice} ৳</p>
-          <p>
-            <TrashIcon
-              onClick={() => dispatch(removeFromCart(data))}
-              className="cart-trash-icon "
+        <div className="col-lg-7 d-flex mt-5">
+          <div className="cart-input-part">
+            <MinusSmallIcon
+              onClick={() => dispatch(decreaseCart(data))}
+              className="cart-minus-icon border-0"
             />
-          </p>
+            <input
+              type="text"
+              value={data.cartQuantity}
+              readOnly
+              className="cart-input fw-bold"
+              style={{ fontSize: "1rem", fontFamily: "Atma cursive" }}
+            />
+            <PlusSmallIcon
+              onClick={() => {
+                dispatch(incrementCart(data));
+              }}
+              className="cart-plus-icon border-0"
+            />
+          </div>
+          <div className="d-flex justify-content-center">
+            {data.discount !== 0 ? (
+              <p className="previous-tk">{data.singleCartTotal} ৳</p>
+            ) : (
+              ""
+            )}
+            <p className="mx-4 fw-bold">
+              {" "}
+              {data.singleCartTotal - discountPrice} ৳
+            </p>
+            <p>
+              <TrashIcon
+                onClick={() => dispatch(removeFromCart(data))}
+                className="cart-trash-icon "
+              />
+            </p>
+          </div>
         </div>
       </div>
     </div>
