@@ -72,6 +72,14 @@ h4 {
     top: 50%;
     transform: translateY(-480px) translateX(130px);
   }
+
+  .cart-total-content {
+
+    margin-left: 0px !important;
+  }
+  .view_cart_list{
+    padding: 0 !important;
+  }
 }
 
 /* Medium devices (tablets, 768px and up) */

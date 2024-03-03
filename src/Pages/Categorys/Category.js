@@ -47,7 +47,7 @@ const Category = () => {
         {categories?.data?.map((category) => (
           <div
             key={category._id}
-            className=""
+            className="category_item_list"
             style={{
               backgroundColor: "#efeeee",
               borderLeft: "5px solid #f29434",

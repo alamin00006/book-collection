@@ -21,7 +21,7 @@ const Navber = () => {
   return (
     <div>
       <div className="custom-container main-Navbar ">
-        <nav className="navbar navbar-expand-lg">
+        <nav className="navbar navbar-expand-lg p-0">
           <div className="container-fluid linkup p-0">
             {/* <Link
               to="/"

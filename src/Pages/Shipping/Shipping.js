@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import useUser from "../../Hooks/useUser";
+import TotalCart from "../AddToCart/TotalCart";
 
 const Shipping = () => {
   const [user, refetch] = useUser();
@@ -108,10 +109,13 @@ const Shipping = () => {
   };
 
   return (
-    <div className="bg-white">
-      <div className="custom-container">
-        <div class=" row">
-          <div className="col-lg-8 shipping-address p-5 bg-white">
+  
+      <div className="custom-container mt-3 view_cart_list"   style={{
+        padding: "0 12px",
+        paddingRight:"8px"
+      }}>
+        <div class=" row view-cart-content ">
+          <div className="col-lg-8 p-4 card-area">
             <form onSubmit={AllOrder}>
               <div className="">
                 <div>
@@ -568,35 +572,13 @@ const Shipping = () => {
               </div>
             </form>
           </div>
-          <div className="col-lg-4 col-md-12 col-sm-12 px-4 cart-total-part">
-            <h6 className="mb-4 fs-5 checkout-title text-danger fw-bolder">
-              চেক-আউট সামারি
-            </h6>
-            <div className="d-flex justify-content-between">
-              <p>Sub Total</p>
-              <p>{cartTotalAmount}</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <p>Shipping</p>
-              <p>{shipping}</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <p>Total</p>
-              <p>{finalCartAmount}</p>
-            </div>
-
-            <div className="d-flex justify-content-between">
-              <p>Payable Total</p>
-              <p>{finalCartAmount}</p>
-            </div>
-
-            <div className="mt-3"></div>
-          </div>
+          <div className="p-3 cart-total-content col-lg-4 col-md-12 col-sm-12 cart-total-part ">
+          <TotalCart/>          </div>
         </div>
 
         <ToastContainer className="toast-position" position="top-center" />
       </div>
-    </div>
+  
   );
 };
 

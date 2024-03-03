@@ -30,7 +30,7 @@
 
 .nav-item a {
   border: 0.1px solid rgb(189, 189, 189);
-  padding: 5px 8px;
+  padding: 10px 8px;
   cursor: pointer;
 }
 .nav-item li a {
@@ -45,6 +45,10 @@
 
 .nav-item a:not(:last-child) {
   border-right: none !important;
+}
+.nav-item:not(.active) a {
+  border-top: none !important;
+  border-bottom: none !important;
 }
 @media all and (min-width: 992px) {
   /* .navbar .nav-item .dropdown-menu {

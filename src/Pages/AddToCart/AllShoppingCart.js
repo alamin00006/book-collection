@@ -18,9 +18,10 @@ const AllShoppingCart = ({ data }) => {
 
   return (
     <div
-      className="row mb-3  "
+      className="row mb-3  view_cart_list"
       style={{
-        padding: "0 10px",
+        padding: "0 12px",
+        paddingRight:"8px"
       }}
     >
       <div className="card-area p-3">
