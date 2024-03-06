@@ -16,17 +16,17 @@
 
 .owl-prev,
 .owl-next {
-  background-color: #f29434 !important;
-
+  background-color: red !important;
+/* border: 1px solid black !important; */
   color: #ffffff !important; /* Set text color */
   font-size: 25px !important; /* Adjust font size as needed */
-  width: 20px !important;
+  width: 30px !important;
   /* Adjust padding as needed */
 }
 
 .owl-prev:hover,
 .owl-next:hover {
-  background-color: #f1ae6b !important; /* Change background color on hover */
+  background-color: rgba(255, 0, 0, 0.561) !important; /* Change background color on hover */
   color: #fff; /* Change text color on hover */
 }
 
@@ -52,7 +52,10 @@ h4 {
     margin-left: auto;
     margin-right: auto;
   }
-
+.home_page_category {
+  grid-template-columns: repeat(2, 1fr) !important;
+  /* gap: 10px; */
+}
   .view-cart-content {
     column-gap: 0rem;
     margin: 0px 10px !important;
@@ -64,13 +67,13 @@ h4 {
   .owl-prev {
     left: 0px;
     top: 50%;
-    transform: translateY(-480px) translateX(135px);
+    transform: translateY(-480px) translateX(132px);
   }
 
   .owl-next {
     right: 0px;
     top: 50%;
-    transform: translateY(-480px) translateX(130px);
+    transform: translateY(-480px) translateX(126px);
   }
 
   .cart-total-content {

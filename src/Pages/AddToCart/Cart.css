@@ -234,6 +234,8 @@ img {
   .my-card {
     grid-template-columns: 1fr;
   }
+
+  
   .add-to-btn {
     margin-left: 35px !important;
   }

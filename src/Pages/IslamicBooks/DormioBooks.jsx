@@ -6,6 +6,8 @@ import Cart from "../AddToCart/Cart";
 import "./DormioBooks.css";
 import Loading from "../Loading/Loading";
 
+// import rightArrowImage from '../../Images/rightArrow.png'
+
 import OwlCarousel from "react-owl-carousel";
 import NoSlideCart from "../AddToCart/NoSlideCart";
 const DormioBooks = () => {
@@ -31,7 +33,11 @@ const DormioBooks = () => {
     return <Loading />;
   }
 
+
+ 
   const options = {
+    // navText: ['<',   <img src={rightArrowImage} alt="Right Arrow" />],
+    className: "owl-theme",
     loop: true,
     marginLeft: 30,
     nav: true,
@@ -52,14 +58,16 @@ const DormioBooks = () => {
     <div className="custom-container card-area bg-white px-3 mt-3 ">
       <div className=" ">
         <h4 className=" pt-3">ধর্মীয় বই</h4>
+
       </div>
       <hr style={{ color: "#13856B" }} />
       <div className="mt-3 ">
         {dormioBooks?.length > 5 ? (
-          <OwlCarousel className="owl-theme" {...options}>
+          <OwlCarousel   {...options}>
             {dormioBooks?.map((data, index) => (
               <Cart key={data._id} data={data}></Cart>
             ))}
+    
           </OwlCarousel>
         ) : (
           <div className="my-card-main my-card">
