@@ -36,7 +36,7 @@ const DormioBooks = () => {
 
  
   const options = {
-    // navText: ['<',   <img src={rightArrowImage} alt="Right Arrow" />],
+    // navText: ['<',   '>'],
     className: "owl-theme",
     loop: true,
     marginLeft: 30,
@@ -55,7 +55,7 @@ const DormioBooks = () => {
     },
   };
   return (
-    <div className="custom-container card-area bg-white px-3 mt-3 ">
+    <div className=" card-area bg-white px-3 mt-3 ">
       <div className=" ">
         <h4 className=" pt-3">ধর্মীয় বই</h4>
 

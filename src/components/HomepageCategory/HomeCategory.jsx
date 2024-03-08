@@ -14,9 +14,9 @@ const HomeCategory = () => {
     return <Loading />;
   }
   return (
-    <div className="bg-white ">
-      <div className="">
-        <div className="home_page_category mt-2 ">
+   
+      <div className="card-area p-2 mt-2">
+        <div className="home_page_category  ">
           {categories?.data?.slice(0, 10)?.map((category) => (
             <div key={category._id} className="">
               <h6
@@ -35,7 +35,7 @@ const HomeCategory = () => {
           ))}
         </div>
       </div>
-    </div>
+
   );
 };
 

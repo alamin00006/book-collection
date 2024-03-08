@@ -7,7 +7,7 @@ const LIneIcon = () => {
       width="24"
       height="24"
       fill="currentColor"
-      className="bi bi-list text-white"
+      className="bi bi-list text-black"
       viewBox="0 0 16 16"
     >
       <path

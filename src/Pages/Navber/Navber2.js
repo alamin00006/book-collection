@@ -1,10 +1,8 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
+
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-// import logo2 from "../../Images/logo2.png";
+
 import logo2 from "../../Images/abiyanLogo11.png";
 
 import { AiOutlineUser } from "react-icons/ai";
@@ -16,6 +14,7 @@ import { IoSearch } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import useUser from "../../Hooks/useUser";
 import SearchIcon from "../../svgIcons/SearchIcon";
+import OffCanvasNavbar from "../OffCanvasNavbar/OffCanvasNavbar";
 
 const Navber2 = () => {
   const [user] = useUser();
@@ -31,18 +30,23 @@ const Navber2 = () => {
         <Link to="/" className="">
           <img
             className="logo "
-            style={{ width: "100px", height: "70px", marginLeft: "30px" }}
+            style={{ marginLeft: "30px" }}
             src={logo2}
             alt=""
           />
         </Link>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
+        {/* <Navbar.Toggle aria-controls="basic-navbar-nav">
           <div className="search-little-icon">
             <SearchIcon />
           </div>
-        </Navbar.Toggle>
+        </Navbar.Toggle> */}
 
-        <Navbar.Collapse id="basic-navbar-nav">
+
+          <div className="searh-part" style={{
+           
+            width:"100%",
+             padding:"10px 10px" 
+          }}>
           <div className="d-flex justify-content-center search-field">
             <input
               type="text"
@@ -62,7 +66,8 @@ const Navber2 = () => {
               />
             </span>
           </div>
-        </Navbar.Collapse>
+          </div>
+
 
         <Nav.Link
           className=" text-decoration-none text-black"
@@ -126,6 +131,7 @@ const Navber2 = () => {
           </p>
         )}
       </Navbar>
+      <OffCanvasNavbar />
     </nav>
   );
 };

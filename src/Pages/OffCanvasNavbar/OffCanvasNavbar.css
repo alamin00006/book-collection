@@ -1,1 +1,10 @@
-
+.offCanvas-navbar{
+position: absolute ;
+z-index: 999;
+padding: 0 !important;
+top: 40px;
+right:0px;
+}
+.navbar-toggler{
+padding: 0 !important;
+}

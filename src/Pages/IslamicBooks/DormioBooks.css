@@ -5,15 +5,30 @@
 .owl-prev {
   left: 0px;
   top: 50%;
-  transform: translateY(-480px) translateX(540px);
+  transform: translateY(-487px) translateX(537px);
 }
 
 .owl-next {
   right: 0px;
   top: 50%;
-  transform: translateY(-480px) translateX(533px);
+  transform: translateY(-487px) translateX(530px);
 }
 
+
+
+/* .owl-prev {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.owl-next {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+} */
 .owl-prev,
 .owl-next {
   background-color: red !important;
@@ -46,11 +61,34 @@ h4 {
   cursor: pointer;
 }
 
+
+@media (max-width: 320px) {
+  .custom-container {
+    max-width: 320px;
+    margin: 0px 8px;
+
+  }
+
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(120px) !important;
+  }
+
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(113px) !important;
+  }
+
+
+
+}
 @media (max-width: 576px) {
   .custom-container {
     max-width: 540px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0px 8px;
+
   }
 .home_page_category {
   grid-template-columns: repeat(2, 1fr) !important;
@@ -64,16 +102,27 @@ h4 {
     height: 300px !important;
   }
 
-  .owl-prev {
+  /* .owl-prev {
     left: 0px;
     top: 50%;
-    transform: translateY(-480px) translateX(132px);
+    transform: translateY(-487px) translateX(120px);
   }
 
   .owl-next {
     right: 0px;
     top: 50%;
-    transform: translateY(-480px) translateX(126px);
+    transform: translateY(-487px) translateX(113px);
+  } */
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(145px);
+  }
+
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(140px);
   }
 
   .cart-total-content {
@@ -83,6 +132,60 @@ h4 {
   .view_cart_list{
     padding: 0 !important;
   }
+  .banner-part img{
+ 
+    height: 110px;
+}
+
+.nav-call-icon {
+  visibility: hidden;
+}
+.nav-fb-icon {
+  visibility: hidden;
+}
+.searching-nav {
+  margin-left: -10px;
+}
+.searh-part{
+  background-color: #12856b;
+}
+.logo {
+  width: 80px !important;
+  height: 70px !important;
+  margin-top: 0px;
+  margin-left: 70px !important;
+}
+.main-Navbar {
+  display: none;
+}
+.search-field {
+  width: 100% !important;
+  margin:0 0px !important;
+  margin-top: 0px !important;
+
+}
+
+.search-little-icon {
+  position: absolute !important;
+  top: 30px;
+  right: 180px;
+}
+.cart-icon {
+  position: absolute;
+  /* right: 50px; */
+  top: 40px;
+  right: 140px;
+}
+.login-aria {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+}
+.my-account-aria {
+  position: fixed;
+  top: 20px;
+  right: 80px;
+}
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -94,6 +197,17 @@ h4 {
   }
   .view-cart-content {
     column-gap: 0rem;
+  }
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(325px);
+  }
+
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(320px);
   }
 }
 
@@ -107,6 +221,18 @@ h4 {
   /* .view-cart-content {
     column-gap: 1rem;
   } */
+
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(537px);
+  }
+  
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(530px);
+  }
 }
 
 /* Extra large devices (large desktops, 1200px and up) */
@@ -119,6 +245,17 @@ h4 {
   /* .view-cart-content {
     column-gap: 1rem;
   } */
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(537px);
+  }
+  
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(530px);
+  }
 }
 
 /* Extra extra large devices (larger desktops, 1400px and up) */
@@ -131,4 +268,16 @@ h4 {
   /* .view-cart-content {
     column-gap: 1rem;
   } */
+
+  .owl-prev {
+    left: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(537px);
+  }
+  
+  .owl-next {
+    right: 0px;
+    top: 50%;
+    transform: translateY(-487px) translateX(530px);
+  }
 }

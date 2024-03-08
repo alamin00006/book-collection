@@ -10,7 +10,7 @@ const Banner = () => {
   const settings = {
     dots: true,
     arrows: false,
-    autoplay: true,
+    // autoplay: true,
     autoplaySpeed: 2500,
     infinite: true,
     speed: 500,
@@ -21,11 +21,11 @@ const Banner = () => {
     return <Loading />;
   }
   return (
-    <div className="custom-container banner-part mt-3">
+    <div className=" banner-part mt-3">
       <div>
-        <Slider {...settings}>
+        <Slider {...settings} >
           {allBanner?.data.map((banner) => (
-            <div className="slider">
+            <div >
               <img src={banner?.image} alt="" />
             </div>
           ))}

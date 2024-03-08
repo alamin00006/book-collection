@@ -46,7 +46,7 @@ const TechnologyBook = () => {
     },
   };
   return (
-    <div className="custom-container card-area bg-white px-3 mt-3 ">
+    <div className=" card-area bg-white px-3 mt-3 ">
       <div className=" ">
         <h4 className=" pt-3">টেকনোলজি বই</h4>
       </div>
