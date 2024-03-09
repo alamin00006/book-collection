@@ -34,8 +34,8 @@ const AllTechnolgyBooks = () => {
     return <Loading></Loading>;
   }
   return (
-    <div className="bg-white">
-      <div className="custom-container border">
+
+      <div className="custom-container mt-3">
         <h4 className="bg-white p-3"> টেকনোলজি বইসমূহ</h4>
 
         <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
@@ -59,7 +59,7 @@ const AllTechnolgyBooks = () => {
           ))}
         </div>
       </div>
-    </div>
+    
   );
 };
 

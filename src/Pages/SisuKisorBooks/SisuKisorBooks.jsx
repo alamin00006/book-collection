@@ -39,7 +39,7 @@ const SisuKisorBooks = () => {
         items: 3,
       },
       1000: {
-        items: 6,
+        items: 5,
       },
     },
   };
@@ -51,7 +51,7 @@ const SisuKisorBooks = () => {
       <hr style={{ color: "#13856B" }} />
       <div className="mt-3">
         {sisuKisorBooks?.length > 4 ? (
-          <OwlCarousel className="owl-theme" {...options}>
+          <OwlCarousel className="owl-theme owl-carousel-container" {...options}>
             {sisuKisorBooks?.map((data, index) => (
               <Cart key={data._id} data={data}></Cart>
             ))}
@@ -59,7 +59,7 @@ const SisuKisorBooks = () => {
         ) : (
           <div className="my-card-main my-card">
             {sisuKisorBooks?.map((data, index) => (
-              <NoSlideCart key={data._id} data={data}></NoSlideCart>
+              <Cart key={data._id} data={data}></Cart>
             ))}
           </div>
         )}

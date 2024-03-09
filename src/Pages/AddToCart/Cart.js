@@ -33,7 +33,7 @@ const Cart = ({ data }) => {
         >
           <img src={data?.image} class="" alt="..." />
           <div class="book-body mt-3">
-            <h6 class="book-title">{data.nameB?.slice(0, 40)}</h6>
+            <h6 class="book-title">{data.nameB?.slice(0, 40)} </h6>
             <p class="writer-name">{data?.writer?.writerName?.slice(0, 50)}</p>
             {/* <p className="mb-4">
               <StarIcon className=" star-icon " />
@@ -57,7 +57,7 @@ const Cart = ({ data }) => {
             ) : (
               <span className="discount">{data.discount}%</span>
             )} */}
-            <div className="tk-part d-flex justify-content-between">
+            <div className="tk-part d-flex ">
               <div>
                 <span className="text-decoration-line-through pre-tk">
                   TK {data.price}
@@ -83,8 +83,8 @@ const Cart = ({ data }) => {
             </div> */}
           </div>
         </div>
-
-        {/* {Cart ? (
+{/* 
+        {Cart ? (
           <div className="margin_addtoButton">
             <button className=" add-to-btn">
               <Link class=" text-decoration-none " to="/cart">

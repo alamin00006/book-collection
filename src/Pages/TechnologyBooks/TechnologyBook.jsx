@@ -62,7 +62,7 @@ const TechnologyBook = () => {
         ) : (
           <div className="my-card-main my-card">
             {technologyBooks?.map((data, index) => (
-              <NoSlideCart key={data._id} data={data}></NoSlideCart>
+                  <Cart key={data._id} data={data}></Cart>
             ))}
           </div>
         )}

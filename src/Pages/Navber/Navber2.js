@@ -25,7 +25,9 @@ const Navber2 = () => {
   const cart = useSelector((state) => state.cart);
 
   return (
-    <nav className="custom-container p-0 ">
+    <nav className="custom-container p-0 " style={{
+      position:"relative"
+    }}>
       <Navbar className="searching-nav " expand="lg">
         <Link to="/" className="">
           <img

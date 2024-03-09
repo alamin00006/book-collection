@@ -24,6 +24,7 @@ import NoSlideCart from "../AddToCart/NoSlideCart";
 import RelatedProductCart from "../RealatedProduct/RelatedProductCart";
 import OwlCarousel from "react-owl-carousel";
 import Loading from "../Loading/Loading";
+import Cart from "../AddToCart/Cart";
 const Product3Details = ({ AddToCarts }) => {
   const [myProducts3] = useProduct3();
   const { details3Id } = useParams();
@@ -265,11 +266,11 @@ const Product3Details = ({ AddToCarts }) => {
           {relatedProduct?.length > 5 ? (
             <OwlCarousel className="owl-theme" {...options}>
               {relatedProduct?.map((data, index) => (
-                <RelatedProductCart
+                <Cart
                   key={data._id}
                   data={data}
                   AddToCarts={AddToCarts}
-                ></RelatedProductCart>
+                ></Cart>
               ))}
             </OwlCarousel>
           ) : (

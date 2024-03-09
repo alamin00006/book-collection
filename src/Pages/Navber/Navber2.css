@@ -36,7 +36,7 @@
   width: 60%;
   display: flex !important;
   height: 38px;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-left: 80px;
 }
 .search-field input:focus {
@@ -113,14 +113,16 @@
   }
   .login-aria {
     position: absolute;
-    top: 30px;
-    right: 30px;
+    top: 20px;
+    right: 70px;
   }
   .my-account-aria {
     position: fixed;
     top: 20px;
     right: 80px;
   }
+
+  
 }
 
 /* Styles for screens with a width between 321px and 768px */
@@ -131,10 +133,10 @@
     margin-left: -15px;
   }
   .logo {
-    width: 150px;
+    width: 80px;
     height: 70px;
     margin-top: 0px;
-    margin-left: -20px !important;
+    margin-left: 12px !important;
   }
 
   .main-Navbar {
@@ -142,7 +144,7 @@
   }
   .search-field {
     width: 100% !important;
-    margin-left: 7px !important;
+    margin-left: 0px !important;
   }
   .search-little-icon {
     position: absolute !important;
@@ -152,17 +154,22 @@
   .cart-icon {
     position: absolute;
     top: 40px;
-    right: 120px;
+    right: 150px;
   }
   .login-aria {
     position: absolute;
-    top: 40px;
-    right: 20px;
+    top: 20px;
+    right: 70px;
   }
   .my-account-aria {
     position: absolute;
-    top: 30px;
-    right: 10px;
+    top: 20px;
+    right: 70px;
+  }
+  .searh-part{
+    background-color: #12856b;
+
+ 
   }
 }
 

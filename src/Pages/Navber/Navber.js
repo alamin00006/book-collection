@@ -34,18 +34,7 @@ const Navber = () => {
             >
               হোম
             </Link> */}
-            <button
-              className="navbar-toggler "
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#main_nav"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <Navbar.Toggle aria-controls="basic-navbar-nav">
-                <LIneIcon />
-              </Navbar.Toggle>
-            </button>
+        
             <div
               className="collapse navbar-collapse"
               id="main_nav"

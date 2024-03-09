@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useProduct3 from "../../Hooks/UseProduct3";
 import Cart from "../AddToCart/Cart";
-import NoSlideCart from "../AddToCart/NoSlideCart";
+
 import Loading from "../Loading/Loading";
 
 const AllPackgageBooks = () => {
@@ -20,8 +20,8 @@ const AllPackgageBooks = () => {
     return <Loading />;
   }
   return (
-    <div className="bg-white">
-      <div className="custom-container border">
+   
+      <div className="custom-container mt-3">
         <h4 className="bg-white p-3">প্যাকেজ বইসমূহ</h4>
 
         <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
@@ -38,11 +38,11 @@ const AllPackgageBooks = () => {
 
         <div className="my-card-main my-card mt-2">
           {packageBooks?.map((data, index) => (
-            <NoSlideCart key={data._id} data={data}></NoSlideCart>
+            <Cart key={data._id} data={data}></Cart>
           ))}
         </div>
       </div>
-    </div>
+
   );
 };
 

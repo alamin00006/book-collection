@@ -44,7 +44,10 @@ const DormioBooks = () => {
     dots: false,
     responsive: {
       0: {
-        items: 1,
+        items: 1.3,
+      },
+      400: {
+        items: 1.5,
       },
       600: {
         items: 3,
@@ -55,15 +58,15 @@ const DormioBooks = () => {
     },
   };
   return (
-    <div className=" card-area bg-white px-3 mt-3 ">
+    <div className=" card-area bg-white px-3 mt-3 " >
       <div className=" ">
         <h4 className=" pt-3">ধর্মীয় বই</h4>
 
       </div>
       <hr style={{ color: "#13856B" }} />
-      <div className="mt-3 ">
+      <div className="mt-3 " >
         {dormioBooks?.length > 5 ? (
-          <OwlCarousel   {...options}>
+          <OwlCarousel   {...options} className="owl-carousel-container">
             {dormioBooks?.map((data, index) => (
               <Cart key={data._id} data={data}></Cart>
             ))}
@@ -72,13 +75,13 @@ const DormioBooks = () => {
         ) : (
           <div className="my-card-main my-card">
             {dormioBooks?.map((data, index) => (
-              <NoSlideCart key={data._id} data={data}></NoSlideCart>
+              <Cart key={data._id} data={data}></Cart>
             ))}
           </div>
         )}
       </div>
 
-      <div className="d-flex justify-content-center pt-0 pb-2">
+      <div className="d-flex justify-content-center pt-0 pb-2 mt-4 ">
         {" "}
         {dormioBooks?.length > 0 ? (
           <h6

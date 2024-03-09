@@ -54,7 +54,7 @@ const PackageBooks = () => {
       </div>
       <hr style={{ color: "#13856B" }} />
       <div className="mt-3 ">
-        {packageBooks?.length > 5 ? (
+        {packageBooks?.length > 4 ? (
           <OwlCarousel className="owl-theme" {...options}>
             {packageBooks?.map((data, index) => (
               <Cart key={data._id} data={data}></Cart>
@@ -63,7 +63,7 @@ const PackageBooks = () => {
         ) : (
           <div className="my-card-main my-card">
             {packageBooks?.map((data, index) => (
-              <NoSlideCart key={data._id} data={data}></NoSlideCart>
+              <Cart key={data._id} data={data}></Cart>
             ))}
           </div>
         )}
