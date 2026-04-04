@@ -6,9 +6,9 @@ const useCategories = () => {
     isLoading,
     refetch,
   } = useQuery(["categories"], () =>
-    fetch("https://book-collection-server.vercel.app/api/v1/category", {
+    fetch("https://book-collection-server-2sgj.onrender.com/api/v1/category", {
       method: "GET",
-    }).then((res) => res.json())
+    }).then((res) => res.json()),
   );
 
   return [categories, refetch, isLoading];

@@ -22,7 +22,7 @@ const ProductTable = ({
   const handleDelete = async () => {
     try {
       const data = await axios.delete(
-        `https://book-collection-server.vercel.app/api/v1/product/${productDelete?._id}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/product/${productDelete?._id}`,
         // {
         //   data: {
         //     image: productDelete.image,
@@ -33,7 +33,7 @@ const ProductTable = ({
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       refetch();
       return toast.success(data.data.message);

@@ -23,10 +23,10 @@ const CategoryAdd = () => {
     ["categories", page, categories, pageCount, categoryEdit],
     () =>
       fetch(
-        `https://book-collection-server.vercel.app/api/v1/category?page=${page}&size=${10}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/category?page=${page}&size=${10}`,
         {
           method: "GET",
-        }
+        },
       )
         .then((res) => res.json())
         .then((data) => {
@@ -34,7 +34,7 @@ const CategoryAdd = () => {
 
           const totalPageCount = Math.ceil(data?.data?.CategoryTotalCount / 10);
           setPageCount(totalPageCount);
-        })
+        }),
   );
 
   const handleCategoryAdd = async (e) => {
@@ -45,8 +45,8 @@ const CategoryAdd = () => {
 
     try {
       const data = await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/category",
-        categoryAdd
+        "https://book-collection-server-2sgj.onrender.com/api/v1/category",
+        categoryAdd,
       );
       toast.success(data.data.message);
       refetch();

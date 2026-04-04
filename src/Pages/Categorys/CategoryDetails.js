@@ -11,10 +11,10 @@ const CategoryDetails = () => {
 
   const { isLoading, refetch } = useQuery([categoryDetailsId], () =>
     fetch(
-      `https://book-collection-server.vercel.app/api/v1/category/${categoryDetailsId}`,
+      `https://book-collection-server-2sgj.onrender.com/api/v1/category/${categoryDetailsId}`,
       {
         method: "GET",
-      }
+      },
     )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
@@ -26,7 +26,7 @@ const CategoryDetails = () => {
       .then((data) => {
         console.log(data.data);
         setCategoryDetails(data.data);
-      })
+      }),
   );
   if (isLoading) {
     return <Loading />;

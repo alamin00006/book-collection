@@ -22,10 +22,10 @@ const WriterAdd = () => {
     ["writers", page, writers, pageCount, writerEdit],
     () =>
       fetch(
-        `https://book-collection-server.vercel.app/api/v1/writer?page=${page}&size=${10}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/writer?page=${page}&size=${10}`,
         {
           method: "GET",
-        }
+        },
       )
         .then((res) => res.json())
         .then((data) => {
@@ -33,7 +33,7 @@ const WriterAdd = () => {
 
           const totalPageCount = Math.ceil(data?.data?.WriterTotalCount / 10);
           setPageCount(totalPageCount);
-        })
+        }),
   );
 
   const handleWriterAdd = async (e) => {
@@ -45,8 +45,8 @@ const WriterAdd = () => {
 
     try {
       const data = await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/writer",
-        writerAdd
+        "https://book-collection-server-2sgj.onrender.com/api/v1/writer",
+        writerAdd,
       );
 
       if (data.status === 400) {

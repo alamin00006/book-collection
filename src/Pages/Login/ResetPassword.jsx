@@ -63,14 +63,14 @@ const ResetPassword = () => {
 
     axios
       .patch(
-        `https://book-collection-server.vercel.app/api/v1/user/password-reset`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/user/password-reset`,
         { password: userInfo?.password },
         {
           headers: {
             Authorization: `Bearer ${userCode}`,
             "Content-Type": "application/json",
           },
-        }
+        },
       )
       .then(() => {
         navigate("/login");

@@ -6,9 +6,9 @@ const useWriters = () => {
     isLoading,
     refetch,
   } = useQuery(["writers"], () =>
-    fetch("https://book-collection-server.vercel.app/api/v1/writer", {
+    fetch("https://book-collection-server-2sgj.onrender.com/api/v1/writer", {
       method: "GET",
-    }).then((res) => res.json())
+    }).then((res) => res.json()),
   );
 
   return [writers, refetch, isLoading];

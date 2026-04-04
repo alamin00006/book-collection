@@ -65,11 +65,14 @@ const SignUp = () => {
     e.preventDefault();
 
     axios
-      .post("https://book-collection-server.vercel.app/api/v1/user/signup", {
-        name: name,
-        email: userInfo?.email,
-        password: userInfo?.password,
-      })
+      .post(
+        "https://book-collection-server-2sgj.onrender.com/api/v1/user/signup",
+        {
+          name: name,
+          email: userInfo?.email,
+          password: userInfo?.password,
+        },
+      )
       .then(() => {
         navigate("/login");
       })

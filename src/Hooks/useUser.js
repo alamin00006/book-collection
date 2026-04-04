@@ -13,7 +13,7 @@ const useUser = () => {
       } else {
         await axios
           .get(
-            "https://book-collection-server.vercel.app/api/v1/user/me",
+            "https://book-collection-server-2sgj.onrender.com/api/v1/user/me",
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -21,7 +21,7 @@ const useUser = () => {
             },
             {
               refetchInterval: 6000,
-            }
+            },
           )
           .then((data) => setUser(data?.data?.data))
           .catch((err) => {});

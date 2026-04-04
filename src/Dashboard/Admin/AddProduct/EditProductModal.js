@@ -32,14 +32,14 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
     }
 
     const selectedCategory = categories.data.find(
-      (categoryName) => categoryName.name === e.target.categoryName.value
+      (categoryName) => categoryName.name === e.target.categoryName.value,
     );
     const selectedWriter = writers.data.find(
-      (writerName) => writerName.name === e.target.writerName.value
+      (writerName) => writerName.name === e.target.writerName.value,
     );
     const selectedPublication = publications.data.find(
       (publicationName) =>
-        publicationName.name === e.target.publicationName.value
+        publicationName.name === e.target.publicationName.value,
     );
 
     const productAdd = {
@@ -91,13 +91,13 @@ const EditProductModal = ({ refetch, show, handleClose, productEdit }) => {
 
     try {
       const data = await axios.patch(
-        `https://book-collection-server.vercel.app/api/v1/product/${productEdit._id}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/product/${productEdit._id}`,
         formData,
         {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
       toast.success(data.data.message);

@@ -30,7 +30,7 @@ const Product3Details = ({ AddToCarts }) => {
   const { details3Id } = useParams();
   const [singleProduct3, setSingleProduct3] = useState({});
   const discount = parseFloat(
-    (singleProduct3.price / 100) * singleProduct3.discount
+    (singleProduct3.price / 100) * singleProduct3.discount,
   ).toFixed(2);
   console.log(discount);
   const discountPrice = singleProduct3.price - Math.ceil(discount);
@@ -38,7 +38,7 @@ const Product3Details = ({ AddToCarts }) => {
   const dispatch = useDispatch();
 
   const Cart2 = cart.cartItems.find(
-    (cartItem) => cartItem._id === singleProduct3._id
+    (cartItem) => cartItem._id === singleProduct3._id,
   );
 
   const [reviews, setReview] = useState([]);
@@ -46,7 +46,7 @@ const Product3Details = ({ AddToCarts }) => {
   const { isLoading, refetch } = useQuery(
     ["", singleProduct3, details3Id],
     () =>
-      fetch(`https://book-collection-server.vercel.app/api/v1/review`, {
+      fetch(`https://book-collection-server-2sgj.onrender.com/api/v1/review`, {
         method: "GET",
       })
         .then((res) => {
@@ -60,10 +60,10 @@ const Product3Details = ({ AddToCarts }) => {
         .then((data) => {
           setReview(data.data);
           // console.log(data.data)
-        })
+        }),
   );
   const approvedReviews = reviews.filter(
-    (pReview) => pReview.status === "Approved"
+    (pReview) => pReview.status === "Approved",
   );
 
   const handleAddToCart = (product) => {
@@ -71,7 +71,7 @@ const Product3Details = ({ AddToCarts }) => {
   };
 
   useEffect(() => {
-    const url = `https://book-collection-server.vercel.app/api/v1/product/${details3Id}`;
+    const url = `https://book-collection-server-2sgj.onrender.com/api/v1/product/${details3Id}`;
     fetch(url, {
       method: "GET",
     })
@@ -81,7 +81,7 @@ const Product3Details = ({ AddToCarts }) => {
 
   const relatedProduct = myProducts3?.data?.filter(
     (product) =>
-      product.category?.categoryName === singleProduct3?.category?.categoryName
+      product.category?.categoryName === singleProduct3?.category?.categoryName,
   );
   if (isLoading) {
     return <Loading />;
@@ -266,11 +266,7 @@ const Product3Details = ({ AddToCarts }) => {
           {relatedProduct?.length > 5 ? (
             <OwlCarousel className="owl-theme" {...options}>
               {relatedProduct?.map((data, index) => (
-                <Cart
-                  key={data._id}
-                  data={data}
-                  AddToCarts={AddToCarts}
-                ></Cart>
+                <Cart key={data._id} data={data} AddToCarts={AddToCarts}></Cart>
               ))}
             </OwlCarousel>
           ) : (

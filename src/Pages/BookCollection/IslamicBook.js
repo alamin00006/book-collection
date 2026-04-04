@@ -4,7 +4,7 @@
 //   const [myProducts2, setProducts2] = useState([]);
 
 //   useEffect(() => {
-//     fetch("https://book-collection-server.vercel.app/islamicBook")
+//     fetch("https://book-collection-server-2sgj.onrender.com/islamicBook")
 //       .then((res) => res.json())
 //       .then((data) => {
 //         const result = data.filter((islamic) => {

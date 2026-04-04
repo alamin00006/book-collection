@@ -8,10 +8,10 @@ const ForgotPassword = () => {
 
     try {
       await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/user/forgot",
+        "https://book-collection-server-2sgj.onrender.com/api/v1/user/forgot",
         {
           email: e.target.email.value,
-        }
+        },
       );
       toast.success("Please Check Your Email");
     } catch (error) {

@@ -14,10 +14,10 @@ const AllSisuKisorBooks = () => {
 
   const { isLoading, refetch } = useQuery([myProducts3, sisuId], () =>
     fetch(
-      `https://book-collection-server.vercel.app/api/v1/category/${sisuId}`,
+      `https://book-collection-server-2sgj.onrender.com/api/v1/category/${sisuId}`,
       {
         method: "GET",
-      }
+      },
     )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
@@ -28,35 +28,33 @@ const AllSisuKisorBooks = () => {
       .then((data) => {
         setAllSisuBooks(data?.data);
         refetch();
-      })
+      }),
   );
   if (!allSisuBooks || isLoading) {
     return <Loading></Loading>;
   }
   return (
+    <div className="custom-container mt-3">
+      <h4 className="bg-white p-3"> শিশু-কিশোর বইসমূহ</h4>
 
-      <div className="custom-container mt-3">
-        <h4 className="bg-white p-3"> শিশু-কিশোর বইসমূহ</h4>
-
-        <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
-          <div className="p-5">
-            {allSisuBooks?.products?.length > 0 ? (
-              <>
-                <h4> মোট {allSisuBooks?.products?.length} টি বই পাওয়া গেছে</h4>
-              </>
-            ) : (
-              <h4> কোন বই খুঁজে পাওয়া যায়নি</h4>
-            )}
-          </div>
-        </div>
-
-        <div className="my-card-main my-card mt-2">
-          {allSisuBooks?.products?.slice(0, 20).map((data, index) => (
-            <NoSlideCart key={data._id} data={data}></NoSlideCart>
-          ))}
+      <div className="bg-dark text-white d-flex justify-content-center align-items-center rounded">
+        <div className="p-5">
+          {allSisuBooks?.products?.length > 0 ? (
+            <>
+              <h4> মোট {allSisuBooks?.products?.length} টি বই পাওয়া গেছে</h4>
+            </>
+          ) : (
+            <h4> কোন বই খুঁজে পাওয়া যায়নি</h4>
+          )}
         </div>
       </div>
 
+      <div className="my-card-main my-card mt-2">
+        {allSisuBooks?.products?.slice(0, 20).map((data, index) => (
+          <NoSlideCart key={data._id} data={data}></NoSlideCart>
+        ))}
+      </div>
+    </div>
   );
 };
 
