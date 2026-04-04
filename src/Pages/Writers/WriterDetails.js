@@ -11,10 +11,10 @@ const WriterDetails = () => {
 
   const { isLoading, refetch } = useQuery([writerDetailsId], () =>
     fetch(
-      `https://book-collection-server.vercel.app/api/v1/writer/${writerDetailsId}`,
+      `https://book-collection-server-2sgj.onrender.com/api/v1/writer/${writerDetailsId}`,
       {
         method: "GET",
-      }
+      },
     )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
@@ -26,7 +26,7 @@ const WriterDetails = () => {
       .then((data) => {
         setWriterDetails(data.data);
         refetch();
-      })
+      }),
   );
   if (isLoading) {
     return <Loading />;

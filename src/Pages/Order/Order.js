@@ -21,34 +21,34 @@ const Order = () => {
     "data",
     async () => {
       const { data } = await axios.get(
-        "https://book-collection-server.vercel.app/api/v1/user/me",
+        "https://book-collection-server-2sgj.onrender.com/api/v1/user/me",
         {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
       return setUser(data?.data);
     },
     {
       refetchInterval: 6000,
-    }
+    },
   );
 
   const { isLoadingOrder, refetchOrder } = useQuery(
     ["myProducts2", user, token, refetch],
     () =>
       fetch(
-        `https://book-collection-server.vercel.app/api/v1/order/${user?.email}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/order/${user?.email}`,
         {
           method: "GET",
-        }
+        },
       )
         .then((res) => res.json())
         .then((data) => {
           setProducts2(data?.data);
           refetch();
-        })
+        }),
   );
 
   if (isLoading || isLoadingOrder) {

@@ -12,8 +12,8 @@ const PublicationEditModal = ({ publicationEdit, setShow, show, refetch }) => {
     };
     try {
       const data = await axios.patch(
-        `https://book-collection-server.vercel.app/api/v1/publication/${publicationEdit?._id}`,
-        publicationUpdate
+        `https://book-collection-server-2sgj.onrender.com/api/v1/publication/${publicationEdit?._id}`,
+        publicationUpdate,
       );
 
       toast.success(data.data.message);

@@ -22,20 +22,20 @@ const Publication = () => {
     ["publications", page, publications, pageCount, publicationEdit],
     () =>
       fetch(
-        `https://book-collection-server.vercel.app/api/v1/publication?page=${page}&size=${10}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/publication?page=${page}&size=${10}`,
         {
           method: "GET",
-        }
+        },
       )
         .then((res) => res.json())
         .then((data) => {
           setpublications(data?.data?.publications);
 
           const totalPageCount = Math.ceil(
-            data?.data?.PublicationTotalCount / 10
+            data?.data?.PublicationTotalCount / 10,
           );
           setPageCount(totalPageCount);
-        })
+        }),
   );
   const handlePublicationAdd = async (e) => {
     e.preventDefault();
@@ -45,8 +45,8 @@ const Publication = () => {
 
     try {
       const data = await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/publication",
-        publicationAdd
+        "https://book-collection-server-2sgj.onrender.com/api/v1/publication",
+        publicationAdd,
       );
 
       if (data.status === 400) {

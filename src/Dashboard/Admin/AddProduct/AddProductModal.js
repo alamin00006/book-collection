@@ -52,14 +52,14 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
     }
 
     const selectedCategory = categories.data.find(
-      (categoryName) => categoryName.name === e.target.categoryName.value
+      (categoryName) => categoryName.name === e.target.categoryName.value,
     );
     const selectedWriter = writers.data.find(
-      (writerName) => writerName.name === e.target.writerName.value
+      (writerName) => writerName.name === e.target.writerName.value,
     );
     const selectedPublication = publications.data.find(
       (publicationName) =>
-        publicationName.name === e.target.publicationName.value
+        publicationName.name === e.target.publicationName.value,
     );
     console.log(selectedWriter);
     // const formData = new FormData();
@@ -184,8 +184,8 @@ const AddProductModal = ({ refetch, show, handleClose }) => {
           // save Product information to the database
           try {
             const data = await axios.post(
-              "https://book-collection-server.vercel.app/api/v1/product",
-              productAdd
+              "https://book-collection-server-2sgj.onrender.com/api/v1/product",
+              productAdd,
             );
             refetch();
             toast.success(data.data.message);
