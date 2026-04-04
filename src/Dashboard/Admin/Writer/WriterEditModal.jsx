@@ -13,8 +13,8 @@ const WriterEditModal = ({ writerEdit, setShow, show, refetch }) => {
     };
     try {
       const data = await axios.patch(
-        `https://book-collection-server.vercel.app/api/v1/writer/${writerEdit?._id}`,
-        writerUpdate
+        `https://book-collection-server-2sgj.onrender.com/api/v1/writer/${writerEdit?._id}`,
+        writerUpdate,
       );
 
       toast.success(data.data.message);

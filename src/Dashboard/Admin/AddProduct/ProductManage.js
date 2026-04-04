@@ -31,10 +31,10 @@ const ProductManage = () => {
     ["myProducts3", page, myProducts3, pageCount],
     () =>
       fetch(
-        `https://book-collection-server.vercel.app/api/v1/product?page=${page}&size=${10}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/product?page=${page}&size=${10}`,
         {
           method: "GET",
-        }
+        },
       )
         .then((res) => res.json())
         .then((data) => {
@@ -42,7 +42,7 @@ const ProductManage = () => {
 
           const totalPageCount = Math.ceil(data?.data?.productTotalCount / 10);
           setPageCount(totalPageCount);
-        })
+        }),
   );
 
   return (

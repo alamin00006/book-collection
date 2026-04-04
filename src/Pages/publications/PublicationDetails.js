@@ -11,10 +11,10 @@ const PublicationDetails = () => {
 
   const { isLoading, refetch } = useQuery([publicationDetailsId], () =>
     fetch(
-      `https://book-collection-server.vercel.app/api/v1/publication/${publicationDetailsId}`,
+      `https://book-collection-server-2sgj.onrender.com/api/v1/publication/${publicationDetailsId}`,
       {
         method: "GET",
-      }
+      },
     )
       .then((res) => {
         if (res.status === 401 || res.status === 403) {
@@ -25,7 +25,7 @@ const PublicationDetails = () => {
       .then((data) => {
         setPublicationDetails(data.data);
         refetch();
-      })
+      }),
   );
   if (isLoading) {
     return <Loading />;

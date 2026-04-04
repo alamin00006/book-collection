@@ -14,17 +14,17 @@ const OrderManage = () => {
 
   const { isLoading, refetch } = useQuery(["allOrder", page], () =>
     fetch(
-      `https://book-collection-server.vercel.app/api/v1/order?page=${page}&size=${10}`,
+      `https://book-collection-server-2sgj.onrender.com/api/v1/order?page=${page}&size=${10}`,
       {
         method: "GET",
-      }
+      },
     )
       .then((res) => res.json())
       .then((data) => {
         setAllOrder(data?.data?.orders);
         const totalPageCount = Math.ceil(data?.data?.orderTotalCount / 10);
         setPageCount(totalPageCount);
-      })
+      }),
   );
 
   return (

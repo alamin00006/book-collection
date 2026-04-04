@@ -59,8 +59,8 @@ const BannerAdd = () => {
           // save Banner to the database
           try {
             const data = await axios.post(
-              "https://book-collection-server.vercel.app/api/v1/banner",
-              bannerAdd
+              "https://book-collection-server-2sgj.onrender.com/api/v1/banner",
+              bannerAdd,
             );
             refetch();
             toast.success(data.data.message);

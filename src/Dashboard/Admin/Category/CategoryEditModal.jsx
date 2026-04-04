@@ -13,8 +13,8 @@ const CategoryEditModal = ({ categoryEdit, setShow, show, refetch }) => {
 
     try {
       const data = await axios.patch(
-        `https://book-collection-server.vercel.app/api/v1/category/${categoryEdit?._id}`,
-        categoryUpdate
+        `https://book-collection-server-2sgj.onrender.com/api/v1/category/${categoryEdit?._id}`,
+        categoryUpdate,
       );
 
       toast.success(data.data.message);
