@@ -12,8 +12,8 @@ const Coupon = () => {
 
     try {
       const data = await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/coupon-add",
-        couponAdd
+        "https://book-collection-server-2sgj.onrender.com/api/v1/coupon-add",
+        couponAdd,
       );
 
       if (data.status === 400) {

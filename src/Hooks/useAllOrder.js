@@ -6,9 +6,9 @@ const useAllOrder = () => {
     isLoading,
     refetch,
   } = useQuery(["allOrder"], () =>
-    fetch("https://book-collection-server.vercel.app/api/v1/order", {
+    fetch("https://book-collection-server-2sgj.onrender.com/api/v1/order", {
       method: "GET",
-    }).then((res) => res.json())
+    }).then((res) => res.json()),
   );
 
   return [allOrder, refetch, isLoading];

@@ -20,7 +20,7 @@ const Reviews = ({ singleProduct3, approvedReviews, setReview }) => {
   // const [filterReviews, setFilterReviews] = useState([]);
   // console.log(user?.email)
   const { isLoading, refetch } = useQuery([singleProduct3], () =>
-    fetch(`https://book-collection-server.vercel.app/api/v1/review`, {
+    fetch(`https://book-collection-server-2sgj.onrender.com/api/v1/review`, {
       method: "GET",
     })
       .then((res) => {
@@ -34,10 +34,10 @@ const Reviews = ({ singleProduct3, approvedReviews, setReview }) => {
       .then((data) => {
         setReview(data.data);
         // console.log(data.data)
-      })
+      }),
   );
   const productReviews = approvedReviews.filter(
-    (pReview) => pReview.forProduct === singleProduct3?._id
+    (pReview) => pReview.forProduct === singleProduct3?._id,
   );
   // console.log(productReviews)
 
@@ -69,8 +69,8 @@ const Reviews = ({ singleProduct3, approvedReviews, setReview }) => {
 
     try {
       const data = await axios.post(
-        "https://book-collection-server.vercel.app/api/v1/review",
-        reviewData
+        "https://book-collection-server-2sgj.onrender.com/api/v1/review",
+        reviewData,
       );
 
       if (data.status === 400) {
