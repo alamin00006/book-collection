@@ -10,13 +10,13 @@ const ReviewMange = () => {
   const [reviews, setAllReviews] = useState([]);
 
   const { isLoading, refetch } = useQuery(["reviews"], () =>
-    fetch(`https://book-collection-server.vercel.app/api/v1/review`, {
+    fetch(`https://book-collection-server-2sgj.onrender.com/api/v1/review`, {
       method: "GET",
     })
       .then((res) => res.json())
       .then((data) => {
         setAllReviews(data?.data);
-      })
+      }),
   );
 
   return (

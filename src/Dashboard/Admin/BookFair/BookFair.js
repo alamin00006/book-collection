@@ -16,8 +16,8 @@ const BookFair = () => {
 
     try {
       const data = await axios.patch(
-        `https://book-collection-server.vercel.app/api/v1/book-fair/${bookFair?._id}`,
-        bookFairAdd
+        `https://book-collection-server-2sgj.onrender.com/api/v1/book-fair/${bookFair?._id}`,
+        bookFairAdd,
       );
 
       toast.success(data.data.message);

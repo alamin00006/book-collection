@@ -22,12 +22,12 @@ const ReviewTable = ({
   const handleReviewDelete = async () => {
     try {
       const data = await axios.delete(
-        `https://book-collection-server.vercel.app/api/v1/review/${reviewDelete?._id}`,
+        `https://book-collection-server-2sgj.onrender.com/api/v1/review/${reviewDelete?._id}`,
         {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
       refetch();
       toast.success(data?.data?.message);
